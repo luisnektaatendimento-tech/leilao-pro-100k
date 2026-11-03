@@ -1,0 +1,227 @@
+[00:04.84 - 00:25.20] Vamos lá, aqui é o Luiz Necta e eu vou mostrar para vocês como que basicamente, não, o porquê que eu criei duas plataformas para conseguir vender serviço e mentoria dos experts que eu trabalho.
+[00:25.20 - 00:31.68] Eu vou explicar o fluxo aqui de cada uma delas para você, Claudio, e vamos lá.
+[00:32.08 - 00:39.52] Seguinte, o primeiro é a plataforma Fexô. A plataforma Fexô é essa aqui que eu vou mostrar para você.
+[01:01.32 - 01:02.86] Está no ar não, Miltinho?
+[01:04.88 - 01:06.52] Está no ar não, fechou?
+[01:23.58 - 01:24.68] Então, vamos lá.
+[01:25.86 - 01:29.48] A plataforma Fexô tem imóveis de leilão.
+[01:29.66 - 01:34.78] Então, ela é específica para pessoas que querem comprar ou investir em imóveis de leilão.
+[01:34.78 - 01:43.38] Então, qual que é o fluxo para vender o serviço, que é uma assessoria de leilão, dentro da plataforma Fexô?
+[01:44.04 - 01:46.68] Primeiramente, a pessoa visita o site.
+[01:47.10 - 01:50.60] Depois que ela visita o site, ela encontra o imóvel de leilão.
+[01:51.48 - 01:57.82] Logo após, ela pode escolher se ela vai comprar à vista ou se ela vai fazer um financiamento.
+[01:57.96 - 01:59.82] Vai comprar por meio de financiamento.
+[01:59.82 - 02:08.70] Quando ela faz o contexto de querer comprar à vista, ela vai agendar um contato com um especialista.
+[02:08.70 - 02:11.44] Isso de forma automatizada dentro do site.
+[02:11.96 - 02:16.64] Para concluir e agendar o horário, ela vai pagar R$197.
+[02:17.46 - 02:24.16] Recebe uma consultoria individual, mostrando como que ela vai fazer a compra desse imóvel.
+[02:24.32 - 02:32.58] E se ela quiser, ela compra a assessoria, que propriamente é a prestação de serviço dos especialistas em leilão,
+[02:32.74 - 02:39.68] que vão realizar essa assessoria para que ela compre esse imóvel, ou para moradia, ou para investimento.
+[02:41.10 - 02:44.54] Se ela for fazer o fluxo financiado, o que ela vai fazer?
+[02:44.84 - 02:55.52] Ela vai vir aqui, clicar em financiamento, iniciar a solicitação aqui da estimativa de qual valor que ela tem disponível para fazer o financiamento.
+[02:56.64 - 02:58.96] Esse dado vai para o CRM.
+[02:59.18 - 03:04.48] O CRM faz uma classificação do score dela.
+[03:05.60 - 03:10.60] E a partir do momento que esse score está dentro do que a gente busca,
+[03:10.90 - 03:19.34] a gente faz ali o contexto de indicar para ela um agendamento com especialista também de R$197,00,
+[03:19.34 - 03:26.48] para que possa conduzir para a assessoria também, possivelmente para moradia.
+[03:26.90 - 03:30.68] A grande maioria das pessoas que vão financiar aí, elas querem para morar.
+[03:31.68 - 03:40.36] A partir do momento que o sistema identificou e priorizou aqueles clientes que têm score aprovado,
+[03:40.36 - 03:50.94] os demais podem sofrer o ataque do time de análise de crédito para ainda assim conseguir validar se ele tem ou não
+[03:51.78 - 03:59.86] propriamente a possibilidade de conseguir o financiamento para que ele consiga adquirir o imóvel que ele deseja.
+[04:00.04 - 04:04.70] Então essa é a forma de vender serviços dentro da Fechor.
+[04:05.94 - 04:12.16] Quando a gente vai para a mentoria dentro da Fechor, esse cara abre o site, visita o site,
+[04:13.44 - 04:23.74] ele vai ser impactado ou por o banner dos especialistas ou propagandas que a gente for fazer ali dentro da própria plataforma.
+[04:24.70 - 04:28.82] E de qualquer forma ele já entrou dentro do nosso banco de cadastro.
+[04:28.82 - 04:34.66] Ou seja, ele já é um cliente nosso, ele já é um potencial cliente nosso.
+[04:34.84 - 04:36.18] Então ele cai na base de lead.
+[04:37.08 - 04:45.00] Com essa base de lead aqui, ela vai ser abordada com produtos low ticket dos especialistas.
+[04:45.48 - 04:49.32] Então toda essa base de lead que entra dentro da plataforma Fechor,
+[04:49.64 - 04:56.98] ela recebe anúncio, ela recebe disparos de produtos low ticket dos especialistas.
+[04:56.98 - 05:00.46] Então tanto da parte de leilão, que é o leilão PRO,
+[05:00.82 - 05:05.66] Elis Sampaio com investidor imobiliário e Hollenberg com milionário com loteamento.
+[05:06.30 - 05:11.02] Depois que essas pessoas compram um produto low ticket de R$ 47,
+[05:12.48 - 05:17.78] elas vão para a área de membros, muitas delas para consumir o produto,
+[05:17.94 - 05:20.92] e outras acabam não chegando na área de membros.
+[05:21.02 - 05:22.70] Então a gente tem dois fluxos diferentes.
+[05:22.70 - 05:27.08] Para aquele que comprou e foi para a área de membros,
+[05:27.68 - 05:31.36] ele assiste, ele é dentro da área de membros,
+[05:31.48 - 05:36.56] ele recebe um banner, algum incentivo ali,
+[05:36.78 - 05:39.08] para que ele consiga ir para um webinário,
+[05:39.20 - 05:41.12] para um evento ali dentro da canal,
+[05:41.70 - 05:45.98] específico daquele especialista que ele acabou recebendo esse bônus,
+[05:46.02 - 05:47.64] de ver essa aula.
+[05:47.64 - 05:51.58] E ele mesmo faz um agendamento automático ali com o nosso time.
+[05:52.72 - 05:56.06] Caso ele não faça esse contexto pela área de membros,
+[05:56.46 - 05:58.18] pode ser normal de acontecer,
+[05:58.68 - 06:00.40] a gente entra aqui com o comercial,
+[06:00.76 - 06:03.98] fazendo uma ligação de qualificação para quem ligou,
+[06:04.24 - 06:06.02] ou para quem comprou esse low ticket,
+[06:06.46 - 06:09.10] ou seja, entendendo se realmente ele tem interesse
+[06:09.10 - 06:12.02] de comprar aquele programa,
+[06:12.26 - 06:15.04] de avançar, de realizar a meta dele ali dentro do mercado,
+[06:15.04 - 06:16.76] e a gente faz um agendamento,
+[06:16.90 - 06:19.74] onde dentro dessa sessão diagnóstica vai ser vendido
+[06:19.74 - 06:20.76] tanto a Leilão Pro,
+[06:21.08 - 06:22.76] tanto o investidor imobiliário,
+[06:22.90 - 06:25.38] quanto o milionário com loteamento.
+[06:26.14 - 06:28.72] Então esses são os dois fluxos que a gente tem,
+[06:29.08 - 06:31.80] um para vender serviço e outro para vender mentoria
+[06:31.80 - 06:33.38] dentro da Fechou.
+[06:34.64 - 06:37.72] Só que, fora a plataforma Fechou,
+[06:37.80 - 06:39.62] que é uma plataforma específica
+[06:39.62 - 06:43.34] para os clientes visualizarem o mercado imobiliário,
+[06:43.44 - 06:46.32] visualizarem oportunidades dentro do mercado imobiliário,
+[06:46.42 - 06:47.40] principalmente de Leilão,
+[06:47.92 - 06:49.70] a gente tem a plataforma Canal,
+[06:49.96 - 06:52.88] e a plataforma Canal é uma emissora,
+[06:53.00 - 06:54.50] é uma plataforma de mídia,
+[06:54.82 - 06:57.54] é uma plataforma que busca ter atenção de qualidade,
+[06:57.82 - 07:00.66] entregar atenção de qualidade para o especialista,
+[07:00.66 - 07:04.22] um ambiente propício ali para vender serviço e mentoria,
+[07:04.42 - 07:05.98] tendo em vista o tempo de tela.
+[07:06.48 - 07:09.58] Então, em alguns momentos dentro da plataforma Fechou,
+[07:09.76 - 07:12.06] o cliente já vai estar ali tendo acesso
+[07:12.86 - 07:14.26] para ir para a Canal,
+[07:14.62 - 07:15.66] que é a nossa plataforma.
+[07:15.88 - 07:17.64] Então no banner dos especialistas,
+[07:17.86 - 07:21.30] ele já vai ser levado ali para dentro da Canal.
+[07:22.02 - 07:25.24] Na área de membros do produto Low Ticket que ele comprou,
+[07:25.48 - 07:27.32] ele vai ser levado para a Canal.
+[07:27.82 - 07:30.52] Então elas se relacionam nessas etapas.
+[07:30.66 - 07:33.10] Tanto nas propagandas que a gente vai fazer,
+[07:33.26 - 07:36.74] com os banners, com o marketing vídeo bomba,
+[07:36.80 - 07:40.80] aqueles videozinhos pequenos que vão aparecer dentro da plataforma Fechou,
+[07:41.00 - 07:45.00] convocando esse cliente para aprender um pouco mais sobre aquele contexto,
+[07:45.16 - 07:47.14] e também dentro da área de membros.
+[07:47.74 - 07:51.46] Então a gente vai estar sempre tentando levar esse cliente aí,
+[07:51.66 - 07:53.98] que busca o quesito de mentoria,
+[07:54.36 - 07:57.88] para a Canal, onde ele vai ter mais tempo de tela.
+[07:57.88 - 08:00.32] E como que funciona a plataforma Canal
+[08:00.32 - 08:03.20] e o funil de vendas da plataforma Canal?
+[08:03.86 - 08:05.66] Na plataforma Canal,
+[08:05.90 - 08:08.04] esse cliente visita o site,
+[08:08.18 - 08:10.02] e lá ele vai ter programas.
+[08:10.32 - 08:12.20] Vou até escrever aqui, programas.
+[08:12.68 - 08:14.64] Como que funcionam esses programas?
+[08:14.68 - 08:17.10] Os programas estão rolando ao vivo,
+[08:17.64 - 08:21.74] com uma programação desenhada pelos próprios gestores da Canal.
+[08:21.74 - 08:23.74] Então a gente vai acumular esses conteúdos,
+[08:24.56 - 08:29.76] e ele vai ficar sendo impactado por esses programas.
+[08:31.02 - 08:34.84] E quando ele encontra o programa do especialista,
+[08:35.16 - 08:38.00] a gente vai tentar levar ele para o evento,
+[08:38.20 - 08:39.30] para esse webinário,
+[08:39.86 - 08:43.14] que é onde propriamente é o ambiente favorável
+[08:43.14 - 08:45.74] para rolar o pitch de agendamento,
+[08:46.50 - 08:47.74] o pitch de vendas do especialista.
+[08:47.82 - 08:51.46] Então, apesar de estar rolando ali a programação,
+[08:51.72 - 08:52.42] o estilo TV,
+[08:52.86 - 08:54.80] quando você não podia avançar o programa,
+[08:54.98 - 08:56.58] você não poderia pausar e tudo mais,
+[08:56.86 - 09:00.60] ele vai ser impactado por itens e artefatos de marketing,
+[09:01.22 - 09:04.30] para que ele consiga acessar o evento.
+[09:04.80 - 09:05.40] Correto?
+[09:05.60 - 09:07.42] O evento, o webinário,
+[09:07.60 - 09:11.18] é onde ao concluir esse evento,
+[09:12.16 - 09:14.80] ou assistir esse evento em dado momento,
+[09:14.80 - 09:18.56] ele recebe ali a chamada para fazer o agendamento com o especialista,
+[09:18.98 - 09:20.12] paga R$197,
+[09:20.16 - 09:22.10] ganha uma consultoria individual,
+[09:22.40 - 09:24.38] e se ele quiser, dentro dessa reunião,
+[09:24.56 - 09:27.06] ele compra aí a mentoria ou o serviço.
+[09:27.76 - 09:32.02] Só que, se esse cara não comprar o evento,
+[09:32.14 - 09:33.82] não for assistir o evento,
+[09:34.14 - 09:37.76] a gente tem tanto como impactar ele novamente, né,
+[09:38.00 - 09:40.92] com marketing, remarketing,
+[09:41.18 - 09:43.80] para que ele compre um produto low ticket nosso,
+[09:43.80 - 09:46.12] ou, dentro da própria canal,
+[09:46.30 - 09:50.00] a gente pode ter esses artefatos de marketing com vídeo bomba
+[09:50.00 - 09:50.66] e tudo mais,
+[09:51.28 - 09:54.30] para conduzir ele para a compra de um produto de entrada.
+[09:55.22 - 09:56.46] Então, dentro do próprio evento,
+[09:56.46 - 10:00.16] pode ter ali algum material que o especialista vai indicar,
+[10:00.40 - 10:04.38] ou algum vídeo ali impactou para ele comprar um material prático ali,
+[10:04.70 - 10:06.32] e esse material de 47,
+[10:06.72 - 10:09.64] dá acesso para ele novamente à área de membros,
+[10:10.18 - 10:12.28] onde, dentro da área de membros,
+[10:13.26 - 10:14.70] ele vai para o webinário,
+[10:14.76 - 10:17.06] ele assiste o webinário do especialista,
+[10:17.10 - 10:19.64] e faz o agendamento automático, tá?
+[10:20.84 - 10:22.64] Ou, do mesmo formato,
+[10:22.80 - 10:24.16] se ele não foi para a área de membros,
+[10:24.24 - 10:26.02] ele é qualificado pelo comercial,
+[10:26.02 - 10:27.22] faz o agendamento,
+[10:27.36 - 10:29.28] e vai ali para o pitch de mentoria.
+[10:29.50 - 10:31.04] O que é interessante entender?
+[10:31.04 - 10:33.36] Esse produto low ticket,
+[10:33.38 - 10:35.84] ele pode rodar independente da canal.
+[10:36.28 - 10:37.40] Então, aqui,
+[10:37.72 - 10:38.60] nessa via,
+[10:38.74 - 10:40.24] eu posso ter aqui tráfego
+[10:43.96 - 10:44.64] direto
+[10:44.64 - 10:46.88] para esse produto low ticket.
+[10:49.16 - 10:51.14] Vamos colocar aqui uma setinha.
+[10:51.30 - 10:53.78] Tráfego direto para esse produto low ticket.
+[10:53.78 - 10:55.34] Porque, a partir daí,
+[10:55.42 - 10:56.40] eu consigo ter
+[10:57.06 - 10:58.28] pessoas que vão
+[10:58.28 - 10:59.78] tanto já
+[10:59.78 - 11:02.46] estar em um estágio mais avançado
+[11:02.46 - 11:03.86] para fechar a mentoria,
+[11:04.22 - 11:05.40] tanto pessoas que,
+[11:05.58 - 11:07.38] dentro da área de membros,
+[11:07.46 - 11:08.84] vão retornar para a canal.
+[11:09.06 - 11:10.04] E lá na canal,
+[11:10.06 - 11:11.38] eles assistem a um evento,
+[11:11.52 - 11:13.14] e a gente faz esse fluxo aí
+[11:13.14 - 11:14.24] de retroalimentação.
+[11:14.58 - 11:16.52] Então, onde que as duas plataformas
+[11:16.52 - 11:17.22] se encontram?
+[11:17.52 - 11:18.86] Sempre na parte
+[11:20.46 - 11:21.42] de mídia
+[11:22.34 - 11:24.60] e de aprendizado,
+[11:24.76 - 11:25.80] de tempo de tela,
+[11:26.02 - 11:27.24] que a gente tem tempo ali,
+[11:27.76 - 11:28.68] a gente vai fazer com que
+[11:28.68 - 11:29.96] pessoas que vão para a canal
+[11:29.96 - 11:31.46] e têm interesse no imobiliário
+[11:31.98 - 11:33.10] acessem a Fechou
+[11:33.10 - 11:35.30] para ver os imóveis,
+[11:35.38 - 11:36.46] para ver as oportunidades,
+[11:36.60 - 11:38.60] e pessoas que viram as oportunidades,
+[11:38.78 - 11:39.66] que viram os imóveis,
+[11:39.84 - 11:41.96] eles vão ali para o contexto da canal
+[11:41.96 - 11:44.20] para conseguir expandir aí
+[11:44.20 - 11:46.84] o seu repertório de educação
+[11:46.84 - 11:47.84] ou ter mais clareza
+[11:47.84 - 11:49.10] sobre como atuar
+[11:49.10 - 11:50.20] dentro desse mercado.
+[11:50.92 - 11:52.04] Então, hoje,
+[11:52.24 - 11:54.44] o foco que a gente tem
+[11:54.44 - 11:56.04] é na parte de serviço
+[11:56.04 - 11:56.98] e de mentoria
+[11:56.98 - 11:58.32] de especialistas
+[11:58.32 - 11:59.76] do mercado imobiliário.
+[11:59.92 - 12:00.80] Então, por conta disso,
+[12:00.88 - 12:02.82] a gente tem essas duas plataformas
+[12:02.82 - 12:04.64] que elas se conversam entre si
+[12:04.64 - 12:07.22] para que a gente consiga
+[12:07.22 - 12:08.92] trazer esse cara
+[12:08.92 - 12:11.28] que quer investir no imobiliário,
+[12:11.66 - 12:12.96] terceirizar esse serviço
+[12:12.96 - 12:13.36] com alguém,
+[12:13.52 - 12:14.98] ou essa pessoa que quer ter
+[12:16.58 - 12:17.14] autonomia,
+[12:17.14 - 12:18.30] nível de consciência,
+[12:18.40 - 12:19.74] clareza de como ela mesma
+[12:19.74 - 12:20.52] pode operar
+[12:20.52 - 12:21.20] e, por conta disso,
+[12:21.30 - 12:22.24] comprando os programas
+[12:22.24 - 12:22.90] de mentoria.
+[12:23.80 - 12:25.46] Então, esse é o formato
+[12:25.46 - 12:26.90] da plataforma Fechou,
+[12:27.08 - 12:28.28] da plataforma canal
+[12:28.28 - 12:29.48] e como as duas
+[12:29.48 - 12:31.40] se interrelacionam.
+[12:31.40 - 12:32.74] e como as duas
+[12:32.74 - 12:32.82] se interrelacionam.
+[12:32.82 - 12:32.88] O que é isso?
