@@ -1,5 +1,7 @@
 # Central Comercial · área de membros do time
 
+**No ar:** https://central-comercial-topaz.vercel.app
+
 Site estático (sem build) com as 6 aulas da formação e o Arsenal de roteiros por origem de lead.
 
 | Arquivo | O que é |
