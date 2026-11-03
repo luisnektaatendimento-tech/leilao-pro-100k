@@ -55,7 +55,7 @@ main{min-width:0;padding-block:30px 80px;padding-left:max(16px,env(safe-area-ins
 .spacer{flex:1}
 .grid{display:grid;gap:12px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
 .tile{display:flex;flex-direction:column;gap:8px;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
 .tile:hover{border-color:var(--line-2)}
@@ -260,7 +260,7 @@ const toggleDone = n => { let d = done(); d = d.includes(n) ? d.filter(x=>x!==n)
 function railProg(){ const d = done().length, t = C.aulas.length;
   $('#railProg').innerHTML = `<span class="mono">Formação · ${d}/${t}</span><div class="bar"><i style="width:${Math.round(d/t*100)}%"></i></div>`; }
 
-const NAV = [['inicio','Início'],['trilha','Aulas'],['arsenal','Arsenal'],['spin','SPIN'],['cadencia','Follow-up'],['rotina','Meu dia'],['crm','CRM']];
+const NAV = [['trilha','Aulas']];
 const nav = active => $('#nav').innerHTML = NAV.map(([h,t])=>`<a href="#${h}" ${h===active?'aria-current="page"':''}><span class="dot"></span>${t}</a>`).join('');
 
 const toMin = s => { const [h,m] = s.split(':').map(Number); return h*60+m; };
@@ -305,7 +305,6 @@ function aulaView(a){
       <div class="row"><button class="btn ${d.includes(a.n)?'':'go'}" type="button" id="markDone">${d.includes(a.n)?'Concluída ✓':'Marcar como concluída'}</button>
         <span class="spacer"></span>${prev?`<a class="btn sm" href="#${prev.slug}">← ${prev.n}</a>`:''}${next?`<a class="btn sm" href="#${next.slug}">${next.n} →</a>`:''}</div>
       <div class="take">${a.levar.map(x=>`<span>${esc(x)}</span>`).join('')}</div>
-      <a class="btn sm" href="#${a.ver[0]}" style="align-self:flex-start">Abrir: ${esc(a.ver[1])} →</a>
     </div>
     <aside class="panel" style="padding:10px"><span class="mono" style="display:block;padding:6px 10px">Capítulos · ${a.duracao}</span>
       <div class="chapters">${a.capitulos.map(([t,n])=>`<button type="button" data-seek="${t}"><span class="ts">${t}</span><span>${esc(n)}</span></button>`).join('')}</div></aside>
@@ -424,10 +423,8 @@ V.crm = () => `${head('Aula 3','Nekta CRM')}
 function render(){
   COPY = [];
   const h = (location.hash || '#inicio').slice(1);
-  const a = C.aulas.find(x=>x.slug===h), o = C.origens.find(x=>x.slug===h);
-  let active = h, out;
-  if(a){ out = aulaView(a); active = 'trilha'; } else if(o){ out = origemView(o); active = 'arsenal'; }
-  else if(V[h]){ out = V[h](); } else { out = V.inicio(); active = 'inicio'; }
+  const a = C.aulas.find(x=>x.slug===h), o = null;
+  let active = 'trilha', out = a ? aulaView(a) : V.trilha();
   nav(active); railProg(); $('#view').innerHTML = out;
   if(a) aulaMount(a); if(o) origemMount(o);
   if(h==='spin') document.querySelectorAll('[data-pf]').forEach(b => b.onclick = () => { pf = b.dataset.pf; store.set('pf', pf); render(); });
@@ -435,7 +432,6 @@ function render(){
 }
 window.addEventListener('hashchange', () => { render(); window.scrollTo(0,0); });
 render();
-setInterval(() => { const h = (location.hash||'#inicio').slice(1); if(h==='inicio' || h==='rotina'){ const y = scrollY; render(); scrollTo(0,y); } }, 60000);
 })();
 </script>
 </body>
