@@ -1,0 +1,22 @@
+[00:02.44 - 00:14.20] Cláudio, eu vou fazer uma demonstração aqui de como é o Nectar CRM e você vai alinhar com o fluxo do capítulo atual que estamos descrevendo para os nossos vendedores.
+[00:14.90 - 00:22.32] Aqui está a base de nutrição. Dentro da base de nutrição, nós temos diversos filtros aqui.
+[00:22.32 - 00:51.76] Filtros que demonstram a situação do Lidia, qualificação, a origem, a urgência que ele marcou nas etapas dos formulários, qual valor ele demonstra ter disponível inicialmente para os imóveis, formas de pagamento, quem é o responsável, você pode ordenar quais deles aparecem primeiro, quando ele entrou, a região onde ele está e tudo.
+[00:54.72 - 01:00.12] Quando ele entrou, a região onde ele está e quem já esteve na reunião.
+[01:00.92 - 01:10.62] Sendo assim, como é o fluxo? Você identifica aqui a origem, então ele marcou no formulário que veio de moradia e que é urgente para ele.
+[01:10.96 - 01:17.12] Você coloca aqui o seu responsável, o seu nome e basicamente já pode abordar.
+[01:21.96 - 01:23.48] Então, vamos para a prática.
+[01:23.48 - 01:35.80] A partir do momento que você está visualizando aqui a base de nutrição, você já tem o nome do Lidia, a origem dele que foi um formulário e ele marcou aqui que é urgente, que é um imóvel para moradia.
+[01:36.16 - 01:49.88] Você define aqui o responsável e você consegue já fazer a primeira abordagem indo diretamente para o WhatsApp dele com uma mensagem já pronta aqui para fazer essa abordagem.
+[01:53.88 - 02:09.16] Assim que você definiu que é o responsável e vai analisar aqui dentro das suas pipelines, esse mesmo Lidia foi aqui para contato iniciado e você vai arrastando aqui de acordo com o fluxo que esse Lidia se encontra.
+[02:09.16 - 02:22.80] Então, você tem aqui aguardando contato, contato iniciado, em conversa, qualificado, reunião agendada, em negociação, venda realizada, banco de investidores, follow-ups aqui.
+[02:23.16 - 02:29.70] Então, esse é o contexto para que você consiga se organizar dentro aqui da Necta CRM na prática.
+[02:29.70 - 02:41.84] Nós temos diversas features aqui, mas a base de nutrição e o seu pipeline comercial, que está aqui dentro do CRM, é o que você mais precisa dominar.
+[02:42.22 - 02:45.24] Outro ponto importante é a parte da agenda.
+[02:45.62 - 02:47.90] Aqui é onde você vai agendar um Lidia.
+[02:48.20 - 02:54.84] Então, você vem aqui em Agendar um Lidia, pesquisa o nome, que já vai aparecer de forma integrada.
+[02:54.84 - 03:23.42] Você vai colocar aqui a data, o horário, o fim da reunião, a temperatura que você avalia esse Lidia, a urgência que ele parece querer a solução, a faixa de investimento que você conseguiu coletar, caso você tenha conseguido coletar essa informação, o objetivo principal que ele busca, e aqui as dores, travas ou objeções que você já percebeu, informações importantes na conversa.
+[03:23.42 - 03:26.74] Sendo assim, você pode agendar esse Lidia.
+[03:28.48 - 03:44.02] A partir do momento que você agendou, é muito interessante que você, todos os dias, veja quais reuniões você tem, para que você consiga ativar no grupo esse cliente, para que ele esteja presente dentro da ligação.
+[03:44.02 - 04:00.00] Então, a etapa de base de nutrição, a etapa de Lids no CRM, e a sua agenda já está muito clara, para que você consiga dominar aqui dentro do nosso CRM.
+[04:00.00 - 04:00.78] E aí
+[04:00.78 - 04:01.74] Obrigado.
