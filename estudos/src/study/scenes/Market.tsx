@@ -28,7 +28,7 @@ export function Property() {
             data-reveal="up"
             data-delay="0.35"
           >
-            <img src={s.images.map} alt="Mapa de satélite da região do imóvel" className="aspect-[16/10] w-full object-cover grayscale-[.6] contrast-[1.1] brightness-[.8]" />
+            <img src={s.images.map} alt="Mapa de satélite da região do imóvel" className="aspect-[16/10] w-full object-cover brightness-[.9]" />
             <figcaption className="label absolute bottom-2 left-3 !text-[9px] !text-ink">Localização · satélite</figcaption>
           </figure>
         </div>
