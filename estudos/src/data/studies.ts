@@ -1,4 +1,5 @@
 import type { Study } from './types'
+import { asset } from '../lib/asset'
 
 /**
  * CONTEÚDO DOS ESTUDOS
@@ -53,9 +54,9 @@ export const studies: Study[] = [
       condoFee: 250,
     },
     images: {
-      photo: '/img/parque-florence/foto.webp',
-      thumb: '/img/parque-florence/foto-thumb.webp',
-      map: '/img/parque-florence/mapa.webp',
+      photo: asset('/img/parque-florence/foto.webp'),
+      thumb: asset('/img/parque-florence/foto-thumb.webp'),
+      map: asset('/img/parque-florence/mapa.webp'),
     },
     market: {
       from: 193000,
@@ -123,9 +124,9 @@ export const studies: Study[] = [
       condoFee: 650,
     },
     images: {
-      photo: '/img/alberto-monteiro/foto.webp',
-      thumb: '/img/alberto-monteiro/foto-thumb.webp',
-      map: '/img/alberto-monteiro/mapa.webp',
+      photo: asset('/img/alberto-monteiro/foto.webp'),
+      thumb: asset('/img/alberto-monteiro/foto-thumb.webp'),
+      map: asset('/img/alberto-monteiro/mapa.webp'),
     },
     market: {
       from: 280000,
@@ -202,9 +203,9 @@ export const studies: Study[] = [
       condoFee: 570,
     },
     images: {
-      photo: '/img/alta-vista-passare/foto.webp',
-      thumb: '/img/alta-vista-passare/foto-thumb.webp',
-      map: '/img/alta-vista-passare/mapa.webp',
+      photo: asset('/img/alta-vista-passare/foto.webp'),
+      thumb: asset('/img/alta-vista-passare/foto-thumb.webp'),
+      map: asset('/img/alta-vista-passare/mapa.webp'),
     },
     market: {
       from: 290000,
@@ -273,9 +274,9 @@ export const studies: Study[] = [
       condoFee: 300,
     },
     images: {
-      photo: '/img/ville-de-marseille/foto.webp',
-      thumb: '/img/ville-de-marseille/foto-thumb.webp',
-      map: '/img/ville-de-marseille/mapa.webp',
+      photo: asset('/img/ville-de-marseille/foto.webp'),
+      thumb: asset('/img/ville-de-marseille/foto-thumb.webp'),
+      map: asset('/img/ville-de-marseille/mapa.webp'),
     },
     market: {
       listings: [

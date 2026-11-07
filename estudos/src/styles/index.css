@@ -511,8 +511,12 @@ html.lenis body {
 .brand-mark {
   display: inline-block;
   background: currentColor;
-  -webkit-mask: url('/img/pjk-mark.png') center / contain no-repeat;
-  mask: url('/img/pjk-mark.png') center / contain no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 }

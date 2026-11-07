@@ -6,7 +6,7 @@ import { studies } from '../data/studies'
 import { loadProgress, saveProgress } from '../lib/progress'
 import { prefs } from '../lib/prefs'
 import { sound } from '../lib/sound'
-import { navigate } from '../lib/router'
+import { navigate, replacePath } from '../lib/router'
 import { reducedMotion, useMedia } from '../lib/media'
 import { brl, pct } from '../lib/format'
 import { hero } from '../lib/derive'
@@ -225,7 +225,7 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
   /* ── URL por imóvel, visita e "desbloqueio" ── */
   useEffect(() => {
     const s = studies[index]
-    history.replaceState(null, '', `/estudo/${s.slug}`)
+    replacePath(`/estudo/${s.slug}`)
     document.title = `${s.title} · PJK Invest`
     const t = window.setTimeout(() => {
       if (visitedRef.current.has(s.slug)) return
