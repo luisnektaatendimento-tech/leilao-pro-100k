@@ -1,4 +1,10 @@
-import type { Study } from './types'
+import type { Scenario, Study } from './types'
+
+type RawStudy = Omit<Study, 'costs' | 'scenarios'> & {
+  costs: { items: Study['costs']['items'] }
+  scenarios: [ScenarioInput, ScenarioInput]
+}
+type ScenarioInput = Pick<Scenario, 'months' | 'sale' | 'balance' | 'brokerage' | 'brokerageLabel' | 'taxPct'>
 import { asset } from '../lib/asset'
 
 /**
@@ -32,7 +38,7 @@ const VALIDATION = [
 const closing = (who: string) =>
   `Este investimento apresenta um potencial significativo de retorno, considerando a valorização da região e os custos envolvidos. ${who} está à disposição para esclarecer dúvidas e auxiliar em todas as etapas do processo.`
 
-export const studies: Study[] = [
+const raw: RawStudy[] = [
   /* ───────────────────────────── PARQUE FLORENCE ───────────────────────────── */
   {
     slug: 'parque-florence',
@@ -71,13 +77,12 @@ export const studies: Study[] = [
       items: [
         { label: 'Valor arrematado', value: 100148.49 },
         { label: 'Leiloeiro (5%)', value: 5007.42 },
-        { label: 'Assessoria', value: 7000 },
+        { label: 'Assessoria', value: 10000 },
         { label: 'Imposto de transmissão (ITBI)', value: 3380 },
         { label: 'Custos cartorários (escritura + registro)', value: 10250 },
         { label: 'Possível reforma', value: 0 },
         { label: 'Débitos pendentes (IPTU + condomínio)', value: 9728.6 },
       ],
-      total: 135514.51,
     },
     period: {
       items: [
@@ -90,14 +95,15 @@ export const studies: Study[] = [
       op12: 3750,
     },
     scenarios: [
-      { months: 6, sale: 204000, brokerage: 12240, brokerageLabel: 'Corretagem (6%)', investment: 137764.51, grossResult: 53995.49, grossRoi: 39.19, taxPct: 15, netResult: 45896.16, netRoi: 33.31 },
-      { months: 12, sale: 204000, brokerage: 12240, brokerageLabel: 'Corretagem (6%)', investment: 139264.51, grossResult: 52495.49, grossRoi: 37.69, taxPct: 15, netResult: 44621.16, netRoi: 32.04 },
+      { months: 6, sale: 204000, brokerage: 12240, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 12, sale: 204000, brokerage: 12240, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido',
     validation: VALIDATION,
     closing: closing('O Grupo PJK'),
     caveats: [
+      'Assessoria ajustada para R$ 10.000 (no PDF: R$ 7.000); totais, ROI e lucro recalculados.',
       'PDF assinado como “Grupo PJK / @pjkgrupo” (os demais usam PJK Invest).',
       'Data da licitação (14/08/2026) já passou em relação à data desta apresentação.',
     ],
@@ -141,13 +147,12 @@ export const studies: Study[] = [
         { label: 'Valor arrematado', value: 119000, ref: true },
         { label: 'Entrada (30%)', value: 35700 },
         { label: 'Leiloeiro (5%)', value: 5950 },
-        { label: 'Assessoria', value: 7000 },
+        { label: 'Assessoria', value: 10000 },
         { label: 'Imposto de transmissão (ITBI)', value: 2380 },
         { label: 'Custos cartorários (escritura + registro)', value: 10245 },
         { label: 'Possível reforma', value: 10000 },
         { label: 'Débitos pendentes (IPTU + condomínio)', value: 7000 },
       ],
-      total: 78275,
     },
     period: {
       items: [
@@ -168,15 +173,16 @@ export const studies: Study[] = [
       balance12: 49100,
     },
     scenarios: [
-      { months: 6, sale: 230000, balance: 66200, brokerage: 13800, brokerageLabel: 'Corretagem (6%)', investment: 95375, grossResult: 54625, grossRoi: 57.27, taxPct: 15, netResult: 46431.25, netRoi: 48.68 },
-      { months: 12, sale: 240000, balance: 49100, brokerage: 14400, brokerageLabel: 'Corretagem (6%)', investment: 112475, grossResult: 64025, grossRoi: 56.92, taxPct: 15, netResult: 54421.25, netRoi: 48.39 },
+      { months: 6, sale: 230000, balance: 66200, brokerage: 13800, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 12, sale: 240000, balance: 49100, brokerage: 14400, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido s/ capital próprio',
     validation: VALIDATION,
     closing: closing('A PJK Invest'),
     caveats: [
-      'Compra financiada: o investimento total (R$ 78.275) não inclui os 70% financiados; ROI calculado sobre o capital próprio.',
+      'Assessoria ajustada para R$ 10.000 (no PDF: R$ 7.000); totais, ROI e lucro recalculados.',
+      'Compra financiada: o investimento total não inclui os 70% financiados; ROI calculado sobre o capital próprio.',
       'Saldo devedor (R$ 66.200 / R$ 49.100) não fecha com R$ 83.300 financiados menos as parcelas — valores mantidos como no PDF.',
       'Avaliação feita pelo Bradesco (não Caixa). Leilão de 06/08/2025 já ocorreu.',
     ],
@@ -220,13 +226,12 @@ export const studies: Study[] = [
       items: [
         { label: 'Valor arrematado', value: 150620 },
         { label: 'Leiloeiro (5%)', value: 7531 },
-        { label: 'Assessoria (5%)', value: 6000 },
+        { label: 'Assessoria', value: 10000 },
         { label: 'Imposto de transmissão (ITBI)', value: 4880 },
         { label: 'Custos cartorários (escritura + registro)', value: 10000 },
         { label: 'Possível reforma', value: 0 },
         { label: 'Débitos pendentes (IPTU + condomínio)', value: 10000 },
       ],
-      total: 189031,
     },
     period: {
       items: [
@@ -239,17 +244,17 @@ export const studies: Study[] = [
       op12: 7200,
     },
     scenarios: [
-      { months: 6, sale: 265000, brokerage: 13250, brokerageLabel: 'Corretagem (6%)', investment: 192631, grossResult: 59119, grossRoi: 30.69, taxPct: 15, netResult: 50251.15, netRoi: 26.09 },
-      { months: 12, sale: 275000, brokerage: 16500, brokerageLabel: 'Corretagem (6%)', investment: 196231, grossResult: 62269, grossRoi: 31.73, taxPct: 15, netResult: 52928.65, netRoi: 26.97 },
+      { months: 6, sale: 265000, brokerage: 13250, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 12, sale: 275000, brokerage: 16500, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido',
     validation: VALIDATION,
     closing: closing('A PJK Invest'),
     caveats: [
+      'Assessoria ajustada para R$ 10.000 (no PDF: “Assessoria (5%)” R$ 6.000); totais, ROI e lucro recalculados.',
       'Lance inicial R$ 150.626,91 × valor arrematado na planilha R$ 150.620,00.',
       'Condomínio R$ 570 na ficha × R$ 600 na planilha.',
-      '“Assessoria (5%)” = R$ 6.000 (5% do arremate seria R$ 7.531).',
       'Corretagem 6 meses rotulada 6%, mas R$ 13.250 equivale a 5% de R$ 265.000.',
       '“A partir de R$ 290.000”, mas os anúncios visíveis vão de R$ 300.000 a R$ 314.700.',
       'Licitação de 21/07/2025 já ocorreu.',
@@ -288,13 +293,12 @@ export const studies: Study[] = [
     costs: {
       items: [
         { label: 'Valor arrematado', value: 94222.54 },
-        { label: 'Assessoria', value: 7000 },
+        { label: 'Assessoria', value: 10000 },
         { label: 'Imposto de transmissão (ITBI)', value: 3180 },
         { label: 'Custos cartorários (escritura + registro)', value: 9500 },
         { label: 'Possível reforma', value: 5000 },
         { label: 'Débitos pendentes (IPTU + condomínio)', value: 8500 },
       ],
-      total: 127402.54,
     },
     period: {
       items: [
@@ -307,19 +311,46 @@ export const studies: Study[] = [
       op12: 4350,
     },
     scenarios: [
-      { months: 6, sale: 175000, brokerage: 10500, brokerageLabel: 'Corretagem (6%)', investment: 129952.54, grossResult: 34547.46, grossRoi: 26.58, taxPct: 15, netResult: 29365.34, netRoi: 22.6 },
-      { months: 12, sale: 180000, brokerage: 9000, brokerageLabel: 'Corretagem (6%)', investment: 131752.54, grossResult: 39247.46, grossRoi: 29.79, taxPct: 15, netResult: 33360.34, netRoi: 25.32 },
+      { months: 6, sale: 175000, brokerage: 10500, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 12, sale: 180000, brokerage: 9000, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido',
     validation: VALIDATION,
     closing: closing('A PJK Invest'),
     caveats: [
+      'Assessoria ajustada para R$ 10.000 (no PDF: R$ 7.000); totais, ROI e lucro recalculados.',
       'Corretagem 12 meses rotulada 6%, mas R$ 9.000 equivale a 5% de R$ 180.000.',
       'O PDF não traz o “a partir de” do mercado; 3º anúncio: título R$ 179.900, preço R$ 179.000 (usado R$ 179.000).',
       'Venda Direta: o PDF não informa data.',
     ],
   },
 ]
+
+/* ───────────── números calculados ─────────────
+ * Mesmas fórmulas da planilha dos PDFs (conferidas centavo a centavo nos 8 cenários originais):
+ *   investimento total  = soma dos custos (sem as linhas de referência)
+ *   investimento N meses = investimento total + custo operacional de N meses
+ *   resultado bruto      = venda − corretagem − saldo devedor − investimento N meses
+ *   ROI bruto            = resultado bruto ÷ investimento N meses
+ *   resultado líquido    = resultado bruto × (1 − IRGC)   (centavos truncados, como no PDF)
+ *   ROI líquido          = resultado líquido ÷ investimento N meses
+ */
+const cents = (v: number) => Math.round(v * 100) / 100
+const floorCents = (v: number) => Math.floor(v * 100 + 1e-6) / 100
+const pct2 = (v: number) => Math.round(v * 10000) / 100
+
+function finalize(r: RawStudy): Study {
+  const total = cents(r.costs.items.filter((i) => !i.ref).reduce((a, i) => a + i.value, 0))
+  const scenarios = r.scenarios.map((sc) => {
+    const investment = cents(total + (sc.months === 6 ? r.period.op6 : r.period.op12))
+    const grossResult = cents(sc.sale - sc.brokerage - (sc.balance ?? 0) - investment)
+    const netResult = floorCents(grossResult * (1 - sc.taxPct / 100))
+    return { ...sc, investment, grossResult, grossRoi: pct2(grossResult / investment), netResult, netRoi: pct2(netResult / investment) }
+  }) as Study['scenarios']
+  return { ...r, costs: { items: r.costs.items, total }, scenarios }
+}
+
+export const studies: Study[] = raw.map(finalize)
 
 export const getStudy = (slug: string) => studies.find((s) => s.slug === slug)
