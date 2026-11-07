@@ -12,10 +12,10 @@ export const rig = {
   dive: 0,
   /** 0..1 — easter egg de 100%. */
   celebrate: 0,
-  accent: [0.788, 0.663, 0.431] as [number, number, number],
+  accent: [1, 0.831, 0] as [number, number, number],
 }
 
 export const ACCENTS = {
-  champagne: [0.788, 0.663, 0.431] as [number, number, number],
-  verde: [0.184, 0.816, 0.541] as [number, number, number],
+  champagne: [1, 0.831, 0] as [number, number, number],
+  verde: [1, 0.831, 0] as [number, number, number],
 }

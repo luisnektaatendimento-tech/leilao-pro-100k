@@ -10,7 +10,6 @@ const ROWS: [string[], string][] = [
   [['N'], 'Segurar: notas do apresentador'],
   [['S'], 'Ligar/desligar o snap entre imóveis'],
   [['A'], 'Som'],
-  [['T'], 'Alternar paleta (A · B)'],
   [['Esc', 'H'], 'Voltar aos estudos'],
 ]
 

@@ -14,6 +14,15 @@ const P: Record<string, string> = {
   close: 'M6 6l12 12M18 6L6 18',
   swatch: 'M12 3a9 9 0 100 18 9 9 0 000-18zm0 0v18',
   spark: 'M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2.5 2.5m7 7L18 18M18 6l-2.5 2.5m-7 7L6 18',
+  pin: 'M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11zm0-8.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z',
+  area: 'M4 4h16v16H4zM4 9h5V4M15 20v-5h5',
+  bed: 'M3 18v-7a2 2 0 012-2h14a2 2 0 012 2v7M3 15h18M7 9V6h4v3M3 18v2M21 18v2',
+  bath: 'M4 12h16v2a5 5 0 01-5 5H9a5 5 0 01-5-5v-2zM6 12V6a2 2 0 014 0M7 19l-1 2M17 19l1 2',
+  car: 'M5 16V11l2-5h10l2 5v5M5 16h14M5 16v2M19 16v2M7.5 13h.01M16.5 13h.01',
+  coin: 'M12 3a9 9 0 100 18 9 9 0 000-18zm2.5 6.5c-.4-.9-1.4-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1.1 1.6 2.5 2 2.5.9 2.5 2-1 2-2.5 2c-1.1 0-2.1-.6-2.5-1.5M12 6.5V8m0 8v1.5',
+  bolt: 'M13 3L5 13.5h6L10 21l8-10.5h-6L13 3z',
+  shield: 'M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3zm-3 9l2 2 4-4',
+  arrowRight: 'M5 12h14m0 0l-6-6m6 6l-6 6',
 }
 
 export function Icon({ name, size = 16, stroke = 1.4 }: { name: keyof typeof P | string; size?: number; stroke?: number }) {

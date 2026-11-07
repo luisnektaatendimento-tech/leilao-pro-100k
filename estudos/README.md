@@ -38,7 +38,6 @@ Build de produção: `npm run build` (gera `dist/`), e `npm run preview` para te
 | N (segurar) | Notas do apresentador |
 | S | Liga/desliga o snap entre imóveis |
 | A | Som (desligado por padrão) |
-| T | Alterna a paleta A (Champagne) / B (Verde) |
 | Esc · H | Voltar aos estudos |
 
 Cada imóvel é **uma única tela**: foto e ficha à esquerda; lucro líquido, ROI, desconto, posição de mercado,
@@ -53,8 +52,10 @@ Quando os 4 imóveis forem vistos, aparece um selo e uma onda de luz no fundo.
 - Nenhum número é inventado: tudo vem do PDF.
 - Valores derivados por conta simples (desconto sobre a avaliação, % de cada custo, IRGC em reais, restante financiado) aparecem sempre marcados como **calculado**.
 
-## Tipografia
+## Design system
 
-Usa a tipografia da Apple pelas fontes do sistema: **SF Pro** (títulos e textos) e **SF Mono** (valores).
-Em Mac, iPhone e iPad ela aparece nativamente. A Apple não permite embutir a SF em sites, então em
-Windows e Android o site usa automaticamente **Inter** e **JetBrains Mono**, as alternativas mais próximas.
+Segue o design system da plataforma **Fexô**, em tema escuro e com acento **amarelo forte (#FFD400)**:
+Inter (semibold/bold, letras juntas), etiquetas em MAIÚSCULAS espaçadas, botões e chips em pílula,
+cards com cantos de 24px, ícones em círculos, a pílula "⚡ X% abaixo da avaliação", o valor avaliado riscado,
+a barra "Investimento total" e as faixas de aviso. Os tokens ficam no topo de `src/styles/index.css`
+(`--acc`, `--color-panel`, `.fx-card`, `.fx-pill`, `.fx-acc`, `.fx-total`, `.fx-note`).

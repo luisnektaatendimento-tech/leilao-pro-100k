@@ -30,8 +30,7 @@ export default function App() {
       if (e.metaKey || e.ctrlKey || e.altKey) return
       if ((e.target as HTMLElement)?.closest?.('input,textarea')) return
       const k = e.key.toLowerCase()
-      if (k === 't') prefs.cycleAccent()
-      else if (k === 'a') prefs.toggle('sound')
+      if (k === 'a') prefs.toggle('sound')
       else if (e.key === '?') setHelp((h) => !h)
       else if (k === 'f') {
         if (document.fullscreenElement) document.exitFullscreen?.()

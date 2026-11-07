@@ -26,29 +26,24 @@ function SeenCounter({ toast }: { toast: Toast | null }) {
     const t = setTimeout(() => setShow(null), 3200)
     return () => clearTimeout(t)
   }, [toast])
-  const r = 9
-  const c = 2 * Math.PI * r
   return (
     <div className="relative" aria-live="polite">
       <div
-        className="flex items-center gap-2.5 rounded-full border py-1.5 pl-2 pr-3.5 transition-all duration-1000"
-        style={{ borderColor: n >= total ? 'rgb(var(--acc-rgb) / .6)' : 'rgb(237 234 228 / .1)', boxShadow: n >= total ? '0 0 40px -8px rgb(var(--acc-rgb) / .55)' : undefined }}
+        className="flex h-10 items-center gap-2 rounded-full border bg-[var(--color-panel)] px-4 transition-all duration-1000"
+        style={{ borderColor: n >= total ? 'rgb(var(--acc-rgb) / .7)' : 'var(--color-line)', boxShadow: n >= total ? '0 0 40px -8px rgb(var(--acc-rgb) / .6)' : undefined }}
         title="Imóveis vistos neste navegador"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" className="-rotate-90" aria-hidden>
-          <circle cx="12" cy="12" r={r} fill="none" stroke="rgb(237 234 228 / .12)" strokeWidth="1.5" />
-          <circle cx="12" cy="12" r={r} fill="none" stroke="var(--acc)" strokeWidth="1.5" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - n / total)} style={{ transition: 'stroke-dashoffset 1.2s cubic-bezier(.16,1,.3,1)' }} />
-        </svg>
-        <span className={`label hidden sm:inline ${n >= total ? '!text-[var(--acc)]' : '!text-ink-2'}`}>{n >= total ? 'Todos vistos' : 'Vistos'}</span>
-        <span key={pulse} className="mono text-[12px] text-ink" style={{ animation: pulse ? 'unlock .9s cubic-bezier(.16,1,.3,1)' : undefined }}>
-          {pad2(n)}<span className="text-mute">/{pad2(total)}</span>
+        <span className="h-2 w-2 rounded-full" style={{ background: 'var(--acc)', boxShadow: '0 0 0 3px rgb(var(--acc-rgb) / .2)' }} />
+        <span key={pulse} className="mono text-[13px] font-bold text-ink" style={{ animation: pulse ? 'unlock .9s cubic-bezier(.16,1,.3,1)' : undefined }}>
+          {pad2(n)}/{pad2(total)}
         </span>
+        <span className="text-[13px] text-ink-2">{n >= total ? 'todos vistos' : 'vistos'}</span>
       </div>
       {show && (
-        <div key={show.id} className="glass fixed left-8 top-24 hidden w-[300px] rounded-xl p-4 md:block" style={{ animation: 'toast 3.2s cubic-bezier(.16,1,.3,1) forwards', background: 'rgb(14 14 16 / .9)' }}>
-          <p className="label flex items-center gap-1.5 !text-[var(--acc)]">
-            <Icon name="spark" size={12} /> Estudo explorado
-          </p>
+        <div key={show.id} className="fx-card fixed left-[3vw] top-[100px] z-50 hidden w-[310px] p-4 shadow-[0_30px_60px_-20px_#000] md:block" style={{ animation: 'toast 3.2s cubic-bezier(.16,1,.3,1) forwards' }}>
+          <span className="fx-pill fx-acc px-2.5 py-1 text-[11px] font-bold">
+            <Icon name="bolt" size={12} stroke={2} /> Estudo explorado
+          </span>
           <p className="mt-2 text-[18px] font-semibold tracking-tight text-ink">{show.value}</p>
           <p className="mt-0.5 text-[12px] text-ink-2">{show.label}</p>
         </div>
@@ -71,8 +66,8 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
     <div ref={ref} className="pointer-events-none fixed inset-0 z-40">
       <div className="hud pointer-events-auto absolute inset-x-0 top-0 flex items-center justify-between gap-3 px-4 py-4 md:px-8 md:py-6">
         <div className="flex min-w-0 items-center gap-3">
-          <button className="icon-btn bg-black/30 backdrop-blur-md" onClick={goHome} aria-label="Voltar aos estudos (Esc)" title="Voltar aos estudos · Esc">
-            <Icon name="back" />
+          <button className="fx-pill h-10 border border-[var(--color-line)] bg-[var(--color-panel)] px-4 text-[14px] text-ink transition-colors hover:border-white/25" onClick={goHome} aria-label="Voltar aos estudos (Esc)" title="Voltar aos estudos · Esc">
+            <Icon name="back" size={16} /> Voltar
           </button>
           <span className="hud-optional hidden md:inline-flex">
             <Brand />
@@ -104,28 +99,32 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
         </div>
       </div>
 
-      {/* rodapé: um segmento por imóvel */}
-      <div className="hud pointer-events-auto absolute bottom-0 right-0 w-full px-4 pb-4 md:w-[calc(100%_-_42vw)] md:px-[3.6vw] md:pb-6">
-        <nav className="flex gap-2" aria-label="Imóveis">
-          {studies.map((s, i) => (
-            <button
-              key={s.slug}
-              onClick={() => goTo(i)}
-              className="group flex-1 text-left"
-              aria-label={`Ir para ${s.title}`}
-              aria-current={i === index ? 'step' : undefined}
-            >
-              <span
-                className="block h-[2px] rounded-full transition-all duration-700 group-hover:h-[4px]"
-                style={{ background: i === index ? 'var(--acc)' : visited.has(s.slug) ? 'rgb(237 234 228 / .45)' : 'rgb(237 234 228 / .14)' }}
-              />
-              <span className={`mt-2 hidden truncate text-[11px] transition-colors duration-500 sm:block ${i === index ? 'text-ink' : 'text-mute group-hover:text-ink-2'}`}>
-                <span className="mono mr-1.5">{pad2(i + 1)}</span>
-                {s.title}
-              </span>
-            </button>
-          ))}
+      {/* rodapé: abas-pílula por imóvel (estilo Fexô) + contador com traço */}
+      <div className="hud pointer-events-auto absolute inset-x-0 bottom-0 flex items-center gap-4 px-4 pb-4 md:px-[3vw] md:pb-6">
+        <span className="mono hidden items-center gap-2 text-[12px] font-semibold text-ink md:flex">
+          {pad2(index + 1)} <span className="text-mute">/ {pad2(studies.length)}</span>
+          <span className="relative ml-1 block h-[3px] w-12 overflow-hidden rounded-full bg-white/15">
+            <span className="absolute inset-y-0 left-0 rounded-full transition-all duration-700" style={{ width: `${((index + 1) / studies.length) * 100}%`, background: 'var(--acc)' }} />
+          </span>
+        </span>
+        <nav className="flex flex-1 justify-center gap-1.5 overflow-x-auto [scrollbar-width:none]" aria-label="Imóveis">
+          {studies.map((s, i) => {
+            const cur = i === index
+            return (
+              <button
+                key={s.slug}
+                onClick={() => goTo(i)}
+                className={`fx-pill h-9 flex-none border px-3.5 text-[13px] transition-colors duration-500 ${cur ? 'fx-acc border-transparent' : 'border-[var(--color-line)] bg-[var(--color-panel)] text-ink-2 hover:text-ink'}`}
+                aria-label={`Ir para ${s.title}`}
+                aria-current={cur ? 'step' : undefined}
+              >
+                {visited.has(s.slug) && !cur ? <Icon name="check" size={13} stroke={2} /> : <span className="mono text-[11px] opacity-60">{pad2(i + 1)}</span>}
+                <span className="hidden sm:inline">{s.title}</span>
+              </button>
+            )
+          })}
         </nav>
+        <span className="hidden w-[88px] md:block" aria-hidden />
       </div>
     </div>
   )

@@ -5,11 +5,10 @@ import { statusOf, type Status } from '../lib/progress'
 import { isCoarse, reducedMotion } from '../lib/media'
 import { sound } from '../lib/sound'
 import { Brand } from '../components/Brand'
-import { AccentButton, HelpButton, SoundButton } from '../components/Prefs'
+import { HelpButton, SoundButton } from '../components/Prefs'
 import { Icon } from '../components/Icon'
 import StudyCard from './StudyCard'
 import type { Dive } from './DiveOverlay'
-import { pad2 } from '../lib/format'
 
 export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOpen: (d: Dive) => void; onHelp: () => void }) {
   const items = useMemo(
@@ -114,8 +113,10 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
           <Brand />
         </span>
         <div className="flex items-center gap-2" data-in>
-          <span className="label mr-3 hidden sm:inline">{pad2(items.length)} estudos</span>
-          <AccentButton />
+          <span className="fx-pill mr-1 hidden h-10 border border-[var(--color-line)] bg-[var(--color-panel)] px-4 text-[13px] sm:inline-flex">
+            <span className="h-2 w-2 rounded-full" style={{ background: 'var(--acc)', boxShadow: '0 0 0 3px rgb(var(--acc-rgb) / .2)' }} />
+            <b className="mono font-bold">{items.length}</b> <span className="font-normal text-ink-2">estudos</span>
+          </span>
           <SoundButton />
           <HelpButton onClick={onHelp} />
         </div>
@@ -127,8 +128,8 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
         aria-label="Estudos"
       >
         <div className="px-5 pt-28 md:px-10 md:pt-[17vh]">
-          <p className="label" data-in>
-            Arquivo de estudos · Fortaleza, CE
+          <p className="label flex items-center gap-2 !text-ink-2" data-in>
+            <span className="acc"><Icon name="bolt" size={12} stroke={2} /></span> Estudos de oportunidade · Fortaleza, CE
           </p>
           <h1 className="display mt-4 text-[clamp(3.2rem,min(7.4vw,13vh),8rem)]" data-in>
             Ver <span className="text-ink-2">estudos.</span>

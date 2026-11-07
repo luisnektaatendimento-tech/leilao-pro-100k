@@ -28,8 +28,10 @@ export default function DiveOverlay({ dive, release, onGone }: { dive: Dive; rel
     tl.to(rig, { dive: 1, duration: rm ? 0 : 1.25, ease: 'expo.inOut' }, 0)
     // destino: a coluna da foto na tela do imóvel (esquerda no desktop, topo no celular)
     const wide = innerWidth >= 768
-    const target = wide ? { width: innerWidth * 0.42, height: innerHeight } : { width: innerWidth, height: innerHeight * 0.34 }
-    tl.to(node, { left: 0, top: 0, ...target, borderRadius: 0, duration: rm ? 0.2 : 1.15, ease: 'expo.inOut' }, rm ? 0 : 0.1)
+    const target = wide
+      ? { left: innerWidth * 0.03, top: 88, width: innerWidth * 0.46, height: innerHeight * 0.48 }
+      : { left: 16, top: 72, width: innerWidth - 32, height: innerHeight * 0.3 }
+    tl.to(node, { ...target, borderRadius: 24, duration: rm ? 0.2 : 1.15, ease: 'expo.inOut' }, rm ? 0 : 0.1)
     tl.fromTo(node.querySelectorAll('img'), { scale: 1.12 }, { scale: 1, duration: 1.25, ease: 'expo.inOut' }, 0)
     return () => {
       tl.kill()
@@ -39,9 +41,16 @@ export default function DiveOverlay({ dive, release, onGone }: { dive: Dive; rel
   useEffect(() => {
     if (!release) return
     rig.dive = 0
-    const t = gsap.to(el.current, { opacity: 0, duration: 0.9, delay: 0.15, ease: 'power2.out', onComplete: onGone })
+    // encaixa exatamente na foto do imóvel ativo e some
+    const photo = document.querySelector<HTMLElement>('section[aria-hidden="false"] [data-photo]')
+    const tl = gsap.timeline({ onComplete: onGone })
+    if (photo) {
+      const r = photo.getBoundingClientRect()
+      tl.to(el.current, { left: r.left, top: r.top, width: r.width, height: r.height, borderRadius: 24, duration: 0.55, ease: 'expo.out' })
+    }
+    tl.to(el.current, { opacity: 0, duration: 0.6, ease: 'power2.out' }, photo ? '-=0.1' : 0.15)
     return () => {
-      t.kill()
+      tl.kill()
     }
   }, [release, onGone])
 
