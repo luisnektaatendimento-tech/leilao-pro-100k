@@ -11,6 +11,10 @@ export interface Row {
   display?: string
   /** Linha informativa: aparece na lista, mas não compõe o total. */
   ref?: boolean
+  /** Calculado como fração do valor arrematado (ex.: 0.05 = 5%). */
+  pctOfBid?: number
+  /** Custos do período: 'monthly' multiplica pelos meses; 'once' entra uma vez. */
+  kind?: 'monthly' | 'once'
 }
 
 export interface Listing {

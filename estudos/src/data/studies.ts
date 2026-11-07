@@ -1,10 +1,12 @@
 import type { Scenario, Study } from './types'
 
-type RawStudy = Omit<Study, 'costs' | 'scenarios'> & {
+type RawStudy = Omit<Study, 'costs' | 'scenarios' | 'period' | 'financing'> & {
   costs: { items: Study['costs']['items'] }
+  period: { items: Study['period']['items'] }
+  financing?: { downPaymentLabel: string; installment: number }
   scenarios: [ScenarioInput, ScenarioInput]
 }
-type ScenarioInput = Pick<Scenario, 'months' | 'sale' | 'balance' | 'brokerage' | 'brokerageLabel' | 'taxPct'>
+type ScenarioInput = Pick<Scenario, 'months' | 'sale' | 'taxPct'> & { brokerageRate: number }
 import { asset } from '../lib/asset'
 
 /**
@@ -76,7 +78,7 @@ const raw: RawStudy[] = [
     costs: {
       items: [
         { label: 'Valor arrematado', value: 100148.49 },
-        { label: 'Leiloeiro (5%)', value: 5007.42 },
+        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05 },
         { label: 'Assessoria', value: 10000 },
         { label: 'Imposto de transmissão (ITBI)', value: 3380 },
         { label: 'Custos cartorários (escritura + registro)', value: 10250 },
@@ -86,17 +88,15 @@ const raw: RawStudy[] = [
     },
     period: {
       items: [
-        { label: 'IPTU (12 meses)', value: 0 },
-        { label: 'Condomínio mensal', value: 250 },
-        { label: 'Desocupação', value: 0 },
-        { label: 'Engenharia', value: 750 },
+        { label: 'IPTU (12 meses)', value: 0, kind: 'once' },
+        { label: 'Condomínio mensal', value: 250, kind: 'monthly' },
+        { label: 'Desocupação', value: 0, kind: 'once' },
+        { label: 'Engenharia', value: 750, kind: 'once' },
       ],
-      op6: 2250,
-      op12: 3750,
     },
     scenarios: [
-      { months: 6, sale: 204000, brokerage: 12240, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
-      { months: 12, sale: 204000, brokerage: 12240, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 6, sale: 204000, brokerageRate: 0.06, taxPct: 15 },
+      { months: 12, sale: 204000, brokerageRate: 0.06, taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido',
@@ -145,8 +145,8 @@ const raw: RawStudy[] = [
     costs: {
       items: [
         { label: 'Valor arrematado', value: 119000, ref: true },
-        { label: 'Entrada (30%)', value: 35700 },
-        { label: 'Leiloeiro (5%)', value: 5950 },
+        { label: 'Entrada (30%)', value: 0, pctOfBid: 0.3 },
+        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05 },
         { label: 'Assessoria', value: 10000 },
         { label: 'Imposto de transmissão (ITBI)', value: 2380 },
         { label: 'Custos cartorários (escritura + registro)', value: 10245 },
@@ -156,25 +156,20 @@ const raw: RawStudy[] = [
     },
     period: {
       items: [
-        { label: 'IPTU (12 meses)', value: 0 },
-        { label: 'Condomínio mensal', value: 650 },
-        { label: 'Parcela mensal', value: 2200 },
-        { label: 'Desocupação amigável', value: 0 },
-        { label: 'Taxa seguro Caixa', value: 0 },
+        { label: 'IPTU (12 meses)', value: 0, kind: 'once' },
+        { label: 'Condomínio mensal', value: 650, kind: 'monthly' },
+        { label: 'Parcela mensal', value: 2200, kind: 'monthly' },
+        { label: 'Desocupação amigável', value: 0, kind: 'once' },
+        { label: 'Taxa seguro Caixa', value: 0, kind: 'once' },
       ],
-      op6: 17100,
-      op12: 34200,
     },
     financing: {
       downPaymentLabel: 'Entrada (30%)',
-      downPayment: 35700,
       installment: 2200,
-      balance6: 66200,
-      balance12: 49100,
     },
     scenarios: [
-      { months: 6, sale: 230000, balance: 66200, brokerage: 13800, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
-      { months: 12, sale: 240000, balance: 49100, brokerage: 14400, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 6, sale: 230000, brokerageRate: 0.06, taxPct: 15 },
+      { months: 12, sale: 240000, brokerageRate: 0.06, taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido s/ capital próprio',
@@ -183,7 +178,7 @@ const raw: RawStudy[] = [
     caveats: [
       'Assessoria ajustada para R$ 10.000 (no PDF: R$ 7.000); totais, ROI e lucro recalculados.',
       'Compra financiada: o investimento total não inclui os 70% financiados; ROI calculado sobre o capital próprio.',
-      'Saldo devedor (R$ 66.200 / R$ 49.100) não fecha com R$ 83.300 financiados menos as parcelas — valores mantidos como no PDF.',
+      'Saldo devedor recalculado: financiado (R$ 83.300) − parcelas pagas, sem juros (o PDF não informa a taxa). O PDF também descontava o condomínio: R$ 66.200 / R$ 49.100.',
       'Avaliação feita pelo Bradesco (não Caixa). Leilão de 06/08/2025 já ocorreu.',
     ],
   },
@@ -224,8 +219,8 @@ const raw: RawStudy[] = [
     },
     costs: {
       items: [
-        { label: 'Valor arrematado', value: 150620 },
-        { label: 'Leiloeiro (5%)', value: 7531 },
+        { label: 'Valor arrematado', value: 150626.91 },
+        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05 },
         { label: 'Assessoria', value: 10000 },
         { label: 'Imposto de transmissão (ITBI)', value: 4880 },
         { label: 'Custos cartorários (escritura + registro)', value: 10000 },
@@ -235,17 +230,15 @@ const raw: RawStudy[] = [
     },
     period: {
       items: [
-        { label: 'IPTU (12 meses)', value: 0 },
-        { label: 'Condomínio mensal', value: 600 },
-        { label: 'Desocupação', value: 0 },
-        { label: 'Taxa seguro Caixa', value: 0 },
+        { label: 'IPTU (12 meses)', value: 0, kind: 'once' },
+        { label: 'Condomínio mensal', value: 600, kind: 'monthly' },
+        { label: 'Desocupação', value: 0, kind: 'once' },
+        { label: 'Taxa seguro Caixa', value: 0, kind: 'once' },
       ],
-      op6: 3600,
-      op12: 7200,
     },
     scenarios: [
-      { months: 6, sale: 265000, brokerage: 13250, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
-      { months: 12, sale: 275000, brokerage: 16500, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 6, sale: 265000, brokerageRate: 0.06, taxPct: 15 },
+      { months: 12, sale: 275000, brokerageRate: 0.06, taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido',
@@ -253,9 +246,9 @@ const raw: RawStudy[] = [
     closing: closing('A PJK Invest'),
     caveats: [
       'Assessoria ajustada para R$ 10.000 (no PDF: “Assessoria (5%)” R$ 6.000); totais, ROI e lucro recalculados.',
-      'Lance inicial R$ 150.626,91 × valor arrematado na planilha R$ 150.620,00.',
+      'Arremate igualado ao lance inicial R$ 150.626,91 (a planilha usava R$ 150.620,00, abaixo do lance mínimo); leiloeiro 5% recalculado.',
       'Condomínio R$ 570 na ficha × R$ 600 na planilha.',
-      'Corretagem 6 meses rotulada 6%, mas R$ 13.250 equivale a 5% de R$ 265.000.',
+      'Corretagem 6 meses corrigida para 6% de R$ 265.000 = R$ 15.900 (o PDF trazia R$ 13.250, que é 5%).',
       '“A partir de R$ 290.000”, mas os anúncios visíveis vão de R$ 300.000 a R$ 314.700.',
       'Licitação de 21/07/2025 já ocorreu.',
     ],
@@ -302,17 +295,15 @@ const raw: RawStudy[] = [
     },
     period: {
       items: [
-        { label: 'IPTU (12 meses)', value: 0 },
-        { label: 'Condomínio mensal', value: 300 },
-        { label: 'Desocupação amigável', value: 0 },
-        { label: 'Engenharia Caixa', value: 750 },
+        { label: 'IPTU (12 meses)', value: 0, kind: 'once' },
+        { label: 'Condomínio mensal', value: 300, kind: 'monthly' },
+        { label: 'Desocupação amigável', value: 0, kind: 'once' },
+        { label: 'Engenharia Caixa', value: 750, kind: 'once' },
       ],
-      op6: 2550,
-      op12: 4350,
     },
     scenarios: [
-      { months: 6, sale: 175000, brokerage: 10500, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
-      { months: 12, sale: 180000, brokerage: 9000, brokerageLabel: 'Corretagem (6%)', taxPct: 15 },
+      { months: 6, sale: 175000, brokerageRate: 0.06, taxPct: 15 },
+      { months: 12, sale: 180000, brokerageRate: 0.06, taxPct: 15 },
     ],
     heroScenario: 0,
     roiLabel: 'ROI líquido',
@@ -320,7 +311,7 @@ const raw: RawStudy[] = [
     closing: closing('A PJK Invest'),
     caveats: [
       'Assessoria ajustada para R$ 10.000 (no PDF: R$ 7.000); totais, ROI e lucro recalculados.',
-      'Corretagem 12 meses rotulada 6%, mas R$ 9.000 equivale a 5% de R$ 180.000.',
+      'Corretagem 12 meses corrigida para 6% de R$ 180.000 = R$ 10.800 (o PDF trazia R$ 9.000, que é 5%).',
       'O PDF não traz o “a partir de” do mercado; 3º anúncio: título R$ 179.900, preço R$ 179.000 (usado R$ 179.000).',
       'Venda Direta: o PDF não informa data.',
     ],
@@ -328,27 +319,59 @@ const raw: RawStudy[] = [
 ]
 
 /* ───────────── números calculados ─────────────
- * Mesmas fórmulas da planilha dos PDFs (conferidas centavo a centavo nos 8 cenários originais):
- *   investimento total  = soma dos custos (sem as linhas de referência)
- *   investimento N meses = investimento total + custo operacional de N meses
- *   resultado bruto      = venda − corretagem − saldo devedor − investimento N meses
- *   ROI bruto            = resultado bruto ÷ investimento N meses
- *   resultado líquido    = resultado bruto × (1 − IRGC)   (centavos truncados, como no PDF)
- *   ROI líquido          = resultado líquido ÷ investimento N meses
+ * Todas as contas da apresentação saem daqui, com as fórmulas da planilha dos PDFs:
+ *   leiloeiro / entrada   = % × valor arrematado
+ *   investimento total    = soma dos custos (sem linhas de referência)
+ *   custo operacional N m = Σ itens mensais × N + itens únicos
+ *   investimento N meses  = investimento total + custo operacional N meses
+ *   corretagem            = taxa × venda
+ *   saldo devedor N m     = (arremate − entrada) − parcela × N   (sem juros: o PDF não informa a taxa)
+ *   resultado bruto       = venda − corretagem − saldo devedor − investimento N meses
+ *   resultado líquido     = resultado bruto × (1 − IRGC)
+ *   ROI                   = resultado ÷ investimento N meses
+ * Valores em reais são arredondados ao centavo; ROI a duas casas.
  */
-const cents = (v: number) => Math.round(v * 100) / 100
-const floorCents = (v: number) => Math.floor(v * 100 + 1e-6) / 100
-const pct2 = (v: number) => Math.round(v * 10000) / 100
+const cents = (v: number) => Math.round((v + Number.EPSILON) * 100) / 100
+const pct2 = (v: number) => Math.round((v + Number.EPSILON) * 10000) / 100
+const pctLabel = (r: number) => `${Math.round(r * 1000) / 10}%`.replace('.', ',')
 
 function finalize(r: RawStudy): Study {
-  const total = cents(r.costs.items.filter((i) => !i.ref).reduce((a, i) => a + i.value, 0))
+  const bid = r.costs.items[0].value // primeira linha: valor arrematado
+  const items = r.costs.items.map((i) => (i.pctOfBid ? { ...i, value: cents(bid * i.pctOfBid) } : i))
+  const total = cents(items.filter((i) => !i.ref).reduce((a, i) => a + i.value, 0))
+  const op = (months: number) =>
+    cents(r.period.items.reduce((a, i) => a + (i.kind === 'monthly' ? i.value * months : i.value), 0))
+  const down = items.find((i) => i.label.startsWith('Entrada'))?.value ?? 0
+  const balance = (months: number) => (r.financing ? cents(bid - down - r.financing.installment * months) : undefined)
+
   const scenarios = r.scenarios.map((sc) => {
-    const investment = cents(total + (sc.months === 6 ? r.period.op6 : r.period.op12))
-    const grossResult = cents(sc.sale - sc.brokerage - (sc.balance ?? 0) - investment)
-    const netResult = floorCents(grossResult * (1 - sc.taxPct / 100))
-    return { ...sc, investment, grossResult, grossRoi: pct2(grossResult / investment), netResult, netRoi: pct2(netResult / investment) }
+    const investment = cents(total + op(sc.months))
+    const brokerage = cents(sc.sale * sc.brokerageRate)
+    const bal = balance(sc.months)
+    const grossResult = cents(sc.sale - brokerage - (bal ?? 0) - investment)
+    const netResult = cents(grossResult * (1 - sc.taxPct / 100))
+    return {
+      months: sc.months,
+      sale: sc.sale,
+      ...(bal !== undefined ? { balance: bal } : {}),
+      brokerage,
+      brokerageLabel: `Corretagem (${pctLabel(sc.brokerageRate)})`,
+      investment,
+      grossResult,
+      grossRoi: pct2(grossResult / investment),
+      taxPct: sc.taxPct,
+      netResult,
+      netRoi: pct2(netResult / investment),
+    }
   }) as Study['scenarios']
-  return { ...r, costs: { items: r.costs.items, total }, scenarios }
+
+  return {
+    ...r,
+    costs: { items, total },
+    period: { items: r.period.items, op6: op(6), op12: op(12) },
+    financing: r.financing && { ...r.financing, downPayment: down, balance6: balance(6)!, balance12: balance(12)! },
+    scenarios,
+  }
 }
 
 export const studies: Study[] = raw.map(finalize)
