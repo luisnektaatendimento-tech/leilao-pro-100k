@@ -42,7 +42,7 @@ export default function DiveOverlay({ dive, release, onGone }: { dive: Dive; rel
     if (!release) return
     rig.dive = 0
     // encaixa exatamente na foto do imóvel ativo e some
-    const photo = document.querySelector<HTMLElement>('section[aria-hidden="false"] [data-photo]')
+    const photo = document.querySelector<HTMLElement>('[data-photo]')
     const tl = gsap.timeline({ onComplete: onGone })
     if (photo) {
       const r = photo.getBoundingClientRect()

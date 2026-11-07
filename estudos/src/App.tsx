@@ -62,7 +62,8 @@ export default function App() {
 
   return (
     <>
-      {use3D ? (
+      {/* no estudo o fundo é a foto do próprio imóvel; o 3D só roda na tela inicial */}
+      {route.name === 'study' ? null : use3D ? (
         <Suspense fallback={<div className="backdrop-2d" />}>
           <Backdrop />
         </Suspense>

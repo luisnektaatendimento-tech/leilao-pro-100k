@@ -4,11 +4,11 @@ import { Icon } from './Icon'
 const ROWS: [string[], string][] = [
   [['←', '→'], 'Imóvel anterior / próximo'],
   [['Espaço'], 'Avançar (Shift + Espaço volta)'],
+  [['Roda do mouse'], 'Um gesto = próximo imóvel'],
   [['M'], 'Mapa dos estudos'],
   [['F'], 'Tela cheia'],
   [['P'], 'Modo apresentador'],
   [['N'], 'Segurar: notas do apresentador'],
-  [['S'], 'Ligar/desligar o snap entre imóveis'],
   [['A'], 'Som'],
   [['Esc', 'H'], 'Voltar aos estudos'],
 ]

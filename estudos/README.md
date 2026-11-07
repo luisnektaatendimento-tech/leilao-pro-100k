@@ -40,7 +40,7 @@ Build de produção: `npm run build` (gera `dist/`), e `npm run preview` para te
 | A | Som (desligado por padrão) |
 | Esc · H | Voltar aos estudos |
 
-Cada imóvel é **uma única tela**: foto e ficha à esquerda; lucro líquido, ROI, desconto, posição de mercado,
+Cada imóvel é **um painel único em tela cheia**, com identidade própria (foto do imóvel ao fundo, cor de luz em `theme.tint`, nome em marca d'água e o destaque em que ele lidera o portfólio): foto e ficha à esquerda; lucro líquido, ROI, desconto, posição de mercado,
 composição do investimento, cenários de 6 e 12 meses e validação à direita. A navegação horizontal passa de um
 imóvel para o outro, e a URL acompanha (`/estudo/parque-florence`), servindo de link direto.
 

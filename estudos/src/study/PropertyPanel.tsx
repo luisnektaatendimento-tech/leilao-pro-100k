@@ -4,16 +4,18 @@ import { brl, brlK, dateBR, num, pad2, pct } from '../lib/format'
 import { costItems, discountPct, hero } from '../lib/derive'
 import { Count, Words } from './primitives'
 import { Icon } from '../components/Icon'
+import { studies } from '../data/studies'
+import { highlightsFor } from '../lib/highlights'
 
 /**
- * Uma tela por imóvel, no design system Fexô (tema escuro, acento amarelo):
- * à esquerda foto, título, ficha e posição de mercado; à direita o card de valor,
- * "Quanto você vai investir" e "Calculadora de lucro".
- * Números vêm de `studies.ts`; derivados são marcados como "calculado".
+ * Painel único por imóvel: um display grande, em tela cheia, com identidade própria
+ * (fundo com a foto do imóvel, cor de luz tirada da foto, nome em marca d'água e o
+ * destaque em que o imóvel lidera o portfólio). Números vêm de `studies.ts`.
  */
-export default function PropertyScreen({ study: s, no, total }: { study: Study; no: number; total: number }) {
+export default function PropertyPanel({ study: s, no, total }: { study: Study; no: number; total: number }) {
   const h = hero(s)
   const p = s.property
+  const highlights = highlightsFor(s, studies).slice(0, 2)
   const specs = [
     { icon: 'area', v: `${num(p.area, 2)} m²`, k: 'Área' },
     p.bedrooms !== undefined && { icon: 'bed', v: String(p.bedrooms), k: p.bedrooms > 1 ? 'Quartos' : 'Quarto' },
@@ -23,129 +25,163 @@ export default function PropertyScreen({ study: s, no, total }: { study: Study; 
   ].filter(Boolean) as { icon: string; v: string; k: string }[]
 
   return (
-    // Mobile: coluna única que rola (a seção rola na vertical). Desktop: duas colunas que cabem na tela.
-    <div className="relative z-10 flex flex-col gap-4 px-4 pb-[104px] pt-[76px] md:grid md:h-full md:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] md:gap-[2vw] md:overflow-hidden md:px-[3vw] md:pb-[92px] md:pt-[88px]">
-      {/* ───────── esquerda: foto + ficha ───────── */}
-      <div className="contents md:flex md:min-h-0 md:flex-col md:gap-[clamp(10px,1.8vh,18px)]">
-        <div data-photo className="layer-back relative order-1 aspect-[4/3] overflow-hidden rounded-[24px] border border-white/10 md:order-none md:aspect-auto md:min-h-0 md:flex-1">
-          <div className="photo-duo absolute inset-0">
-            <img src={s.images.photo} alt={`Fachada do ${s.fullTitle}`} />
-          </div>
-          <div className="absolute inset-x-3 top-3 z-10 flex items-start justify-between gap-2">
-            <span className="fx-pill fx-dark min-w-0 px-3 py-1.5 text-[12px]">
-              <span className="truncate">
-                {s.sale.modality}
-                {s.sale.date ? ` · ${dateBR(s.sale.date)} ${s.sale.time}` : ''}
-              </span>
-            </span>
-            <span className="fx-pill fx-dark flex-none px-3 py-1.5 text-[12px] tnum">
-              {pad2(no)}/{pad2(total)}
-            </span>
-          </div>
-          {s.financing && (
-            <span className="fx-pill absolute bottom-3 left-3 z-10 bg-[var(--color-blue)] px-3 py-1.5 text-[12px] text-white">
-              <Icon name="coin" size={13} stroke={1.8} /> Compra financiada
-            </span>
-          )}
-        </div>
+    <div className="panel-shell" style={{ ['--tint' as string]: s.theme.tint }}>
+      <div className="panel">
+        {/* marca d'água com o nome do condomínio */}
+        <span className="panel-mark" aria-hidden>
+          {s.title}
+        </span>
 
-        <div className="order-2 md:order-none">
-          <span className="fx-pill bg-white px-2.5 py-1 text-[11px] text-[#0b0c0e]" data-reveal="fade" data-delay="0.15">
-            {p.unit}
-          </span>
-          <h1 className="display mt-2 text-[clamp(2rem,8.6vw,2.6rem)] md:text-[clamp(1.9rem,min(3vw,5.4vh),3.4rem)]">
-            <Words text={s.title} delay={0.12} step={0.07} />
-          </h1>
-          <p className="mt-1.5 flex items-start gap-1.5 text-[13px] leading-snug text-ink-2 md:items-center md:truncate" data-reveal="up" data-delay="0.3">
-            <span className="mt-[2px] flex-none md:mt-0">
-              <Icon name="pin" size={14} />
-            </span>
-            <span className="md:truncate">
-              {p.address} · {p.city}
-            </span>
-          </p>
-        </div>
-
-        <ul className="order-3 grid grid-cols-2 gap-x-3 gap-y-3 border-y border-white/[.08] py-4 md:order-none md:flex md:flex-nowrap md:gap-x-3.5 md:overflow-x-auto xl:gap-x-5 md:py-[clamp(8px,1.4vh,14px)] md:[scrollbar-width:none]">
-          {specs.map((x, i) => (
-            <li key={x.k} className="flex min-w-0 flex-none items-center gap-2.5" data-reveal="up" data-delay={0.35 + i * 0.04}>
-              <span className="fx-ico flex-none">
-                <Icon name={x.icon} size={16} />
-              </span>
-              <span className="min-w-0 leading-tight">
-                <span className="mono block truncate text-[14px] font-semibold text-ink">{x.v}</span>
-                <span className="block text-[12px] text-mute">{x.k}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="order-7 md:order-none">
-          <MarketStrip s={s} />
-        </div>
-      </div>
-
-      {/* ───────── direita: valores ───────── */}
-      <div className="contents md:flex md:min-h-0 md:min-w-0 md:flex-col md:justify-center md:gap-[clamp(10px,1.8vh,18px)]">
-        {/* card de valor */}
-        <div className="fx-card order-4 p-5 md:order-none md:p-[clamp(14px,2.2vh,24px)]" data-reveal="up" data-delay="0.2">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-            <div className="min-w-0">
-              <p className="label">Lance inicial</p>
-              <p className="num mt-2 whitespace-nowrap text-[30px] md:text-[clamp(1.5rem,min(2.2vw,4.4vh),2.6rem)]">{brl(s.minimumBid)}</p>
-              <p className="mt-1 truncate text-[13px] text-ink-2">
-                Avaliado em <span className="line-through decoration-white/50">{brl(s.appraisal.value)}</span> · {s.appraisal.source}
-              </p>
-              <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
-                <span className="fx-pill fx-acc px-3 py-1.5 text-[13px] font-bold">
-                  <Icon name="bolt" size={14} stroke={2} />
-                  {pct(discountPct(s), 1)} abaixo da avaliação
+        <div className="relative z-10 flex flex-col gap-5 md:grid md:h-full md:min-h-0 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:gap-[clamp(18px,2vw,34px)]">
+          {/* ───────── esquerda: a vista do imóvel ───────── */}
+          <div className="flex min-h-0 flex-col gap-[clamp(12px,1.8vh,18px)]">
+            <div data-photo className="relative aspect-[4/3] overflow-hidden rounded-[20px] md:aspect-auto md:min-h-0 md:flex-1" style={{ boxShadow: '0 0 0 1px rgb(255 255 255 / .08), 0 30px 60px -30px #000' }}>
+              <div className="photo-duo absolute inset-0">
+                <img src={s.images.photo} alt={`Fachada do ${s.fullTitle}`} />
+              </div>
+              <div className="absolute inset-x-3 top-3 z-10 flex items-start justify-between gap-2">
+                <span className="fx-pill fx-dark min-w-0 px-3 py-1.5 text-[12px]">
+                  <span className="truncate">
+                    {s.sale.modality}
+                    {s.sale.date ? ` · ${dateBR(s.sale.date)} ${s.sale.time}` : ''}
+                  </span>
                 </span>
-                <span className="text-[10px] text-mute">calculado</span>
+                <span className="fx-pill fx-dark flex-none px-3 py-1.5 text-[12px] tnum">
+                  Estudo {pad2(no)}/{pad2(total)}
+                </span>
+              </div>
+              {s.financing && (
+                <span className="fx-pill absolute bottom-3 left-3 z-10 bg-[var(--color-blue)] px-3 py-1.5 text-[12px] text-white">
+                  <Icon name="coin" size={13} stroke={1.8} /> Compra financiada
+                </span>
+              )}
+            </div>
+
+            <div>
+              <div className="flex flex-wrap items-center gap-2" data-reveal="fade" data-delay="0.15">
+                <span className="fx-pill bg-white px-2.5 py-1 text-[11px] text-[#0b0c0e]">{p.unit}</span>
+                <span className="fx-pill px-2.5 py-1 text-[11px]" style={{ background: 'color-mix(in srgb, var(--tint) 16%, transparent)', color: 'var(--tint)' }}>
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--tint)' }} /> {s.appraisal.source === 'Caixa' ? 'Imóvel Caixa' : `Imóvel ${s.appraisal.source}`}
+                </span>
+              </div>
+              <h1 className="display mt-2 text-[clamp(2.1rem,9vw,2.8rem)] md:text-[clamp(2rem,min(3.4vw,6vh),3.9rem)]">
+                <Words text={s.title} delay={0.12} step={0.07} />
+              </h1>
+              <p className="mt-1.5 flex items-start gap-1.5 text-[13px] leading-snug text-ink-2 md:items-center" data-reveal="up" data-delay="0.3">
+                <span className="mt-[2px] flex-none md:mt-0" style={{ color: 'var(--tint)' }}>
+                  <Icon name="pin" size={14} />
+                </span>
+                <span className="md:truncate">
+                  {p.address} · {p.city}
+                </span>
+              </p>
+            </div>
+
+            <ul className="grid grid-cols-2 gap-3 border-t border-white/[.08] pt-4 sm:grid-cols-3 md:flex md:flex-nowrap md:gap-x-4 md:overflow-x-auto md:pt-[clamp(10px,1.6vh,16px)] md:[scrollbar-width:none] xl:gap-x-6">
+              {specs.map((x, i) => (
+                <li key={x.k} className="flex min-w-0 flex-none items-center gap-2.5" data-reveal="up" data-delay={0.35 + i * 0.04}>
+                  <span className="fx-ico flex-none" style={{ color: 'var(--tint)' }}>
+                    <Icon name={x.icon} size={16} />
+                  </span>
+                  <span className="min-w-0 leading-tight">
+                    <span className="mono block truncate text-[14px] font-semibold text-ink">{x.v}</span>
+                    <span className="block text-[12px] text-mute">{x.k}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="hidden md:block">
+              <MarketStrip s={s} />
+            </div>
+          </div>
+
+          {/* ───────── direita: os números ───────── */}
+          <div className="flex min-h-0 min-w-0 flex-col gap-[clamp(12px,1.8vh,18px)] md:justify-center">
+            {highlights.length > 0 && (
+              <div className="flex flex-wrap gap-2" data-reveal="fade" data-delay="0.25">
+                {highlights.map((x) => (
+                  <span key={x.label} className="fx-pill px-3 py-1.5 text-[12px]" style={{ border: '1px solid color-mix(in srgb, var(--tint) 45%, transparent)', color: 'var(--color-ink)' }}>
+                    <span style={{ color: 'var(--tint)' }}>
+                      <Icon name="spark" size={13} stroke={1.8} />
+                    </span>
+                    {x.label} · <b className="mono font-bold">{x.value}</b>
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* valor */}
+            <div className="grid grid-cols-1 gap-5 border-b border-white/[.08] pb-[clamp(14px,2vh,22px)] sm:grid-cols-2">
+              <div className="min-w-0">
+                <p className="label">Lance inicial</p>
+                <p className="num mt-2 whitespace-nowrap text-[32px] md:text-[clamp(1.7rem,min(2.6vw,5vh),3rem)]">{brl(s.minimumBid)}</p>
+                <p className="mt-1 truncate text-[13px] text-ink-2">
+                  Avaliado em <span className="line-through decoration-white/50">{brl(s.appraisal.value)}</span> · {s.appraisal.source}
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span className="fx-pill fx-acc px-3 py-1.5 text-[13px] font-bold">
+                    <Icon name="bolt" size={14} stroke={2} />
+                    {pct(discountPct(s), 1)} abaixo da avaliação
+                  </span>
+                  <span className="text-[10px] text-mute">calculado</span>
+                </div>
+              </div>
+              <div className="min-w-0 border-t border-white/[.08] pt-5 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0">
+                <p className="label">Lucro líquido · {h.months} meses</p>
+                <div style={{ perspective: 900 }}>
+                  <p className="num mt-2 whitespace-nowrap text-[32px] md:text-[clamp(1.7rem,min(2.6vw,5vh),3rem)]" data-reveal="z" data-delay="0.3">
+                    <Count value={h.netResult} fmt="brl" delay={0.4} />
+                  </p>
+                </div>
+                <div className="mt-1 flex items-baseline justify-between gap-3 sm:block">
+                  <p className="truncate text-[13px] text-ink-2">{s.roiLabel}</p>
+                  <p className="num acc text-[38px] sm:mt-1 md:text-[clamp(2rem,min(3.2vw,6vh),3.8rem)]">
+                    <Count value={h.netRoi} fmt="pct" delay={0.5} />
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="min-w-0 border-t border-white/[.08] pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
-              <p className="label">Lucro líquido · {h.months} meses</p>
-              <div style={{ perspective: 900 }}>
-                <p className="num mt-2 whitespace-nowrap text-[30px] md:text-[clamp(1.5rem,min(2.2vw,4.4vh),2.6rem)]" data-reveal="z" data-delay="0.3">
-                  <Count value={h.netResult} fmt="brl" delay={0.4} />
-                </p>
+
+            <div className="grid min-h-0 grid-cols-1 gap-[clamp(10px,1.1vw,16px)] md:grid-cols-2">
+              <div className="min-w-0">
+                <Costs s={s} />
               </div>
-              <div className="mt-1 flex items-baseline justify-between gap-3 md:block">
-                <p className="truncate text-[13px] text-ink-2">{s.roiLabel}</p>
-                <p className="num acc text-[34px] md:mt-1 md:text-[clamp(1.8rem,min(2.7vw,5.4vh),3.2rem)]">
-                  <Count value={h.netRoi} fmt="pct" delay={0.5} />
-                </p>
+              <div className="min-w-0">
+                <Scenarios s={s} />
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="contents md:grid md:min-h-0 md:grid-cols-2 md:gap-[clamp(10px,1.1vw,18px)]">
-          <div className="order-5 min-w-0 md:order-none">
-            <Costs s={s} />
-          </div>
-          <div className="order-6 min-w-0 md:order-none">
-            <Scenarios s={s} />
-          </div>
-        </div>
+            <div className="md:hidden">
+              <MarketStrip s={s} />
+            </div>
 
-        {/* validação — faixa de aviso Fexô */}
-        <div className="fx-note order-8 flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2 px-4 py-3 text-[12px] md:order-none md:flex-nowrap md:py-[clamp(8px,1.3vh,12px)]" data-reveal="fade" data-delay="0.9" title={s.validation.join(' · ')}>
-          <Icon name="shield" size={16} />
-          <span className="font-semibold md:flex-none md:whitespace-nowrap">
-            Valor de mercado validado · {s.validation.length}/{s.validation.length}
-          </span>
-          <ul className="basis-full space-y-1 pl-[26px] text-[12px] text-[#ffe680]/80 md:hidden">
-            {s.validation.map((v) => (
-              <li key={v} className="flex gap-1.5">
-                <Icon name="check" size={13} stroke={2} /> {v}
-              </li>
-            ))}
-          </ul>
-          <span className="hidden min-w-0 truncate text-[#ffe680]/70 lg:inline">{s.validation.join(' · ')}</span>
+            <div className="fx-note flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2 px-4 py-3 text-[12px] md:flex-nowrap md:py-[clamp(8px,1.3vh,12px)]" data-reveal="fade" data-delay="0.9" title={s.validation.join(' · ')}>
+              <Icon name="shield" size={16} />
+              <span className="font-semibold md:flex-none md:whitespace-nowrap">
+                Valor de mercado validado · {s.validation.length}/{s.validation.length}
+              </span>
+              <ul className="basis-full space-y-1 pl-[26px] text-[12px] text-[#ffe680]/80 md:hidden">
+                {s.validation.map((v) => (
+                  <li key={v} className="flex gap-1.5">
+                    <Icon name="check" size={13} stroke={2} /> {v}
+                  </li>
+                ))}
+              </ul>
+              <span className="hidden min-w-0 truncate text-[#ffe680]/70 lg:inline">{s.validation.join(' · ')}</span>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+/** Fundo do painel: a foto do próprio imóvel, ampliada, desfocada e tingida com a cor do imóvel. */
+export function PanelBackdrop({ study: s }: { study: Study }) {
+  return (
+    <div className="panel-backdrop" style={{ ['--tint' as string]: s.theme.tint }} aria-hidden>
+      <img src={s.images.blur} alt="" />
     </div>
   )
 }
@@ -168,7 +204,7 @@ function MarketStrip({ s }: { s: Study }) {
   const mid = (x(minL) + x(maxL)) / 2
 
   return (
-    <figure className="fx-card fx-market px-4 pb-4 pt-4 md:px-5" aria-label="Posição de mercado: lance, avaliação, anúncios e venda projetada" data-reveal="up" data-delay="0.5">
+    <figure className="fx-card fx-market px-4 pb-3 pt-3.5 md:px-5" aria-label="Posição de mercado: lance, avaliação, anúncios e venda projetada" data-reveal="up" data-delay="0.5">
       <figcaption className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between md:gap-4">
         <span className="label !text-ink-2">Posição de mercado</span>
         <span className="truncate text-[11px] text-mute">

@@ -4,6 +4,10 @@ import { createRoot } from 'react-dom/client'
 import '@fontsource-variable/inter'
 import './styles/index.css'
 import App from './App'
+import gsap from 'gsap'
+
+// animações seguem o relógio mesmo com quadros lentos (contadores sempre terminam no valor exato)
+gsap.ticker.lagSmoothing(0)
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

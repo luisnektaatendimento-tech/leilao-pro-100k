@@ -79,9 +79,6 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
             <button className="icon-btn" onClick={onMap} aria-label="Mapa dos estudos (M)" title="Mapa · M">
               <Icon name="map" />
             </button>
-            <button className="icon-btn hidden md:inline-grid" aria-pressed={p.snap} onClick={() => prefs.toggle('snap')} aria-label="Snap entre imóveis (S)" title={`Snap ${p.snap ? 'ligado' : 'desligado'} · S`}>
-              <Icon name="snap" />
-            </button>
             <SoundButton />
             <button
               className="icon-btn hidden md:inline-grid"

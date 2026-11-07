@@ -65,7 +65,9 @@ const raw: RawStudy[] = [
       photo: asset('/img/parque-florence/foto.webp'),
       thumb: asset('/img/parque-florence/foto-thumb.webp'),
       map: asset('/img/parque-florence/mapa.webp'),
+      blur: asset('/img/parque-florence/foto-blur.webp'),
     },
+    theme: { tint: '#e8b57a', name: 'Areia' },
     market: {
       from: 193000,
       listings: [
@@ -133,7 +135,9 @@ const raw: RawStudy[] = [
       photo: asset('/img/alberto-monteiro/foto.webp'),
       thumb: asset('/img/alberto-monteiro/foto-thumb.webp'),
       map: asset('/img/alberto-monteiro/mapa.webp'),
+      blur: asset('/img/alberto-monteiro/foto-blur.webp'),
     },
+    theme: { tint: '#6fa3ff', name: 'Azul' },
     market: {
       from: 280000,
       listings: [
@@ -207,7 +211,9 @@ const raw: RawStudy[] = [
       photo: asset('/img/alta-vista-passare/foto.webp'),
       thumb: asset('/img/alta-vista-passare/foto-thumb.webp'),
       map: asset('/img/alta-vista-passare/mapa.webp'),
+      blur: asset('/img/alta-vista-passare/foto-blur.webp'),
     },
+    theme: { tint: '#7ddc8f', name: 'Verde' },
     market: {
       from: 290000,
       listings: [
@@ -275,7 +281,9 @@ const raw: RawStudy[] = [
       photo: asset('/img/ville-de-marseille/foto.webp'),
       thumb: asset('/img/ville-de-marseille/foto-thumb.webp'),
       map: asset('/img/ville-de-marseille/mapa.webp'),
+      blur: asset('/img/ville-de-marseille/foto-blur.webp'),
     },
+    theme: { tint: '#f0937a', name: 'Terracota' },
     market: {
       listings: [
         { title: 'Apto novo, 2 quartos · Ville de Marseille', price: 189000, area: '44 m²', where: 'Novo Mondubim' },
