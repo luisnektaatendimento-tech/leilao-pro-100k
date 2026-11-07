@@ -2,13 +2,11 @@ import { useRef } from 'react'
 import type { Study } from '../data/types'
 import type { Status } from '../lib/progress'
 import { brl, dateShort, pad2, pct } from '../lib/format'
-import { hero } from '../lib/derive'
+import { discountPct, hero } from '../lib/derive'
 import { Icon } from '../components/Icon'
 
 interface Props {
   study: Study
-  scenes: number
-  minutes: number
   status: Status
   index: number
   width: number
@@ -41,7 +39,7 @@ function StatusChip({ status }: { status: Status }) {
 }
 
 /** Carta/monólito: tilt físico no hover, brilho de borda e metadados. */
-export default function StudyCard({ study, scenes, minutes, status, index, onOpen, onHover }: Props) {
+export default function StudyCard({ study, status, index, onOpen, onHover }: Props) {
   const tilt = useRef<HTMLDivElement>(null)
   const face = useRef<HTMLDivElement>(null)
   const h = hero(study)
@@ -76,7 +74,7 @@ export default function StudyCard({ study, scenes, minutes, status, index, onOpe
         className="block w-full text-left"
         onClick={() => onOpen((face.current!.querySelector('.photo-duo') as HTMLElement).getBoundingClientRect())}
         onFocus={() => (onHover(), preload())}
-        aria-label={`Abrir estudo ${study.fullTitle}: ${scenes} cenas, cerca de ${minutes} minutos`}
+        aria-label={`Abrir estudo ${study.fullTitle}`}
       >
         <div ref={face} className="card-face" style={{ transform: 'translateZ(0)' }}>
           <div className="photo-duo relative aspect-[4/3.4]">
@@ -97,8 +95,8 @@ export default function StudyCard({ study, scenes, minutes, status, index, onOpe
                   <dd className="mono text-right text-ink">{brl(study.minimumBid)}</dd>
                   <dt className="text-mute">{study.roiLabel} · {h.months}m</dt>
                   <dd className="mono text-right acc">{pct(h.netRoi)}</dd>
-                  <dt className="text-mute">Apresentação</dt>
-                  <dd className="mono text-right text-ink-2">{scenes} cenas · ~{minutes} min</dd>
+                  <dt className="text-mute">Desconto · calculado</dt>
+                  <dd className="mono text-right text-ink-2">{pct(discountPct(study), 1)}</dd>
                 </dl>
               </div>
             </div>

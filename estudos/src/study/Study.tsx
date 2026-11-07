@@ -1,42 +1,41 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
-import type { Study as StudyT } from '../data/types'
 import { studies } from '../data/studies'
-import { buildScenes } from '../lib/scenes'
 import { loadProgress, saveProgress } from '../lib/progress'
 import { prefs } from '../lib/prefs'
 import { sound } from '../lib/sound'
 import { navigate } from '../lib/router'
 import { reducedMotion } from '../lib/media'
+import { brl, pct } from '../lib/format'
+import { hero } from '../lib/derive'
 import { rig } from '../three/rig'
 import { enterScene, resetScene } from './reveal'
 import HUD, { type Toast } from './HUD'
 import Minimap from './Minimap'
 import Notes from './Notes'
-import SceneView from './scenes'
+import PropertyScreen from './PropertyScreen'
 import { StudyContext, type Ctx } from './ctx'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const fromHash = (n: number) => {
-  const m = location.hash.match(/cena-(\d+)/)
-  return m ? Math.min(n - 1, Math.max(0, Number(m[1]) - 1)) : 0
-}
+const seen = () => new Set(studies.filter((s) => loadProgress(s.slug).visited.length > 0).map((s) => s.slug))
 
-export default function Study({ study, onReady }: { study: StudyT; onReady: () => void }) {
-  const scenes = useMemo(() => buildScenes(study), [study])
-  const n = scenes.length
-  const [index, setIndex] = useState(() => fromHash(n))
+/**
+ * Passagem horizontal: uma tela por imóvel.
+ * A rolagem vertical vira deslocamento horizontal (Lenis + ScrollTrigger com pin).
+ */
+export default function Study({ slug, onReady }: { slug: string; onReady: () => void }) {
+  const n = studies.length
+  const startIndex = Math.max(0, studies.findIndex((s) => s.slug === slug))
+  const [index, setIndex] = useState(startIndex)
   const [map, setMap] = useState(false)
   const [notes, setNotes] = useState(false)
   const [toast, setToast] = useState<Toast | null>(null)
-  const saved = useMemo(() => loadProgress(study.slug), [study.slug])
-  const [visited, setVisited] = useState(() => new Set(saved.visited))
-  const [unlocked, setUnlocked] = useState(() => new Set(saved.insights))
-  const unlockedRef = useRef(unlocked)
-  unlockedRef.current = unlocked
+  const [visited, setVisited] = useState(seen)
+  const visitedRef = useRef(visited)
+  visitedRef.current = visited
 
   const pin = useRef<HTMLDivElement>(null)
   const track = useRef<HTMLDivElement>(null)
@@ -44,21 +43,16 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
   const els = useRef<(HTMLElement | null)[]>([])
   const lenisRef = useRef<Lenis | null>(null)
   const idx = useRef(index)
-  const t0 = useRef(performance.now())
-  const base = useRef(saved.timeMs)
-
-  const elapsed = useCallback(() => base.current + performance.now() - t0.current, [])
-  const next = studies[(studies.findIndex((s) => s.slug === study.slug) + 1) % studies.length]
 
   const goTo = useCallback(
-    (i: number, immediate = false) => {
+    (i: number) => {
       const c = Math.max(0, Math.min(n - 1, i))
       const l = lenisRef.current
       if (!l) return
-      if (c !== idx.current && !immediate) sound.click()
+      if (c !== idx.current) sound.click()
       l.scrollTo(c * innerHeight, {
-        immediate: immediate || reducedMotion(),
-        duration: 1.25,
+        immediate: reducedMotion(),
+        duration: 1.35,
         easing: (t: number) => (t < 0.5 ? 8 * t ** 4 : 1 - (-2 * t + 2) ** 4 / 2),
         force: true,
       })
@@ -74,7 +68,6 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
   /* ── motor de rolagem horizontal ── */
   useLayoutEffect(() => {
     document.documentElement.classList.add('study-mode')
-    document.title = `${study.title} · PJK Invest`
     window.scrollTo(0, 0)
     const entered = new Array(n).fill(false)
     els.current.forEach((el) => el && resetScene(el))
@@ -92,7 +85,7 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
     gsap.ticker.lagSmoothing(0)
 
     const update = (p: number) => {
-      const pos = p * (n - 1)
+      const pos = p * Math.max(1, n - 1)
       rig.progress = p
       hud.current?.style.setProperty('--p', String(p))
       for (let i = 0; i < n; i++) {
@@ -131,7 +124,7 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
     })
     lenis.on('scroll', ScrollTrigger.update)
 
-    // snap suave (próprio, via Lenis, para não brigar com a suavização)
+    // snap suave entre imóveis
     let snapT = 0
     lenis.on('scroll', () => {
       clearTimeout(snapT)
@@ -143,7 +136,6 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
       }, 160)
     })
 
-    // mantém a cena atual após resize
     const keep = { i: idx.current }
     const onInit = () => {
       keep.i = idx.current
@@ -155,15 +147,12 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
     ScrollTrigger.addEventListener('refreshInit', onInit)
     ScrollTrigger.addEventListener('refresh', onRefresh)
 
-    // deep link
-    const start = fromHash(n)
-    els.current.forEach((el, i) => i !== start && el?.setAttribute('inert', ''))
-    // o Lenis mede a página de forma assíncrona; força a medição depois do pin
+    els.current.forEach((el, i) => i !== startIndex && el?.setAttribute('inert', ''))
     lenis.resize()
-    window.scrollTo(0, start * innerHeight)
-    lenis.scrollTo(start * innerHeight, { immediate: true, force: true })
+    window.scrollTo(0, startIndex * innerHeight)
+    lenis.scrollTo(startIndex * innerHeight, { immediate: true, force: true })
     ScrollTrigger.update()
-    update(start / Math.max(1, n - 1))
+    update(startIndex / Math.max(1, n - 1))
     const r = requestAnimationFrame(() => onReady())
 
     return () => {
@@ -179,35 +168,25 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
       document.documentElement.classList.remove('study-mode')
       window.scrollTo(0, 0)
     }
-  }, [n, study, goTo, onReady])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  /* ── hash, visitas e insights ── */
+  /* ── URL por imóvel, visita e "desbloqueio" ── */
   useEffect(() => {
-    history.replaceState(null, '', `${location.pathname}#cena-${index + 1}`)
-    const s = scenes[index]
+    const s = studies[index]
+    history.replaceState(null, '', `/estudo/${s.slug}`)
+    document.title = `${s.title} · PJK Invest`
     const t = window.setTimeout(() => {
-      setVisited((v) => (v.has(index) ? v : new Set(v).add(index)))
-      if (s.insight && !unlockedRef.current.has(s.id)) {
-        sound.unlock()
-        setToast({ id: s.id + Date.now(), value: s.insight.value, label: s.insight.label })
-        setUnlocked((u) => new Set(u).add(s.id))
-      }
-    }, 700)
+      if (visitedRef.current.has(s.slug)) return
+      const p = loadProgress(s.slug)
+      saveProgress(s.slug, { ...p, visited: [0] })
+      sound.unlock()
+      const h = hero(s)
+      setToast({ id: s.slug + Date.now(), value: `${s.title}`, label: `Lucro líquido ${brl(h.netResult)} · ${s.roiLabel} ${pct(h.netRoi)}` })
+      setVisited((v) => new Set(v).add(s.slug))
+    }, 900)
     return () => clearTimeout(t)
-  }, [index, scenes])
-
-  useEffect(() => {
-    saveProgress(study.slug, { visited: [...visited], insights: [...unlocked], timeMs: elapsed() })
-  }, [visited, unlocked, study.slug, elapsed])
-
-  useEffect(() => {
-    const save = () => saveProgress(study.slug, { visited: [...visited], insights: [...unlocked], timeMs: elapsed() })
-    const iv = window.setInterval(save, 5000)
-    return () => {
-      clearInterval(iv)
-      save()
-    }
-  }, [visited, unlocked, study.slug, elapsed])
+  }, [index])
 
   /* ── teclado e swipe ── */
   useEffect(() => {
@@ -240,14 +219,11 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
       const dy = e.changedTouches[0].clientY - sy
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) goTo(idx.current + (dx < 0 ? 1 : -1))
     }
-    const onHash = () => goTo(fromHash(n))
-    addEventListener('hashchange', onHash)
     addEventListener('keydown', down)
     addEventListener('keyup', up)
     addEventListener('touchstart', ts, { passive: true })
     addEventListener('touchend', te, { passive: true })
     return () => {
-      removeEventListener('hashchange', onHash)
       removeEventListener('keydown', down)
       removeEventListener('keyup', up)
       removeEventListener('touchstart', ts)
@@ -256,14 +232,13 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
     }
   }, [goTo, goHome, n])
 
-  /* ── easter egg: 100% ── */
-  const insightTotal = scenes.filter((s) => s.insight).length
-  const complete = visited.size >= n && unlocked.size >= insightTotal
+  /* ── easter egg: todos os imóveis vistos ── */
+  const complete = visited.size >= n
   useEffect(() => {
-    rig.celebrate = complete && index === n - 1 ? 1 : 0
-  }, [complete, index, n])
+    rig.celebrate = complete ? 1 : 0
+  }, [complete])
 
-  // parallax de ponteiro para os gráficos 3D
+  // parallax de ponteiro
   useEffect(() => {
     let raf = 0
     const mv = (e: PointerEvent) => {
@@ -277,28 +252,27 @@ export default function Study({ study, onReady }: { study: StudyT; onReady: () =
     return () => removeEventListener('pointermove', mv)
   }, [])
 
-  const ctx: Ctx = { study, scenes, index, goTo, visited, unlocked, elapsed, next, goHome }
+  const ctx: Ctx = { index, goTo, visited, complete, goHome }
 
   return (
     <StudyContext.Provider value={ctx}>
       <div ref={pin} className="relative h-[100dvh] w-screen overflow-hidden">
         <div ref={track} className="flex h-full will-change-transform" style={{ width: `${n * 100}vw` }}>
-          {scenes.map((s, i) => (
+          {studies.map((s, i) => (
             <section
-              key={s.id}
-              data-scene={i + 1}
+              key={s.slug}
               ref={(el) => (els.current[i] = el)}
               className="scene"
-              aria-roledescription="cena"
-              aria-label={`Cena ${i + 1} de ${n}: ${s.title}`}
+              aria-roledescription="imóvel"
+              aria-label={`Imóvel ${i + 1} de ${n}: ${s.fullTitle}`}
               aria-hidden={i !== index}
             >
-              <SceneView scene={s} i={i} complete={complete} />
+              <PropertyScreen study={s} no={i + 1} total={n} />
             </section>
           ))}
         </div>
       </div>
-      <HUD ref={hud} onMap={() => setMap(true)} toast={toast} insightTotal={insightTotal} />
+      <HUD ref={hud} onMap={() => setMap(true)} toast={toast} />
       <Minimap open={map} onClose={() => setMap(false)} />
       <Notes open={notes} />
     </StudyContext.Provider>

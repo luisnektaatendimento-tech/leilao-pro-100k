@@ -26,7 +26,10 @@ export default function DiveOverlay({ dive, release, onGone }: { dive: Dive; rel
     gsap.set(node, { left: r.left, top: r.top, width: r.width, height: r.height, borderRadius: 18 })
     const tl = gsap.timeline({ onComplete: () => navigate(`/estudo/${dive.slug}`) })
     tl.to(rig, { dive: 1, duration: rm ? 0 : 1.25, ease: 'expo.inOut' }, 0)
-    tl.to(node, { left: 0, top: 0, width: innerWidth, height: innerHeight, borderRadius: 0, duration: rm ? 0.2 : 1.15, ease: 'expo.inOut' }, rm ? 0 : 0.1)
+    // destino: a coluna da foto na tela do imóvel (esquerda no desktop, topo no celular)
+    const wide = innerWidth >= 768
+    const target = wide ? { width: innerWidth * 0.42, height: innerHeight } : { width: innerWidth, height: innerHeight * 0.34 }
+    tl.to(node, { left: 0, top: 0, ...target, borderRadius: 0, duration: rm ? 0.2 : 1.15, ease: 'expo.inOut' }, rm ? 0 : 0.1)
     tl.fromTo(node.querySelectorAll('img'), { scale: 1.12 }, { scale: 1, duration: 1.25, ease: 'expo.inOut' }, 0)
     return () => {
       tl.kill()

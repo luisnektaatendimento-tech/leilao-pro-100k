@@ -75,7 +75,7 @@ export default function App() {
       <main className="relative z-10">
         {study ? (
           <Suspense fallback={null}>
-            <Study key={study.slug} study={study} onReady={onReady} />
+            <Study slug={study.slug} onReady={onReady} />
           </Suspense>
         ) : (
           <Home

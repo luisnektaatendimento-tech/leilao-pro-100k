@@ -1,18 +1,14 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { useStudy } from './ctx'
-import { CHAPTERS } from '../lib/scenes'
-import { pad2 } from '../lib/format'
+import { studies } from '../data/studies'
+import { brl, pad2, pct } from '../lib/format'
+import { hero } from '../lib/derive'
 import { Icon } from '../components/Icon'
 
-const KIND: Record<string, string> = {
-  cover: 'Capa', discount: 'Big number', chapter: 'Capítulo', property: 'Ficha', ruler: 'Gráfico', composition: 'Gráfico',
-  financing: 'Comparativo', period: 'Insight', compare: 'Comparativo', profit: 'Big number', validation: 'Checklist', conclusion: 'Conclusão',
-}
-
-/** Minimapa horizontal dos capítulos ("níveis"). Tecla M. */
+/** Mapa dos estudos (tecla M): os imóveis lado a lado, com onde o espectador está. */
 export default function Minimap({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { scenes, index, goTo, visited, unlocked } = useStudy()
+  const { index, goTo, visited } = useStudy()
   const root = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!open) return
@@ -25,7 +21,7 @@ export default function Minimap({ open, onClose }: { open: boolean; onClose: () 
     }
     addEventListener('keydown', k, true)
     const ctx = gsap.context(() => {
-      gsap.from('[data-mm]', { y: 24, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.025 })
+      gsap.from('[data-mm]', { y: 24, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.05 })
     }, root)
     root.current?.querySelector<HTMLButtonElement>('[aria-current="step"]')?.focus({ preventScroll: true })
     return () => {
@@ -35,56 +31,47 @@ export default function Minimap({ open, onClose }: { open: boolean; onClose: () 
   }, [open, onClose])
   if (!open) return null
   return (
-    <div ref={root} className="fixed inset-0 z-[70] flex flex-col justify-center bg-[rgb(10_10_11/.86)] backdrop-blur-xl" role="dialog" aria-modal aria-label="Mapa de capítulos" onClick={onClose}>
+    <div ref={root} className="fixed inset-0 z-[70] flex flex-col justify-center bg-[rgb(10_10_11/.88)] backdrop-blur-xl" role="dialog" aria-modal aria-label="Mapa dos estudos" onClick={onClose}>
       <div className="absolute right-6 top-6">
         <button className="icon-btn" onClick={onClose} aria-label="Fechar mapa">
           <Icon name="close" />
         </button>
       </div>
       <p className="label px-6 md:px-12" data-mm>
-        Mapa do estudo · você está na cena {pad2(index + 1)}
+        Mapa dos estudos · {pad2(visited.size)}/{pad2(studies.length)} vistos
       </p>
-      <div className="mt-8 flex gap-8 overflow-x-auto px-6 pb-6 md:px-12 [scrollbar-width:thin]" onClick={(e) => e.stopPropagation()}>
-        {CHAPTERS.map((name, c) => {
-          const items = scenes.map((s, i) => ({ s, i })).filter((x) => x.s.chapter === c)
-          if (!items.length) return null
+      <div className="mt-6 flex gap-4 overflow-x-auto px-6 pb-10 md:px-12" onClick={(e) => e.stopPropagation()}>
+        {studies.map((s, i) => {
+          const cur = i === index
+          const h = hero(s)
           return (
-            <div key={name} className="flex-none">
-              <p className="label mb-3" data-mm>
-                Nível {c + 1} · <span className="text-ink">{name}</span>
-              </p>
-              <div className="flex gap-2">
-                {items.map(({ s, i }) => {
-                  const cur = i === index
-                  return (
-                    <button
-                      key={s.id}
-                      data-mm
-                      aria-current={cur ? 'step' : undefined}
-                      onClick={() => {
-                        goTo(i)
-                        onClose()
-                      }}
-                      className="relative flex h-[132px] w-[150px] flex-col justify-between rounded-xl border p-3 text-left transition-colors duration-500 hover:border-white/40"
-                      style={{ borderColor: cur ? 'var(--acc)' : 'rgb(237 234 228 / .12)', background: cur ? 'rgb(var(--acc-rgb) / .07)' : 'rgb(255 255 255 / .02)' }}
-                    >
-                      <span className="flex items-center justify-between">
-                        <span className="mono text-[11px] text-mute">{pad2(i + 1)}</span>
-                        {visited.has(i) && <span className="h-1.5 w-1.5 rounded-full bg-white/50" aria-label="visitada" />}
-                      </span>
-                      <span>
-                        <span className="block text-[13px] leading-snug text-ink">{s.title}</span>
-                        <span className="label mt-1 block !text-[10px]">
-                          {KIND[s.kind]}
-                          {s.insight ? (unlocked.has(s.id) ? ' · insight ✓' : ' · insight') : ''}
-                        </span>
-                      </span>
-                      {cur && <span className="label absolute -bottom-6 left-0 !text-[var(--acc)]">Você está aqui</span>}
-                    </button>
-                  )
-                })}
+            <button
+              key={s.slug}
+              data-mm
+              aria-current={cur ? 'step' : undefined}
+              onClick={() => {
+                goTo(i)
+                onClose()
+              }}
+              className="relative w-[240px] flex-none overflow-hidden rounded-2xl border text-left transition-colors duration-500 hover:border-white/40"
+              style={{ borderColor: cur ? 'var(--acc)' : 'rgb(237 234 228 / .12)' }}
+            >
+              <div className="photo-duo relative aspect-[16/10]">
+                <img src={s.images.thumb} alt="" />
+                <span className="mono absolute left-3 top-3 z-10 text-[11px] text-ink">{pad2(i + 1)}</span>
+                {visited.has(s.slug) && (
+                  <span className="label absolute right-3 top-3 z-10 flex items-center gap-1 !text-[var(--acc)]">
+                    <Icon name="check" size={12} stroke={2} /> visto
+                  </span>
+                )}
               </div>
-            </div>
+              <div className="p-4">
+                <p className="text-[15px] font-semibold tracking-tight text-ink">{s.title}</p>
+                <p className="mono mt-2 text-[12px] text-ink-2">{brl(h.netResult)}</p>
+                <p className="mono text-[12px] acc">{pct(h.netRoi)}</p>
+              </div>
+              {cur && <span className="label absolute bottom-4 right-4 !text-[var(--acc)]">Você está aqui</span>}
+            </button>
           )
         })}
       </div>

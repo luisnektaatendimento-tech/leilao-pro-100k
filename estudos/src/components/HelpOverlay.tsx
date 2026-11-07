@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import { Icon } from './Icon'
 
 const ROWS: [string[], string][] = [
-  [['←', '→'], 'Cena anterior / próxima'],
+  [['←', '→'], 'Imóvel anterior / próximo'],
   [['Espaço'], 'Avançar (Shift + Espaço volta)'],
-  [['M'], 'Mapa de capítulos'],
+  [['M'], 'Mapa dos estudos'],
   [['F'], 'Tela cheia'],
   [['P'], 'Modo apresentador'],
   [['N'], 'Segurar: notas do apresentador'],
-  [['S'], 'Ligar/desligar o snap entre cenas'],
+  [['S'], 'Ligar/desligar o snap entre imóveis'],
   [['A'], 'Som'],
   [['T'], 'Alternar paleta (A · B)'],
   [['Esc', 'H'], 'Voltar aos estudos'],

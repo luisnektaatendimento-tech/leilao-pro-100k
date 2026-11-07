@@ -1,7 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { company, studies } from '../data/studies'
-import { buildScenes, estMinutes } from '../lib/scenes'
 import { statusOf, type Status } from '../lib/progress'
 import { isCoarse, reducedMotion } from '../lib/media'
 import { sound } from '../lib/sound'
@@ -16,8 +15,7 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
   const items = useMemo(
     () =>
       studies.map((s) => {
-        const n = buildScenes(s).length
-        return { study: s, scenes: n, minutes: estMinutes(n), status: statusOf(s.slug, n) as Status }
+        return { study: s, status: statusOf(s.slug, 1) as Status }
       }),
     [],
   )
