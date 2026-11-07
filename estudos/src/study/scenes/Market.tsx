@@ -29,7 +29,7 @@ export function Property() {
             data-delay="0.35"
           >
             <img src={s.images.map} alt="Mapa de satélite da região do imóvel" className="aspect-[16/10] w-full object-cover brightness-[.9]" />
-            <figcaption className="label absolute bottom-2 left-3 !text-[9px] !text-ink">Localização · satélite</figcaption>
+            <figcaption className="label absolute bottom-2 left-3 !text-[10px] !text-ink">Localização · satélite</figcaption>
           </figure>
         </div>
       </div>
@@ -110,7 +110,7 @@ export function Ruler() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <Label>Análise de mercado</Label>
-          <h2 className="display mt-3 text-[clamp(2.4rem,min(5vw,9vh),5.4rem)]">
+          <h2 className="display mt-3 text-[clamp(2.1rem,min(4vw,8vh),4.4rem)]">
             <Words text="Onde o lance se posiciona" delay={0.1} />
           </h2>
         </div>
@@ -139,7 +139,7 @@ export function Ruler() {
           {lanes.map((lane, li) => (
             <div key={lane.name} className="relative h-[clamp(56px,10vh,96px)] border-t border-white/[.06]">
               <span className="label absolute -left-[110px] top-1/2 hidden -translate-y-1/2 md:block">{lane.name}</span>
-              <span className="label absolute left-0 top-1 md:hidden !text-[9px]">{lane.name}</span>
+              <span className="label absolute left-0 top-1 md:hidden !text-[10px]">{lane.name}</span>
               {li === 0 && (
                 <div
                   className="absolute top-1/2 h-[18px] -translate-y-1/2 rounded-full bg-white/[.07]"
@@ -186,7 +186,7 @@ export function Ruler() {
                     data-delay="1.2"
                   >
                     <span className="mono block text-[12px]">{m.label}</span>
-                    <span className="label block !text-[9px]">{m.detail}</span>
+                    <span className="label block !text-[10px]">{m.detail}</span>
                   </span>
                 ))
               )}

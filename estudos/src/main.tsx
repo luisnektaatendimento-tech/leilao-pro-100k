@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '@fontsource-variable/inter-tight'
+// Tipografia Apple: SF Pro / SF Mono nativos em Mac e iPhone.
+// Fora do ecossistema Apple (Windows/Android), o fallback é Inter + JetBrains Mono.
+import '@fontsource-variable/inter'
 import '@fontsource-variable/jetbrains-mono'
-import '@fontsource/instrument-serif/400.css'
-import '@fontsource/instrument-serif/400-italic.css'
 import './styles/index.css'
 import App from './App'
 

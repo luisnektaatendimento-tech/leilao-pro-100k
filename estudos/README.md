@@ -49,3 +49,9 @@ O progresso ("novo", "em andamento X%", "explorado") e os insights ficam salvos 
 
 - Nenhum número é inventado: tudo vem do PDF.
 - Valores derivados por conta simples (desconto sobre a avaliação, % de cada custo, IRGC em reais, restante financiado) aparecem sempre marcados como **calculado**.
+
+## Tipografia
+
+Usa a tipografia da Apple pelas fontes do sistema: **SF Pro** (títulos e textos) e **SF Mono** (valores).
+Em Mac, iPhone e iPad ela aparece nativamente. A Apple não permite embutir a SF em sites, então em
+Windows e Android o site usa automaticamente **Inter** e **JetBrains Mono**, as alternativas mais próximas.

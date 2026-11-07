@@ -88,7 +88,7 @@ export default function StudyCard({ study, scenes, minutes, status, index, onOpe
           </div>
           <div className="relative z-10 -mt-10 p-5 pt-0">
             <p className="label">{study.sale.modality}{study.sale.date ? ` · ${dateShort(study.sale.date)}` : ''}</p>
-            <h2 className="display mt-2 text-[34px] leading-[0.95]">{study.title}</h2>
+            <h2 className="display mt-2 truncate text-[25px] !tracking-[-0.025em]">{study.title}</h2>
             <div className="card-meta">
               <div className="overflow-hidden">
                 <div className="mt-4 hairline" />

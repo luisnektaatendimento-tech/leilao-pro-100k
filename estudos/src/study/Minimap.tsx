@@ -74,7 +74,7 @@ export default function Minimap({ open, onClose }: { open: boolean; onClose: () 
                       </span>
                       <span>
                         <span className="block text-[13px] leading-snug text-ink">{s.title}</span>
-                        <span className="label mt-1 block !text-[9px]">
+                        <span className="label mt-1 block !text-[10px]">
                           {KIND[s.kind]}
                           {s.insight ? (unlocked.has(s.id) ? ' · insight ✓' : ' · insight') : ''}
                         </span>

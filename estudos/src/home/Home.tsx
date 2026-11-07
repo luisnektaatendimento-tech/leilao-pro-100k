@@ -133,7 +133,7 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
             Arquivo de estudos · Fortaleza, CE
           </p>
           <h1 className="display mt-4 text-[clamp(3.2rem,min(7.4vw,13vh),8rem)]" data-in>
-            Ver <em className="text-ink-2">estudos</em>
+            Ver <span className="text-ink-2">estudos.</span>
           </h1>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-ink-2" data-in>
             {company.tagline}. Escolha um estudo para começar a apresentação.

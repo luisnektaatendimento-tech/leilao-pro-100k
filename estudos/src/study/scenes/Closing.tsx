@@ -17,7 +17,7 @@ export function Validation() {
     <div className={`relative z-10 grid h-full items-center gap-10 md:grid-cols-[1.3fr_1fr] ${PAD}`}>
       <div>
         <Label>Capítulo III · Nível 4</Label>
-        <h2 className="display mt-3 text-[clamp(2.4rem,min(5vw,9vh),5.4rem)]">
+        <h2 className="display mt-3 text-[clamp(2.1rem,min(4vw,8vh),4.4rem)]">
           <Words text="Validação do valor de mercado" delay={0.1} />
         </h2>
         <ul className="mt-10 max-w-2xl">
@@ -59,7 +59,7 @@ export function Conclusion({ complete }: { complete: boolean }) {
     <div className={`relative z-10 grid h-full content-center items-center gap-6 md:grid-cols-[1fr_1.1fr] md:gap-[5vw] ${PAD} !pb-28`}>
       <div className="flex flex-col justify-center md:h-full">
         <Label>Considerações finais</Label>
-        <p className="display mt-6 max-w-[24ch] text-[clamp(1.4rem,min(2.9vw,5.2vh),3.2rem)] !leading-[1.08]" data-reveal="up" data-delay="0.15">
+        <p className="display mt-6 max-w-[30ch] text-[clamp(1.25rem,min(2vw,4vh),2.25rem)] !font-medium !leading-[1.22] !tracking-[-0.02em]" data-reveal="up" data-delay="0.15">
           {s.closing}
         </p>
         <div className="mt-6 flex flex-wrap gap-3 md:mt-10" data-reveal="up" data-delay="0.4">
@@ -150,7 +150,7 @@ function Seal() {
       </defs>
       <circle cx="100" cy="100" r="92" fill="none" stroke="var(--acc)" strokeOpacity=".35" />
       <circle cx="100" cy="100" r="64" fill="none" stroke="var(--acc)" strokeOpacity=".25" />
-      <text fill="var(--acc)" fontFamily="JetBrains Mono Variable, monospace" fontSize="10.5" letterSpacing="3">
+      <text fill="var(--acc)" fontFamily="ui-monospace, SF Mono, Menlo, JetBrains Mono Variable, monospace" fontSize="10.5" letterSpacing="3">
         <textPath href="#sealpath">{text}</textPath>
       </text>
     </svg>

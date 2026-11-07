@@ -1,9 +1,10 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Inter Tight Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
-  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  /* Apple: SF Pro Text/Display e SF Mono (fontes do sistema). Fallback: Inter / JetBrains Mono. */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter Variable', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Variable', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, 'JetBrains Mono Variable', monospace;
   --color-bg: #0a0a0b;
   --color-ink: #edeae4;
   --color-ink-2: #b9b6b0;
@@ -31,7 +32,6 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'ss01', 'cv11';
 }
 body {
   overscroll-behavior: none;
@@ -72,24 +72,24 @@ html.lenis body {
   letter-spacing: 0;
 }
 .label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   color: var(--color-mute);
 }
 .display {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 0.92;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
 }
 .num {
-  font-family: var(--font-sans);
-  font-weight: 300;
-  letter-spacing: -0.045em;
-  font-feature-settings: 'tnum', 'ss01';
-  line-height: 0.9;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  font-feature-settings: 'tnum';
+  line-height: 0.95;
 }
 .tnum {
   font-feature-settings: 'tnum';

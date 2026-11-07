@@ -5,7 +5,7 @@ import { costItems, hero, taxValue } from '../../lib/derive'
 import { Count, Label, Prism, Words } from '../primitives'
 import { PAD } from './Opening'
 
-const H2 = 'display mt-3 text-[clamp(2.4rem,min(5vw,9vh),5.4rem)]'
+const H2 = 'display mt-3 text-[clamp(2.1rem,min(4vw,8vh),4.4rem)]'
 
 /* ───────────────────── Composição do investimento ───────────────────── */
 export function Composition() {
@@ -75,7 +75,7 @@ export function Composition() {
               >
                 <td className={`py-[clamp(5px,1.3vh,12px)] pr-4 text-[clamp(12px,1vw,14px)] ${dim ? 'text-mute' : 'text-ink'}`}>
                   {r.label}
-                  {r.ref && <span className="label ml-2 !text-[9px]">não compõe o total</span>}
+                  {r.ref && <span className="label ml-2 !text-[10px]">não compõe o total</span>}
                 </td>
                 <td className="hidden w-[22%] pr-4 sm:table-cell">
                   {!r.ref && (
@@ -391,7 +391,7 @@ export function Profit() {
         </div>
         <div className="mt-3 flex gap-[2px]">
           {bars.map((b) => (
-            <span key={b.k} className="label flex-1 text-center !text-[9px] !leading-tight">
+            <span key={b.k} className="label flex-1 text-center !text-[10px] !leading-tight">
               {b.k}
             </span>
           ))}

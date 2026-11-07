@@ -23,7 +23,7 @@ export function Cover() {
         <p className="label" data-reveal="fade" data-delay="0.1">
           {s.kicker} · Estudo {pad2(no)}/{pad2(studies.length)}
         </p>
-        <h1 className="display mt-5 max-w-[14ch] text-[clamp(3.6rem,min(11vw,19vh),12rem)]">
+        <h1 className="display mt-5 max-w-[14ch] text-[clamp(3.2rem,min(9vw,17vh),10rem)]">
           <Words text={s.title} delay={0.15} step={0.09} />
         </h1>
         <p className="mt-7 max-w-[46ch] text-[clamp(1rem,1.5vw,1.35rem)] leading-snug text-ink-2" data-reveal="up" data-delay="0.55">
@@ -131,19 +131,19 @@ export function Chapter({ scene }: { scene: Scene }) {
     <>
       <div className="layer-back pointer-events-none absolute inset-0 flex items-center justify-end pr-[4vw]" aria-hidden>
         <span
-          className="display select-none text-[min(62vh,48vw)] leading-none text-transparent"
+          className="display select-none text-[min(56vh,40vw)] !leading-none !tracking-[-0.06em] text-transparent"
           style={{ WebkitTextStroke: '1px rgb(237 234 228 / .14)' }}
           data-reveal="z"
           data-delay="0"
         >
-          {scene.chapterNo}
+          {pad2(scene.chapter)}
         </span>
       </div>
       <div className={`relative z-10 flex h-full flex-col justify-center ${PAD}`}>
         <Label>
           Capítulo {scene.chapterNo} · Nível {scene.chapter + 1}
         </Label>
-        <h2 className="display mt-5 text-[clamp(4rem,min(12vw,22vh),13rem)]">
+        <h2 className="display mt-5 text-[clamp(3.4rem,min(10vw,19vh),11rem)]">
           <Words text={scene.title} delay={0.1} step={0.1} />
         </h2>
         <div className="mt-10 h-px w-full max-w-[640px] bg-white/20" data-reveal="line" data-delay="0.4" />
