@@ -7,7 +7,7 @@ import { loadProgress, saveProgress } from '../lib/progress'
 import { prefs } from '../lib/prefs'
 import { sound } from '../lib/sound'
 import { navigate } from '../lib/router'
-import { reducedMotion } from '../lib/media'
+import { reducedMotion, useMedia } from '../lib/media'
 import { brl, pct } from '../lib/format'
 import { hero } from '../lib/derive'
 import { rig } from '../three/rig'
@@ -42,11 +42,23 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
   const hud = useRef<HTMLDivElement>(null)
   const els = useRef<(HTMLElement | null)[]>([])
   const lenisRef = useRef<Lenis | null>(null)
+  const scroller = useRef<HTMLDivElement>(null)
   const idx = useRef(index)
+  // celular: cada imóvel rola na vertical e o swipe horizontal é nativo (scroll-snap)
+  const mobile = useMedia('(max-width: 767px)')
+  const mobileRef = useRef(mobile)
+  mobileRef.current = mobile
 
   const goTo = useCallback(
     (i: number) => {
       const c = Math.max(0, Math.min(n - 1, i))
+      if (mobileRef.current) {
+        const sc = scroller.current
+        if (!sc) return
+        if (c !== idx.current) sound.click()
+        sc.scrollTo({ left: c * sc.clientWidth, behavior: reducedMotion() ? 'auto' : 'smooth' })
+        return
+      }
       const l = lenisRef.current
       if (!l) return
       if (c !== idx.current) sound.click()
@@ -71,6 +83,45 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
     window.scrollTo(0, 0)
     const entered = new Array(n).fill(false)
     els.current.forEach((el) => el && resetScene(el))
+    const start = idx.current
+
+    if (mobile) {
+      const sc = scroller.current!
+      const onScroll = () => {
+        const pos = sc.scrollLeft / Math.max(1, sc.clientWidth)
+        rig.progress = pos / Math.max(1, n - 1)
+        for (let i = 0; i < n; i++) {
+          const el = els.current[i]
+          if (!el) continue
+          const ad = Math.abs(i - pos)
+          if (!entered[i] && ad < 0.55) {
+            entered[i] = true
+            el.removeAttribute('inert')
+            enterScene(el)
+          } else if (entered[i] && ad > 0.995) {
+            entered[i] = false
+            el.setAttribute('inert', '')
+            el.scrollTop = 0
+            resetScene(el)
+          }
+        }
+        const a = Math.round(pos)
+        if (a !== idx.current) {
+          idx.current = a
+          setIndex(a)
+        }
+      }
+      els.current.forEach((el, i) => i !== start && el?.setAttribute('inert', ''))
+      sc.scrollLeft = start * sc.clientWidth
+      sc.addEventListener('scroll', onScroll, { passive: true })
+      onScroll()
+      const r = requestAnimationFrame(() => onReady())
+      return () => {
+        cancelAnimationFrame(r)
+        sc.removeEventListener('scroll', onScroll)
+        document.documentElement.classList.remove('study-mode')
+      }
+    }
 
     const lenis = new Lenis({
       duration: 1.1,
@@ -147,12 +198,12 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
     ScrollTrigger.addEventListener('refreshInit', onInit)
     ScrollTrigger.addEventListener('refresh', onRefresh)
 
-    els.current.forEach((el, i) => i !== startIndex && el?.setAttribute('inert', ''))
+    els.current.forEach((el, i) => i !== start && el?.setAttribute('inert', ''))
     lenis.resize()
-    window.scrollTo(0, startIndex * innerHeight)
-    lenis.scrollTo(startIndex * innerHeight, { immediate: true, force: true })
+    window.scrollTo(0, start * innerHeight)
+    lenis.scrollTo(start * innerHeight, { immediate: true, force: true })
     ScrollTrigger.update()
-    update(startIndex / Math.max(1, n - 1))
+    update(start / Math.max(1, n - 1))
     const r = requestAnimationFrame(() => onReady())
 
     return () => {
@@ -169,7 +220,7 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
       window.scrollTo(0, 0)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [mobile])
 
   /* ── URL por imóvel, visita e "desbloqueio" ── */
   useEffect(() => {
@@ -215,6 +266,7 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
       sy = e.touches[0].clientY
     }
     const te = (e: TouchEvent) => {
+      if (mobileRef.current) return // no celular o swipe é nativo
       const dx = e.changedTouches[0].clientX - sx
       const dy = e.changedTouches[0].clientY - sy
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) goTo(idx.current + (dx < 0 ? 1 : -1))
@@ -256,13 +308,13 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
 
   return (
     <StudyContext.Provider value={ctx}>
-      <div ref={pin} className="relative h-[100dvh] w-screen overflow-hidden">
-        <div ref={track} className="flex h-full will-change-transform" style={{ width: `${n * 100}vw` }}>
+      {mobile ? (
+        <div ref={scroller} className="fixed inset-0 flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden overscroll-x-contain [scrollbar-width:none]">
           {studies.map((s, i) => (
             <section
               key={s.slug}
               ref={(el) => (els.current[i] = el)}
-              className="scene"
+              className={mobile ? 'scene-m' : 'scene'}
               aria-roledescription="imóvel"
               aria-label={`Imóvel ${i + 1} de ${n}: ${s.fullTitle}`}
               aria-hidden={i !== index}
@@ -271,7 +323,24 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
             </section>
           ))}
         </div>
-      </div>
+      ) : (
+        <div ref={pin} className="relative h-[100dvh] w-screen overflow-hidden">
+          <div ref={track} className="flex h-full will-change-transform" style={{ width: `${n * 100}vw` }}>
+            {studies.map((s, i) => (
+              <section
+                key={s.slug}
+                ref={(el) => (els.current[i] = el)}
+                className={mobile ? 'scene-m' : 'scene'}
+                aria-roledescription="imóvel"
+                aria-label={`Imóvel ${i + 1} de ${n}: ${s.fullTitle}`}
+                aria-hidden={i !== index}
+              >
+                <PropertyScreen study={s} no={i + 1} total={n} />
+              </section>
+            ))}
+          </div>
+        </div>
+      )}
       <HUD ref={hud} onMap={() => setMap(true)} toast={toast} />
       <Minimap open={map} onClose={() => setMap(false)} />
       <Notes open={notes} />

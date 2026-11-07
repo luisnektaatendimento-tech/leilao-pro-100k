@@ -23,20 +23,23 @@ export default function PropertyScreen({ study: s, no, total }: { study: Study; 
   ].filter(Boolean) as { icon: string; v: string; k: string }[]
 
   return (
-    <div className="relative z-10 grid h-full grid-cols-[minmax(0,1fr)] content-start gap-3 overflow-hidden px-4 pb-[84px] pt-[72px] md:content-stretch md:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] md:grid-rows-1 md:gap-[2.2vw] md:px-[3vw] md:pb-[92px] md:pt-[88px]">
+    // Mobile: coluna única que rola (a seção rola na vertical). Desktop: duas colunas que cabem na tela.
+    <div className="relative z-10 flex flex-col gap-4 px-4 pb-[104px] pt-[76px] md:grid md:h-full md:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] md:gap-[2vw] md:overflow-hidden md:px-[3vw] md:pb-[92px] md:pt-[88px]">
       {/* ───────── esquerda: foto + ficha ───────── */}
-      <div className="flex min-h-0 flex-col gap-[clamp(10px,1.8vh,18px)]">
-        <div data-photo className="layer-back relative h-[26dvh] overflow-hidden rounded-[24px] border border-white/10 md:h-auto md:min-h-0 md:flex-1">
+      <div className="contents md:flex md:min-h-0 md:flex-col md:gap-[clamp(10px,1.8vh,18px)]">
+        <div data-photo className="layer-back relative order-1 aspect-[4/3] overflow-hidden rounded-[24px] border border-white/10 md:order-none md:aspect-auto md:min-h-0 md:flex-1">
           <div className="photo-duo absolute inset-0">
             <img src={s.images.photo} alt={`Fachada do ${s.fullTitle}`} />
           </div>
           <div className="absolute inset-x-3 top-3 z-10 flex items-start justify-between gap-2">
-            <span className="fx-pill fx-dark px-3 py-1.5 text-[12px]">
-              {s.sale.modality}
-              {s.sale.date ? ` · ${dateBR(s.sale.date)} ${s.sale.time}` : ''}
+            <span className="fx-pill fx-dark min-w-0 px-3 py-1.5 text-[12px]">
+              <span className="truncate">
+                {s.sale.modality}
+                {s.sale.date ? ` · ${dateBR(s.sale.date)} ${s.sale.time}` : ''}
+              </span>
             </span>
-            <span className="fx-pill fx-dark px-3 py-1.5 text-[12px] tnum">
-              Estudo {pad2(no)}/{pad2(total)}
+            <span className="fx-pill fx-dark flex-none px-3 py-1.5 text-[12px] tnum">
+              {pad2(no)}/{pad2(total)}
             </span>
           </div>
           {s.financing && (
@@ -46,78 +49,100 @@ export default function PropertyScreen({ study: s, no, total }: { study: Study; 
           )}
         </div>
 
-        <div>
+        <div className="order-2 md:order-none">
           <span className="fx-pill bg-white px-2.5 py-1 text-[11px] text-[#0b0c0e]" data-reveal="fade" data-delay="0.15">
             {p.unit}
           </span>
-          <h1 className="display mt-2 text-[clamp(1.9rem,min(3vw,5.4vh),3.2rem)]">
+          <h1 className="display mt-2 text-[clamp(2rem,8.6vw,2.6rem)] md:text-[clamp(1.9rem,min(3vw,5.4vh),3.4rem)]">
             <Words text={s.title} delay={0.12} step={0.07} />
           </h1>
-          <p className="mt-1 flex items-center gap-1.5 truncate text-[13px] text-ink-2" data-reveal="up" data-delay="0.3">
-            <Icon name="pin" size={14} /> {p.address} · {p.city}
+          <p className="mt-1.5 flex items-start gap-1.5 text-[13px] leading-snug text-ink-2 md:items-center md:truncate" data-reveal="up" data-delay="0.3">
+            <span className="mt-[2px] flex-none md:mt-0">
+              <Icon name="pin" size={14} />
+            </span>
+            <span className="md:truncate">
+              {p.address} · {p.city}
+            </span>
           </p>
         </div>
 
-        <ul className="hidden gap-x-5 gap-y-3 overflow-x-auto border-y md:flex border-white/[.08] py-[clamp(8px,1.4vh,14px)] [scrollbar-width:none]">
+        <ul className="order-3 grid grid-cols-2 gap-x-3 gap-y-3 border-y border-white/[.08] py-4 md:order-none md:flex md:flex-nowrap md:gap-x-3.5 md:overflow-x-auto xl:gap-x-5 md:py-[clamp(8px,1.4vh,14px)] md:[scrollbar-width:none]">
           {specs.map((x, i) => (
-            <li key={x.k} className="flex flex-none items-center gap-2.5" data-reveal="up" data-delay={0.35 + i * 0.04}>
-              <span className="fx-ico">
+            <li key={x.k} className="flex min-w-0 flex-none items-center gap-2.5" data-reveal="up" data-delay={0.35 + i * 0.04}>
+              <span className="fx-ico flex-none">
                 <Icon name={x.icon} size={16} />
               </span>
-              <span className="leading-tight">
-                <span className="mono block text-[14px] font-semibold text-ink">{x.v}</span>
+              <span className="min-w-0 leading-tight">
+                <span className="mono block truncate text-[14px] font-semibold text-ink">{x.v}</span>
                 <span className="block text-[12px] text-mute">{x.k}</span>
               </span>
             </li>
           ))}
         </ul>
 
-        <MarketStrip s={s} />
+        <div className="order-7 md:order-none">
+          <MarketStrip s={s} />
+        </div>
       </div>
 
       {/* ───────── direita: valores ───────── */}
-      <div className="flex min-h-0 min-w-0 flex-col justify-center gap-[clamp(10px,1.8vh,18px)]">
+      <div className="contents md:flex md:min-h-0 md:min-w-0 md:flex-col md:justify-center md:gap-[clamp(10px,1.8vh,18px)]">
         {/* card de valor */}
-        <div className="fx-card p-[clamp(14px,2.2vh,24px)]" data-reveal="up" data-delay="0.2">
-          <div className="grid grid-cols-2 gap-3 md:gap-5">
+        <div className="fx-card order-4 p-5 md:order-none md:p-[clamp(14px,2.2vh,24px)]" data-reveal="up" data-delay="0.2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
             <div className="min-w-0">
               <p className="label">Lance inicial</p>
-              <p className="num mt-2 whitespace-nowrap text-[19px] md:text-[clamp(1.5rem,min(2.3vw,4.4vh),2.5rem)]">{brl(s.minimumBid)}</p>
-              <p className="mt-1 truncate text-[11px] text-ink-2 md:text-[13px]">
+              <p className="num mt-2 whitespace-nowrap text-[30px] md:text-[clamp(1.5rem,min(2.2vw,4.4vh),2.6rem)]">{brl(s.minimumBid)}</p>
+              <p className="mt-1 truncate text-[13px] text-ink-2">
                 Avaliado em <span className="line-through decoration-white/50">{brl(s.appraisal.value)}</span> · {s.appraisal.source}
               </p>
-              <span className="fx-pill fx-acc mt-3 px-2.5 py-1 text-[11px] font-bold md:px-3 md:py-1.5 md:text-[13px]">
-                <Icon name="bolt" size={13} stroke={2} />
-                {pct(discountPct(s), 1)} abaixo da avaliação
-              </span>
-              <span className="mt-1 block text-[10px] text-mute md:ml-2 md:mt-0 md:inline">calculado</span>
+              <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+                <span className="fx-pill fx-acc px-3 py-1.5 text-[13px] font-bold">
+                  <Icon name="bolt" size={14} stroke={2} />
+                  {pct(discountPct(s), 1)} abaixo da avaliação
+                </span>
+                <span className="text-[10px] text-mute">calculado</span>
+              </div>
             </div>
-            <div className="min-w-0 border-l border-white/[.08] pl-3 md:pl-5">
+            <div className="min-w-0 border-t border-white/[.08] pt-4 md:border-l md:border-t-0 md:pl-5 md:pt-0">
               <p className="label">Lucro líquido · {h.months} meses</p>
               <div style={{ perspective: 900 }}>
-                <p className="num mt-2 whitespace-nowrap text-[19px] md:text-[clamp(1.5rem,min(2.3vw,4.4vh),2.5rem)]" data-reveal="z" data-delay="0.3">
+                <p className="num mt-2 whitespace-nowrap text-[30px] md:text-[clamp(1.5rem,min(2.2vw,4.4vh),2.6rem)]" data-reveal="z" data-delay="0.3">
                   <Count value={h.netResult} fmt="brl" delay={0.4} />
                 </p>
               </div>
-              <p className="mt-1 truncate text-[11px] text-ink-2 md:text-[13px]">{s.roiLabel}</p>
-              <p className="num acc mt-1 text-[28px] md:text-[clamp(1.8rem,min(2.8vw,5.4vh),3rem)]">
-                <Count value={h.netRoi} fmt="pct" delay={0.5} />
-              </p>
+              <div className="mt-1 flex items-baseline justify-between gap-3 md:block">
+                <p className="truncate text-[13px] text-ink-2">{s.roiLabel}</p>
+                <p className="num acc text-[34px] md:mt-1 md:text-[clamp(1.8rem,min(2.7vw,5.4vh),3.2rem)]">
+                  <Count value={h.netRoi} fmt="pct" delay={0.5} />
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="hidden min-h-0 gap-[clamp(10px,1.2vw,18px)] md:grid md:grid-cols-2">
-          <Costs s={s} />
-          <Scenarios s={s} />
+        <div className="contents md:grid md:min-h-0 md:grid-cols-2 md:gap-[clamp(10px,1.1vw,18px)]">
+          <div className="order-5 min-w-0 md:order-none">
+            <Costs s={s} />
+          </div>
+          <div className="order-6 min-w-0 md:order-none">
+            <Scenarios s={s} />
+          </div>
         </div>
 
         {/* validação — faixa de aviso Fexô */}
-        <div className="fx-note flex min-w-0 items-center gap-2.5 px-4 py-[clamp(8px,1.3vh,12px)] text-[12px]" data-reveal="fade" data-delay="0.9" title={s.validation.join(' · ')}>
+        <div className="fx-note order-8 flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2 px-4 py-3 text-[12px] md:order-none md:flex-nowrap md:py-[clamp(8px,1.3vh,12px)]" data-reveal="fade" data-delay="0.9" title={s.validation.join(' · ')}>
           <Icon name="shield" size={16} />
-          <span className="min-w-0 truncate font-semibold md:flex-none md:overflow-visible">
+          <span className="font-semibold md:flex-none md:whitespace-nowrap">
             Valor de mercado validado · {s.validation.length}/{s.validation.length}
           </span>
+          <ul className="basis-full space-y-1 pl-[26px] text-[12px] text-[#ffe680]/80 md:hidden">
+            {s.validation.map((v) => (
+              <li key={v} className="flex gap-1.5">
+                <Icon name="check" size={13} stroke={2} /> {v}
+              </li>
+            ))}
+          </ul>
           <span className="hidden min-w-0 truncate text-[#ffe680]/70 lg:inline">{s.validation.join(' · ')}</span>
         </div>
       </div>
@@ -143,8 +168,8 @@ function MarketStrip({ s }: { s: Study }) {
   const mid = (x(minL) + x(maxL)) / 2
 
   return (
-    <figure className="fx-card hidden px-5 pb-4 pt-4 md:[@media(min-height:820px)]:block" aria-label="Posição de mercado: lance, avaliação, anúncios e venda projetada" data-reveal="up" data-delay="0.5">
-      <figcaption className="flex items-baseline justify-between gap-4">
+    <figure className="fx-card fx-market px-4 pb-4 pt-4 md:px-5" aria-label="Posição de mercado: lance, avaliação, anúncios e venda projetada" data-reveal="up" data-delay="0.5">
+      <figcaption className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between md:gap-4">
         <span className="label !text-ink-2">Posição de mercado</span>
         <span className="truncate text-[11px] text-mute">
           {s.market.from ? `Similares a partir de ${brl(s.market.from)}` : `${L.length} anúncios no PDF`}
@@ -217,8 +242,8 @@ function Costs({ s }: { s: Study }) {
   const maxV = Math.max(...parts.map((r) => r.value))
   const f = s.financing
   return (
-    <div className="fx-card flex min-h-0 min-w-0 flex-col p-[clamp(12px,1.8vh,18px)]" data-reveal="up" data-delay="0.35">
-      <p className="text-[15px] font-semibold tracking-tight text-ink">Quanto você vai investir</p>
+    <div className="fx-card flex h-full min-h-0 min-w-0 flex-col p-4 md:p-[clamp(12px,1.8vh,18px)]" data-reveal="up" data-delay="0.35">
+      <p className="text-[16px] font-semibold tracking-tight text-ink md:text-[clamp(14px,1vw,18px)]">Quanto você vai investir</p>
       <div className="mt-3 flex h-1.5 gap-[2px]" role="img" aria-label="Participação de cada custo no investimento total">
         {parts.map((r) => (
           <span key={r.label} className="h-full rounded-full" style={{ flexGrow: r.value, background: r.value === maxV ? 'var(--acc)' : 'rgb(255 255 255 / .28)' }} data-grow="x" />
@@ -231,11 +256,11 @@ function Costs({ s }: { s: Study }) {
             const first = i === 0
             return (
               <tr key={r.label} className="border-b border-white/[.06]">
-                <td className={`py-[clamp(3px,0.5vh,6px)] pr-2 text-[clamp(11px,0.82vw,12.5px)] leading-[1.3] ${r.value === 0 ? 'text-mute' : 'text-ink-2'}`}>
+                <td title={r.label} className={`w-full py-[7px] pr-2 text-[13px] leading-[1.3] md:max-w-0 md:truncate md:py-[clamp(3px,0.5vh,6px)] md:text-[clamp(11px,0.8vw,14px)] ${r.value === 0 ? 'text-mute' : 'text-ink-2'}`}>
                   {r.label}
                   {r.ref && <span className="ml-1 text-[10px] text-mute">(fora do total)</span>}
                 </td>
-                <td className={`mono whitespace-nowrap text-right text-[clamp(11px,0.82vw,12.5px)] font-semibold ${r.value === 0 ? 'text-mute' : 'text-ink'}`}>
+                <td className={`mono whitespace-nowrap text-right text-[13px] md:text-[clamp(11px,0.8vw,14px)] font-semibold ${r.value === 0 ? 'text-mute' : 'text-ink'}`}>
                   {first || r.ref ? '' : '+ '}
                   {brl(r.value)}
                 </td>
@@ -248,7 +273,7 @@ function Costs({ s }: { s: Study }) {
         <span className="text-[12px] font-semibold text-ink">Investimento total</span>
         <span className="num acc whitespace-nowrap text-[clamp(14px,1.25vw,18px)]">{brl(s.costs.total)}</span>
       </div>
-      <p className="mt-2 text-[11px] leading-snug text-mute">
+      <p className="fx-tall mt-2 text-[11px] leading-snug text-mute">
         Custo operacional {brl(s.period.op6)} (6m) · {brl(s.period.op12)} (12m)
         {f && ` · parcela ${brl(f.installment)}/mês`}
       </p>
@@ -266,12 +291,12 @@ function Scenarios({ s }: { s: Study }) {
     { k: 'Investimento', a: `−${brl(a.investment)}`, b: `−${brl(b.investment)}` },
     { k: 'Resultado bruto', a: brl(a.grossResult), b: brl(b.grossResult) },
     { k: 'ROI bruto', a: pct(a.grossRoi), b: pct(b.grossRoi) },
-    { k: `Imposto (IRGC ${a.taxPct}%)`, a: `−${a.taxPct}%`, b: `−${b.taxPct}%` },
+    { k: `IRGC (${a.taxPct}%)`, a: `−${a.taxPct}%`, b: `−${b.taxPct}%` },
   ]
-  const V = 'mono whitespace-nowrap pl-2 text-right text-[clamp(11px,0.82vw,12.5px)] font-semibold'
+  const V = 'mono whitespace-nowrap pl-2 text-right text-[13px] md:text-[clamp(11px,0.8vw,14px)] font-semibold'
   return (
-    <div className="fx-card flex min-h-0 min-w-0 flex-col p-[clamp(12px,1.8vh,18px)]" data-reveal="up" data-delay="0.45">
-      <p className="text-[15px] font-semibold tracking-tight text-ink">Calculadora de lucro</p>
+    <div className="fx-card flex h-full min-h-0 min-w-0 flex-col p-4 md:p-[clamp(12px,1.8vh,18px)]" data-reveal="up" data-delay="0.45">
+      <p className="text-[16px] font-semibold tracking-tight text-ink md:text-[clamp(14px,1vw,18px)]">Calculadora de lucro</p>
       <table className="mt-2 w-full border-collapse">
         <caption className="sr-only">Projeção de venda em 6 e 12 meses</caption>
         <thead>
@@ -284,7 +309,7 @@ function Scenarios({ s }: { s: Study }) {
         <tbody>
           {rows.map((r) => (
             <tr key={r.k} className="border-b border-white/[.06]">
-              <td className="py-[clamp(3px,0.5vh,6px)] pr-1 text-[clamp(11px,0.82vw,12.5px)] leading-[1.3] text-ink-2">{r.k}</td>
+              <td title={r.k} className="w-full py-[7px] pr-1 text-[13px] leading-[1.3] text-ink-2 md:max-w-0 md:truncate md:py-[clamp(3px,0.5vh,6px)] md:text-[clamp(11px,0.8vw,14px)]">{r.k}</td>
               <td className={V + ' text-ink'}>{r.a}</td>
               <td className={V + ' text-ink'}>{r.b}</td>
             </tr>
@@ -301,7 +326,7 @@ function Scenarios({ s }: { s: Study }) {
           <span className="mono whitespace-nowrap text-right text-[12px] font-semibold text-ink">{pct(b.netRoi)}</span>
         </div>
       </div>
-      {s.financing && <p className="mt-2 text-[11px] text-mute">* sobre o capital próprio (compra financiada).</p>}
+      {s.financing && <p className="fx-tall mt-2 text-[11px] text-mute">* sobre o capital próprio (compra financiada).</p>}
     </div>
   )
 }

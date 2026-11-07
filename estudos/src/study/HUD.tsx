@@ -64,7 +64,7 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
 
   return (
     <div ref={ref} className="pointer-events-none fixed inset-0 z-40">
-      <div className="hud pointer-events-auto absolute inset-x-0 top-0 flex items-center justify-between gap-3 px-4 py-4 md:px-8 md:py-6">
+      <div className="hud pointer-events-auto absolute inset-x-0 top-0 flex items-center justify-between gap-3 bg-gradient-to-b from-[#0b0c0e] via-[#0b0c0e]/90 to-transparent px-4 pb-6 pt-3 md:bg-none md:px-8 md:py-6">
         <div className="flex min-w-0 items-center gap-3">
           <button className="fx-pill h-10 border border-[var(--color-line)] bg-[var(--color-panel)] px-4 text-[14px] text-ink transition-colors hover:border-white/25" onClick={goHome} aria-label="Voltar aos estudos (Esc)" title="Voltar aos estudos · Esc">
             <Icon name="back" size={16} /> Voltar
@@ -100,7 +100,7 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
       </div>
 
       {/* rodapé: abas-pílula por imóvel (estilo Fexô) + contador com traço */}
-      <div className="hud pointer-events-auto absolute inset-x-0 bottom-0 flex items-center gap-4 px-4 pb-4 md:px-[3vw] md:pb-6">
+      <div className="hud pointer-events-auto absolute inset-x-0 bottom-0 flex items-center gap-4 bg-gradient-to-t from-[#0b0c0e] via-[#0b0c0e]/90 to-transparent px-4 pb-[max(14px,env(safe-area-inset-bottom))] pt-8 md:bg-none md:px-[3vw] md:pb-6 md:pt-0">
         <span className="mono hidden items-center gap-2 text-[12px] font-semibold text-ink md:flex">
           {pad2(index + 1)} <span className="text-mute">/ {pad2(studies.length)}</span>
           <span className="relative ml-1 block h-[3px] w-12 overflow-hidden rounded-full bg-white/15">
@@ -119,7 +119,7 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
                 aria-current={cur ? 'step' : undefined}
               >
                 {visited.has(s.slug) && !cur ? <Icon name="check" size={13} stroke={2} /> : <span className="mono text-[11px] opacity-60">{pad2(i + 1)}</span>}
-                <span className="hidden sm:inline">{s.title}</span>
+                <span className={cur ? "max-w-[44vw] truncate sm:max-w-none" : "hidden sm:inline"}>{s.title}</span>
               </button>
             )
           })}
