@@ -474,57 +474,6 @@ const raw: RawStudy[] = [
     caveats: [ADJ('“Assessoria (5%)” R$ 8.500'), 'O “Investimento total” do PDF (R$ 152.008,30) não somava os débitos pendentes (R$ 11.260); aqui eles entram no total.', 'Corretagem 12 meses rotulada 5%, mas o valor do PDF (R$ 13.800) é 6%; mantido 6%.'],
   },
 
-  /* ─────────────────────────── SANTA DULCE ─────────────────────────── */
-  {
-    slug: 'santa-dulce',
-    title: 'Santa Dulce',
-    fullTitle: 'Residencial Santa Dulce',
-    kicker: 'Oportunidade de Investimento',
-    brand: PJK,
-    sale: { modality: 'Leilão Único', date: '2025-07-29', time: '15h', hasAuctioneerLink: true },
-    appraisal: { source: 'Caixa', value: 139000 },
-    minimumBid: 58000,
-    property: { address: 'Rua Portugal, 55 · Barroso', city: '', unit: 'Apartamento 403', area: 57, bedrooms: 2, bathrooms: 2, parking: 1, condoFee: 500 },
-    images: imgs('santa-dulce'),
-    theme: { tint: '#5fd4d4', name: 'Turquesa' },
-    market: { from: 290000, listings: [] },
-    costs: {
-      items: [
-        { label: 'Valor arrematado', value: 58000, ref: true, phase: 'arremate' },
-        { label: 'Entrada (30%)', value: 0, pctOfBid: 0.3, phase: 'arremate' },
-        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05, phase: 'arremate' },
-        { label: 'Assessoria', value: 10000, phase: 'arremate' },
-        { label: 'Imposto de transmissão (ITBI)', value: 2780, phase: 'registro' },
-        { label: 'Custos cartorários (escritura + registro)', value: 10000, phase: 'registro' },
-        { label: 'Possível reforma', value: 5000, phase: 'obra' },
-        { label: 'Débitos pendentes (IPTU + condomínio)', value: 7000, phase: 'debitos' },
-      ],
-    },
-    period: {
-      items: [
-        { label: 'IPTU (12 meses)', value: 0, kind: 'once' },
-        { label: 'Condomínio mensal', value: 500, kind: 'monthly' },
-        { label: 'Parcela mensal', value: 1100, kind: 'monthly' },
-        { label: 'Desocupação amigável', value: 0, kind: 'once' },
-        { label: 'Taxa seguro Caixa', value: 0, kind: 'once' },
-      ],
-    },
-    financing: { downPaymentLabel: 'Entrada (30%)', installment: 1100 },
-    scenarios: [
-      { months: 6, sale: 120000, brokerageRate: 0.06, taxPct: 15 },
-      { months: 12, sale: 130000, brokerageRate: 0.06, taxPct: 15 },
-    ],
-    heroScenario: 0,
-    roiLabel: 'ROI líquido s/ capital próprio',
-    validation: VALIDATION,
-    closing: closing('A PJK Invest'),
-    caveats: [
-      ADJ('“Assessoria (5%)” R$ 7.000'),
-      'Saldo devedor recalculado sem amortização (R$ 40.600); o PDF descontava também o condomínio (R$ 31.000 / R$ 21.400).',
-      '“Similares a partir de R$ 290.000” no PDF, bem acima da venda projetada (R$ 120.000–130.000). Leilão de 29/07/2025 já ocorreu.',
-    ],
-  },
-
   /* ─────────────────────────── OSVALDO STUDART ─────────────────────────── */
   {
     slug: 'osvaldo-studart',
@@ -618,50 +567,6 @@ const raw: RawStudy[] = [
     validation: VALIDATION,
     closing: closing('A PJK Invest'),
     caveats: [ADJ('“Assessoria (5%)” R$ 10.108'), 'Corretagem 12 meses rotulada 5%, mas o valor do PDF (R$ 12.900) é 6%; mantido 6%.', 'Aceita FGTS (à vista). O PDF não informa a cidade.'],
-  },
-
-  /* ─────────────────────────── CONQUISTA JUREMA ─────────────────────────── */
-  {
-    slug: 'conquista-jurema',
-    title: 'Conquista Jurema',
-    fullTitle: 'Condomínio Conquista Jurema',
-    kicker: 'Oportunidade de Investimento',
-    brand: PJK,
-    sale: { modality: 'Licitação Aberta', date: '2026-11-11', time: '10h', lot: '878770188229-1', hasAuctioneerLink: true },
-    appraisal: { source: 'Caixa', value: 165000 },
-    minimumBid: 97778.11,
-    property: { address: 'Condomínio Conquista Jurema', city: 'Caucaia · CE', unit: 'Apartamento 404 · Bloco 34', area: 42.64, bedrooms: 2, bathrooms: 1, parking: 1, condoFee: 272 },
-    images: imgs('conquista-jurema'),
-    theme: { tint: '#7fb2ff', name: 'Céu' },
-    market: { from: 170000, listings: [] },
-    costs: {
-      items: [
-        { label: 'Valor arrematado', value: 97778.11, phase: 'arremate' },
-        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05, phase: 'arremate' },
-        { label: 'Assessoria', value: 10000, phase: 'arremate' },
-        { label: 'Imposto de transmissão (ITBI)', value: 3300, phase: 'registro' },
-        { label: 'Custos cartorários (escritura + registro)', value: 10200, phase: 'registro' },
-        { label: 'Possível reforma', value: 5000, phase: 'obra' },
-        { label: 'Débitos pendentes (IPTU + condomínio)', value: 1471.23, phase: 'debitos' },
-      ],
-    },
-    period: {
-      items: [
-        { label: 'IPTU (12 meses)', value: 0, kind: 'once' },
-        { label: 'Condomínio mensal', value: 272, kind: 'monthly' },
-        { label: 'Desocupação', value: 2000, kind: 'once' },
-        { label: 'Taxa seguro Caixa', value: 750, kind: 'once' },
-      ],
-    },
-    scenarios: [
-      { months: 6, sale: 175000, brokerageRate: 0.06, taxPct: 15 },
-      { months: 12, sale: 185000, brokerageRate: 0.06, taxPct: 15 },
-    ],
-    heroScenario: 0,
-    roiLabel: 'ROI líquido',
-    validation: VALIDATION,
-    closing: closing('A PJK Invest'),
-    caveats: [ADJ('“Assessoria (5%)” R$ 7.000'), 'Corretagem 12 meses rotulada 5%, mas o valor do PDF (R$ 11.100) é 6%; mantido 6%.', 'Aceita FGTS (à vista). Cidade pelo nome do arquivo (Caucaia).'],
   },
 
   /* ─────────────────────────── EXPEDICIONÁRIOS ─────────────────────────── */
