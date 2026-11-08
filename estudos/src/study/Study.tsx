@@ -5,7 +5,7 @@ import { loadProgress, saveProgress } from '../lib/progress'
 import { prefs } from '../lib/prefs'
 import { sound } from '../lib/sound'
 import { navigate, replacePath } from '../lib/router'
-import { reducedMotion } from '../lib/media'
+import { reducedMotion, useMedia } from '../lib/media'
 import { brl, pct } from '../lib/format'
 import { hero } from '../lib/derive'
 import { rig } from '../three/rig'
@@ -14,6 +14,7 @@ import HUD, { type Toast } from './HUD'
 import Minimap from './Minimap'
 import Notes from './Notes'
 import PropertyPanel, { PanelBackdrop } from './PropertyPanel'
+import PropertyMobile from './PropertyMobile'
 import { StudyContext, type Ctx } from './ctx'
 
 const seen = () => new Set(studies.filter((s) => loadProgress(s.slug).visited.length > 0).map((s) => s.slug))
@@ -37,6 +38,7 @@ function canScroll(target: EventTarget | null, dy: number) {
  */
 export default function Study({ slug, onReady }: { slug: string; onReady: () => void }) {
   const n = studies.length
+  const mobile = useMedia('(max-width: 767px)')
   const [index, setIndex] = useState(() => Math.max(0, studies.findIndex((s) => s.slug === slug)))
   const [map, setMap] = useState(false)
   const [notes, setNotes] = useState(false)
@@ -213,7 +215,7 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
 
   return (
     <StudyContext.Provider value={ctx}>
-      <PanelBackdrop key={s.slug} study={s} />
+      {!mobile && <PanelBackdrop key={s.slug} study={s} />}
       <div
         ref={stage}
         className="fixed inset-0 z-10"
@@ -222,7 +224,11 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
         aria-label={`Imóvel ${index + 1} de ${n}: ${s.fullTitle}`}
         aria-live="polite"
       >
-        <PropertyPanel key={s.slug} study={s} no={index + 1} total={n} />
+        {mobile ? (
+          <PropertyMobile key={s.slug} study={s} no={index + 1} total={n} onMap={() => setMap(true)} />
+        ) : (
+          <PropertyPanel key={s.slug} study={s} no={index + 1} total={n} />
+        )}
       </div>
       <HUD ref={hud} onMap={() => setMap(true)} toast={toast} />
       <Minimap open={map} onClose={() => setMap(false)} />

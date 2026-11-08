@@ -63,7 +63,7 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
   }, [])
 
   return (
-    <div ref={ref} className="pointer-events-none fixed inset-0 z-40">
+    <div ref={ref} className="pointer-events-none fixed inset-0 z-40 hidden md:block">
       <div className="hud pointer-events-auto absolute inset-x-0 top-0 flex items-center justify-between gap-3 bg-gradient-to-b from-[#0b0c0e] via-[#0b0c0e]/90 to-transparent px-4 pb-6 pt-3 md:bg-none md:px-8 md:py-6">
         <div className="flex min-w-0 items-center gap-3">
           <button className="fx-pill h-9 pl-1 pr-2 text-[17px] font-normal text-[var(--acc)] transition-opacity hover:opacity-70" onClick={goHome} aria-label="Voltar aos estudos (Esc)" title="Voltar aos estudos · Esc">

@@ -108,7 +108,7 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
 
   return (
     <div ref={root} className={`relative min-h-[100dvh] overflow-hidden ${touch ? 'touch' : ''}`}>
-      <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-5 py-5 md:px-10 md:py-7" style={{ opacity: diving ? 0 : 1, transition: 'opacity .6s' }}>
+      <header className="m-bar fixed inset-x-0 top-0 z-30 flex items-center justify-between px-4 py-3 md:!border-0 md:!bg-transparent md:px-10 md:py-7 md:![backdrop-filter:none]" style={{ opacity: diving ? 0 : 1, transition: 'opacity .6s' }}>
         <span data-in>
           <Brand />
         </span>
@@ -127,7 +127,7 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
         style={{ opacity: diving ? 0 : 1, transition: 'opacity .7s cubic-bezier(.16,1,.3,1)' }}
         aria-label="Estudos"
       >
-        <div className="px-5 pt-28 md:px-10 md:pt-[17vh]">
+        <div className="px-4 pt-24 md:px-10 md:pt-[17vh]">
           <p className="label flex items-center gap-2 !text-ink-2" data-in>
             <span className="acc"><Icon name="bolt" size={12} stroke={2} /></span> Estudos de oportunidade · Fortaleza, CE
           </p>
@@ -140,9 +140,9 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
         </div>
 
         {touch ? (
-          <div className="card-row mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-16 [scrollbar-width:none]">
+          <div className="card-row mt-8 grid gap-4 px-4 pb-12 sm:grid-cols-2">
             {items.map((it, i) => (
-              <div key={it.study.slug} className="w-[78vw] max-w-[320px] flex-none snap-center">
+              <div key={it.study.slug}>
                 <StudyCard {...it} index={i} width={0} onOpen={(r) => open(i, r)} onHover={() => setFocus(i)} />
               </div>
             ))}

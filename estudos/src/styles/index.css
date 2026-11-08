@@ -675,3 +675,47 @@ html.study-mode::-webkit-scrollbar { display: none; }
 /* linha do tempo no celular: etapas aparecem ao rolar */
 .tl-v { opacity: 0; transform: translateY(16px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
 .tl-v.is-in { opacity: 1; transform: none; }
+
+/* ───────── celular (padrão iOS) ───────── */
+.m-bar {
+  background: rgb(10 10 12 / 0.86);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 0.5px solid rgb(255 255 255 / 0.08);
+}
+.m-bar-bottom {
+  border-bottom: 0;
+  border-top: 0.5px solid rgb(255 255 255 / 0.08);
+}
+.m-tabs {
+  background: #000;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+.m-scroll { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.m-scroll::-webkit-scrollbar { display: none; }
+.ios-group {
+  background: var(--color-panel);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.ios-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 11px 16px;
+}
+.ios-row + .ios-row::before,
+summary.ios-row + .ios-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 0;
+  height: 0.5px;
+  background: rgb(84 84 88 / 0.6);
+}
+details > summary::-webkit-details-marker { display: none; }
