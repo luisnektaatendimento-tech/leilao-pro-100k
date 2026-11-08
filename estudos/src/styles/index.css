@@ -1,27 +1,28 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Design system Fexô (tema escuro): Inter, pílulas, cards 24px, acento amarelo forte. */
-  --font-sans: 'Inter Variable', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-display: 'Inter Variable', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-mono: 'Inter Variable', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
-  --color-bg: #0b0c0e;
-  --color-panel: #15171a;
-  --color-panel-2: #1d2024;
-  --color-ink: #f4f5f7;
-  --color-ink-2: #b4b9c1;
-  --color-mute: #7d838c;
-  --color-line: rgb(255 255 255 / 0.08);
-  --color-blue: #2f6bff;
-  --color-acc: var(--acc);
+  /* Design system Apple (modo escuro): SF Pro + cores do sistema. Fora de Mac/iPhone o fallback é Inter. */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter Variable', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Variable', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter Variable', sans-serif;
+  --color-bg: #000000;
+  --color-panel: #1c1c1e;
+  --color-panel-2: #2c2c2e;
+  --color-ink: #ffffff;
+  --color-ink-2: rgb(235 235 245 / 0.62);
+  --color-mute: rgb(235 235 245 / 0.42);
+  --color-line: rgb(84 84 88 / 0.55);
+  --color-fill: rgb(118 118 128 / 0.24);
+  --color-blue: #0a84ff;
+  --color-green: #30d158;
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 :root {
-  --acc: #ffd400;
-  --acc-rgb: 255 212 0;
-  --on-acc: #0b0c0e;
+  --acc: #ffd60a;
+  --acc-rgb: 255 214 10;
+  --on-acc: #000000;
   color-scheme: dark;
 }
 
@@ -32,7 +33,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'cv11', 'ss01';
+  letter-spacing: -0.01em;
 }
 body {
   overscroll-behavior: none;
@@ -68,39 +69,38 @@ html.lenis body {
 @layer components {
 /* ───────── tipografia ───────── */
 .mono {
-  /* valores: Inter com algarismos tabulares (Fexô não usa monoespaçada) */
+  /* valores: SF Pro com algarismos tabulares */
   font-family: var(--font-sans);
-  font-feature-settings: 'tnum', 'cv11';
+  font-variant-numeric: tabular-nums;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 .label {
-  /* eyebrow Fexô: MAIÚSCULAS espaçadas */
+  /* legenda Apple: caixa normal, cinza secundário */
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-mute);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--color-ink-2);
 }
 .display {
   font-family: var(--font-display);
-  font-weight: 650;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.04;
 }
 .num {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  font-feature-settings: 'tnum', 'cv11';
-  line-height: 0.98;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
-/* ── componentes Fexô ── */
+/* ── componentes no estilo Apple ── */
 .fx-card {
   background: var(--color-panel);
-  border: 1px solid var(--color-line);
-  border-radius: 24px;
+  border: 0.5px solid rgb(255 255 255 / 0.08);
+  border-radius: 22px;
 }
 .fx-pill {
   display: inline-flex;
@@ -109,39 +109,74 @@ html.lenis body {
   border-radius: 999px;
   white-space: nowrap;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
+/* botão "proeminente" (cheio) */
 .fx-acc {
   background: var(--acc);
   color: var(--on-acc);
 }
+/* botão/rótulo "tingido" */
+.fx-tinted {
+  background: rgb(var(--acc-rgb) / 0.16);
+  color: var(--acc);
+}
+/* botão "cinza" */
+.fx-gray {
+  background: var(--color-fill);
+  color: var(--color-ink);
+}
+/* material translúcido sobre fotos */
 .fx-dark {
-  background: rgb(11 12 14 / 0.72);
+  background: rgb(28 28 30 / 0.6);
   color: #fff;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 .fx-total {
-  background: #000;
-  border: 1px solid var(--color-line);
-  border-radius: 16px;
+  background: rgb(118 118 128 / 0.14);
+  border-radius: 14px;
 }
 .fx-note {
-  background: rgb(var(--acc-rgb) / 0.08);
-  border: 1px solid rgb(var(--acc-rgb) / 0.22);
-  color: #ffe680;
+  background: rgb(48 209 88 / 0.1);
+  color: var(--color-green);
   border-radius: 14px;
+}
+/* controle segmentado */
+.seg {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 10px;
+  background: var(--color-fill);
+}
+.seg > button {
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink-2);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  white-space: nowrap;
+}
+.seg > button[aria-pressed='true'],
+.seg > button[aria-current] {
+  background: #636366;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 0.12), 0 3px 1px rgb(0 0 0 / 0.04);
 }
 .fx-market {
   display: block;
 }
 @media (min-width: 768px) and (max-height: 819px) {
   .fx-market {
-    display: none;
+    display: none !important;
   }
 }
 @media (min-width: 768px) and (max-height: 760px) {
   .fx-tall {
-    display: none;
+    display: none !important;
   }
 }
 @media (min-width: 768px) and (max-width: 1400px) {
@@ -153,11 +188,10 @@ html.lenis body {
 .fx-ico {
   display: inline-grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  background: var(--color-panel-2);
-  border: 1px solid var(--color-line);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--color-fill);
   color: var(--color-ink);
 }
 .tnum {
@@ -258,9 +292,9 @@ html.lenis body {
 }
 .card-face {
   position: relative;
-  border-radius: 24px;
+  border-radius: 22px;
   overflow: hidden;
-  border: 1px solid var(--color-line);
+  border: 0.5px solid rgb(255 255 255 / 0.1);
   background: var(--color-panel);
   box-shadow:
     0 40px 80px -30px rgb(0 0 0 / 0.9),
@@ -490,19 +524,18 @@ html.lenis body {
 .icon-btn {
   display: inline-grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   color: var(--color-ink);
-  background: var(--color-panel);
-  border: 1px solid var(--color-line);
+  background: var(--color-fill);
+  border: 0;
   transition: color 0.4s, border-color 0.4s, background 0.4s;
 }
 .icon-btn:hover,
 .icon-btn[aria-pressed='true'] {
   color: var(--color-ink);
-  border-color: rgb(237 234 228 / 0.28);
-  background: rgb(237 234 228 / 0.04);
+  background: rgb(118 118 128 / 0.36);
 }
 .icon-btn[aria-pressed='true'] {
   color: var(--acc);
@@ -592,69 +625,39 @@ html.study-mode::-webkit-scrollbar { display: none; }
 }
 
 .panel-shell {
-  --cut: 30px;
   position: absolute;
-  inset: 80px 2.4vw 88px;
+  inset: 76px 2.4vw 92px;
   padding: 1px;
-  clip-path: polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
-  background: linear-gradient(160deg, color-mix(in srgb, var(--tint) 70%, transparent), rgb(255 255 255 / 0.08) 30%, rgb(255 255 255 / 0.05) 70%, color-mix(in srgb, var(--tint) 50%, transparent));
+  border-radius: 32px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tint) 55%, transparent), rgb(255 255 255 / 0.07) 22%, rgb(255 255 255 / 0.05));
+  box-shadow: 0 40px 120px -40px rgb(0 0 0 / 0.9), 0 0 80px -30px color-mix(in srgb, var(--tint) 45%, transparent);
 }
 .panel {
   position: relative;
   height: 100%;
   overflow: hidden;
   padding: clamp(18px, 2vw, 30px);
-  clip-path: inherit;
+  border-radius: 31px;
   background:
-    radial-gradient(80% 60% at 0% 0%, color-mix(in srgb, var(--tint) 10%, transparent), transparent 60%),
-    linear-gradient(180deg, rgb(12 14 18 / 0.9), rgb(7 8 11 / 0.95));
+    radial-gradient(70% 50% at 50% 0%, color-mix(in srgb, var(--tint) 9%, transparent), transparent 70%),
+    linear-gradient(180deg, rgb(20 20 22 / 0.94), rgb(10 10 12 / 0.96));
 }
-/* filetes de luz no topo e na base do painel */
-.panel::before,
-.panel::after {
-  content: '';
-  position: absolute;
-  left: 18%;
-  right: 18%;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, transparent, var(--tint), transparent);
-  box-shadow: 0 0 18px 1px color-mix(in srgb, var(--tint) 70%, transparent);
-  pointer-events: none;
-  z-index: 2;
-}
-.panel::before { top: 0; }
-.panel::after { bottom: 0; opacity: 0.6; }
-.panel-mark {
-  position: absolute;
-  right: -1.5%;
-  bottom: -5%;
-  z-index: 0;
-  font-size: clamp(5rem, 15vw, 17rem);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  white-space: nowrap;
-  color: transparent;
-  -webkit-text-stroke: 1px color-mix(in srgb, var(--tint) 30%, transparent);
-  opacity: 0.55;
-  pointer-events: none;
-  user-select: none;
-}
+.panel-mark { display: none; }
 .panel .fx-card {
-  background: rgb(255 255 255 / 0.025);
-  border-color: rgb(255 255 255 / 0.07);
-  border-radius: 18px;
+  background: rgb(255 255 255 / 0.035);
+  border-color: rgb(255 255 255 / 0.06);
+  border-radius: 20px;
 }
 @media (min-width: 768px) and (max-height: 800px) {
-  .panel-shell { inset: 70px 2vw 76px; }
+  .panel-shell { inset: 66px 2vw 80px; }
   .panel { padding: 18px 22px; }
 }
 @media (max-width: 767px) {
   .panel-shell {
-    --cut: 16px;
-    inset: 64px 10px 78px;
+    inset: 60px 8px 80px;
+    border-radius: 26px;
   }
+  .panel { border-radius: 25px; }
   .panel {
     overflow-x: hidden;
     overflow-y: auto;
@@ -663,8 +666,12 @@ html.study-mode::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
   }
   .panel::-webkit-scrollbar { display: none; }
-  .panel::before,
-  .panel::after { position: sticky; display: block; left: auto; right: auto; margin: 0 18%; }
-  .panel::after { display: none; }
-  .panel-mark { position: fixed; bottom: 70px; right: 0; font-size: 26vw; opacity: 0.35; }
+
 }
+
+/* troca de modo no painel (visão geral ↔ linha do tempo) */
+.mode-in { animation: mode-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes mode-in { from { opacity: 0; transform: translateY(10px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+/* linha do tempo no celular: etapas aparecem ao rolar */
+.tl-v { opacity: 0; transform: translateY(16px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.tl-v.is-in { opacity: 1; transform: none; }

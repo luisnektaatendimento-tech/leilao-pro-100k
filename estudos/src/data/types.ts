@@ -4,6 +4,9 @@
  * Valores monetários em reais (number). Percentuais exatamente como no PDF (ex.: 33.31).
  */
 
+/** Etapa da linha do tempo em que o custo é pago. */
+export type PhaseKey = 'arremate' | 'registro' | 'debitos' | 'obra'
+
 export interface Row {
   label: string
   value: number
@@ -15,6 +18,8 @@ export interface Row {
   pctOfBid?: number
   /** Custos do período: 'monthly' multiplica pelos meses; 'once' entra uma vez. */
   kind?: 'monthly' | 'once'
+  /** Linha do tempo: etapa em que este custo é pago (custos de aquisição). */
+  phase?: PhaseKey
 }
 
 export interface Listing {

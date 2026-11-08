@@ -79,13 +79,13 @@ const raw: RawStudy[] = [
     },
     costs: {
       items: [
-        { label: 'Valor arrematado', value: 100148.49 },
-        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05 },
-        { label: 'Assessoria', value: 10000 },
-        { label: 'Imposto de transmissão (ITBI)', value: 3380 },
-        { label: 'Custos cartorários (escritura + registro)', value: 10250 },
-        { label: 'Possível reforma', value: 0 },
-        { label: 'Débitos pendentes (IPTU + condomínio)', value: 9728.6 },
+        { label: 'Valor arrematado', value: 100148.49, phase: 'arremate' },
+        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05, phase: 'arremate' },
+        { label: 'Assessoria', value: 10000, phase: 'arremate' },
+        { label: 'Imposto de transmissão (ITBI)', value: 3380, phase: 'registro' },
+        { label: 'Custos cartorários (escritura + registro)', value: 10250, phase: 'registro' },
+        { label: 'Possível reforma', value: 0, phase: 'obra' },
+        { label: 'Débitos pendentes (IPTU + condomínio)', value: 9728.6, phase: 'debitos' },
       ],
     },
     period: {
@@ -148,14 +148,14 @@ const raw: RawStudy[] = [
     },
     costs: {
       items: [
-        { label: 'Valor arrematado', value: 119000, ref: true },
-        { label: 'Entrada (30%)', value: 0, pctOfBid: 0.3 },
-        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05 },
-        { label: 'Assessoria', value: 10000 },
-        { label: 'Imposto de transmissão (ITBI)', value: 2380 },
-        { label: 'Custos cartorários (escritura + registro)', value: 10245 },
-        { label: 'Possível reforma', value: 10000 },
-        { label: 'Débitos pendentes (IPTU + condomínio)', value: 7000 },
+        { label: 'Valor arrematado', value: 119000, ref: true, phase: 'arremate' },
+        { label: 'Entrada (30%)', value: 0, pctOfBid: 0.3, phase: 'arremate' },
+        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05, phase: 'arremate' },
+        { label: 'Assessoria', value: 10000, phase: 'arremate' },
+        { label: 'Imposto de transmissão (ITBI)', value: 2380, phase: 'registro' },
+        { label: 'Custos cartorários (escritura + registro)', value: 10245, phase: 'registro' },
+        { label: 'Possível reforma', value: 10000, phase: 'obra' },
+        { label: 'Débitos pendentes (IPTU + condomínio)', value: 7000, phase: 'debitos' },
       ],
     },
     period: {
@@ -225,13 +225,13 @@ const raw: RawStudy[] = [
     },
     costs: {
       items: [
-        { label: 'Valor arrematado', value: 150626.91 },
-        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05 },
-        { label: 'Assessoria', value: 10000 },
-        { label: 'Imposto de transmissão (ITBI)', value: 4880 },
-        { label: 'Custos cartorários (escritura + registro)', value: 10000 },
-        { label: 'Possível reforma', value: 0 },
-        { label: 'Débitos pendentes (IPTU + condomínio)', value: 10000 },
+        { label: 'Valor arrematado', value: 150626.91, phase: 'arremate' },
+        { label: 'Leiloeiro (5%)', value: 0, pctOfBid: 0.05, phase: 'arremate' },
+        { label: 'Assessoria', value: 10000, phase: 'arremate' },
+        { label: 'Imposto de transmissão (ITBI)', value: 4880, phase: 'registro' },
+        { label: 'Custos cartorários (escritura + registro)', value: 10000, phase: 'registro' },
+        { label: 'Possível reforma', value: 0, phase: 'obra' },
+        { label: 'Débitos pendentes (IPTU + condomínio)', value: 10000, phase: 'debitos' },
       ],
     },
     period: {
@@ -293,12 +293,12 @@ const raw: RawStudy[] = [
     },
     costs: {
       items: [
-        { label: 'Valor arrematado', value: 94222.54 },
-        { label: 'Assessoria', value: 10000 },
-        { label: 'Imposto de transmissão (ITBI)', value: 3180 },
-        { label: 'Custos cartorários (escritura + registro)', value: 9500 },
-        { label: 'Possível reforma', value: 5000 },
-        { label: 'Débitos pendentes (IPTU + condomínio)', value: 8500 },
+        { label: 'Valor arrematado', value: 94222.54, phase: 'arremate' },
+        { label: 'Assessoria', value: 10000, phase: 'arremate' },
+        { label: 'Imposto de transmissão (ITBI)', value: 3180, phase: 'registro' },
+        { label: 'Custos cartorários (escritura + registro)', value: 9500, phase: 'registro' },
+        { label: 'Possível reforma', value: 5000, phase: 'obra' },
+        { label: 'Débitos pendentes (IPTU + condomínio)', value: 8500, phase: 'debitos' },
       ],
     },
     period: {

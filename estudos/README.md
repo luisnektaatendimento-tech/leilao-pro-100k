@@ -54,8 +54,15 @@ Quando os 4 imóveis forem vistos, aparece um selo e uma onda de luz no fundo.
 
 ## Design system
 
-Segue o design system da plataforma **Fexô**, em tema escuro e com acento **amarelo forte (#FFD400)**:
-Inter (semibold/bold, letras juntas), etiquetas em MAIÚSCULAS espaçadas, botões e chips em pílula,
-cards com cantos de 24px, ícones em círculos, a pílula "⚡ X% abaixo da avaliação", o valor avaliado riscado,
-a barra "Investimento total" e as faixas de aviso. Os tokens ficam no topo de `src/styles/index.css`
-(`--acc`, `--color-panel`, `.fx-card`, `.fx-pill`, `.fx-acc`, `.fx-total`, `.fx-note`).
+Segue o design system e a tipografia da **Apple** (modo escuro): SF Pro (fontes do sistema em Mac, iPhone e iPad;
+fora deles o fallback é Inter), cores do sistema (#000, #1C1C1E, cinzas translúcidos, amarelo #FFD60A, verde #30D158,
+azul #0A84FF), legendas em caixa normal, botões nos estilos cheio/tingido/cinza, controles segmentados e materiais
+translúcidos. Cada imóvel tem a própria cor de luz em `theme.tint` (`src/data/studies.ts`). Os tokens ficam no topo de
+`src/styles/index.css`.
+
+## Linha do tempo dos pagamentos
+
+No painel de cada imóvel, o botão "Linha do tempo dos pagamentos" (ou a tecla L) mostra, etapa por etapa, o que se
+paga e em que ordem: arremate, registro, débitos, reforma, manutenção, venda, imposto e resultado, com o saldo do
+investidor em cada momento. A etapa de cada custo fica no campo `phase` das linhas de custo em `studies.ts`. A ordem é
+a típica de uma compra em leilão; os prazos reais seguem o edital.

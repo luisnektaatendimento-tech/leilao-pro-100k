@@ -8,6 +8,9 @@ export interface Ctx {
   visited: Set<string>
   complete: boolean
   goHome: () => void
+  /** Linha do tempo dos pagamentos aberta no painel. */
+  timeline: boolean
+  setTimeline: (open: boolean) => void
 }
 export const StudyContext = createContext<Ctx>(null!)
 export const useStudy = () => useContext(StudyContext)

@@ -113,7 +113,7 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
           <Brand />
         </span>
         <div className="flex items-center gap-2" data-in>
-          <span className="fx-pill mr-1 hidden h-10 border border-[var(--color-line)] bg-[var(--color-panel)] px-4 text-[13px] sm:inline-flex">
+          <span className="fx-pill fx-gray mr-1 hidden h-9 px-3.5 text-[13px] sm:inline-flex">
             <span className="h-2 w-2 rounded-full" style={{ background: 'var(--acc)', boxShadow: '0 0 0 3px rgb(var(--acc-rgb) / .2)' }} />
             <b className="mono font-bold">{items.length}</b> <span className="font-normal text-ink-2">estudos</span>
           </span>

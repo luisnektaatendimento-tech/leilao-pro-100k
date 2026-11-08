@@ -42,6 +42,9 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
   const [notes, setNotes] = useState(false)
   const [toast, setToast] = useState<Toast | null>(null)
   const [visited, setVisited] = useState(seen)
+  const [timeline, setTimeline] = useState(false)
+  const tl = useRef(false)
+  tl.current = timeline
   const visitedRef = useRef(visited)
   visitedRef.current = visited
 
@@ -129,6 +132,14 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
       if (e.metaKey || e.ctrlKey || e.altKey) return
       const k = e.key
       const i = idx.current
+      // com a linha do tempo aberta, setas/Esc/L ficam com ela
+      if (tl.current) {
+        if (k.toLowerCase() === 'm') setMap((m) => !m)
+        else if (k.toLowerCase() === 'n') setNotes(true)
+        else if (k.toLowerCase() === 'p') prefs.toggle('presenter')
+        return
+      }
+      if (k.toLowerCase() === 'l') return setTimeline(true)
       if (k === 'ArrowRight' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) {
         e.preventDefault()
         goTo(i + 1)
@@ -149,6 +160,7 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
     let lockUntil = 0
     let resetT = 0
     const wheel = (e: WheelEvent) => {
+      if (tl.current) return
       const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY
       if (Math.abs(e.deltaY) >= Math.abs(e.deltaX) && canScroll(e.target, e.deltaY)) return
       e.preventDefault()
@@ -196,7 +208,7 @@ export default function Study({ slug, onReady }: { slug: string; onReady: () => 
     rig.celebrate = complete ? 1 : 0
   }, [complete])
 
-  const ctx: Ctx = { index, goTo, visited, complete, goHome }
+  const ctx: Ctx = { index, goTo, visited, complete, goHome, timeline, setTimeline }
   const s = studies[index]
 
   return (

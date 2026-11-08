@@ -17,7 +17,7 @@ interface Props {
 function StatusChip({ status }: { status: Status }) {
   if (status.state === 'explorado')
     return (
-      <span className="fx-pill fx-acc px-2.5 py-1 text-[11px] font-bold">
+      <span className="fx-pill fx-tinted px-2.5 py-1 text-[11px]">
         <Icon name="check" size={12} stroke={2.2} /> Explorado
       </span>
     )
@@ -83,7 +83,7 @@ export default function StudyCard({ study, status, onOpen, onHover }: Props) {
             </p>
             <p className="mt-3 text-[11px] text-mute">Lance inicial</p>
             <p className="num text-[22px]">{brl(study.minimumBid)}</p>
-            <span className="fx-pill fx-acc mt-2.5 px-2.5 py-1 text-[12px] font-bold">
+            <span className="fx-pill fx-tinted mt-2.5 px-2.5 py-1 text-[12px]">
               <Icon name="bolt" size={12} stroke={2} /> {pct(discountPct(study), 1)} abaixo da avaliação
             </span>
             <div className="card-meta">

@@ -6,6 +6,8 @@ import { Count, Words } from './primitives'
 import { Icon } from '../components/Icon'
 import { studies } from '../data/studies'
 import { highlightsFor } from '../lib/highlights'
+import { useStudy } from './ctx'
+import Timeline from './Timeline'
 
 /**
  * Painel único por imóvel: um display grande, em tela cheia, com identidade própria
@@ -13,6 +15,7 @@ import { highlightsFor } from '../lib/highlights'
  * destaque em que o imóvel lidera o portfólio). Números vêm de `studies.ts`.
  */
 export default function PropertyPanel({ study: s, no, total }: { study: Study; no: number; total: number }) {
+  const { timeline, setTimeline } = useStudy()
   const h = hero(s)
   const p = s.property
   const highlights = highlightsFor(s, studies).slice(0, 2)
@@ -24,6 +27,23 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
     { icon: 'coin', v: brl(p.condoFee), k: 'Condomínio' },
   ].filter(Boolean) as { icon: string; v: string; k: string }[]
 
+  const validation = (
+    <div className="fx-note flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2 px-4 py-3 text-[12px] md:flex-nowrap md:py-[clamp(8px,1.3vh,12px)]" data-reveal="fade" data-delay="0.9" title={s.validation.join(' · ')}>
+      <Icon name="shield" size={16} />
+      <span className="font-semibold md:flex-none md:whitespace-nowrap">
+        Valor de mercado validado · {s.validation.length}/{s.validation.length}
+      </span>
+      <ul className="basis-full space-y-1 pl-[26px] text-[12px] text-ink-2 md:hidden">
+        {s.validation.map((v) => (
+          <li key={v} className="flex gap-1.5">
+            <Icon name="check" size={13} stroke={2} /> {v}
+          </li>
+        ))}
+      </ul>
+      <span className="hidden min-w-0 truncate text-ink-2 lg:inline">{s.validation.join(' · ')}</span>
+    </div>
+  )
+
   return (
     <div className="panel-shell" style={{ ['--tint' as string]: s.theme.tint }}>
       <div className="panel">
@@ -32,7 +52,12 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
           {s.title}
         </span>
 
-        <div className="relative z-10 flex flex-col gap-5 md:grid md:h-full md:min-h-0 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:gap-[clamp(18px,2vw,34px)]">
+        {timeline ? (
+          <div className="mode-in relative z-10 md:h-full">
+            <Timeline study={s} onClose={() => setTimeline(false)} />
+          </div>
+        ) : (
+        <div className="mode-in relative z-10 flex flex-col gap-5 md:grid md:h-full md:min-h-0 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:gap-[clamp(18px,2vw,34px)]">
           {/* ───────── esquerda: a vista do imóvel ───────── */}
           <div className="flex min-h-0 flex-col gap-[clamp(12px,1.8vh,18px)]">
             <div data-photo className="relative aspect-[4/3] overflow-hidden rounded-[20px] md:aspect-auto md:min-h-0 md:flex-1" style={{ boxShadow: '0 0 0 1px rgb(255 255 255 / .08), 0 30px 60px -30px #000' }}>
@@ -59,7 +84,7 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
 
             <div>
               <div className="flex flex-wrap items-center gap-2" data-reveal="fade" data-delay="0.15">
-                <span className="fx-pill bg-white px-2.5 py-1 text-[11px] text-[#0b0c0e]">{p.unit}</span>
+                <span className="fx-pill fx-gray px-2.5 py-1 text-[12px]">{p.unit}</span>
                 <span className="fx-pill px-2.5 py-1 text-[11px]" style={{ background: 'color-mix(in srgb, var(--tint) 16%, transparent)', color: 'var(--tint)' }}>
                   <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--tint)' }} /> {s.appraisal.source === 'Caixa' ? 'Imóvel Caixa' : `Imóvel ${s.appraisal.source}`}
                 </span>
@@ -94,14 +119,37 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
             <div className="hidden md:block">
               <MarketStrip s={s} />
             </div>
+            <div className="hidden md:block">{validation}</div>
           </div>
 
           {/* ───────── direita: os números ───────── */}
           <div className="flex min-h-0 min-w-0 flex-col gap-[clamp(12px,1.8vh,18px)] md:justify-center">
+            <button
+              onClick={() => setTimeline(true)}
+              className="group flex w-full items-center justify-between gap-3 rounded-[16px] border px-4 py-3 text-left transition-colors md:py-[clamp(8px,1.3vh,12px)]"
+              style={{ borderColor: 'color-mix(in srgb, var(--tint) 45%, transparent)', background: 'color-mix(in srgb, var(--tint) 8%, transparent)' }}
+              data-reveal="fade"
+              data-delay="0.2"
+              aria-label="Abrir a linha do tempo dos pagamentos (L)"
+            >
+              <span className="flex min-w-0 items-center gap-3">
+                <span className="grid h-9 w-9 flex-none place-items-center rounded-full" style={{ background: 'var(--tint)', color: '#0b0c0e' }}>
+                  <Icon name="route" size={17} stroke={2} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-[14px] font-semibold text-ink">Linha do tempo dos pagamentos</span>
+                  <span className="block truncate text-[12px] text-ink-2">O que se paga, em que ordem, etapa por etapa até o lucro</span>
+                </span>
+              </span>
+              <span className="flex-none transition-transform duration-500 group-hover:translate-x-1" style={{ color: 'var(--tint)' }}>
+                <Icon name="arrowRight" size={18} stroke={2} />
+              </span>
+            </button>
+
             {highlights.length > 0 && (
-              <div className="flex flex-wrap gap-2" data-reveal="fade" data-delay="0.25">
+              <div className="fx-tall flex flex-wrap gap-2" data-reveal="fade" data-delay="0.25">
                 {highlights.map((x) => (
-                  <span key={x.label} className="fx-pill px-3 py-1.5 text-[12px]" style={{ border: '1px solid color-mix(in srgb, var(--tint) 45%, transparent)', color: 'var(--color-ink)' }}>
+                  <span key={x.label} className="fx-pill fx-gray px-3 py-1.5 text-[12px] font-medium">
                     <span style={{ color: 'var(--tint)' }}>
                       <Icon name="spark" size={13} stroke={1.8} />
                     </span>
@@ -120,7 +168,7 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
                   Avaliado em <span className="line-through decoration-white/50">{brl(s.appraisal.value)}</span> · {s.appraisal.source}
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="fx-pill fx-acc px-3 py-1.5 text-[13px] font-bold">
+                  <span className="fx-pill fx-tinted px-3 py-1.5 text-[13px]">
                     <Icon name="bolt" size={14} stroke={2} />
                     {pct(discountPct(s), 1)} abaixo da avaliação
                   </span>
@@ -156,22 +204,10 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
               <MarketStrip s={s} />
             </div>
 
-            <div className="fx-note flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2 px-4 py-3 text-[12px] md:flex-nowrap md:py-[clamp(8px,1.3vh,12px)]" data-reveal="fade" data-delay="0.9" title={s.validation.join(' · ')}>
-              <Icon name="shield" size={16} />
-              <span className="font-semibold md:flex-none md:whitespace-nowrap">
-                Valor de mercado validado · {s.validation.length}/{s.validation.length}
-              </span>
-              <ul className="basis-full space-y-1 pl-[26px] text-[12px] text-[#ffe680]/80 md:hidden">
-                {s.validation.map((v) => (
-                  <li key={v} className="flex gap-1.5">
-                    <Icon name="check" size={13} stroke={2} /> {v}
-                  </li>
-                ))}
-              </ul>
-              <span className="hidden min-w-0 truncate text-[#ffe680]/70 lg:inline">{s.validation.join(' · ')}</span>
-            </div>
+            <div className="md:hidden">{validation}</div>
           </div>
         </div>
+        )}
       </div>
     </div>
   )
