@@ -80,7 +80,7 @@ export interface Study {
     parking?: number
     condoFee: number
   }
-  images: { photo: string; thumb: string; map: string; blur: string }
+  images: { photo: string; thumb: string; map?: string; blur: string }
   /** Identidade visual do painel deste imóvel: cor de luz tirada da foto. */
   theme: { tint: string; name: string }
   market: {

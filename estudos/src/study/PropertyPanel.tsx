@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import type { Study } from '../data/types'
 import { brl, brlK, dateBR, num, pad2, pct } from '../lib/format'
-import { costItems, discountPct, hero } from '../lib/derive'
+import { appraisalLabel, costItems, discountPct, hero, marketPrices, placeLine } from '../lib/derive'
 import { Count, Words } from './primitives'
 import { Icon } from '../components/Icon'
-import { studies } from '../data/studies'
-import { highlightsFor } from '../lib/highlights'
 import { useStudy } from './ctx'
 import Timeline from './Timeline'
 
@@ -18,7 +16,6 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
   const { timeline, setTimeline } = useStudy()
   const h = hero(s)
   const p = s.property
-  const highlights = highlightsFor(s, studies).slice(0, 2)
   const specs = [
     { icon: 'area', v: `${num(p.area, 2)} m²`, k: 'Área' },
     p.bedrooms !== undefined && { icon: 'bed', v: String(p.bedrooms), k: p.bedrooms > 1 ? 'Quartos' : 'Quarto' },
@@ -27,7 +24,7 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
     { icon: 'coin', v: brl(p.condoFee), k: 'Condomínio' },
   ].filter(Boolean) as { icon: string; v: string; k: string }[]
 
-  const validation = (
+  const validation = s.validation.length === 0 ? null : (
     <div className="fx-note flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2 px-4 py-3 text-[12px] md:flex-nowrap md:py-[clamp(8px,1.3vh,12px)]" data-reveal="fade" data-delay="0.9" title={s.validation.join(' · ')}>
       <Icon name="shield" size={16} />
       <span className="font-semibold md:flex-none md:whitespace-nowrap">
@@ -86,7 +83,7 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
               <div className="flex flex-wrap items-center gap-2" data-reveal="fade" data-delay="0.15">
                 <span className="fx-pill fx-gray px-2.5 py-1 text-[12px]">{p.unit}</span>
                 <span className="fx-pill px-2.5 py-1 text-[11px]" style={{ background: 'color-mix(in srgb, var(--tint) 16%, transparent)', color: 'var(--tint)' }}>
-                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--tint)' }} /> {s.appraisal.source === 'Caixa' ? 'Imóvel Caixa' : `Imóvel ${s.appraisal.source}`}
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--tint)' }} /> {s.appraisal.source ? `Imóvel ${s.appraisal.source}` : s.sale.modality}
                 </span>
               </div>
               <h1 className="display mt-2 text-[clamp(2.1rem,9vw,2.8rem)] md:text-[clamp(2rem,min(3.4vw,6vh),3.9rem)]">
@@ -97,7 +94,7 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
                   <Icon name="pin" size={14} />
                 </span>
                 <span className="md:truncate">
-                  {p.address} · {p.city}
+                  {placeLine(s)}
                 </span>
               </p>
             </div>
@@ -146,18 +143,6 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
               </span>
             </button>
 
-            {highlights.length > 0 && (
-              <div className="fx-tall flex flex-wrap gap-2" data-reveal="fade" data-delay="0.25">
-                {highlights.map((x) => (
-                  <span key={x.label} className="fx-pill fx-gray px-3 py-1.5 text-[12px] font-medium">
-                    <span style={{ color: 'var(--tint)' }}>
-                      <Icon name="spark" size={13} stroke={1.8} />
-                    </span>
-                    {x.label} · <b className="mono font-bold">{x.value}</b>
-                  </span>
-                ))}
-              </div>
-            )}
 
             {/* valor */}
             <div className="grid grid-cols-1 gap-5 border-b border-white/[.08] pb-[clamp(14px,2vh,22px)] sm:grid-cols-2">
@@ -165,7 +150,7 @@ export default function PropertyPanel({ study: s, no, total }: { study: Study; n
                 <p className="label">Lance inicial</p>
                 <p className="num mt-2 whitespace-nowrap text-[32px] md:text-[clamp(1.7rem,min(2.6vw,5vh),3rem)]">{brl(s.minimumBid)}</p>
                 <p className="mt-1 truncate text-[13px] text-ink-2">
-                  Avaliado em <span className="line-through decoration-white/50">{brl(s.appraisal.value)}</span> · {s.appraisal.source}
+                  Avaliado em <span className="line-through decoration-white/50">{brl(s.appraisal.value)}</span>{s.appraisal.source ? ` · ${s.appraisal.source}` : ''}
                 </p>
                 <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span className="fx-pill fx-tinted px-3 py-1.5 text-[13px]">
@@ -227,7 +212,8 @@ function MarketStrip({ s }: { s: Study }) {
   const [tip, setTip] = useState<{ x: number; label: string; detail: string } | null>(null)
   const L = s.market.listings
   const [s6, s12] = s.scenarios
-  const prices = L.map((l) => l.price)
+  const prices = marketPrices(s)
+  if (!prices.length) return null
   const minL = Math.min(...prices)
   const maxL = Math.max(...prices)
   const all = [s.minimumBid, s.appraisal.value, s6.sale, s12.sale, ...prices]
@@ -268,7 +254,7 @@ function MarketStrip({ s }: { s: Study }) {
           className={`absolute top-[calc(50%_-_38px)] whitespace-nowrap text-[11px] text-ink-2 tnum ${mid > 72 ? '' : '-translate-x-1/2'}`}
           style={mid > 72 ? { right: `${100 - x(maxL)}%` } : { left: `${mid}%` }}
         >
-          anúncios {brlK(minL)}–{brlK(maxL)}
+          {L.length ? `anúncios ${brlK(minL)}–${brlK(maxL)}` : 'parecidos'}
         </span>
         {sale.map((m) => (
           <button
@@ -284,7 +270,7 @@ function MarketStrip({ s }: { s: Study }) {
         ))}
         {[
           { v: s.minimumBid, k: 'Lance inicial', acc: true },
-          { v: s.appraisal.value, k: `Avaliação ${s.appraisal.source}`, acc: false },
+          { v: s.appraisal.value, k: appraisalLabel(s), acc: false },
         ].map((m) => (
           <div key={m.k} className="absolute top-1/2 -translate-x-1/2" style={{ left: `${x(m.v)}%` }}>
             <span className="mx-auto block h-3 w-3 -translate-y-1/2 rounded-full ring-2 ring-[var(--color-panel)]" style={{ background: m.acc ? 'var(--acc)' : '#fff' }} />

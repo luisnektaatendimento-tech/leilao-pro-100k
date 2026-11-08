@@ -20,7 +20,6 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
   )
   const [focus, setFocus] = useState(0)
   const [w, setW] = useState(() => innerWidth)
-  const stage = useRef<HTMLDivElement>(null)
   const pos = useRef({ f: 0 })
   const cards = useRef<(HTMLDivElement | null)[]>([])
   const root = useRef<HTMLDivElement>(null)
@@ -107,8 +106,8 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
   }
 
   return (
-    <div ref={root} className={`relative min-h-[100dvh] overflow-hidden ${touch ? 'touch' : ''}`}>
-      <header className="m-bar fixed inset-x-0 top-0 z-30 flex items-center justify-between px-4 py-3 md:!border-0 md:!bg-transparent md:px-10 md:py-7 md:![backdrop-filter:none]" style={{ opacity: diving ? 0 : 1, transition: 'opacity .6s' }}>
+    <div ref={root} className="touch relative min-h-[100dvh] overflow-hidden">
+      <header className="m-bar fixed inset-x-0 top-0 z-30 flex items-center justify-between px-4 py-3 md:px-10 md:py-4" style={{ opacity: diving ? 0 : 1, transition: 'opacity .6s' }}>
         <span data-in>
           <Brand />
         </span>
@@ -139,32 +138,19 @@ export default function Home({ diving, onOpen, onHelp }: { diving: boolean; onOp
           </p>
         </div>
 
-        {touch ? (
-          <div className="card-row mt-8 grid gap-4 px-4 pb-12 sm:grid-cols-2">
-            {items.map((it, i) => (
-              <div key={it.study.slug}>
-                <StudyCard {...it} index={i} width={0} onOpen={(r) => open(i, r)} onHover={() => setFocus(i)} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div ref={stage} className="stage relative flex-1" style={{ minHeight: cardW * 1.5 }}>
-            {items.map((it, i) => (
-              <div key={it.study.slug} ref={(el) => (cards.current[i] = el)} className="mono-card" style={{ width: cardW }}>
-                <div className="float" style={{ animationDelay: `${-i * 1.7}s` }}>
-                  <StudyCard {...it} index={i} width={cardW} onOpen={(r) => open(i, r)} onHover={() => setFocus(i)} />
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        {/* grade de estudos: escala para qualquer quantidade */}
+        <div className="card-row mt-8 grid gap-4 px-4 pb-14 sm:grid-cols-2 md:mt-12 md:gap-5 md:px-10 lg:grid-cols-3 xl:grid-cols-4">
+          {items.map((it, i) => (
+            <div key={it.study.slug}>
+              <StudyCard {...it} index={i} width={0} onOpen={(r) => open(i, r)} onHover={() => setFocus(i)} />
+            </div>
+          ))}
+        </div>
 
         {!touch && (
           <footer className="flex items-center justify-between px-10 pb-8" data-in>
             <span className="label flex items-center gap-2">
-              <kbd className="kbd"><Icon name="left" size={10} /></kbd>
-              <kbd className="kbd"><Icon name="right" size={10} /></kbd>
-              navegar
+              <kbd className="kbd">Tab</kbd> navegar
               <kbd className="kbd ml-3">Enter</kbd> abrir
               <kbd className="kbd ml-3">?</kbd> atalhos
             </span>

@@ -2,8 +2,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { Study } from '../data/types'
 import { studies } from '../data/studies'
 import { brl, brlK, dateBR, num, pct } from '../lib/format'
-import { discountPct, hero } from '../lib/derive'
-import { highlightsFor } from '../lib/highlights'
+import { appraisalLabel, discountPct, hero, marketPrices, placeLine } from '../lib/derive'
 import { buildTimeline } from '../lib/timeline'
 import { sound } from '../lib/sound'
 import { Icon } from '../components/Icon'
@@ -26,7 +25,7 @@ const TABS: { key: Tab; label: string }[] = [
 const signed = (v: number) => (v < 0 ? `−${brl(-v)}` : v > 0 ? `+${brl(v)}` : brl(0))
 const neighborhood = (s: Study) => {
   const parts = s.property.address.split(' · ')
-  return `${parts[parts.length - 1]} · ${s.property.city.split(' · ')[0]}`
+  return [parts[parts.length - 1], s.property.city.split(' · ')[0]].filter(Boolean).join(' · ')
 }
 
 export default function PropertyMobile({ study: s, no, total, onMap }: { study: Study; no: number; total: number; onMap: () => void }) {
@@ -94,7 +93,7 @@ export default function PropertyMobile({ study: s, no, total, onMap }: { study: 
               <span className="fx-pill fx-tinted mt-5 px-2.5 py-1 text-[13px]">−{pct(discountPct(s), 1)}</span>
             </div>
             <p className="mt-1 text-[13px] text-mute">
-              Avaliação {s.appraisal.source}: <span className="line-through">{brl(s.appraisal.value)}</span>
+              {appraisalLabel(s)}: <span className="line-through">{brl(s.appraisal.value)}</span>
             </p>
             <div className="my-4 h-px bg-white/10" />
             <div className="grid grid-cols-[1.3fr_1fr] gap-3">
@@ -194,8 +193,7 @@ function ScenarioToggle({ s, sc, setSc }: { s: Study; sc: 0 | 1; setSc: (v: 0 | 
 /* ───────── Resumo ───────── */
 function Resumo({ s }: { s: Study }) {
   const p = s.property
-  const hl = highlightsFor(s, studies)
-  const prices = s.market.listings.map((l) => l.price)
+  const prices = marketPrices(s)
   const [s6, s12] = s.scenarios
   const specs = [
     { icon: 'area', v: `${num(p.area, 2)} m²`, k: 'Área' },
@@ -206,21 +204,8 @@ function Resumo({ s }: { s: Study }) {
   ].filter(Boolean) as { icon: string; v: string; k: string }[]
   return (
     <>
-      {hl.length > 0 && (
-        <div className="mb-6 flex flex-col gap-2">
-          {hl.slice(0, 2).map((x) => (
-            <div key={x.label} className="flex items-center gap-3 rounded-[14px] p-3" style={{ background: 'color-mix(in srgb, var(--tint) 12%, transparent)' }}>
-              <span className="grid h-8 w-8 flex-none place-items-center rounded-full" style={{ background: 'var(--tint)', color: '#000' }}>
-                <Icon name="spark" size={15} stroke={2} />
-              </span>
-              <p className="min-w-0 flex-1 text-[14px] leading-snug text-ink">{x.label}</p>
-              <p className="mono flex-none text-[15px] font-semibold text-ink">{x.value}</p>
-            </div>
-          ))}
-        </div>
-      )}
 
-      <Group title="O imóvel" footer={`${p.address} · ${p.city}`}>
+      <Group title="O imóvel" footer={placeLine(s)}>
         <div className="grid grid-cols-2 gap-px bg-white/[.06]">
           {specs.map((x, i) => (
             <div key={x.k} className={`flex items-center gap-3 bg-[var(--color-panel)] p-3.5 ${specs.length % 2 && i === specs.length - 1 ? 'col-span-2' : ''}`}>
@@ -236,10 +221,14 @@ function Resumo({ s }: { s: Study }) {
         </div>
       </Group>
 
-      <Group title="Mercado" footer={s.market.from ? `Imóveis parecidos na região a partir de ${brl(s.market.from)}, conforme o estudo.` : 'Anúncios de imóveis parecidos na região, conforme o estudo.'}>
+      <Group title="Mercado" footer={s.market.from ? `Imóveis parecidos na região a partir de ${brl(s.market.from)}, conforme o estudo.` : s.market.listings.length ? 'Anúncios de imóveis parecidos na região, conforme o estudo.' : 'O estudo não traz pesquisa de imóveis parecidos.'}>
         <Row label="Lance inicial" value={brl(s.minimumBid)} tone="acc" strong />
-        <Row label={`Avaliação ${s.appraisal.source}`} value={brl(s.appraisal.value)} />
-        <Row label="Anúncios parecidos" sub={`${prices.length} anúncios na região`} value={`${brlK(Math.min(...prices))} a ${brlK(Math.max(...prices)).replace('R$ ', '')}`} />
+        <Row label={appraisalLabel(s)} value={brl(s.appraisal.value)} />
+        {s.market.listings.length > 0 ? (
+          <Row label="Anúncios parecidos" sub={`${prices.length} anúncios na região`} value={`${brlK(Math.min(...prices))} a ${brlK(Math.max(...prices)).replace('R$ ', '')}`} />
+        ) : s.market.from ? (
+          <Row label="Imóveis parecidos" sub="na região" value={`a partir de ${brlK(s.market.from)}`} />
+        ) : null}
         {s6.sale === s12.sale ? (
           <Row label="Venda projetada" sub="em 6 ou 12 meses" value={brl(s6.sale)} strong />
         ) : (
@@ -250,6 +239,7 @@ function Resumo({ s }: { s: Study }) {
         )}
       </Group>
 
+      {s.validation.length > 0 && (
       <details className="ios-group group mb-6">
         <summary className="ios-row cursor-pointer list-none">
           <span className="flex items-center gap-2.5 text-[15px] text-ink">
@@ -274,6 +264,7 @@ function Resumo({ s }: { s: Study }) {
           </div>
         ))}
       </details>
+      )}
     </>
   )
 }

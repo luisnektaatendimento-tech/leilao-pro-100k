@@ -21,7 +21,7 @@ export default function Minimap({ open, onClose }: { open: boolean; onClose: () 
     }
     addEventListener('keydown', k, true)
     const ctx = gsap.context(() => {
-      gsap.from('[data-mm]', { y: 24, opacity: 0, duration: 0.9, ease: 'expo.out', stagger: 0.05 })
+      gsap.from('[data-mm]', { y: 16, opacity: 0, duration: 0.7, ease: 'expo.out', stagger: 0.02 })
     }, root)
     root.current?.querySelector<HTMLButtonElement>('[aria-current="step"]')?.focus({ preventScroll: true })
     return () => {
@@ -31,16 +31,16 @@ export default function Minimap({ open, onClose }: { open: boolean; onClose: () 
   }, [open, onClose])
   if (!open) return null
   return (
-    <div ref={root} className="fixed inset-0 z-[70] flex flex-col justify-center bg-[rgb(10_10_11/.88)] backdrop-blur-xl" role="dialog" aria-modal aria-label="Mapa dos estudos" onClick={onClose}>
+    <div ref={root} className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-[rgb(0_0_0/.88)] py-16 backdrop-blur-xl" role="dialog" aria-modal aria-label="Mapa dos estudos" onClick={onClose}>
       <div className="absolute right-6 top-6">
         <button className="icon-btn" onClick={onClose} aria-label="Fechar mapa">
           <Icon name="close" />
         </button>
       </div>
-      <p className="label px-6 md:px-12" data-mm>
+      <p className="label px-4 md:px-12" data-mm>
         Mapa dos estudos · {pad2(visited.size)}/{pad2(studies.length)} vistos
       </p>
-      <div className="mt-6 flex gap-4 overflow-x-auto px-6 pb-10 md:px-12" onClick={(e) => e.stopPropagation()}>
+      <div className="mt-6 grid grid-cols-1 gap-3 px-4 pb-10 sm:grid-cols-2 md:px-12 lg:grid-cols-3 xl:grid-cols-4" onClick={(e) => e.stopPropagation()}>
         {studies.map((s, i) => {
           const cur = i === index
           const h = hero(s)
@@ -53,10 +53,10 @@ export default function Minimap({ open, onClose }: { open: boolean; onClose: () 
                 goTo(i)
                 onClose()
               }}
-              className="relative w-[240px] flex-none overflow-hidden rounded-2xl border text-left transition-colors duration-500 hover:border-white/40"
+              className="relative flex overflow-hidden rounded-2xl border text-left transition-colors duration-500 hover:border-white/40"
               style={{ borderColor: cur ? 'var(--acc)' : 'rgb(237 234 228 / .12)' }}
             >
-              <div className="photo-duo relative aspect-[16/10]">
+              <div className="photo-duo relative w-28 flex-none">
                 <img src={s.images.thumb} alt="" />
                 <span className="mono absolute left-3 top-3 z-10 text-[11px] text-ink">{pad2(i + 1)}</span>
                 {visited.has(s.slug) && (

@@ -96,34 +96,23 @@ const HUD = forwardRef<HTMLDivElement, { onMap: () => void; toast: Toast | null 
         </div>
       </div>
 
-      {/* rodapé: abas-pílula por imóvel (estilo Fexô) + contador com traço */}
-      <div className="hud pointer-events-auto absolute inset-x-0 bottom-0 flex items-center gap-4 bg-gradient-to-t from-[#0b0c0e] via-[#0b0c0e]/90 to-transparent px-4 pb-[max(14px,env(safe-area-inset-bottom))] pt-8 md:bg-none md:px-[3vw] md:pb-6 md:pt-0">
-        <span className="mono hidden items-center gap-2 text-[12px] font-semibold text-ink md:flex">
-          {pad2(index + 1)} <span className="text-mute">/ {pad2(studies.length)}</span>
-          <span className="relative ml-1 block h-[3px] w-12 overflow-hidden rounded-full bg-white/15">
-            <span className="absolute inset-y-0 left-0 rounded-full transition-all duration-700" style={{ width: `${((index + 1) / studies.length) * 100}%`, background: 'var(--acc)' }} />
-          </span>
-        </span>
-        <nav className="flex min-w-0 flex-1 justify-center" aria-label="Imóveis">
-          <div className="seg max-w-full overflow-x-auto [scrollbar-width:none]" style={{ background: 'rgb(44 44 46 / .72)', backdropFilter: 'blur(20px) saturate(180%)', WebkitBackdropFilter: 'blur(20px) saturate(180%)', borderRadius: 14, padding: 3 }}>
-            {studies.map((s, i) => {
-              const cur = i === index
-              return (
-                <button
-                  key={s.slug}
-                  onClick={() => goTo(i)}
-                  className="flex flex-none items-center gap-1.5 !rounded-[11px] !px-3.5 !py-1.5"
-                  aria-label={`Ir para ${s.title}`}
-                  aria-current={cur ? 'step' : undefined}
-                >
-                  {visited.has(s.slug) && !cur ? <span className="text-[var(--color-green)]"><Icon name="check" size={12} stroke={2.4} /></span> : <span className="mono text-[11px] opacity-60">{pad2(i + 1)}</span>}
-                  <span className={cur ? 'max-w-[40vw] truncate sm:max-w-none' : 'hidden sm:inline'}>{s.title}</span>
-                </button>
-              )
-            })}
-          </div>
-        </nav>
-        <span className="hidden w-[88px] md:block" aria-hidden />
+      {/* rodapé: paginação entre imóveis (escala para qualquer quantidade) */}
+      <div className="hud pointer-events-auto absolute inset-x-0 bottom-0 flex items-center justify-center gap-3 px-[3vw] pb-6">
+        <div className="flex items-center gap-1.5 rounded-[16px] p-1.5" style={{ background: 'rgb(44 44 46 / .72)', backdropFilter: 'blur(20px) saturate(180%)', WebkitBackdropFilter: 'blur(20px) saturate(180%)' }}>
+          <button className="icon-btn !h-9 !w-9 disabled:opacity-30" onClick={() => goTo(index - 1)} disabled={index === 0} aria-label="Imóvel anterior (←)" title="Anterior · ←">
+            <Icon name="left" size={18} stroke={2} />
+          </button>
+          <button className="min-w-[220px] max-w-[42vw] rounded-[11px] px-4 py-1.5 text-center hover:bg-white/[.06]" onClick={onMap} aria-label="Ver todos os estudos (M)" title="Todos os estudos · M">
+            <span className="block truncate text-[14px] font-semibold text-ink">{studies[index].title}</span>
+            <span className="mono block text-[11px] text-mute">
+              {pad2(index + 1)} de {pad2(studies.length)}
+              {visited.has(studies[index].slug) ? ' · visto' : ''}
+            </span>
+          </button>
+          <button className="icon-btn !h-9 !w-9 disabled:opacity-30" onClick={() => goTo(index + 1)} disabled={index === studies.length - 1} aria-label="Próximo imóvel (→)" title="Próximo · →">
+            <Icon name="right" size={18} stroke={2} />
+          </button>
+        </div>
       </div>
     </div>
   )
