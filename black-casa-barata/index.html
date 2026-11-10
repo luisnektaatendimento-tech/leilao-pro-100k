@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#000000">
 <title>Black Casa Barata de Leilão</title>
-<meta name="description" content="15 modelos de sucesso para arrematar um imóvel de leilão financiado na Black Friday com apenas 5% de entrada e 100% legalizado.">
+<meta name="description" content="4 plataformas para arrematar um imóvel de leilão financiado na Black Friday com apenas 5% de entrada e 100% legalizado.">
 <meta property="og:title" content="Black Casa Barata de Leilão">
-<meta property="og:description" content="15 modelos de sucesso para arrematar um imóvel de leilão financiado na Black Friday com apenas 5% de entrada e 100% legalizado.">
+<meta property="og:description" content="4 plataformas para arrematar um imóvel de leilão financiado na Black Friday com apenas 5% de entrada e 100% legalizado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:opsz,wght@9..40,400..700&family=Caveat:wght@500;600&family=Manrope:wght@500..800&family=Space+Grotesk:wght@600;700&family=Montserrat:wght@700;900&family=Inter:wght@500;600&display=swap" rel="stylesheet">
@@ -162,6 +162,79 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .js .rv.in .imo:nth-child(1) .imo__off{animation-delay:.45s}.js .rv.in .imo:nth-child(2) .imo__off{animation-delay:.6s}.js .rv.in .imo:nth-child(3) .imo__off{animation-delay:.75s}
 @media (max-width:520px){.hero{padding-top:34px}.h1{margin-top:20px}.h1-sub{margin-top:20px}.hero__sub{margin-top:28px}}
 
+
+/* SUPER COMBO do topo: tudo dimensionado em --u para escalar com a largura */
+.combo{position:relative;container-type:inline-size;max-width:980px;margin:0 auto;perspective:1100px}
+.combo__in{--u:1cqw;position:relative;aspect-ratio:1/1.04;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s var(--ease)}
+.combo__in::before{content:"";position:absolute;inset:-6% -4%;pointer-events:none;
+  background:radial-gradient(34% 30% at 20% 18%,rgba(191,242,58,.20),transparent 70%),radial-gradient(34% 30% at 80% 18%,rgba(168,85,247,.26),transparent 70%),radial-gradient(34% 30% at 20% 80%,rgba(255,69,58,.18),transparent 70%),radial-gradient(34% 30% at 80% 80%,rgba(59,130,246,.24),transparent 70%),radial-gradient(30% 28% at 50% 49%,rgba(216,183,106,.28),transparent 70%);
+  filter:blur(calc(var(--u)*2));animation:respira 7s ease-in-out infinite}
+@keyframes respira{50%{opacity:.7;transform:scale(1.04)}}
+.combo__anel{position:absolute;left:50%;top:49%;border-radius:50%;border:1px dashed rgba(216,183,106,.32);transform:translate(-50%,-50%);pointer-events:none}
+.combo__anel--1{width:calc(var(--u)*52);height:calc(var(--u)*52);animation:orbita 40s linear infinite}
+.combo__anel--2{width:calc(var(--u)*78);height:calc(var(--u)*78);border-color:rgba(255,255,255,.1);animation:orbita 70s linear infinite reverse}
+.combo__anel::after{content:"";position:absolute;top:50%;left:-3px;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 12px var(--gold)}
+.combo__anel--2::after{background:#fff;box-shadow:0 0 10px #fff;left:auto;right:-3px}
+@keyframes orbita{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.combo__fios{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.combo__fios path{fill:none;stroke-width:2;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-dasharray:2 7;opacity:.85;animation:corre 1.4s linear infinite;filter:drop-shadow(0 0 4px currentColor)}
+@keyframes corre{to{stroke-dashoffset:-9}}
+.js .rv:not(.in) .combo__fios{opacity:0}
+.combo__fios{transition:opacity .8s ease .9s}
+
+.combo__t{position:absolute;width:calc(var(--u)*41);transition:transform 1.1s var(--ease),opacity .7s ease;transform:translateZ(30px)}
+.combo__t--1{left:1%;top:3%;--fx:38%;--fy:60%}
+.combo__t--2{right:1%;top:3%;--fx:-38%;--fy:60%;transition-delay:.1s}
+.combo__t--3{left:1%;bottom:7%;--fx:38%;--fy:-60%;transition-delay:.2s}
+.combo__t--4{right:1%;bottom:7%;--fx:-38%;--fy:-60%;transition-delay:.3s}
+.js .rv:not(.in) .combo__t{opacity:0;transform:translate(var(--fx),var(--fy)) scale(.55)}
+.combo__c{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:calc(var(--u)*27);padding:calc(var(--u)*3.6);border-radius:calc(var(--u)*5);border:1px solid var(--line-2);text-align:left;overflow:hidden;box-shadow:0 calc(var(--u)*5) calc(var(--u)*9) calc(var(--u)*-3) rgba(0,0,0,.9);animation:flutua 6s ease-in-out infinite}
+.combo__t--2 .combo__c{animation-delay:-1.5s}.combo__t--3 .combo__c{animation-delay:-3s}.combo__t--4 .combo__c{animation-delay:-4.5s}
+@keyframes flutua{50%{transform:translateY(calc(var(--u)*-1.6))}}
+.combo__c::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.13) 50%,transparent 60%) no-repeat;background-size:260% 100%;background-position:170% 0;animation:brilho 7s var(--ease) infinite}
+.combo__t--2 .combo__c::after{animation-delay:1.2s}.combo__t--3 .combo__c::after{animation-delay:2.4s}.combo__t--4 .combo__c::after{animation-delay:3.6s}
+.combo__c small{margin-top:auto;padding-top:calc(var(--u)*2.4);font:600 calc(var(--u)*2.7)/1.2 var(--f-fexo);color:rgba(255,255,255,.66)}
+.combo__c em{margin-top:calc(var(--u)*1.4);padding:calc(var(--u)*1.1) calc(var(--u)*2.2);border-radius:999px;font:800 calc(var(--u)*2.6)/1.2 var(--f-fexo);font-style:normal;white-space:nowrap}
+.c-wm{display:flex;align-items:center;gap:calc(var(--u)*1.6);color:#fff}
+.c-wm svg{flex:none;width:calc(var(--u)*7);height:calc(var(--u)*7)}
+.c-fexo{background:linear-gradient(160deg,#22242b,#131418);border-color:rgba(191,242,58,.42)}
+.c-fexo img{width:calc(var(--u)*24);height:auto}
+.c-fexo em{background:var(--fexo);color:#111318}
+.c-multy{background:linear-gradient(160deg,#2a1457,#0c0a14 75%);border-color:rgba(168,85,247,.5)}
+.c-multy .c-wm{font:800 calc(var(--u)*5.4)/1 var(--f-fexo);letter-spacing:-.04em}
+.c-multy .c-wm svg{width:calc(var(--u)*5.6);height:calc(var(--u)*5.6)}
+.c-masc{position:absolute;right:calc(var(--u)*-1.5);top:calc(var(--u)*.6);width:calc(var(--u)*16.5);height:auto;filter:drop-shadow(0 calc(var(--u)*2) calc(var(--u)*3) rgba(124,58,237,.6));animation:acena 5s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes acena{50%{transform:rotate(-5deg) translateY(calc(var(--u)*-.8))}}
+.c-multy em{background:linear-gradient(90deg,var(--multy),var(--multy-2));color:#fff}
+.c-canaw{background:linear-gradient(160deg,#17171a,#000);border-color:rgba(255,255,255,.22)}
+.c-canaw .c-wm span{font:500 calc(var(--u)*4.3)/1 var(--f-canaw);letter-spacing:.3em}
+.c-canaw em{display:inline-flex;align-items:center;gap:calc(var(--u)*1.2);background:rgba(255,69,58,.16);color:var(--canaw-live);font-family:var(--f-canaw);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.c-canaw em::before{content:"";width:calc(var(--u)*1.6);height:calc(var(--u)*1.6);border-radius:50%;background:var(--canaw-live);animation:pisca 1.6s ease-in-out infinite}
+.c-dossie{background:linear-gradient(160deg,#10254d,#060d1c);border-color:rgba(59,130,246,.5)}
+.c-dossie .c-wm{color:var(--dossie-2)}
+.c-dossie .c-wm svg{width:calc(var(--u)*6);height:calc(var(--u)*6)}
+.c-dossie .c-wm span{font:800 calc(var(--u)*3.5)/1.05 var(--ff);font-variation-settings:"wdth" 120;text-transform:uppercase;color:#fff}
+.c-dossie em{background:var(--dossie);color:#fff}
+
+.combo__hub{position:absolute;left:50%;top:49%;width:calc(var(--u)*31);height:calc(var(--u)*31);margin:calc(var(--u)*-15.5) 0 0 calc(var(--u)*-15.5);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*.8);
+  background:radial-gradient(circle at 50% 30%,#2b2412,#0a0803 70%);border:1px solid rgba(216,183,106,.75);box-shadow:0 0 0 calc(var(--u)*1.4) rgba(216,183,106,.08),0 0 calc(var(--u)*12) rgba(216,183,106,.5),inset 0 0 calc(var(--u)*5) rgba(216,183,106,.25);transform:translateZ(70px);animation:nucleo 3.2s ease-in-out infinite}
+@keyframes nucleo{50%{box-shadow:0 0 0 calc(var(--u)*2.6) rgba(216,183,106,.05),0 0 calc(var(--u)*18) rgba(216,183,106,.7),inset 0 0 calc(var(--u)*6) rgba(216,183,106,.35)}}
+.js .rv:not(.in) .combo__hub{opacity:0;transform:translateZ(70px) scale(.4)}
+.combo__hub{transition:opacity .7s ease .35s}
+.combo__hub i{position:absolute;inset:calc(var(--u)*-2.4);border-radius:50%;border:1px solid transparent;border-top-color:var(--gold-2);border-right-color:rgba(216,183,106,.3);animation:gira 3.5s linear infinite}
+.combo__hub small{font:700 calc(var(--u)*2.1)/1 var(--ff);font-variation-settings:"wdth" 110;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
+.combo__hub b{font:900 calc(var(--u)*7.4)/.9 var(--ff);font-variation-settings:"wdth" 125;letter-spacing:-.04em;text-transform:uppercase;background:linear-gradient(180deg,#fff,var(--gold-2) 40%,var(--gold) 70%,#6d5622);-webkit-background-clip:text;background-clip:text;color:transparent}
+.combo__hub span{padding:calc(var(--u)*.9) calc(var(--u)*2);border-radius:999px;background:var(--gold);color:#0a0700;font:800 calc(var(--u)*2.3)/1.1 var(--ff);letter-spacing:.1em;text-transform:uppercase}
+.combo__pro{position:absolute;left:50%;bottom:-1%;transform:translate(-50%,0) translateZ(40px);display:flex;align-items:center;gap:calc(var(--u)*2);padding:calc(var(--u)*1.8) calc(var(--u)*3.4);border-radius:999px;border:1px solid rgba(255,255,255,.3);background:linear-gradient(160deg,#1c1c1c,#050505);white-space:nowrap;box-shadow:0 calc(var(--u)*3) calc(var(--u)*6) rgba(0,0,0,.8)}
+.combo__pro span{font:600 calc(var(--u)*2.7)/1 var(--f-pro);color:#bdbdbd}
+.combo__pro b{font:900 calc(var(--u)*3.3)/1 var(--f-pro);text-transform:uppercase}
+@media (min-width:760px){
+  .combo__in{--u:.6cqw;aspect-ratio:16/9.4}
+  .combo__t--1,.combo__t--3{left:7%}.combo__t--2,.combo__t--4{right:7%}
+  .combo__t--1,.combo__t--2{top:5%}.combo__t--3,.combo__t--4{bottom:9%}
+  .combo__pro{bottom:1%}
+}
+
 /* painel (mockup desenhado em CSS) */
 .painel{border:1px solid var(--line-2);border-radius:16px;background:linear-gradient(180deg,#0e0e0e,#060606);box-shadow:0 60px 120px -40px rgba(216,183,106,.22),0 0 0 1px rgba(255,255,255,.03) inset;overflow:hidden;text-align:left}
 .painel__bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
@@ -301,7 +374,7 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .aovivo::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--canaw-live);animation:pisca 1.6s ease-in-out infinite}
 @keyframes pisca{50%{opacity:.25}}
 .cat.t-pro .cat__art{background-color:#050505}
-.metal{background:var(--pro-metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.metal{padding-top:.16em;background:var(--pro-metal);-webkit-background-clip:text;background-clip:text;color:transparent}
 .cat.t-pro .cat__art b{font:900 34px/.92 var(--f-pro);letter-spacing:-.01em;text-align:center;text-transform:uppercase}
 .cat.t-pro h3{font-family:var(--f-pro);font-weight:700;font-variation-settings:normal;letter-spacing:-.01em}
 .cat.t-dossie .cat__art{background-color:var(--dossie-navy)}
@@ -455,7 +528,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
 /* BLOCO 10 — tudo que você vai receber */
 .pilha{position:relative;width:100%;max-width:460px;margin:0 auto;aspect-ratio:1/.82}
-.pilha__c{position:absolute;left:calc(var(--i)*5.6%);top:calc(var(--i)*15.2%);width:72%;height:23%;display:flex;align-items:center;gap:14px;padding:0 18px;border:1px solid var(--line-2);border-radius:12px;background:linear-gradient(160deg,#151515,#070707);box-shadow:0 24px 50px -18px rgba(0,0,0,.95)}
+.pilha__c{position:absolute;left:calc(var(--i)*7%);top:calc(var(--i)*17.5%);width:72%;height:24%;display:flex;align-items:center;gap:14px;padding:0 18px;border:1px solid var(--line-2);border-radius:12px;background:linear-gradient(160deg,#151515,#070707);box-shadow:0 24px 50px -18px rgba(0,0,0,.95)}
 .pilha__c span{font:800 11px/1 var(--ff);letter-spacing:.16em;color:var(--ink-3)}
 .pilha__c svg{flex:none;width:26px;height:26px;color:var(--gold-2)}
 .pilha__c b{font:700 clamp(13px,3.4vw,16px)/1.15 var(--ff);font-variation-settings:"wdth" 108;text-transform:uppercase;letter-spacing:.02em}
@@ -496,7 +569,16 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (max-width:520px){.plano{padding:32px 18px 24px}.cat{flex-basis:78vw}.car{gap:12px}.fit-list li,.how li,.caso,.bon{padding:18px}.bon{gap:14px}.bon__ic{width:68px}}
 .plano .btn-note{display:block;margin-top:12px}
 
-/* BLOCO 14 — modelos de sucesso */
+/* BLOCO 14 — as 4 plataformas juntas */
+.junto{display:grid;gap:12px;counter-reset:j}
+@media (min-width:640px){.junto{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.junto{grid-template-columns:repeat(4,1fr)}}
+.junto li{position:relative;padding:22px;border:1px solid var(--line);border-top:3px solid var(--a);border-radius:var(--r);background:linear-gradient(180deg,color-mix(in srgb,var(--a) 9%,transparent),transparent 55%),var(--card)}
+.junto li>span{font:800 12px/1 var(--ff);letter-spacing:.14em;color:var(--ink-3)}
+.junto__m{display:flex;align-items:center;gap:9px;margin:16px 0 14px;font:700 15px/1 var(--f-fexo);color:#fff}
+.junto__m svg,.junto__m img{flex:none;width:26px;height:auto}
+.junto__m svg{height:26px}
+.junto li p{margin-top:8px;color:var(--ink-2);font-size:15px}
 .deps{display:grid;gap:12px}
 @media (min-width:860px){.deps{grid-template-columns:repeat(3,1fr)}}
 .caso{padding:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
@@ -587,61 +669,46 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="wrap">
     <span class="badge badge--hi">Produto <b>high ticket</b> <span>com preço de <b>low ticket</b></span></span>
     <h1 class="h1"><span class="black">Black</span><span class="resto">Casa Barata de Leilão</span></h1>
-    <p class="h1-sub"><em>15 modelos de sucesso</em> para arrematar um imóvel de leilão <em>financiado</em> na Black Friday com apenas <em>5% de entrada</em> e <em>100% legalizado</em>.</p>
+    <p class="h1-sub"><em>4 plataformas</em> para arrematar um imóvel de leilão <em>financiado</em> na Black Friday com apenas <em>5% de entrada</em> e <em>100% legalizado</em>.</p>
     <ul class="selos" aria-label="Garantias">
       <li><svg><use href="#i-escudo"/></svg>100% seguro</li>
       <li><svg><use href="#i-casa"/></svg>+ de 15 mil imóveis verificados</li>
     </ul>
 
     <div class="hero__art rv">
-      <!-- Mockup desenhado em CSS. Para usar uma foto ou print real, troque este bloco por <img src="..."> -->
-      <div class="painel" role="img" aria-label="Plataforma de busca de leilões: imóveis verificados com avaliação, lance mínimo e desconto lado a lado">
-        <div class="painel__bar"><img src="assets/fexo-logo.webp" width="360" height="127" alt="Fexô"><span><b>15 mil+</b> imóveis</span></div>
-        <div class="painel__body">
-          <aside>
-            <small>Arsenal</small>
-            <ul>
-              <li class="on"><svg><use href="#i-radar"/></svg>Fexô · Busca</li>
-              <li><svg><use href="#m-multy"/></svg>Multy · Financiamento</li>
-              <li><svg><use href="#i-doc"/></svg>Dossiê do Assessor</li>
-              <li><svg><use href="#m-canaw"/></svg>CANAW · TV ao vivo</li>
-              <li><svg><use href="#i-trofeu"/></svg>15 modelos de sucesso</li>
-              <li><svg><use href="#i-play"/></svg>Aula Leilão PRO</li>
-            </ul>
-          </aside>
-          <div class="painel__main">
-            <div class="busca"><svg><use href="#i-lupa"/></svg>Casas até R$ 150 mil<b>Buscar</b></div>
-            <div class="filtros"><span class="pill az">Aceitam financiamento</span><span class="pill">Maior desconto</span><span class="pill">Todo o Brasil</span><span class="pill">Casas</span></div>
-            <div class="stats">
-              <div><small>Imóveis verificados</small><b class="num"><em>15 mil</em>+</b></div>
-              <div><small>Entrada a partir de</small><b class="num">5%</b></div>
-              <div><small>Modelos de sucesso</small><b class="num">15</b></div>
-            </div>
-            <div class="imoveis">
-              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">52% abaixo</span><span class="imo__src">Banco</span></div>
-                <div class="imo__b"><h4>Casa · 2 quartos</h4><p>Bairro residencial</p>
-                  <div class="imo__l"><span>Avaliação</span><s class="num">R$ 260.000</s></div>
-                  <div class="imo__l g"><span>Lance mínimo</span><b class="num">R$ 124.800</b></div></div></article>
-              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">45% abaixo</span><span class="imo__src">Judicial</span></div>
-                <div class="imo__b"><h4>Casa · 3 quartos</h4><p>Próxima ao centro</p>
-                  <div class="imo__l"><span>Avaliação</span><s class="num">R$ 240.000</s></div>
-                  <div class="imo__l g"><span>Lance mínimo</span><b class="num">R$ 132.000</b></div></div></article>
-              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">58% abaixo</span><span class="imo__src">Extrajudicial</span></div>
-                <div class="imo__b"><h4>Sobrado · 2 quartos</h4><p>Rua tranquila</p>
-                  <div class="imo__l"><span>Avaliação</span><s class="num">R$ 210.000</s></div>
-                  <div class="imo__l g"><span>Lance mínimo</span><b class="num">R$ 88.200</b></div></div></article>
-            </div>
-          </div>
+      <!-- SUPER COMBO: as 4 plataformas e suas logos ligadas ao núcleo da Black -->
+      <div class="combo" data-combo role="img" aria-label="Super combo da Black: as plataformas Fexô, Multy, CANAW e Dossiê do Assessor ligadas em um só pacote, mais a aula bônus da Leilão PRO">
+        <div class="combo__in">
+          <i class="combo__anel combo__anel--1"></i><i class="combo__anel combo__anel--2"></i>
+          <svg class="combo__fios" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M21 17 50 49" stroke="#bff23a"/><path d="M79 17 50 49" stroke="#a855f7"/><path d="M21 80 50 49" stroke="#ff453a"/><path d="M79 80 50 49" stroke="#3b82f6"/>
+          </svg>
+
+          <div class="combo__t combo__t--1"><div class="combo__c c-fexo">
+            <img src="assets/fexo-logo.webp" width="360" height="127" alt="Fexô">
+            <small>Busca de leilões</small><em>15 mil+ imóveis</em></div></div>
+          <div class="combo__t combo__t--2"><div class="combo__c c-multy">
+            <b class="c-wm"><svg><use href="#m-multy"/></svg>multy</b>
+            <img class="c-masc" src="assets/multy.webp" width="280" height="280" alt="">
+            <small>Financiamento</small><em>Análise em 2 min</em></div></div>
+          <div class="combo__t combo__t--3"><div class="combo__c c-canaw">
+            <b class="c-wm"><svg><use href="#m-canaw"/></svg><span>CANAW</span></b>
+            <small>TV de especialistas</small><em>Ao vivo</em></div></div>
+          <div class="combo__t combo__t--4"><div class="combo__c c-dossie">
+            <b class="c-wm"><svg><use href="#i-doc"/></svg><span>Dossiê<br>do Assessor</span></b>
+            <small>Método</small><em>Do lance à chave</em></div></div>
+
+          <div class="combo__hub"><i></i><small>Super combo</small><b>Black</b><span>4 em 1</span></div>
+          <div class="combo__pro"><span>+ Aula bônus</span><b class="metal">Leilão PRO</b></div>
         </div>
       </div>
-      <p class="hero__cap">Imagem ilustrativa da busca no Fexô.</p>
     </div>
 
-    <p class="hero__sub">Não é qualquer arsenal. É o Dossiê do Assessor, o Fexô para buscar imóveis de leilão, a Multy para analisar o seu financiamento e a CANAW com especialistas ao vivo, mais uma aula bônus da Leilão PRO com o maior especialista de leilões do Nordeste.</p>
+    <p class="hero__sub">Não é qualquer arsenal. São 4 plataformas: o Fexô para buscar imóveis de leilão, a Multy para analisar o seu financiamento, a CANAW com especialistas ao vivo e o Dossiê do Assessor para conduzir a arrematação, mais uma aula bônus da Leilão PRO com o maior especialista de leilões do Nordeste.</p>
     <ul class="elist">
       <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô: + de 15 mil imóveis verificados, com filtro dos que aceitam financiamento</span></li>
       <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy: análise do seu financiamento em 2 minutos, antes do banco</span></li>
-      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 modelos de sucesso de arrematação financiada com 5% de entrada</span></li>
+      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW e Dossiê do Assessor: especialistas ao vivo e método para conduzir a arrematação</span></li>
     </ul>
 
     <!-- ============ BLOCO 03 — CTA ============ -->
@@ -658,7 +725,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="wrap">
     <div class="sec-head center rv">
       <h2>Não é qualquer arsenal</h2>
-      <p class="lead">Veja o que você recebe</p>
+      <p class="lead">São 4 plataformas e uma aula bônus</p>
     </div>
     <div class="car" data-car>
       <article class="cat t-dossie"><div class="cat__art"><span>01</span><b>Dossiê<br><em>do Assessor</em></b></div>
@@ -673,14 +740,11 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <article class="cat t-canaw"><div class="cat__art"><span>04</span><i class="aovivo">Ao vivo</i><svg><use href="#m-canaw"/></svg><b>CANAW</b></div>
         <div class="cat__b"><h3>CANAW</h3><p>A TV de especialistas ao vivo, com o canal de leilão de imóveis</p>
           <div class="chips"><span>Ao vivo</span><span>Leilão de imóveis</span><span>Chat</span><span>Especialistas</span></div></div></article>
-      <article class="cat t-black"><div class="cat__art"><span>05</span><b>15</b></div>
-        <div class="cat__b"><h3>15 Modelos de Sucesso</h3><p>Arrematações financiadas com 5% de entrada e 100% legalizadas</p>
-          <div class="chips"><span>Financiado</span><span>5% de entrada</span><span>100% legalizado</span></div></div></article>
-      <article class="cat t-pro"><div class="cat__art"><span>06</span><b class="metal">Leilão<br>PRO</b></div>
+      <article class="cat t-pro"><div class="cat__art"><span>05</span><b class="metal">Leilão<br>PRO</b></div>
         <div class="cat__b"><h3>Aula Bônus Leilão PRO</h3><p>Com o maior especialista de leilões do Nordeste</p>
           <div class="chips"><span>Leilão PRO</span><span>Na prática</span><span>Bônus</span></div></div></article>
     </div>
-    <div class="car-nav" data-car-nav aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="car-nav" data-car-nav aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
@@ -729,7 +793,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <li><svg><use href="#i-raio"/></svg><span>Busque entre + de 15 mil imóveis verificados em um só lugar</span></li>
       <li><svg><use href="#i-raio"/></svg><span>Veja como está o seu perfil de financiamento antes do lance</span></li>
       <li><svg><use href="#i-raio"/></svg><span>Arremate financiado, com apenas 5% de entrada</span></li>
-      <li><svg><use href="#i-raio"/></svg><span>Siga 15 modelos que já deram certo, 100% legalizados</span></li>
       <li><svg><use href="#i-raio"/></svg><span>Aprenda ao vivo com especialistas de leilão na CANAW</span></li>
     </ul>
     <div class="cta-block">
@@ -756,8 +819,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <ul><li>Análise em 2 minutos</li><li>7 perguntas sobre o seu perfil</li><li>O que pesa no seu financiamento</li><li>O que fazer para liberar o crédito mais rápido</li><li>Você vê o que foi usado na análise</li><li>Suporte no WhatsApp</li></ul></details>
       <details class="t-canaw"><summary><span class="kit__ic"><svg class="m"><use href="#m-canaw"/></svg></span><div><b>CANAW · TV de especialistas</b><span>Programas ao vivo com especialistas de verdade</span></div><i class="pm"></i></summary>
         <ul><li>Canal de leilão de imóveis</li><li>Programas ao vivo</li><li>Chat durante as transmissões</li><li>Um canal por especialista</li></ul></details>
-      <details class="t-black"><summary><span class="kit__ic"><svg><use href="#i-trofeu"/></svg></span><div><b>15 Modelos de Sucesso</b><span>Arrematações financiadas com 5% de entrada e 100% legalizadas</span></div><i class="pm"></i></summary>
-        <ul><li>O imóvel e o valor do lance</li><li>A entrada de 5% na prática</li><li>Como foi o financiamento</li><li>Como foi a legalização</li><li>O que repetir no seu caso</li><li class="mais">E muito mais</li></ul></details>
       <details class="t-pro"><summary><span class="kit__ic"><b class="metal">PRO</b></span><div><b>Aula Bônus Leilão PRO</b><span>Com o maior especialista de leilões do Nordeste</span></div><i class="pm"></i></summary>
         <ul><li>Uma aula da Leilão PRO, a especialização prática em leilões de imóveis</li><li>Como funcionam os leilões na prática</li><li>Estudo de caso real, do lance ao lucro</li></ul></details>
     </div>
@@ -833,7 +894,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <li><span class="n">02</span><span>Já procura leilão, mas se perde entre dezenas de sites e editais</span></li>
       <li><span class="n">03</span><span>É assessor ou corretor e quer levar leilão financiado para os clientes</span></li>
       <li><span class="n">04</span><span>Tem medo de errar na documentação e quer tudo 100% legalizado</span></li>
-      <li><span class="n">05</span><span>Quer seguir um modelo que já deu certo em vez de começar do zero</span></li>
+      <li><span class="n">05</span><span>Quer um caminho organizado em vez de começar do zero</span></li>
     </ul>
   </div>
 </section>
@@ -842,13 +903,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec" data-secao="10-tudo-que-voce-vai-receber">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap duo">
-    <div class="pilha rv" role="img" aria-label="As seis partes do arsenal: Dossiê do Assessor, Fexô, Multy, CANAW, 15 Modelos de Sucesso e Aula Bônus da Leilão PRO">
+    <div class="pilha rv" role="img" aria-label="As 4 plataformas do arsenal, Dossiê do Assessor, Fexô, Multy e CANAW, mais a Aula Bônus da Leilão PRO">
       <div class="pilha__c t-dossie" style="--i:0"><span>01</span><svg><use href="#i-doc"/></svg><b>Dossiê</b></div>
       <div class="pilha__c t-fexo" style="--i:1"><span>02</span><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="" loading="lazy"><b>Fexô</b></div>
       <div class="pilha__c t-multy" style="--i:2"><span>03</span><svg><use href="#m-multy"/></svg><b>Multy</b></div>
       <div class="pilha__c t-canaw" style="--i:3"><span>04</span><svg><use href="#m-canaw"/></svg><b>CANAW</b></div>
-      <div class="pilha__c t-black" style="--i:4"><span>05</span><svg><use href="#i-trofeu"/></svg><b>15 Modelos</b></div>
-      <div class="pilha__c t-pro" style="--i:5"><span>06</span><svg><use href="#i-play"/></svg><b>Aula Leilão PRO</b></div>
+      <div class="pilha__c t-pro" style="--i:4"><span>05</span><svg><use href="#i-play"/></svg><b>Aula Leilão PRO</b></div>
     </div>
     <div class="rv">
       <ul class="elist">
@@ -856,7 +916,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô, a plataforma de busca com + de 15 mil imóveis verificados</span></li>
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy, a análise de financiamento em 2 minutos</span></li>
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW, a TV de especialistas ao vivo</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 modelos de sucesso de arrematação financiada, com 5% de entrada e 100% legalizados</span></li>
       </ul>
       <span class="mais-bonus">+ Aula bônus da Leilão PRO</span>
     </div>
@@ -894,7 +953,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>+ de 15 mil imóveis verificados</span></li>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy · Análise de financiamento</span></li>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW · TV de especialistas ao vivo</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 Modelos de Sucesso</span></li>
           <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Aula da Leilão PRO com o maior especialista de leilões do Nordeste</span></li>
         </ul>
         <p class="plano__eco">Aula bônus inclusa, grátis na Black</p>
@@ -912,7 +970,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô · Plataforma de busca de leilões</span></li>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy · Análise de financiamento</span></li>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW · TV de especialistas ao vivo</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 Modelos de Sucesso</span></li>
           <li class="off"><span class="ck"><svg><use href="#ck"/></svg></span><span>Sem a aula bônus da Leilão PRO</span></li>
         </ul>
         <a class="btn btn--ghost" href="#planos" data-checkout="basico">Quero o Arsenal Básico <svg><use href="#seta"/></svg></a>
@@ -922,26 +979,20 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   </div>
 </section>
 
-<!-- ============ BLOCO 14 — MODELOS DE SUCESSO (no lugar dos depoimentos) ============
-     ATENÇÃO: os 3 cartões abaixo são EXEMPLOS do formato. Troque pelos dados dos seus modelos reais
-     e depois apague a etiqueta "Exemplo" e a frase .deps-nota. -->
-<section class="sec alt" data-secao="14-modelos">
+<!-- ============ BLOCO 14 — AS 4 PLATAFORMAS JUNTAS (no lugar dos depoimentos) ============ -->
+<section class="sec alt" data-secao="14-plataformas-juntas">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="sec-head center rv">
-      <span class="eyebrow">Modelos de sucesso</span>
-      <h2>15 modelos de sucesso para você seguir</h2>
-      <p class="lead">Imóveis de leilão arrematados com financiamento, 5% de entrada e 100% legalizados.</p>
+      <span class="eyebrow">Como elas trabalham juntas</span>
+      <h2>4 plataformas, um só caminho até o seu imóvel</h2>
     </div>
-    <div class="deps rv">
-      <article class="caso"><div class="caso__h"><span>Modelo 01</span><em>Exemplo</em></div><h3>Casa · 2 quartos</h3>
-        <dl><div><dt>Arrematada por</dt><dd>R$ 124.800</dd></div><div><dt>Entrada (5%)</dt><dd class="g">R$ 6.240</dd></div><div><dt>Financiado</dt><dd>R$ 118.560</dd></div><div><dt>Situação</dt><dd class="g">Legalizado</dd></div></dl></article>
-      <article class="caso"><div class="caso__h"><span>Modelo 02</span><em>Exemplo</em></div><h3>Casa · 3 quartos</h3>
-        <dl><div><dt>Arrematada por</dt><dd>R$ 132.000</dd></div><div><dt>Entrada (5%)</dt><dd class="g">R$ 6.600</dd></div><div><dt>Financiado</dt><dd>R$ 125.400</dd></div><div><dt>Situação</dt><dd class="g">Legalizado</dd></div></dl></article>
-      <article class="caso"><div class="caso__h"><span>Modelo 03</span><em>Exemplo</em></div><h3>Sobrado · 2 quartos</h3>
-        <dl><div><dt>Arrematado por</dt><dd>R$ 88.200</dd></div><div><dt>Entrada (5%)</dt><dd class="g">R$ 4.410</dd></div><div><dt>Financiado</dt><dd>R$ 83.790</dd></div><div><dt>Situação</dt><dd class="g">Legalizado</dd></div></dl></article>
-    </div>
-    <p class="deps-nota">Cartões de exemplo do formato dos modelos. Resultados passados não garantem resultados futuros.</p>
+    <ol class="junto">
+      <li class="t-canaw"><span>01</span><div class="junto__m"><svg><use href="#m-canaw"/></svg><b>CANAW</b></div><h3>Aprenda ao vivo</h3><p>Acompanhe o canal de leilão de imóveis com especialistas de verdade.</p></li>
+      <li class="t-fexo"><span>02</span><div class="junto__m"><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="" loading="lazy"><b>Fexô</b></div><h3>Encontre o imóvel</h3><p>Busque entre + de 15 mil imóveis verificados e filtre os que aceitam financiamento.</p></li>
+      <li class="t-multy"><span>03</span><div class="junto__m"><svg><use href="#m-multy"/></svg><b>Multy</b></div><h3>Analise o financiamento</h3><p>Em 2 minutos, veja como está o seu perfil antes de ir ao banco.</p></li>
+      <li class="t-dossie"><span>04</span><div class="junto__m"><svg style="color:var(--dossie-2)"><use href="#i-doc"/></svg><b>Dossiê do Assessor</b></div><h3>Conduza a arrematação</h3><p>Siga o método do lance até o imóvel 100% legalizado.</p></li>
+    </ol>
   </div>
 </section>
 
@@ -980,7 +1031,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <details><summary>O que é a Multy? Ela substitui a análise do banco?<i class="pm"></i></summary><p>É a análise de financiamento: 7 perguntas, 2 minutos, e você vê o que pesa no seu perfil antes de ir ao banco. Não há promessa de aprovação: quem decide o crédito é sempre o banco.</p></details>
         <details><summary>O que é a CANAW?<i class="pm"></i></summary><p>É a TV de especialistas ao vivo. Nela você acompanha o canal de leilão de imóveis e os programas com especialistas.</p></details>
         <details><summary>O que é o Dossiê do Assessor?<i class="pm"></i></summary><p>É o material de trabalho para quem assessora ou quer conduzir uma arrematação com método, do imóvel até a legalização.</p></details>
-        <details><summary>O que são os 15 modelos de sucesso?<i class="pm"></i></summary><p>São 15 arrematações de imóveis de leilão feitas com financiamento, 5% de entrada e 100% legalizadas, para você entender o caminho e repetir.</p></details>
         <details><summary>Quem dá a aula bônus?<i class="pm"></i></summary><p>É uma aula da Leilão PRO, com o maior especialista de leilões do Nordeste. Ela entra como bônus no Arsenal Completo enquanto a oferta Black estiver no ar.</p></details>
         <details><summary>O arsenal garante que vou arrematar?<i class="pm"></i></summary><p>Não. Ele organiza a sua busca e a sua análise para você decidir melhor. Todo leilão tem risco, e a decisão de dar o lance é sempre sua.</p></details>
         <details><summary>Como eu recebo o acesso?<i class="pm"></i></summary><p>O acesso é enviado por e-mail e WhatsApp na hora, após a confirmação da compra.</p></details>
@@ -1056,7 +1106,7 @@ var FIM_DA_OFERTA = "2026-11-27T23:59:59-03:00";
 
 /* entrada suave dos blocos; listas e grades entram item por item */
 (function () {
-  document.querySelectorAll(".blist,.fit-list,.how,.bonus-grid,.deps,.kitlist,.faq,.planos,.duo .elist").forEach(function (c) {
+  document.querySelectorAll(".blist,.fit-list,.how,.junto,.kitlist,.faq,.planos,.duo .elist").forEach(function (c) {
     c.classList.remove("rv");
     if (c.parentNode.classList.contains("rv") && c.matches(".elist")) c.parentNode.classList.remove("rv");
     Array.prototype.forEach.call(c.children, function (k, i) { k.classList.add("rv"); k.style.transitionDelay = Math.min(i, 6) * 70 + "ms"; });
@@ -1072,6 +1122,19 @@ var FIM_DA_OFERTA = "2026-11-27T23:59:59-03:00";
     });
   }, { rootMargin: "0px 0px -6% 0px" });
   els.forEach(function (e) { io.observe(e); });
+})();
+
+/* super combo: inclina de leve seguindo o mouse (computador) */
+(function () {
+  var c = document.querySelector("[data-combo]"); if (!c || !window.matchMedia) return;
+  if (!matchMedia("(hover:hover)").matches || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  var d = c.firstElementChild;
+  c.addEventListener("pointermove", function (e) {
+    var r = c.getBoundingClientRect();
+    d.style.setProperty("--ry", ((e.clientX - r.left) / r.width - .5) * 10 + "deg");
+    d.style.setProperty("--rx", (.5 - (e.clientY - r.top) / r.height) * 8 + "deg");
+  });
+  c.addEventListener("pointerleave", function () { d.style.setProperty("--ry", "0deg"); d.style.setProperty("--rx", "0deg"); });
 })();
 
 /* bloco 04: pontos do carrossel acompanham o deslize */
