@@ -617,6 +617,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 /* antes do desbloqueio: apagados, com cadeado no lugar do check */
 
 
+
+.pro__fexo{margin:16px 0 0}
+.pro__fexo-tela{position:relative;height:340px;overflow:hidden;border-radius:18px;background:#ebecf0;box-shadow:0 0 0 1px rgba(191,242,58,.45),0 24px 50px -24px rgba(0,0,0,.9)}
+.pro__fexo-tela img{width:100%;height:auto;display:block}
+.pro__fexo-tela::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,#050505)}
+.pro__fexo figcaption{display:flex;align-items:center;gap:9px;margin-top:10px;font-size:13px;color:#bdbdbd}
+.pro__fexo figcaption img{width:18px;height:auto;flex:none}
+
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
 .plano{min-width:0}
@@ -685,7 +693,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @keyframes listras{to{background-position:20px 0,0 0}}
 .dock__off{display:inline-block;margin-left:6px;padding:3px 7px;border-radius:7px;background:#f2231b;color:#fff;font:900 12px/1 var(--ff);font-style:normal;vertical-align:4px;box-shadow:0 0 14px rgba(255,40,30,.6);animation:treme 2.8s ease-in-out .6s infinite}
 @media (max-width:520px){.burst{width:82px;height:82px;top:-36px;right:-6px}.burst b{font-size:22px}.burst i{font-size:11px}}
-@media (prefers-reduced-motion:reduce){.burst,.burst::before,.dock__off,.meter__fill,.meter::before,.meter.ok,.meter.ok .meter__spark{animation:none}}
+@media (prefers-reduced-motion:reduce){.seal,.seal__brilho,.seal__brilho::after,.burst,.burst::before,.dock__off,.meter__fill,.meter::before,.meter.ok,.meter.ok .meter__spark{animation:none}}
 
 .plano__preco{font:900 clamp(52px,13vw,76px)/1 var(--ff);font-variation-settings:"wdth" 112;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .plano--top .plano__preco{background:var(--ouro-texto);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #8a4200) drop-shadow(0 10px 24px rgba(255,180,0,.3))}
@@ -707,11 +715,11 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .gar{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
 .gar{padding:14px 0}
 @media (min-width:640px){.gar{flex-direction:row;justify-content:center;text-align:left;gap:40px}}
-.seal{flex:none;display:grid;place-items:center;width:132px;height:132px;border-radius:50%;border:1px solid rgba(216,183,106,.6);background:radial-gradient(circle,rgba(216,183,106,.18),transparent 70%);color:var(--gold-2);box-shadow:0 0 0 10px rgba(216,183,106,.05),0 30px 70px -20px rgba(216,183,106,.5)}
-.seal{position:relative}
-.seal::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(216,183,106,.4);animation:gira 28s linear infinite}
-@keyframes gira{to{transform:rotate(360deg)}}
-.seal svg{width:56px;height:56px}
+.seal{position:relative;flex:none;width:170px;height:170px;filter:drop-shadow(0 18px 30px rgba(0,0,0,.7)) drop-shadow(0 0 30px rgba(255,190,0,.3));animation:seloGira 24s linear infinite}
+.seal svg{width:100%;height:100%;display:block;overflow:visible}
+.seal__brilho{position:absolute;inset:6%;border-radius:50%;overflow:hidden;pointer-events:none;animation:seloGira 24s linear infinite reverse}
+.seal__brilho::after{content:"";position:absolute;top:-30%;bottom:-30%;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);animation:vidro 5s ease-in-out infinite}
+@keyframes seloGira{50%{transform:rotate(6deg) scale(1.03)}100%{transform:rotate(0)}}
 .gar .k{margin-top:10px;color:var(--ink-2);font-size:17px;max-width:440px}
 
 /* BLOCO 16 — como funciona */
@@ -1029,14 +1037,10 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           <li><span>03</span><div><b>O caminho do arremate até a venda</b><small>Documentação, desocupação, obra e venda.</small></div></li>
         </ol>
 
-        <div class="pro__caso rv">
-          <small>Caso real da Leilão PRO · Apartamento 2 quartos</small>
-          <div>
-            <p><span>Arremate</span><b class="num">R$ 103.704</b></p>
-            <p><span>Venda</span><b class="num">R$ 210.000</b></p>
-            <p class="lucro"><span>Lucro líquido</span><b class="num">R$ 38.338</b></p>
-          </div>
-        </div>
+        <figure class="pro__fexo rv">
+          <div class="pro__fexo-tela"><img src="assets/fexo-imoveis.webp" width="480" height="873" alt="Lista do Fexô com imóveis de leilão que aceitam financiamento, com preço, desconto e parcela" loading="lazy" decoding="async"></div>
+          <figcaption><img src="assets/fexo-simbolo.webp" width="64" height="68" alt="">Imóveis reais no Fexô que aceitam financiamento: preço, desconto e parcela lado a lado.</figcaption>
+        </figure>
 
         <p class="pro__nota rv">Incluída como bônus no Arsenal de Aplicativos Facilitadores enquanto a oferta Black estiver no ar.</p>
       </div>
@@ -1107,7 +1111,23 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec" data-secao="15-garantia">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap wrap--narrow gar rv">
-    <div class="seal" aria-hidden="true"><svg><use href="#i-escudo"/></svg></div>
+    <div class="seal" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs>
+          <linearGradient id="sl-o" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset=".35" stop-color="#ffcf2e"/><stop offset=".55" stop-color="#d98600"/><stop offset=".8" stop-color="#ffc41f"/><stop offset="1" stop-color="#fff0a0"/></linearGradient>
+          <radialGradient id="sl-f" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#2c220c"/><stop offset="1" stop-color="#0b0803"/></radialGradient>
+          <path id="sl-arco" d="M37 100 a63 63 0 0 1 126 0"/><path id="sl-arco2" d="M38 104 a62 62 0 0 0 124 0"/>
+        </defs>
+        <polygon points="100.0,2.0 111.7,10.8 125.4,5.3 134.4,16.9 149.0,15.1 154.8,28.6 169.3,30.7 171.4,45.2 184.9,51.0 183.1,65.6 194.7,74.6 189.2,88.3 198.0,100.0 189.2,111.7 194.7,125.4 183.1,134.4 184.9,149.0 171.4,154.8 169.3,169.3 154.8,171.4 149.0,184.9 134.4,183.1 125.4,194.7 111.7,189.2 100.0,198.0 88.3,189.2 74.6,194.7 65.6,183.1 51.0,184.9 45.2,171.4 30.7,169.3 28.6,154.8 15.1,149.0 16.9,134.4 5.3,125.4 10.8,111.7 2.0,100.0 10.8,88.3 5.3,74.6 16.9,65.6 15.1,51.0 28.6,45.2 30.7,30.7 45.2,28.6 51.0,15.1 65.6,16.9 74.6,5.3 88.3,10.8" fill="url(#sl-o)" stroke="#8a4a00" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="80" fill="url(#sl-f)" stroke="#ffd95a" stroke-width="2"/>
+        <circle cx="100" cy="100" r="71" fill="none" stroke="#ffd95a" stroke-opacity=".45" stroke-width="1" stroke-dasharray="2 4"/>
+        <text font-family="Archivo,sans-serif" font-weight="800" font-size="13" letter-spacing="4" fill="#ffd95a"><textPath href="#sl-arco" startOffset="50%" text-anchor="middle">GARANTIA TOTAL</textPath></text>
+        <text font-family="Archivo,sans-serif" font-weight="800" font-size="10" letter-spacing="3" fill="#ffd95a" fill-opacity=".8"><textPath href="#sl-arco2" startOffset="50%" text-anchor="middle">★ RISCO ZERO ★</textPath></text>
+        <text x="100" y="112" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-size="46" fill="url(#sl-o)" stroke="#6a3200" stroke-width="1">7</text>
+        <text x="100" y="131" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-size="15" letter-spacing="4" fill="#fff">DIAS</text>
+      </svg>
+      <i class="seal__brilho"></i>
+    </div>
     <div>
       <h2>Garantia de 7 dias</h2>
       <p class="k">Se não gostar, é só pedir o reembolso em até 7 dias. Sem perguntas, sem burocracia.</p>
@@ -1316,7 +1336,7 @@ var CHECKOUT_ROLETA = ""; /* link do checkout do Arsenal completo por R$19,90 (p
     bar.scrollTo({ left: tb.offsetLeft - (bar.clientWidth - tb.offsetWidth) / 2, behavior: "smooth" });
     clearTimeout(vai.t); var alvoV = vids[i];
     vai.t = setTimeout(function () { if (vids[atual] !== alvoV) return; try { alvoV.currentTime = 0; } catch (e) {} tocar(); }, calmo ? 0 : 480);
-    if (perto) { vids[i].preload = "auto"; if (vids[i + 1]) vids[i + 1].preload = "metadata"; }
+    if (perto) { vids[i].preload = "auto"; if (vids[i + 1]) vids[i + 1].preload = "auto"; }
   }
   /* gesto: decide o eixo nos primeiros pixels; vertical fica com a página, horizontal com a vitrine */
   var x0 = 0, y0 = 0, t0 = 0, eixo = "", dx = 0, id = null;
@@ -1377,9 +1397,21 @@ var CHECKOUT_ROLETA = ""; /* link do checkout do Arsenal completo por R$19,90 (p
   }
   if ("IntersectionObserver" in window) {
     /* começa a baixar o vídeo da vez só quando a seção está chegando */
-    var io0 = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; io0.disconnect(); perto = true; vids.forEach(function (v) { if (v.dataset.poster) v.poster = v.dataset.poster; }); vids[atual].preload = "auto"; if (vids[atual + 1]) vids[atual + 1].preload = "metadata"; }, { rootMargin: "300px 0px" });
-    /* só depois que a página terminou de carregar, para não disputar banda com o topo */
-    if (document.readyState === "complete") io0.observe(sec); else addEventListener("load", function () { io0.observe(sec); });
+    var io0 = new IntersectionObserver(function (es) { if (!es[0].isIntersecting) return; io0.disconnect(); aquece(); }, { rootMargin: "300px 0px" });
+    /* depois que o topo carregou, aproveita o tempo ocioso para já baixar o 1º vídeo e as capas:
+       quando a pessoa chega na vitrine, o vídeo toca na hora */
+    function aquece() {
+      if (perto) return; perto = true;
+      vids.forEach(function (v) { if (v.dataset.poster) v.poster = v.dataset.poster; });
+      vids[atual].preload = "auto"; if (!visivel) { try { vids[atual].load(); } catch (er) {} }
+      setTimeout(function () { if (vids[atual + 1]) vids[atual + 1].preload = "auto"; }, 2500);
+    }
+    function depoisDoLoad() {
+      io0.observe(sec);
+      var ocioso = window.requestIdleCallback || function (f) { return setTimeout(f, 1); };
+      setTimeout(function () { ocioso(aquece, { timeout: 2000 }); }, 1200);
+    }
+    if (document.readyState === "complete") depoisDoLoad(); else addEventListener("load", depoisDoLoad);
     new IntersectionObserver(function (es) {
       visivel = es[0].isIntersecting; sec.classList.toggle("na-tela", visivel); tocar();
       if (visivel && !dicaFeita && !calmo && window.matchMedia && matchMedia("(max-width:899px)").matches) {
