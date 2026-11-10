@@ -1,0 +1,187 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Archivo";src:url(file:///home/user/leilao-pro-100k/black-casa-barata/assets/fonts/archivo.woff2) format("woff2");font-weight:400 900;font-stretch:100% 125%}
+@font-face{font-family:"DM Sans";src:url(file:///home/user/leilao-pro-100k/black-casa-barata/assets/fonts/dmsans.woff2) format("woff2");font-weight:400 700}
+@font-face{font-family:"Manrope";src:url(file:///home/user/leilao-pro-100k/black-casa-barata/assets/fonts/manrope.woff2) format("woff2");font-weight:600 800}
+@font-face{font-family:"Montserrat";src:url(file:///home/user/leilao-pro-100k/black-casa-barata/assets/fonts/montserrat.woff2) format("woff2");font-weight:700 900}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:540px;height:960px;background:#000;overflow:hidden}
+#v{position:relative;width:540px;height:960px;overflow:hidden;font-family:"DM Sans",sans-serif;color:#fff;background:linear-gradient(180deg,#120d05,#050505 50%,#000)}
+:root{--ouro:linear-gradient(180deg,#fffbe0 0%,#fff1a6 14%,#ffd93b 32%,#ffb800 47%,#c97a00 53%,#ffbf1f 63%,#ffe680 82%,#fff6c4 100%);--ouroB:linear-gradient(180deg,#fff7c2 0%,#ffe066 18%,#ffc61a 40%,#e89a00 62%,#ffcb2e 84%,#fff0a0 100%)}
+/* fundo fixo */
+.raios{position:absolute;left:270px;top:430px;width:1500px;height:1500px;margin:-750px 0 0 -750px;background:repeating-conic-gradient(from 0deg,rgba(255,210,90,.10) 0 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(closest-side,#000 8%,transparent 62%);mask:radial-gradient(closest-side,#000 8%,transparent 62%);animation:gira 30s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.glow{position:absolute;left:270px;top:430px;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,190,0,.42),transparent 70%);animation:pulsa 2s ease-in-out infinite}
+@keyframes pulsa{50%{transform:scale(1.12);opacity:.8}}
+.grade{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;-webkit-mask-image:radial-gradient(ellipse 80% 45% at 50% 25%,#000,transparent 75%);mask-image:radial-gradient(ellipse 80% 45% at 50% 25%,#000,transparent 75%)}
+.moldura{position:absolute;inset:0;box-shadow:inset 0 0 0 3px #e8a400,inset 0 0 40px rgba(255,180,0,.2);z-index:50;pointer-events:none}
+/* cenas */
+.sc{position:absolute;inset:0;opacity:0;animation-name:cena;animation-timing-function:linear;animation-fill-mode:both}
+@keyframes cena{0%{opacity:0;transform:scale(1.08)}7%{opacity:1;transform:scale(1)}93%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.96)}}
+.flash{position:absolute;inset:0;background:#fff3c4;opacity:0;z-index:40;animation:flash .35s ease-out both}
+@keyframes flash{0%{opacity:.75}100%{opacity:0}}
+/* utilidades de entrada */
+.pop{animation:pop .55s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.3)}}
+.sobe{animation:sobe .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sobe{from{opacity:0;transform:translateY(40px)}}
+.slam{animation:slam .5s cubic-bezier(.2,.9,.3,1.4) both}
+@keyframes slam{0%{opacity:0;transform:scale(2.6)}60%{opacity:1;transform:scale(.94)}100%{transform:scale(1)}}
+.treme{animation:treme .5s ease-in-out both}
+@keyframes treme{0%,100%{transform:translate(0)}20%{transform:translate(-6px,3px) rotate(-1deg)}40%{transform:translate(5px,-3px) rotate(1deg)}60%{transform:translate(-4px,2px)}80%{transform:translate(3px,-1px)}}
+/* textos */
+.tag{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;background:#e11d2a;font:800 15px/1 Archivo;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 4px 22px rgba(225,29,42,.6)}
+.tag i{width:9px;height:9px;border-radius:50%;background:#fff}
+.logo{font:900 64px/1 Archivo;font-stretch:125%;letter-spacing:-.035em;text-transform:uppercase;text-align:center;background:var(--ouro);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.8px #7a3d00;filter:drop-shadow(0 2px 0 #c46d00) drop-shadow(0 4px 0 #8a4200) drop-shadow(0 7px 0 #5a2a00) drop-shadow(0 20px 24px rgba(0,0,0,.85))}
+.logo span{display:block;padding-top:.08em;line-height:.92}.logo span+span{font-size:.84em}
+.ouro{background:var(--ouro);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #8a4200)}
+.cap{position:absolute;left:30px;right:30px;bottom:96px;z-index:30;text-align:center}
+.cap p{display:inline;padding:6px 12px;border-radius:10px;background:rgba(0,0,0,.72);font:700 21px/1.55 "DM Sans";-webkit-box-decoration-break:clone;box-decoration-break:clone;opacity:0;animation:capin .25s ease-out both}
+.cap p b{color:#ffd95a}
+@keyframes capin{from{opacity:0}to{opacity:1}}
+.capw{position:absolute;inset:0;opacity:0;animation-name:cena2;animation-fill-mode:both;animation-timing-function:linear}
+@keyframes cena2{0%,100%{opacity:0}4%,96%{opacity:1}}
+/* celular */
+.fone{position:absolute;left:50%;top:150px;width:290px;height:600px;margin-left:-145px;border-radius:46px;padding:10px;background:#050505;
+ box-shadow:0 0 0 3px #c9c9ce,0 0 0 6px #3a3a3e,0 40px 70px rgba(0,0,0,.85),0 0 90px rgba(255,180,0,.4)}
+.fone .tela{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;background:#000}
+.fone .tela img{width:100%;height:100%;object-fit:cover;object-position:top}
+.fone .ilha{position:absolute;left:50%;top:14px;width:86px;height:24px;margin-left:-43px;border-radius:20px;background:#000;z-index:2}
+.fone .ref{position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.22),transparent 28%,transparent 72%,rgba(255,255,255,.06));z-index:2}
+.entra{animation:entra .7s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes entra{from{opacity:0;transform:translateY(160px) rotate(-8deg) scale(.85)}}
+.marca{position:absolute;left:0;right:0;top:62px;display:flex;justify-content:center;align-items:center;gap:12px}
+.chip{position:absolute;z-index:6;white-space:nowrap;display:flex;align-items:center;gap:8px;padding:12px 16px;border-radius:16px;font:800 18px/1 Manrope;box-shadow:0 12px 26px rgba(0,0,0,.7)}
+.apptile{display:flex;align-items:center;justify-content:center;gap:10px;height:110px;border-radius:24px;font:800 30px/1 Manrope;box-shadow:0 16px 34px rgba(0,0,0,.7)}
+.burst{position:absolute;width:170px;height:170px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.6))}
+.burst::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 38% 30%,#ff7a5c,#f2231b 48%,#a80d0d);clip-path:polygon(50% 0,59% 12%,73% 5%,76% 20%,91% 18%,86% 33%,100% 40%,89% 51%,99% 64%,84% 69%,86% 84%,71% 82%,64% 96%,52% 87%,40% 98%,33% 84%,18% 88%,18% 72%,3% 66%,13% 54%,0 42%,14% 35%,9% 20%,24% 20%,26% 5%,40% 12%)}
+.burst span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-shadow:0 3px 0 rgba(90,0,0,.5)}
+.burst b{font:900 44px/1 Archivo;font-stretch:118%;letter-spacing:-.03em}.burst i{font:900 17px/1 Archivo;font-style:normal;letter-spacing:.2em}
+.btn{display:flex;align-items:center;justify-content:space-between;height:92px;padding:0 10px 0 34px;border-radius:999px;background:var(--ouroB);box-shadow:inset 0 2px 0 rgba(255,255,255,.85),0 0 0 2px #9a5a00,0 18px 44px -8px rgba(255,180,0,.85);color:#2a1600;font:800 25px/1 Archivo;letter-spacing:.1em;text-transform:uppercase}
+.btn i{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:#140b00;color:#ffd95a;font-style:normal;font-size:32px}
+.estrela{position:absolute;width:28px;height:28px;background:radial-gradient(circle,#fff 0 12%,rgba(255,240,170,.9) 20%,transparent 46%),linear-gradient(90deg,transparent 46%,#fff 50%,transparent 54%),linear-gradient(0deg,transparent 46%,#fff 50%,transparent 54%);animation:cint 1.4s ease-in-out infinite}
+@keyframes cint{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+.dedo{position:absolute;font-size:64px;animation:toca 1s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.7))}
+@keyframes toca{0%,100%{transform:translate(0,0)}50%{transform:translate(-10px,-14px) scale(.92)}}
+.ripple{position:absolute;width:40px;height:40px;border-radius:50%;border:3px solid #ffd95a;animation:rip 1s ease-out infinite}
+@keyframes rip{from{transform:scale(.4);opacity:1}to{transform:scale(3);opacity:0}}
+</style></head><body>
+<div id="v">
+ <div class="raios"></div><div class="glow"></div><div class="grade"></div>
+ <i class="estrela" style="left:60px;top:200px;animation-delay:-.3s"></i><i class="estrela" style="left:470px;top:330px;animation-delay:-.9s"></i><i class="estrela" style="left:90px;top:700px;animation-delay:-.6s"></i><i class="estrela" style="left:450px;top:760px;animation-delay:-1.1s"></i>
+
+ <!-- S1 0-2.6 -->
+ <section class="sc" data-t="0" data-d="2.6">
+  <div style="position:absolute;left:0;right:0;top:250px;text-align:center"><span class="tag pop" data-at="0.15"><i></i>Black Friday</span></div>
+  <div class="treme" data-at="0.55" style="position:absolute;left:0;right:0;top:330px"><h1 class="logo slam" data-at="0.45"><span>Casa Barata</span><span>de Leilão</span></h1></div>
+  <div class="flash" data-at="0.5"></div>
+ </section>
+
+ <!-- S2 2.6-8.6 -->
+ <section class="sc" data-t="2.6" data-d="6">
+  <div style="position:absolute;left:0;right:0;top:90px;text-align:center">
+   <p class="slam" data-at="0.15" style="font:900 150px/1 Archivo;font-stretch:118%"><span class="ouro">4</span></p>
+   <p class="sobe" data-at="0.4" style="font:800 30px/1 Archivo;letter-spacing:.24em;text-transform:uppercase;margin-top:6px">aplicativos</p>
+  </div>
+  <div style="position:absolute;left:40px;right:40px;top:330px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+   <div class="apptile pop" data-at="0.7" style="background:#17181d;box-shadow:inset 0 0 0 3px rgba(191,242,58,.6),0 16px 34px rgba(0,0,0,.7)"><img src="file:///home/user/leilao-pro-100k/black-casa-barata/assets/fexo-logo.webp" style="height:42px"></div>
+   <div class="apptile pop" data-at="0.95" style="background:#1a0f33;box-shadow:inset 0 0 0 3px rgba(168,85,247,.6),0 16px 34px rgba(0,0,0,.7)"><svg viewBox="0 0 32 32" width="36" height="36"><defs><linearGradient id="gm" x1="3" y1="27" x2="29" y2="5" gradientUnits="userSpaceOnUse"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs><path d="M5.5 25.5V12.5a5.25 5.25 0 0 1 10.5 0v13M16 12.5a5.25 5.25 0 0 1 10.5 0V17" fill="none" stroke="url(#gm)" stroke-width="4.4" stroke-linecap="round"/><circle cx="26.5" cy="25.3" r="2.6" fill="#c084fc"/></svg>multy</div>
+   <div class="apptile pop" data-at="1.2" style="background:#0b0b0b;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35),0 16px 34px rgba(0,0,0,.7);font:600 24px/1 'DM Sans';letter-spacing:.22em"><i style="width:12px;height:12px;border-radius:50%;background:#ff453a"></i>CANAW</div>
+   <div class="apptile pop" data-at="1.45" style="background:#0a1730;box-shadow:inset 0 0 0 3px rgba(59,130,246,.6),0 16px 34px rgba(0,0,0,.7);color:#8db8ff">Dossiê</div>
+  </div>
+  <div style="position:absolute;left:0;right:0;top:600px;text-align:center">
+   <p class="sobe" data-at="2.4" style="font:700 30px/1.25 Archivo">imóvel de leilão <span style="color:#ffd95a">financiado</span></p>
+   <div class="slam" data-at="3.6" style="display:inline-block;margin-top:22px;padding:16px 28px;border-radius:22px;background:var(--ouroB);box-shadow:0 0 0 2px #9a5a00,0 16px 40px -6px rgba(255,180,0,.8);color:#2a1600;font:900 46px/1 Archivo;font-stretch:112%">5% de entrada</div>
+  </div>
+ </section>
+
+ <!-- S3 Fexô 8.6-12.4 -->
+ <section class="sc" data-t="8.6" data-d="3.8">
+  <div class="marca pop" data-at="0.1"><img src="file:///home/user/leilao-pro-100k/black-casa-barata/assets/fexo-logo.webp" style="height:56px"></div>
+  <div class="fone entra" data-at="0"><div class="tela"><i class="ilha"></i><img class="seq" data-seq="fexo" data-from="40" data-speed="1.6" data-n="203"><i class="ref"></i></div></div>
+  <span class="chip pop" data-at="0.9" style="left:20px;top:300px;background:#17181d;box-shadow:inset 0 0 0 2px rgba(191,242,58,.7),0 12px 26px rgba(0,0,0,.7)"><b style="color:#bff23a">15 mil+</b> imóveis</span>
+  <span class="chip pop" data-at="1.5" style="right:16px;top:560px;background:#2563eb;color:#fff">Aceita financiamento</span>
+ </section>
+
+ <!-- S4 Multy 12.4-15.8 -->
+ <section class="sc" data-t="12.4" data-d="3.4">
+  <div class="marca pop" data-at="0.1" style="font:800 52px/1 Manrope;letter-spacing:-.04em"><svg viewBox="0 0 32 32" width="52" height="52"><path d="M5.5 25.5V12.5a5.25 5.25 0 0 1 10.5 0v13M16 12.5a5.25 5.25 0 0 1 10.5 0V17" fill="none" stroke="url(#gm)" stroke-width="4.4" stroke-linecap="round"/><circle cx="26.5" cy="25.3" r="2.6" fill="#c084fc"/></svg>multy</div>
+  <div class="fone entra" data-at="0"><div class="tela"><i class="ilha"></i><img class="seq" data-seq="multy" data-from="20" data-speed="1.4" data-n="175"><i class="ref"></i></div></div>
+  <img class="pop" data-at="0.6" src="file:///home/user/leilao-pro-100k/black-casa-barata/assets/multy.webp" style="position:absolute;right:6px;top:250px;width:150px;filter:drop-shadow(0 10px 18px rgba(124,58,237,.8))">
+  <span class="chip pop" data-at="1.1" style="left:16px;top:600px;background:linear-gradient(90deg,#7c3aed,#c084fc);color:#fff">Análise em 2 min</span>
+ </section>
+
+ <!-- S5 CANAW + Dossiê 15.8-19.2 -->
+ <section class="sc" data-t="15.8" data-d="3.4">
+  <div class="marca pop" data-at="0.1" style="font:500 40px/1 'DM Sans';letter-spacing:.3em"><span style="width:14px;height:14px;border-radius:50%;background:#ff453a;display:inline-block"></span>CANAW</div>
+  <div class="fone entra" data-at="0" style="left:38%"><div class="tela"><i class="ilha"></i><img class="seq" data-seq="canaw" data-from="30" data-speed="1.3" data-n="174"><i class="ref"></i></div></div>
+  <span class="chip pop" data-at="0.5" style="right:24px;top:200px;background:rgba(255,69,58,.18);box-shadow:inset 0 0 0 2px rgba(255,69,58,.6);color:#ff6b63">● AO VIVO</span>
+  <div class="sobe" data-at="1.5" style="position:absolute;right:22px;top:430px;width:220px;padding:20px;border-radius:24px;background:linear-gradient(160deg,#10254d,#060d1c);box-shadow:inset 0 0 0 3px rgba(59,130,246,.6),0 20px 40px rgba(0,0,0,.8);z-index:7">
+   <p style="font:800 28px/1.05 Archivo;font-stretch:120%;text-transform:uppercase">Dossiê<br><span style="color:#8db8ff">do Assessor</span></p>
+   <p style="margin-top:10px;font:600 16px/1.3 'DM Sans';color:#cfe0ff">Materiais práticos de estudo sobre imóveis</p>
+  </div>
+ </section>
+
+ <!-- S6 Bônus 19.2-21.8 -->
+ <section class="sc" data-t="19.2" data-d="2.6">
+  <div class="marca pop" data-at="0.05" style="flex-direction:column;gap:4px;top:50px"><span style="font:800 20px/1 Montserrat;letter-spacing:.4em;color:#bbb">AULA BÔNUS</span><span style="font:900 64px/1 Montserrat;text-transform:uppercase;background:linear-gradient(180deg,#fff,#e3e3e3 28%,#8a8a8a 52%,#f4f4f4 70%,#a3a3a3);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #333)">Leilão <span style="background:var(--ouro);-webkit-background-clip:text;background-clip:text">PRO</span></span></div>
+  <div class="fone entra" data-at="0" style="top:200px"><div class="tela"><i class="ilha"></i><img class="seq" data-seq="jo" data-from="1" data-speed="1" data-n="168"><i class="ref"></i></div></div>
+  <span class="chip pop" data-at="0.6" style="left:16px;top:250px;background:rgba(0,0,0,.8);box-shadow:inset 3px 0 0 #e11d2a;font:700 16px/1.2 'DM Sans'">● Caso real · ex-motoboy</span>
+ </section>
+
+ <!-- S7 Preço 21.8-26.1 -->
+ <section class="sc" data-t="21.8" data-d="4.3">
+  <div style="position:absolute;left:0;right:0;top:170px;text-align:center">
+   <p class="sobe" data-at="0.2" style="font:700 30px/1 Archivo;letter-spacing:.12em;text-transform:uppercase;color:#ddd">Tudo isso</p>
+   <p class="sobe" data-at="0.9" style="margin-top:34px;font:700 46px/1 'DM Sans';color:#ff8a73;position:relative;display:inline-block">de R$925<i class="risco" data-at="1.5" style="position:absolute;left:-6px;right:-6px;top:52%;height:6px;background:#ff3b2f;border-radius:3px;transform-origin:0 50%;animation:risca .35s ease-out both"></i></p>
+   <p style="margin-top:30px;font:700 28px/1 'DM Sans';color:#ccc" class="sobe" data-at="1.9">por apenas</p>
+   <div class="slam" data-at="2.3" style="margin-top:6px;font:900 210px/.9 Archivo;font-stretch:112%;letter-spacing:-.05em"><span class="ouro"><span style="font-size:.36em;vertical-align:1.25em">R$</span>37</span></div>
+   <p class="pop" data-at="3" style="display:inline-block;margin-top:20px;padding:10px 18px;border-radius:12px;background:#7ee2a8;color:#062b16;font:800 22px/1 Archivo">Economia de R$888</p>
+  </div>
+  <div class="burst pop" data-at="2.6" style="left:392px;top:300px;width:136px;height:136px;transform:rotate(12deg)"><span><b>-96%</b><i>OFF</i></span></div>
+  <div class="flash" data-at="2.3"></div>
+ </section>
+
+ <!-- S8 CTA 26.1-31 -->
+ <section class="sc" data-t="26.1" data-d="4.9">
+  <div style="position:absolute;left:0;right:0;top:130px;text-align:center"><span class="tag pop" data-at="0.1"><i></i>Black Friday</span></div>
+  <div style="position:absolute;left:0;right:0;top:200px"><h1 class="logo slam" data-at="0.2" style="font-size:54px"><span>Casa Barata</span><span>de Leilão</span></h1></div>
+  <div style="position:absolute;left:40px;right:40px;top:460px">
+   <div class="btn pop" data-at="0.8">Acessar agora<i>→</i></div>
+   <p class="sobe" data-at="1.2" style="margin-top:26px;text-align:center;font:800 27px/1 Manrope;color:#fff;letter-spacing:-.01em">blackcasabaratadeleilao<span style="color:#ffd95a">.com</span></p>
+   <p class="sobe" data-at="1.6" style="margin-top:22px;text-align:center;font:600 18px/1.6 'DM Sans';color:#9ff0c2">✓ Compra segura &nbsp; ✓ Acesso imediato<br>✓ 7 dias de garantia</p>
+  </div>
+  <i class="ripple pop" data-at="1.4" style="left:400px;top:500px"></i>
+  <span class="dedo pop" data-at="1.3" style="left:390px;top:505px">👆</span>
+ </section>
+
+ <!-- legendas -->
+ <div class="cap">
+  <div class="capw" data-t="0.4" data-d="2.1"><p><b>Black Friday</b> Casa Barata de Leilão!</p></div>
+  <div class="capw" data-t="2.7" data-d="5.8"><p><b>4 aplicativos</b> para arrematar seu imóvel de leilão financiado, com <b>5% de entrada</b></p></div>
+  <div class="capw" data-t="8.7" data-d="3.6"><p>No <b>Fexô</b>, mais de <b>15 mil</b> imóveis verificados</p></div>
+  <div class="capw" data-t="12.5" data-d="3.2"><p>Na <b>Multy</b>, seu financiamento analisado em <b>2 minutos</b></p></div>
+  <div class="capw" data-t="15.9" data-d="3.2"><p>Ao vivo na <b>CANAW</b> + estudo com o <b>Dossiê do Assessor</b></p></div>
+  <div class="capw" data-t="19.3" data-d="2.4"><p>+ <b>aula bônus</b> da Leilão PRO</p></div>
+  <div class="capw" data-t="21.9" data-d="4.1"><p>De R$925 por apenas <b>R$37</b></p></div>
+ </div>
+ <div class="moldura"></div>
+</div>
+<style>@keyframes risca{from{transform:scaleX(0)}to{transform:scaleX(1)}}</style>
+<script>
+// timeline: cada .sc/.capw começa em data-t; filhos com data-at começam em t+at
+document.querySelectorAll('.sc,.capw').forEach(function(s){var t=+s.dataset.t,d=+s.dataset.d;s.style.animationDuration=d+'s';s.style.animationDelay=t+'s';
+ s.querySelectorAll('[data-at]').forEach(function(e){e.style.animationDelay=(t+ +e.dataset.at)+'s'});
+ s.querySelectorAll('.entra').forEach(function(e){e.style.animationDelay=(t+ +(e.dataset.at||0))+'s'});});
+var B='file:///tmp/claude-0/-home-user-leilao-pro-100k/b9ffcb99-8f5a-5075-80a3-980105f8db92/scratchpad/';
+var PATH={fexo:B+'vid/f-fexo/f',multy:B+'vid/f-multy/f',canaw:B+'vid/f-canaw/f',jo:B+'reel/jo/f'};
+window.render=async function(t){
+ document.getAnimations().forEach(function(a){a.pause();a.currentTime=t*1000});
+ var ps=[];
+ document.querySelectorAll('img.seq').forEach(function(im){var sc=im.closest('.sc'),t0=+sc.dataset.t,d=+sc.dataset.d;if(t<t0-.1||t>t0+d+.1)return;
+  var rel=Math.max(0,t-t0),n=+im.dataset.n,base=im.dataset.seq==='jo'?1:0,i=Math.min(n-1+base,Math.floor(+im.dataset.from+rel*24*+im.dataset.speed));
+  var src=PATH[im.dataset.seq]+String(i).padStart(4,'0')+'.jpg';if(im.dataset.cur!==src){im.dataset.cur=src;im.src=src;ps.push(im.decode().catch(function(){}))}});
+ await Promise.all(ps);
+};
+</script>
+</body></html>
