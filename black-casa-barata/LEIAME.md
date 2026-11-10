@@ -8,7 +8,6 @@ Tudo fica no fim do `index.html`, no bloco `CONFIGURAÇÃO`:
 | Campo | O que é |
 |---|---|
 | `CHECKOUT_COMPLETO` | Link do checkout do Arsenal Completo (todos os botões) |
-| `CHECKOUT_BASICO` | Link do checkout do Arsenal Básico |
 | `CHECKOUT_ROLETA` | Link do checkout do Combo Black Casa Barata de Leilão por R$19,90 (prêmio da roleta de saída) |
 | (sem campo) | A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela |
 

@@ -705,7 +705,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
 .plano{min-width:0}
-@media (min-width:860px){.planos{grid-template-columns:1.25fr 1fr}}
+@media (min-width:860px){.planos{max-width:560px}}
 .plano{position:relative;padding:34px 26px 28px;border:1px solid var(--line-2);border-radius:18px;background:var(--card);text-align:center}
 .plano--top{border-color:rgba(216,183,106,.6);background:linear-gradient(180deg,rgba(216,183,106,.09),transparent 40%),var(--card);box-shadow:0 60px 120px -50px rgba(216,183,106,.4)}
 .plano__badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);width:max-content;max-width:calc(100% - 96px);padding:7px 14px;border-radius:999px;background:var(--ouro);color:#3a2200;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 0 0 1px var(--ouro-borda),0 8px 22px -8px rgba(255,180,0,.6);font:600 10px/1.3 var(--ff);letter-spacing:.12em;text-transform:uppercase;text-align:center}
@@ -1176,21 +1176,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
       </article>
 
-      <article class="plano rv">
-        <h3>Arsenal Básico</h3>
-        <p class="plano__de">&nbsp;</p>
-        <p class="plano__preco"><small>R$</small>19,90</p>
-        <p class="plano__cond">à vista · sem mensalidade</p>
-        <ul>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Dossiê do Assessor de Leilões</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô · Aplicativo de busca de leilões</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy · Análise de financiamento</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW · TV de especialistas ao vivo</span></li>
-          <li class="off"><span class="ck"><svg><use href="#ck"/></svg></span><span>Sem a aula bônus da Leilão PRO</span></li>
-        </ul>
-        <a class="btn btn--ghost" href="#planos" data-checkout="basico">Quero o Arsenal Básico <svg><use href="#seta"/></svg></a>
-        <span class="btn-note">Acesso imediato por WhatsApp ou e-mail</span>
-      </article>
     </div>
   </div>
 </section>
@@ -1320,17 +1305,15 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
 <script>
 /* ===================== CONFIGURAÇÃO — troque aqui =====================
-   CHECKOUT_*: links do checkout. Todos os botões vão para o plano principal (Arsenal de Aplicativos Facilitadores); só "Quero o Arsenal Básico"
-   vai para o Básico. Enquanto estiverem vazios, os botões levam até os planos (#planos).
+   CHECKOUT_*: links do checkout. Todos os botões vão para o plano principal (Arsenal de Aplicativos Facilitadores);  Enquanto estiverem vazios, os botões levam até os planos (#planos).
    A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela. */
 var CHECKOUT_COMPLETO = "";
-var CHECKOUT_BASICO = "";
 var CHECKOUT_ROLETA = "";
 var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoimento do João (ex.: assets/video/depoimento-joao.mp4). Vazio: mostra a gravação da Leilão PRO */ /* link do checkout do Combo Black Casa Barata de Leilão por R$19,90 (prêmio da roleta de saída) */
 
 (function () {
   document.querySelectorAll("[data-checkout]").forEach(function (a) {
-    var tipo = a.getAttribute("data-checkout"), url = tipo === "basico" ? CHECKOUT_BASICO : tipo === "roleta" ? CHECKOUT_ROLETA : CHECKOUT_COMPLETO;
+    var tipo = a.getAttribute("data-checkout"), url = tipo === "roleta" ? CHECKOUT_ROLETA : CHECKOUT_COMPLETO;
     if (url) { a.href = url + (location.search && url.indexOf("?") < 0 ? location.search : ""); }
   });
 })();
