@@ -328,7 +328,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
 /* BLOCO 10 — tudo que você vai receber */
 .pilha{position:relative;width:100%;max-width:460px;margin:0 auto;aspect-ratio:1/.82}
-.pilha__c{position:absolute;left:calc(var(--i)*7%);top:calc(var(--i)*17.5%);width:72%;height:24%;display:flex;align-items:center;gap:14px;padding:0 18px;border:1px solid var(--line-2);border-radius:12px;background:linear-gradient(160deg,#151515,#070707);box-shadow:0 24px 50px -18px rgba(0,0,0,.95)}
+.pilha__c{position:absolute;left:calc(var(--i)*5.6%);top:calc(var(--i)*15.2%);width:72%;height:23%;display:flex;align-items:center;gap:14px;padding:0 18px;border:1px solid var(--line-2);border-radius:12px;background:linear-gradient(160deg,#151515,#070707);box-shadow:0 24px 50px -18px rgba(0,0,0,.95)}
 .pilha__c span{font:800 11px/1 var(--ff);letter-spacing:.16em;color:var(--ink-3)}
 .pilha__c svg{flex:none;width:26px;height:26px;color:var(--gold-2)}
 .pilha__c b{font:700 clamp(13px,3.4vw,16px)/1.15 var(--ff);font-variation-settings:"wdth" 108;text-transform:uppercase;letter-spacing:.02em}
@@ -443,6 +443,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <symbol id="i-escudo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.500s8-3.5 8-10V5l-8-3-8 3v6.500c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></g></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></g></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M8 13h8M8 17h5"/></g></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12.5" rx="2"/><path d="M8 21h8M8.5 2.5 12 6l3.5-3.5"/></g></symbol>
   <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2 4.5 13.500H11L10 22l8.5-11.500H12z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -465,21 +466,22 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <div class="hero__art rv">
       <!-- Mockup desenhado em CSS. Para usar uma foto ou print real, troque este bloco por <img src="..."> -->
       <div class="painel" role="img" aria-label="Plataforma de busca de leilões: imóveis verificados com avaliação, lance mínimo e desconto lado a lado">
-        <div class="painel__bar"><i></i><i></i><i></i><span>Black Casa Barata · Busca de leilões</span></div>
+        <div class="painel__bar"><i></i><i></i><i></i><span>Fexô · Busca de imóveis de leilão</span></div>
         <div class="painel__body">
           <aside>
             <small>Arsenal</small>
             <ul>
-              <li class="on"><svg><use href="#i-radar"/></svg>Busca de leilões</li>
-              <li><svg><use href="#i-calc"/></svg>Pré-análise de crédito</li>
+              <li class="on"><svg><use href="#i-radar"/></svg>Fexô · Busca</li>
+              <li><svg><use href="#i-calc"/></svg>Multy · Financiamento</li>
               <li><svg><use href="#i-doc"/></svg>Dossiê do Assessor</li>
+              <li><svg><use href="#i-tv"/></svg>CANAW · TV ao vivo</li>
               <li><svg><use href="#i-trofeu"/></svg>15 modelos de sucesso</li>
-              <li><svg><use href="#i-play"/></svg>Aula bônus</li>
+              <li><svg><use href="#i-play"/></svg>Aula Leilão PRO</li>
             </ul>
           </aside>
           <div class="painel__main">
             <div class="busca"><svg><use href="#i-lupa"/></svg>Casas até R$ 150 mil
-              <span class="fx"><span class="pill">Aceita financiamento</span><span class="pill">Desconto acima de 40%</span><span class="pill">Desocupado</span></span></div>
+              <span class="fx"><span class="pill">Aceitam financiamento</span><span class="pill">Maior desconto</span><span class="pill">Todo o Brasil</span></span></div>
             <div class="stats">
               <div><small>Imóveis verificados</small><b class="num"><em>15 mil</em>+</b></div>
               <div><small>Entrada a partir de</small><b class="num">5%</b></div>
@@ -502,13 +504,13 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           </div>
         </div>
       </div>
-      <p class="hero__cap">Imagem ilustrativa da plataforma de busca.</p>
+      <p class="hero__cap">Imagem ilustrativa da busca no Fexô.</p>
     </div>
 
-    <p class="hero__sub">Não é qualquer arsenal. É o Dossiê do Assessor, a plataforma de busca de leilões e a plataforma de pré-análise de crédito, mais uma aula bônus com o maior especialista de leilões do Nordeste.</p>
+    <p class="hero__sub">Não é qualquer arsenal. É o Dossiê do Assessor, o Fexô para buscar imóveis de leilão, a Multy para analisar o seu financiamento e a CANAW com especialistas ao vivo, mais uma aula bônus da Leilão PRO com o maior especialista de leilões do Nordeste.</p>
     <ul class="elist">
-      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de busca com + de 15 mil imóveis verificados</span></li>
-      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pré-análise de crédito para saber se o financiamento passa antes do lance</span></li>
+      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô: + de 15 mil imóveis verificados, com filtro dos que aceitam financiamento</span></li>
+      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy: análise do seu financiamento em 2 minutos, antes do banco</span></li>
       <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 modelos de sucesso de arrematação financiada com 5% de entrada</span></li>
     </ul>
 
@@ -533,19 +535,22 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <div class="cat__b"><h3>Dossiê do Assessor</h3><p>O material de trabalho de quem conduz uma arrematação com método</p>
           <div class="chips"><span>Método</span><span>Passo a passo</span><span>Organização</span></div></div></article>
       <article class="cat"><div class="cat__art"><span>02</span><svg><use href="#i-radar"/></svg></div>
-        <div class="cat__b"><h3>Plataforma de Busca de Leilões</h3><p>+ de 15 mil imóveis verificados em um só lugar</p>
-          <div class="chips"><span>Bancos</span><span>Judiciais</span><span>Extrajudiciais</span><span>Aceita financiamento</span><span>Desconto</span></div></div></article>
+        <div class="cat__b"><h3>Fexô</h3><p>A plataforma de busca de imóveis de leilão e compra direta, com + de 15 mil imóveis verificados</p>
+          <div class="chips"><span>Todo o Brasil</span><span>Aceitam financiamento</span><span>Maior desconto</span><span>Compra direta</span></div></div></article>
       <article class="cat"><div class="cat__art"><span>03</span><svg><use href="#i-calc"/></svg></div>
-        <div class="cat__b"><h3>Plataforma de Pré-Análise de Crédito</h3><p>Saiba se o financiamento passa antes de dar o lance</p>
-          <div class="chips"><span>Renda</span><span>Entrada</span><span>Parcela</span><span>Aprovação</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>04</span><svg><use href="#i-trofeu"/></svg></div>
+        <div class="cat__b"><h3>Multy</h3><p>A análise de financiamento que olha o seu perfil antes do banco</p>
+          <div class="chips"><span>7 perguntas</span><span>2 minutos</span><span>Score Multy</span><span>Suporte no WhatsApp</span></div></div></article>
+      <article class="cat"><div class="cat__art"><span>04</span><svg><use href="#i-tv"/></svg></div>
+        <div class="cat__b"><h3>CANAW</h3><p>A TV de especialistas ao vivo, com o canal de leilão de imóveis</p>
+          <div class="chips"><span>Ao vivo</span><span>Leilão de imóveis</span><span>Chat</span><span>Especialistas</span></div></div></article>
+      <article class="cat"><div class="cat__art"><span>05</span><svg><use href="#i-trofeu"/></svg></div>
         <div class="cat__b"><h3>15 Modelos de Sucesso</h3><p>Arrematações financiadas com 5% de entrada e 100% legalizadas</p>
           <div class="chips"><span>Financiado</span><span>5% de entrada</span><span>100% legalizado</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>05</span><svg><use href="#i-play"/></svg></div>
-        <div class="cat__b"><h3>Aula Bônus</h3><p>Com o maior especialista de leilões do Nordeste</p>
-          <div class="chips"><span>Bônus</span><span>Especialista</span><span>Nordeste</span></div></div></article>
+      <article class="cat"><div class="cat__art"><span>06</span><svg><use href="#i-play"/></svg></div>
+        <div class="cat__b"><h3>Aula Bônus Leilão PRO</h3><p>Com o maior especialista de leilões do Nordeste</p>
+          <div class="chips"><span>Leilão PRO</span><span>Na prática</span><span>Bônus</span></div></div></article>
     </div>
-    <div class="car-nav" data-car-nav aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div class="car-nav" data-car-nav aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
@@ -553,8 +558,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec" data-secao="05-o-que-cada-ferramenta-possui">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap duo">
-    <div class="ficha rv" role="img" aria-label="Exemplo de imóvel na plataforma: avaliação, lance mínimo, entrada de 5 por cento, valor financiado, ponto de atenção e sinal verde da pré-análise de crédito">
-      <div class="ficha__h"><div><small>Imóvel verificado</small><b>Casa · 2 quartos</b></div><em class="num">−52%</em></div>
+    <div class="ficha rv" role="img" aria-label="Exemplo de imóvel na plataforma: avaliação, lance mínimo, entrada de 5 por cento, valor financiado, ponto de atenção e sinal verde da análise Multy">
+      <div class="ficha__h"><div><small>Imóvel verificado · Fexô</small><b>Casa · 2 quartos</b></div><em class="num">−52%</em></div>
       <div class="ficha__b">
         <div class="campos">
           <div><small>Avaliação</small><b>R$ 260.000</b></div>
@@ -564,14 +569,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           <div class="l"><small>Documentação</small><b>100% legalizado</b></div>
         </div>
         <div class="aten"><small>Ponto de atenção</small><p>Confira no edital as condições de financiamento e os prazos do banco antes do lance.</p></div>
-        <div class="sema"><span><i class="on"></i><i></i><i></i></span><div><b>Verde</b><small>Crédito pré-analisado: pode avançar</small></div></div>
+        <div class="sema"><span><i class="on"></i><i></i><i></i></span><div><b>Verde</b><small>Perfil analisado na Multy</small></div></div>
       </div>
     </div>
     <div class="rv">
       <ul class="elist">
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Imóveis verificados, com as informações que importam lado a lado</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Filtro para encontrar o que aceita financiamento</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pré-análise de crédito antes do lance, sem surpresa depois</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Filtro no Fexô para encontrar os que aceitam financiamento</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Análise de financiamento na Multy antes do lance, sem surpresa depois</span></li>
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Linguagem simples, sem “juridiquês” que ninguém entende</span></li>
       </ul>
       <div class="cta-block">
@@ -592,9 +597,10 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <ul class="blist rv">
       <li><svg><use href="#i-raio"/></svg><span>Pare de perder horas pulando de site em site atrás de imóvel</span></li>
       <li><svg><use href="#i-raio"/></svg><span>Busque entre + de 15 mil imóveis verificados em um só lugar</span></li>
-      <li><svg><use href="#i-raio"/></svg><span>Saiba se o crédito passa antes de dar o lance</span></li>
+      <li><svg><use href="#i-raio"/></svg><span>Veja como está o seu perfil de financiamento antes do lance</span></li>
       <li><svg><use href="#i-raio"/></svg><span>Arremate financiado, com apenas 5% de entrada</span></li>
       <li><svg><use href="#i-raio"/></svg><span>Siga 15 modelos que já deram certo, 100% legalizados</span></li>
+      <li><svg><use href="#i-raio"/></svg><span>Aprenda ao vivo com especialistas de leilão na CANAW</span></li>
     </ul>
     <div class="cta-block">
       <a class="btn" href="#planos" data-checkout="completo">Quero o arsenal agora <svg><use href="#seta"/></svg></a>
@@ -614,14 +620,16 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <div class="kitlist rv">
       <details open><summary><span class="kit__ic"><svg><use href="#i-doc"/></svg></span><div><b>Dossiê do Assessor</b><span>O material de trabalho de quem conduz uma arrematação com método</span></div><i class="pm"></i></summary>
         <ul><li>Como escolher o imóvel certo</li><li>Como analisar edital e matrícula</li><li>Como conduzir a arrematação</li><li>Como cuidar da legalização</li><li>Modelos prontos para usar</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-radar"/></svg></span><div><b>Plataforma de Busca de Leilões</b><span>+ de 15 mil imóveis verificados em um só lugar</span></div><i class="pm"></i></summary>
-        <ul><li>+ de 15 mil imóveis verificados</li><li>Leilões de bancos</li><li>Leilões judiciais e extrajudiciais</li><li>Busca por cidade e bairro</li><li>Filtro por desconto</li><li>Filtro de imóveis que aceitam financiamento</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-calc"/></svg></span><div><b>Plataforma de Pré-Análise de Crédito</b><span>Saiba se o financiamento passa antes de dar o lance</span></div><i class="pm"></i></summary>
-        <ul><li>Perfil de renda</li><li>Entrada disponível</li><li>Capacidade de parcela</li><li>Situação de crédito</li><li>Chance de aprovação antes do lance</li><li class="mais">E muito mais</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-radar"/></svg></span><div><b>Fexô · Plataforma de busca</b><span>Imóveis de leilão e compra direta em um só lugar</span></div><i class="pm"></i></summary>
+        <ul><li>+ de 15 mil imóveis verificados</li><li>Imóveis em todo o Brasil</li><li>Filtro dos que aceitam financiamento</li><li>Busca por lugar, tipo e preço</li><li>Ordenação por maior desconto</li><li>Casas, apartamentos, terrenos e loteamentos</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-calc"/></svg></span><div><b>Multy · Análise de financiamento</b><span>Olha o seu perfil antes do banco</span></div><i class="pm"></i></summary>
+        <ul><li>Análise em 2 minutos</li><li>7 perguntas sobre o seu perfil</li><li>O que pesa no seu financiamento</li><li>O que fazer para liberar o crédito mais rápido</li><li>Você vê o que foi usado na análise</li><li>Suporte no WhatsApp</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-tv"/></svg></span><div><b>CANAW · TV de especialistas</b><span>Programas ao vivo com especialistas de verdade</span></div><i class="pm"></i></summary>
+        <ul><li>Canal de leilão de imóveis</li><li>Programas ao vivo</li><li>Chat durante as transmissões</li><li>Um canal por especialista</li></ul></details>
       <details><summary><span class="kit__ic"><svg><use href="#i-trofeu"/></svg></span><div><b>15 Modelos de Sucesso</b><span>Arrematações financiadas com 5% de entrada e 100% legalizadas</span></div><i class="pm"></i></summary>
         <ul><li>O imóvel e o valor do lance</li><li>A entrada de 5% na prática</li><li>Como foi o financiamento</li><li>Como foi a legalização</li><li>O que repetir no seu caso</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-play"/></svg></span><div><b>Aula Bônus</b><span>Com o maior especialista de leilões do Nordeste</span></div><i class="pm"></i></summary>
-        <ul><li>Como escolher o imóvel</li><li>Financiamento em leilão na prática</li><li>Erros que custam caro</li><li class="mais">E muito mais</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-play"/></svg></span><div><b>Aula Bônus Leilão PRO</b><span>Com o maior especialista de leilões do Nordeste</span></div><i class="pm"></i></summary>
+        <ul><li>Uma aula da Leilão PRO, a especialização prática em leilões de imóveis</li><li>Como funcionam os leilões na prática</li><li>Estudo de caso real, do lance ao lucro</li></ul></details>
     </div>
   </div>
 </section>
@@ -632,7 +640,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="wrap">
     <div class="sec-head center rv">
       <h2>Arraste e compare</h2>
-      <p class="lead">À esquerda, a busca do jeito antigo: dezenas de abas, planilha e anotação solta. À direita, a plataforma com + de 15 mil imóveis verificados em um só lugar.</p>
+      <p class="lead">À esquerda, a busca do jeito antigo: dezenas de abas, planilha e anotação solta. À direita, o Fexô com + de 15 mil imóveis verificados em um só lugar.</p>
     </div>
     <div class="cmp rv" data-cmp>
       <div class="cmp__in" aria-hidden="true">
@@ -652,7 +660,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
               <li><span><b>Casa · 2 quartos</b>Lance R$ 124.800</span><em>−52%</em></li>
               <li><span><b>Casa · 3 quartos</b>Lance R$ 132.000</span><em>−45%</em></li>
               <li><span><b>Sobrado · 2 quartos</b>Lance R$ 88.200</span><em>−58%</em></li>
-              <li><span><b>Pré-análise de crédito</b>Aprovada para financiar</span><svg width="18" height="18" style="color:var(--ok)"><use href="#ck"/></svg></li>
+              <li><span><b>Análise Multy</b>Perfil analisado</span><svg width="18" height="18" style="color:var(--ok)"><use href="#ck"/></svg></li>
             </ul>
           </div>
           <span class="cmp__tag">Com o arsenal</span>
@@ -704,21 +712,23 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec" data-secao="10-tudo-que-voce-vai-receber">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap duo">
-    <div class="pilha rv" role="img" aria-label="As cinco partes do arsenal: Dossiê do Assessor, Busca de Leilões, Pré-Análise de Crédito, 15 Modelos de Sucesso e Aula Bônus">
-      <div class="pilha__c" style="--i:0"><span>01</span><svg><use href="#i-doc"/></svg><b>Dossiê do Assessor</b></div>
-      <div class="pilha__c" style="--i:1"><span>02</span><svg><use href="#i-radar"/></svg><b>Busca de Leilões</b></div>
-      <div class="pilha__c" style="--i:2"><span>03</span><svg><use href="#i-calc"/></svg><b>Pré-Análise de Crédito</b></div>
-      <div class="pilha__c" style="--i:3"><span>04</span><svg><use href="#i-trofeu"/></svg><b>15 Modelos de Sucesso</b></div>
-      <div class="pilha__c" style="--i:4"><span>05</span><svg><use href="#i-play"/></svg><b>Aula Bônus</b></div>
+    <div class="pilha rv" role="img" aria-label="As seis partes do arsenal: Dossiê do Assessor, Fexô, Multy, CANAW, 15 Modelos de Sucesso e Aula Bônus da Leilão PRO">
+      <div class="pilha__c" style="--i:0"><span>01</span><svg><use href="#i-doc"/></svg><b>Dossiê</b></div>
+      <div class="pilha__c" style="--i:1"><span>02</span><svg><use href="#i-radar"/></svg><b>Fexô</b></div>
+      <div class="pilha__c" style="--i:2"><span>03</span><svg><use href="#i-calc"/></svg><b>Multy</b></div>
+      <div class="pilha__c" style="--i:3"><span>04</span><svg><use href="#i-tv"/></svg><b>CANAW</b></div>
+      <div class="pilha__c" style="--i:4"><span>05</span><svg><use href="#i-trofeu"/></svg><b>15 Modelos</b></div>
+      <div class="pilha__c" style="--i:5"><span>06</span><svg><use href="#i-play"/></svg><b>Aula Leilão PRO</b></div>
     </div>
     <div class="rv">
       <ul class="elist">
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Dossiê do Assessor</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de busca com + de 15 mil imóveis verificados</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de pré-análise de crédito</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô, a plataforma de busca com + de 15 mil imóveis verificados</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy, a análise de financiamento em 2 minutos</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW, a TV de especialistas ao vivo</span></li>
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 modelos de sucesso de arrematação financiada, com 5% de entrada e 100% legalizados</span></li>
       </ul>
-      <span class="mais-bonus">+ Aula bônus exclusiva</span>
+      <span class="mais-bonus">+ Aula bônus da Leilão PRO</span>
     </div>
   </div>
 </section>
@@ -728,7 +738,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <article class="bon bon--solo rv"><div class="bon__ic"><span>Bônus</span><svg><use href="#i-play"/></svg></div>
-      <div><h3>Aula Bônus com o maior especialista de leilões do Nordeste</h3><div class="bon__val">na Black <b>GRÁTIS</b></div><p>Uma aula direto ao ponto com quem vive de leilão todos os dias, para você usar as ferramentas do arsenal do jeito certo.</p></div></article>
+      <div><h3>Aula Bônus da Leilão PRO com o maior especialista de leilões do Nordeste</h3><div class="bon__val">na Black <b>GRÁTIS</b></div><p>Uma aula da Leilão PRO, a especialização prática em leilões de imóveis, para você ver como os leilões funcionam na prática.</p></div></article>
   </div>
 </section>
 
@@ -750,11 +760,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <p class="plano__cond">à vista · sem mensalidade</p>
         <ul>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Dossiê do Assessor</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Busca de Leilões</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô · Plataforma de busca de leilões</span></li>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>+ de 15 mil imóveis verificados</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Pré-Análise de Crédito</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy · Análise de financiamento</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW · TV de especialistas ao vivo</span></li>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 Modelos de Sucesso</span></li>
-          <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Aula com o maior especialista de leilões do Nordeste</span></li>
+          <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Aula da Leilão PRO com o maior especialista de leilões do Nordeste</span></li>
         </ul>
         <p class="plano__eco">Aula bônus inclusa, grátis na Black</p>
         <a class="btn" href="#planos" data-checkout="completo">Quero o Arsenal Completo <svg><use href="#seta"/></svg></a>
@@ -768,10 +779,11 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <p class="plano__cond">à vista · sem mensalidade</p>
         <ul>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Dossiê do Assessor</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Busca de Leilões</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Pré-Análise de Crédito</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Fexô · Plataforma de busca de leilões</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Multy · Análise de financiamento</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>CANAW · TV de especialistas ao vivo</span></li>
           <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 Modelos de Sucesso</span></li>
-          <li class="off"><span class="ck"><svg><use href="#ck"/></svg></span><span>Sem a aula bônus</span></li>
+          <li class="off"><span class="ck"><svg><use href="#ck"/></svg></span><span>Sem a aula bônus da Leilão PRO</span></li>
         </ul>
         <a class="btn btn--ghost" href="#planos" data-checkout="basico">Quero o Arsenal Básico <svg><use href="#seta"/></svg></a>
         <span class="btn-note">Acesso imediato por WhatsApp ou e-mail</span>
@@ -822,7 +834,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <ol class="how rv">
       <li><span>01</span><b>Você finaliza a compra em ambiente seguro</b></li>
       <li><span>02</span><b>Recebe o acesso por e-mail e WhatsApp na hora</b></li>
-      <li><span>03</span><b>Abre a plataforma e começa a buscar imóveis no mesmo dia</b></li>
+      <li><span>03</span><b>Abre o Fexô e começa a buscar imóveis no mesmo dia</b></li>
     </ol>
 
     <!-- ============ BLOCO 17 — FAQ ============ -->
@@ -833,13 +845,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       </div>
       <div class="faq rv">
         <details><summary>Preciso ter experiência com leilão?<i class="pm"></i></summary><p>Não. As ferramentas foram feitas em linguagem simples, para quem está começando do zero.</p></details>
-        <details><summary>Dá mesmo para arrematar financiado com 5% de entrada?<i class="pm"></i></summary><p>Os 15 modelos mostram arrematações financiadas com 5% de entrada. As condições dependem do imóvel, do edital e da análise de crédito do banco, e é por isso que a pré-análise de crédito vem junto.</p></details>
+        <details><summary>Dá mesmo para arrematar financiado com 5% de entrada?<i class="pm"></i></summary><p>Em imóveis que aceitam financiamento, o banco pode financiar até 95% do valor, e o FGTS pode ajudar na entrada. As condições dependem do imóvel, do edital e da análise de crédito do banco, e é por isso que a análise da Multy vem junto.</p></details>
+        <details><summary>O que é o Fexô?<i class="pm"></i></summary><p>É a plataforma de busca de imóveis de leilão e compra direta. Você escolhe o lugar, o tipo e o valor, filtra os que aceitam financiamento e ordena pelo maior desconto.</p></details>
+        <details><summary>O que é a Multy? Ela substitui a análise do banco?<i class="pm"></i></summary><p>É a análise de financiamento: 7 perguntas, 2 minutos, e você vê o que pesa no seu perfil antes de ir ao banco. Não há promessa de aprovação: quem decide o crédito é sempre o banco.</p></details>
+        <details><summary>O que é a CANAW?<i class="pm"></i></summary><p>É a TV de especialistas ao vivo. Nela você acompanha o canal de leilão de imóveis e os programas com especialistas.</p></details>
         <details><summary>O que é o Dossiê do Assessor?<i class="pm"></i></summary><p>É o material de trabalho para quem assessora ou quer conduzir uma arrematação com método, do imóvel até a legalização.</p></details>
-        <details><summary>A pré-análise de crédito substitui a análise do banco?<i class="pm"></i></summary><p>Não. Ela mostra, antes do lance, se há chance real de o financiamento passar. A aprovação final é sempre do banco.</p></details>
         <details><summary>O que são os 15 modelos de sucesso?<i class="pm"></i></summary><p>São 15 arrematações de imóveis de leilão feitas com financiamento, 5% de entrada e 100% legalizadas, para você entender o caminho e repetir.</p></details>
-        <details><summary>Quem dá a aula bônus?<i class="pm"></i></summary><p>O maior especialista de leilões do Nordeste. A aula entra como bônus no Arsenal Completo enquanto a oferta Black estiver no ar.</p></details>
+        <details><summary>Quem dá a aula bônus?<i class="pm"></i></summary><p>É uma aula da Leilão PRO, com o maior especialista de leilões do Nordeste. Ela entra como bônus no Arsenal Completo enquanto a oferta Black estiver no ar.</p></details>
         <details><summary>O arsenal garante que vou arrematar?<i class="pm"></i></summary><p>Não. Ele organiza a sua busca e a sua análise para você decidir melhor. Todo leilão tem risco, e a decisão de dar o lance é sempre sua.</p></details>
-        <details><summary>Tem mensalidade?<i class="pm"></i></summary><p>Não. O pagamento é único.</p></details>
         <details><summary>Como eu recebo o acesso?<i class="pm"></i></summary><p>O acesso é enviado por e-mail e WhatsApp na hora, após a confirmação da compra.</p></details>
         <details><summary>Como funciona a garantia?<i class="pm"></i></summary><p>Você tem 7 dias a partir da compra para pedir o reembolso integral.</p></details>
       </div>
@@ -861,7 +874,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
 <!-- ============ BLOCO 19 — RODAPÉ ============ -->
 <footer class="foot" data-secao="19-rodape">
-  <p>© 2026 Black Casa Barata de Leilão — Todos os direitos reservados. Este material é um conjunto de ferramentas de apoio à pesquisa e à análise de imóveis de leilão. Não garante arrematação, lucro ou aprovação de financiamento, que depende exclusivamente da instituição financeira. Leilões envolvem riscos: leia sempre o edital e a matrícula antes de dar um lance.</p>
+  <p>© 2026 Black Casa Barata de Leilão — Todos os direitos reservados. Este material é um conjunto de ferramentas de apoio à pesquisa e à análise de imóveis de leilão. Não garante arrematação, lucro ou aprovação de financiamento, que depende exclusivamente da instituição financeira. O Fexô é independente, sem parceria oficial com a Caixa ou leiloeiros. Leilões envolvem riscos: leia sempre o edital e a matrícula antes de dar um lance.</p>
 </footer>
 
 <!-- barra de compra fixa (só no celular) -->
