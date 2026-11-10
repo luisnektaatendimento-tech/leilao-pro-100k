@@ -679,6 +679,29 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (max-width:520px){.btn--xl{min-height:68px;font-size:13px}.btn--xl svg{width:48px;height:48px;padding:14px}}
 @media (prefers-reduced-motion:reduce){.cta-pro .btn--xl{animation:none}}
 
+
+/* PONTES entre seções: convite animado para ver a próxima */
+.ponte{position:relative;display:flex;align-items:center;gap:14px;width:min(520px,100%);margin:40px auto 0;padding:10px 12px 10px 10px;border-radius:20px;text-align:left;overflow:hidden;isolation:isolate;
+  background:linear-gradient(160deg,#17140c,#0b0b0a);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(255,200,40,.35),0 18px 40px -20px rgba(255,180,0,.45);transition:transform .3s var(--ease),box-shadow .3s}
+.ponte::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 40%,rgba(255,220,120,.14) 50%,transparent 60%) no-repeat;background-size:260% 100%;background-position:170% 0;animation:brilho 4s var(--ease) 1s infinite}
+.ponte:active{transform:scale(.98)}
+@media (hover:hover){.ponte:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1px rgba(255,214,90,.7),0 24px 50px -20px rgba(255,180,0,.6)}}
+.ponte__thumb{position:relative;flex:none;width:52px;height:74px;border-radius:12px;overflow:hidden;background:#111;box-shadow:0 0 0 1px rgba(255,255,255,.2)}
+.ponte__thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ponte__play{position:absolute;left:50%;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:rgba(0,0,0,.6);box-shadow:0 0 0 1px rgba(255,255,255,.6)}
+.ponte__play::after{content:"";position:absolute;left:9px;top:6px;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.ponte__t{flex:1;min-width:0}
+.ponte__t small{display:block;font:800 10.5px/1 var(--ff);font-variation-settings:"wdth" 110;letter-spacing:.16em;text-transform:uppercase;color:#ffd95a}
+.ponte__t b{display:block;margin-top:6px;font:700 15.5px/1.25 var(--ff);font-variation-settings:"wdth" 104;color:#fff}
+.ponte__seta{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ouro);color:var(--ouro-tinta);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 0 0 1px var(--ouro-borda);animation:desce 1.6s ease-in-out infinite}
+.ponte__seta svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+@keyframes desce{0%,100%{transform:translateY(-2px)}50%{transform:translateY(4px)}}
+/* chegada: o título da seção de destino pisca em ouro */
+.chegou .sec-head h2,.chegou .pro__titulo b{animation:chegou 1.2s ease-out}
+@keyframes chegou{0%{text-shadow:0 0 0 rgba(255,200,40,0)}30%{text-shadow:0 0 28px rgba(255,200,40,.9)}100%{text-shadow:0 0 0 rgba(255,200,40,0)}}
+@media (max-width:380px){.ponte{gap:10px}.ponte__t b{font-size:14px}.ponte__t small{font-size:9.5px;letter-spacing:.1em}.ponte__thumb{width:44px;height:64px}}
+@media (prefers-reduced-motion:reduce){.ponte::after,.ponte__seta{animation:none}}
+
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
 .plano{min-width:0}
@@ -897,12 +920,17 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
+    <a class="ponte rv" href="#por-dentro" data-ponte>
+      <span class="ponte__thumb" aria-hidden="true"><img src="assets/video/fexo.webp" alt="" width="60" height="110" loading="lazy"></span>
+      <span class="ponte__t"><small>Próximo · 30 segundos</small><b>Veja os 4 aplicativos funcionando no celular</b></span>
+      <span class="ponte__seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+    </a>
   </div>
 </header>
 
 <!-- ============ BLOCO 05 — VITRINE: AS PLATAFORMAS FUNCIONANDO (vídeos gravados no celular) ============
      Vídeos em assets/video/. Para trocar um vídeo, substitua o .mp4 e o .jpg (capa) de mesmo nome. -->
-<section class="sec vt" data-secao="05-vitrine" data-vt>
+<section class="sec vt" id="por-dentro" data-secao="05-vitrine" data-vt>
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="vt-glow" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
   <div class="wrap">
@@ -1002,11 +1030,17 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <button class="vt-seta vt-seta--r" type="button" aria-label="Próximo aplicativo" data-vt-next><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
 
+
+    <a class="ponte rv" href="#bonus" data-ponte>
+      <span class="ponte__thumb" aria-hidden="true"><img src="assets/video/depoimento-joao.webp" alt="" width="60" height="110" loading="lazy"><i class="ponte__play"></i></span>
+      <span class="ponte__t"><small>A seguir · caso real</small><b>Assista ao ex-motoboy que lucrou R$ 40 mil em um leilão</b></span>
+      <span class="ponte__seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+    </a>
   </div>
 </section>
 
 <!-- ============ BLOCO 11 — AULA BÔNUS LEILÃO PRO ============ -->
-<section class="sec pro-sec" data-secao="11-bonus">
+<section class="sec pro-sec" id="bonus" data-secao="11-bonus">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="pro-luz" aria-hidden="true"></div>
   <div class="wrap">
@@ -1575,6 +1609,21 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
   }, { passive: true });
   /* voltou para a aba depois de sair */
   document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && fundo > .2) setTimeout(abre, 400); });
+})();
+
+
+/* pontes: rolagem suave até a próxima seção e um sinal visual de chegada */
+(function () {
+  document.querySelectorAll("[data-ponte]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var alvo = document.querySelector(a.getAttribute("href")); if (!alvo) return;
+      e.preventDefault();
+      alvo.querySelectorAll(".rv").forEach(function (el) { el.style.transitionDelay = "0s"; el.classList.add("in"); });
+      var bar = document.querySelector(".topbar"), y = alvo.getBoundingClientRect().top + scrollY - (bar ? bar.offsetHeight : 0) + 8;
+      scrollTo({ top: y, behavior: "smooth" });
+      alvo.classList.remove("chegou"); setTimeout(function () { alvo.classList.add("chegou"); }, 550); setTimeout(function () { alvo.classList.remove("chegou"); }, 2000);
+    });
+  });
 })();
 
 /* chamadas "Quero…": vão direto ao card da oferta, com tudo já carregado */
