@@ -140,9 +140,13 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 @media (max-width:420px){.badge--hi{font-size:11.5px;letter-spacing:.1em;padding:10px 16px;border-radius:16px}}
 .badge__dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
 .h1{margin-top:26px;text-transform:uppercase}
-.h1 .black{display:block;font-size:clamp(56px,20.5vw,220px);font-weight:900;font-variation-settings:"wdth" 125;line-height:.82;letter-spacing:-.045em;
-  background:linear-gradient(180deg,#fff 0%,var(--gold-2) 38%,var(--gold) 62%,#6d5622 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.h1 .resto{display:block;margin-top:clamp(10px,2vw,18px);font-size:clamp(22px,5.6vw,52px);font-weight:600;font-variation-settings:"wdth" 118;letter-spacing:.02em;color:var(--ink)}
+/* "Black" vira a etiqueta; "Casa Barata de Leilão" é o destaque */
+.h1 .black{display:flex;align-items:center;justify-content:center;gap:.6em;font-size:clamp(20px,5.4vw,40px);font-weight:800;font-variation-settings:"wdth" 125;line-height:1;letter-spacing:.42em;margin-right:-.42em;color:var(--ink)}
+.h1 .black::before,.h1 .black::after{content:"";width:clamp(26px,9vw,90px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.h1 .black::after{background:linear-gradient(90deg,var(--gold),transparent);margin-right:.42em}
+.h1 .resto{display:block;margin-top:clamp(12px,2.4vw,22px);font-size:clamp(44px,13.4vw,136px);font-weight:900;font-variation-settings:"wdth" 125;line-height:.94;letter-spacing:-.04em;
+  background:linear-gradient(180deg,#fff 0%,var(--gold-2) 38%,var(--gold) 64%,#6d5622 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 40px rgba(216,183,106,.25))}
+.h1 .resto i{display:block;font-style:normal}
 .h1-sub{max-width:800px;margin:26px auto 0;font:500 clamp(17px,3vw,23px)/1.4 var(--ff);font-variation-settings:"wdth" 100;letter-spacing:-.01em;color:var(--ink)}
 .h1-sub em{font-style:normal;color:var(--gold-2)}
 .selos{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px;animation:sobe .9s var(--ease) .44s both}
@@ -452,6 +456,80 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .unico li.my{border-color:rgba(168,85,247,.45)}
 .plano li i.pt{flex:none;width:8px;height:8px;margin:7px 7px 0 7px;border-radius:50%;background:var(--a)}
 
+/* BLOCO 05 — vitrine com vídeos */
+.vt{overflow:hidden;--a:var(--fexo);--a2:var(--fexo)}
+.vt-glow{position:absolute;left:50%;top:44%;width:min(760px,130vw);height:min(760px,130vw);margin:calc(min(760px,130vw)/-2) 0 0 calc(min(760px,130vw)/-2);border-radius:50%;background-color:var(--a);opacity:.16;filter:blur(90px);pointer-events:none;transition:background-color .8s var(--ease)}
+.vt>.wrap{position:relative;z-index:1}
+.vt-tabs{display:flex;gap:8px;margin:0 -20px 26px;padding:2px 20px;overflow-x:auto;scrollbar-width:none}
+.vt-tabs::-webkit-scrollbar{display:none}
+.vt-tabs>:first-child{margin-left:auto}.vt-tabs>:last-child{margin-right:auto}
+.vt-tab{position:relative;flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 10px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.03);color:var(--ink-2);font:700 14px/1 var(--f-fexo);cursor:pointer;overflow:hidden;transition:border-color .4s,color .4s,background .4s}
+.vt-tab img,.vt-tab svg{width:22px;height:22px;flex:none}
+.vt-tab .metal{font:900 11px/1 var(--f-pro);padding:0 1px}
+.vt-tab::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:var(--pg,0%);background:var(--a)}
+.vt-tab.on{border-color:color-mix(in srgb,var(--a) 70%,transparent);background:color-mix(in srgb,var(--a) 13%,transparent);color:#fff}
+.vt-tab.t-pro.on{--a:#d9d9d9}
+.vt-stage{position:relative}
+.vt-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -20px;overscroll-behavior-x:contain}
+.vt-track::-webkit-scrollbar{display:none}
+.vt-slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;display:grid;justify-items:center;gap:30px;padding:8px 20px 4px}
+.vt-fone{position:relative;width:min(252px,64vw)}
+.vt-tela{position:relative;aspect-ratio:540/1168;padding:9px;border-radius:44px;background:linear-gradient(145deg,#2a2a2e,#0c0c0e 40%,#1c1c20);box-shadow:0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.06),0 50px 90px -30px color-mix(in srgb,var(--a) 45%,transparent),0 30px 60px -20px rgba(0,0,0,.9);cursor:pointer}
+.vt-tela{display:flex;flex-direction:column}
+.vt-sc{position:relative;flex:1;display:flex;flex-direction:column;border-radius:35px;overflow:hidden;background:var(--sb,#000)}
+.vt-status{flex:none;display:flex;align-items:center;justify-content:space-between;height:38px;padding:4px 22px 0 26px;color:var(--sbt,#fff);font:700 12.5px/1 var(--f-canaw)}
+.vt-status i{display:flex;gap:5px;align-items:center}
+.vt-status svg{height:11px;width:auto;fill:currentColor}
+@media (max-width:380px){.vt-status{padding:4px 16px 0 20px;font-size:11.5px}.vt-status svg{height:9px}}
+.vt-tela video{display:block;flex:1;min-height:0;width:100%;object-fit:cover;object-position:top;background:var(--sb,#000)}
+.t-fexo.vt-slide{--sb:#fff;--sbt:#111318}
+.t-multy.vt-slide{--sb:#08090b}
+.vt-ilha{position:absolute;left:50%;top:18px;width:26%;height:21px;margin-left:-13%;border-radius:999px;background:#000;box-shadow:0 0 0 1px rgba(255,255,255,.05)}
+.vt-reflexo{position:absolute;inset:9px;border-radius:35px;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.14) 0%,transparent 26%,transparent 70%,rgba(255,255,255,.05) 100%)}
+.vt-play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 0 1px rgba(255,255,255,.3);opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s var(--ease);pointer-events:none}
+.vt-play::after{content:"";position:absolute;left:26px;top:21px;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+.vt-slide.pausado .vt-play{opacity:1;transform:none}
+.vt-tag{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:6px;padding:9px 13px;border-radius:14px;background:rgba(18,18,20,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--a) 45%,rgba(255,255,255,.12));box-shadow:0 14px 30px -10px rgba(0,0,0,.8);font:600 12.5px/1.15 var(--f-fexo);color:var(--ink);white-space:nowrap;opacity:0;transform:translateY(14px) scale(.92);transition:opacity .6s var(--ease),transform .7s var(--ease)}
+.vt-tag b{color:var(--a2);font-weight:800}
+.vt-tag--1{left:-22%;top:16%}
+.vt-tag--2{right:-24%;top:43%}
+.vt-tag--3{left:-18%;bottom:15%}
+.vt-tag.az{background:var(--fexo-azul);border-color:var(--fexo-azul);color:#fff}
+.vt-tag.ro{background:linear-gradient(90deg,var(--multy),var(--multy-2));border-color:transparent;color:#fff}
+.vt-tag.live{color:var(--canaw-live)}
+.vt-tag.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--canaw-live);animation:pisca 1.6s ease-in-out infinite}
+.vt-slide.on .vt-tag{opacity:1;transform:none;animation:flutua 5s ease-in-out infinite}
+.vt-slide.on .vt-tag--1{transition-delay:.35s}
+.vt-slide.on .vt-tag--2{transition-delay:.6s;animation-delay:-1.6s}
+.vt-slide.on .vt-tag--3{transition-delay:.85s;animation-delay:-3.2s}
+.t-pro.vt-slide{--a:#bdbdbd;--a2:#fff}
+.vt-txt{width:100%;max-width:420px;text-align:left}
+.vt-marca{display:flex;align-items:center;gap:9px;margin-bottom:14px;min-height:30px}
+.vt-marca img{height:28px;width:auto}
+.vt-marca svg{width:28px;height:28px}
+.vt-marca b{font:800 22px/1 var(--f-fexo);letter-spacing:-.03em;color:#fff}
+.t-canaw .vt-marca b{font:500 19px/1 var(--f-canaw);letter-spacing:.32em}
+.t-pro .vt-marca b{font:900 22px/1 var(--f-pro);text-transform:uppercase;letter-spacing:0}
+.vt-marca em{font-style:normal;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.3);font:600 11px/1 var(--f-pro);letter-spacing:.1em;text-transform:uppercase;color:#bdbdbd}
+.vt-txt h3{font-size:clamp(22px,5.6vw,30px)}
+.vt-txt ol{display:grid;gap:10px;margin-top:18px}
+.vt-txt li{display:flex;align-items:center;gap:12px;color:var(--ink-2);font-size:15.5px}
+.vt-txt li span{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--a) 16%,transparent);border:1px solid color-mix(in srgb,var(--a) 45%,transparent);color:var(--a2);font:800 12px/1 var(--f-num)}
+.vt-slide .vt-txt>*{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.vt-slide.on .vt-txt>*{opacity:1;transform:none}
+.vt-slide.on .vt-txt>:nth-child(2){transition-delay:.1s}.vt-slide.on .vt-txt>:nth-child(3){transition-delay:.2s}
+.vt-seta{display:none}
+@media (min-width:900px){
+  .vt-slide{grid-template-columns:auto minmax(0,420px);justify-content:center;align-items:center;gap:90px;padding:10px 100px}
+  .vt-fone{width:290px}
+  .vt-seta{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:50px;height:50px;margin-top:-25px;border-radius:50%;border:1px solid var(--line-2);background:rgba(0,0,0,.5);color:#fff;cursor:pointer;transition:border-color .3s}
+  .vt-seta svg{width:22px;height:22px}
+  .vt-seta:hover{border-color:var(--a)}
+  .vt-seta--l{left:0}.vt-seta--r{right:0}
+}
+@media (max-width:380px){.vt-tag{font-size:11.5px;padding:8px 11px}.vt-tag--1{left:-16%}.vt-tag--2{right:-16%}.vt-tag--3{left:-12%}}
+@media (prefers-reduced-motion:reduce){.vt-slide.on .vt-tag{animation:none}}
+
 /* BLOCO 06 — benefícios */
 .blist{display:grid;gap:10px;max-width:720px;margin:0 auto}
 .blist li{display:flex;gap:16px;align-items:center;padding:17px 20px;border:1px solid var(--line);border-radius:var(--r);background:rgba(255,255,255,.02);transition:border-color .4s var(--ease)}
@@ -668,7 +746,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <header class="hero spot" id="topo" data-secao="02-hero">
   <div class="wrap">
     <span class="badge badge--hi">Produto <b>high ticket</b> <span>com preço de <b>low ticket</b></span></span>
-    <h1 class="h1"><span class="black">Black</span><span class="resto">Casa Barata de Leilão</span></h1>
+    <h1 class="h1"><span class="black">Black</span><span class="resto"><i>Casa Barata</i><i>de Leilão</i></span></h1>
     <p class="h1-sub"><em>4 plataformas</em> para arrematar um imóvel de leilão <em>financiado</em> na Black Friday com apenas <em>5% de entrada</em> e <em>100% legalizado</em>.</p>
     <ul class="selos" aria-label="Garantias">
       <li><svg><use href="#i-escudo"/></svg>100% seguro</li>
@@ -745,6 +823,112 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           <div class="chips"><span>Leilão PRO</span><span>Na prática</span><span>Bônus</span></div></div></article>
     </div>
     <div class="car-nav" data-car-nav aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 05 — VITRINE: AS PLATAFORMAS FUNCIONANDO (vídeos gravados no celular) ============
+     Vídeos em assets/video/. Para trocar um vídeo, substitua o .mp4 e o .jpg (capa) de mesmo nome. -->
+<section class="sec vt" data-secao="05-vitrine" data-vt>
+  <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="vt-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Por dentro</span>
+      <h2>Veja as plataformas funcionando</h2>
+      <p class="lead">Gravado direto na tela do celular. Deslize para ver cada uma.</p>
+    </div>
+
+    <div class="vt-tabs" role="tablist" aria-label="Plataformas">
+      <button class="vt-tab t-fexo on" role="tab" aria-selected="true" data-i="0"><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="">Fexô</button>
+      <button class="vt-tab t-multy" role="tab" aria-selected="false" data-i="1"><svg><use href="#m-multy"/></svg>Multy</button>
+      <button class="vt-tab t-canaw" role="tab" aria-selected="false" data-i="2"><svg><use href="#m-canaw"/></svg>CANAW</button>
+      <button class="vt-tab t-pro" role="tab" aria-selected="false" data-i="3"><b class="metal">PRO</b>Leilão PRO</button>
+    </div>
+
+    <div class="vt-stage">
+      <button class="vt-seta vt-seta--l" type="button" aria-label="Plataforma anterior" data-vt-prev><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="vt-track" data-vt-track>
+
+        <article class="vt-slide t-fexo" aria-label="Fexô">
+          <div class="vt-fone">
+            <div class="vt-tela"><div class="vt-sc"><div class="vt-status"><span>9:41</span><i><svg viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="6" rx="1"/><rect x="10" y="2.5" width="3" height="8.5" rx="1"/><rect x="15" y="0" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 25 12"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="16" height="8" rx="1.6"/><rect x="22.5" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></i></div><video muted playsinline preload="metadata" poster="assets/video/fexo.jpg" aria-label="Gravação de tela do Fexô no celular"><source src="assets/video/fexo.mp4" type="video/mp4"><source src="assets/video/fexo.webm" type="video/webm"></video></div><i class="vt-ilha"></i><i class="vt-reflexo"></i><span class="vt-play" aria-hidden="true"></span></div>
+            <span class="vt-tag vt-tag--1"><b>15 mil+</b> imóveis verificados</span>
+            <span class="vt-tag vt-tag--2 az">Aceitam financiamento</span>
+            <span class="vt-tag vt-tag--3"><b>até 95%</b> financiado</span>
+          </div>
+          <div class="vt-txt">
+            <div class="vt-marca"><img src="assets/fexo-logo.webp" width="360" height="127" alt="Fexô"></div>
+            <h3>Encontre o imóvel certo em segundos</h3>
+            <ol>
+              <li><span>1</span>Escolha onde, o tipo e o valor do imóvel</li>
+              <li><span>2</span>Filtre só os que aceitam financiamento</li>
+              <li><span>3</span>Veja o desconto e a parcela de cada imóvel</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="vt-slide t-multy" aria-label="Multy">
+          <div class="vt-fone">
+            <div class="vt-tela"><div class="vt-sc"><div class="vt-status"><span>9:41</span><i><svg viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="6" rx="1"/><rect x="10" y="2.5" width="3" height="8.5" rx="1"/><rect x="15" y="0" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 25 12"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="16" height="8" rx="1.6"/><rect x="22.5" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></i></div><video muted playsinline preload="none" poster="assets/video/multy.jpg" aria-label="Gravação de tela da Multy no celular"><source src="assets/video/multy.mp4" type="video/mp4"><source src="assets/video/multy.webm" type="video/webm"></video></div><i class="vt-ilha"></i><i class="vt-reflexo"></i><span class="vt-play" aria-hidden="true"></span></div>
+            <span class="vt-tag vt-tag--1"><b>7</b> perguntas</span>
+            <span class="vt-tag vt-tag--2 ro">Antes do banco</span>
+            <span class="vt-tag vt-tag--3"><b>2 min</b> de análise</span>
+          </div>
+          <div class="vt-txt">
+            <div class="vt-marca"><svg><use href="#m-multy"/></svg><b>multy</b></div>
+            <h3>Saiba como está o seu financiamento</h3>
+            <ol>
+              <li><span>1</span>Responda 7 perguntas, uma de cada vez</li>
+              <li><span>2</span>Veja o que pesa no seu financiamento</li>
+              <li><span>3</span>Entenda o que fazer para liberar o crédito</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="vt-slide t-canaw" aria-label="CANAW">
+          <div class="vt-fone">
+            <div class="vt-tela"><div class="vt-sc"><div class="vt-status"><span>9:41</span><i><svg viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="6" rx="1"/><rect x="10" y="2.5" width="3" height="8.5" rx="1"/><rect x="15" y="0" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 25 12"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="16" height="8" rx="1.6"/><rect x="22.5" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></i></div><video muted playsinline preload="none" poster="assets/video/canaw.jpg" aria-label="Gravação de tela da CANAW no celular"><source src="assets/video/canaw.mp4" type="video/mp4"><source src="assets/video/canaw.webm" type="video/webm"></video></div><i class="vt-ilha"></i><i class="vt-reflexo"></i><span class="vt-play" aria-hidden="true"></span></div>
+            <span class="vt-tag vt-tag--1 live">Ao vivo agora</span>
+            <span class="vt-tag vt-tag--2">Canal de <b>leilão</b></span>
+            <span class="vt-tag vt-tag--3">Chat com especialistas</span>
+          </div>
+          <div class="vt-txt">
+            <div class="vt-marca"><svg><use href="#m-canaw"/></svg><b>CANAW</b></div>
+            <h3>Aprenda ao vivo com quem faz</h3>
+            <ol>
+              <li><span>1</span>Abra a TV de especialistas, 24h por dia</li>
+              <li><span>2</span>Entre no canal de leilão de imóveis</li>
+              <li><span>3</span>Assista e tire dúvidas no chat</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="vt-slide t-pro" aria-label="Aula bônus Leilão PRO">
+          <div class="vt-fone">
+            <div class="vt-tela"><div class="vt-sc"><div class="vt-status"><span>9:41</span><i><svg viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="6" rx="1"/><rect x="10" y="2.5" width="3" height="8.5" rx="1"/><rect x="15" y="0" width="3" height="11" rx="1"/></svg><svg viewBox="0 0 25 12"><rect x=".5" y=".5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="16" height="8" rx="1.6"/><rect x="22.5" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></i></div><video muted playsinline preload="none" poster="assets/video/pro.jpg" aria-label="Gravação de tela da apresentação da Leilão PRO no celular"><source src="assets/video/pro.mp4" type="video/mp4"><source src="assets/video/pro.webm" type="video/webm"></video></div><i class="vt-ilha"></i><i class="vt-reflexo"></i><span class="vt-play" aria-hidden="true"></span></div>
+            <span class="vt-tag vt-tag--1">Bônus</span>
+            <span class="vt-tag vt-tag--2">Do lance <b>ao lucro</b></span>
+            <span class="vt-tag vt-tag--3">Caso real</span>
+          </div>
+          <div class="vt-txt">
+            <div class="vt-marca"><b class="metal">Leilão PRO</b><em>Aula bônus</em></div>
+            <h3>Leilão na prática, com caso real</h3>
+            <ol>
+              <li><span>1</span>Como os leilões funcionam na prática</li>
+              <li><span>2</span>Estudo de caso real, do lance ao lucro</li>
+              <li><span>3</span>O caminho do arremate até a venda</li>
+            </ol>
+          </div>
+        </article>
+
+      </div>
+      <button class="vt-seta vt-seta--r" type="button" aria-label="Próxima plataforma" data-vt-next><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+
+    <div class="cta-block">
+      <a class="btn" href="#planos" data-checkout="completo">Quero as 4 plataformas <svg><use href="#seta"/></svg></a>
+      <span class="btn-note">Gravações reais das plataformas. Os imóveis e programas mudam todos os dias.</span>
+    </div>
   </div>
 </section>
 
@@ -1103,6 +1287,58 @@ var FIM_DA_OFERTA = "2026-11-27T23:59:59-03:00";
     d.style.setProperty("--rx", (.5 - (e.clientY - r.top) / r.height) * 8 + "deg");
   });
   c.addEventListener("pointerleave", function () { d.style.setProperty("--ry", "0deg"); d.style.setProperty("--rx", "0deg"); });
+})();
+
+/* bloco 05: vitrine. Deslize ou toque nas abas; o vídeo da vez toca sozinho
+   só enquanto a seção está na tela, e ao terminar passa para a próxima plataforma. */
+(function () {
+  var sec = document.querySelector("[data-vt]"); if (!sec) return;
+  var track = sec.querySelector("[data-vt-track]"), slides = [].slice.call(track.children),
+      tabs = [].slice.call(sec.querySelectorAll(".vt-tab")), vids = slides.map(function (s) { return s.querySelector("video"); }),
+      cores = ["#bff23a", "#a855f7", "#ff453a", "#d9d9d9"], atual = -1, visivel = false, pausaManual = false, raf = 0,
+      calmo = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function tocar() {
+    var v = vids[atual]; if (!v) return;
+    if (!visivel || pausaManual || calmo) { v.pause(); slides[atual].classList.toggle("pausado", visivel && (pausaManual || calmo)); return; }
+    var p = v.play(); slides[atual].classList.remove("pausado");
+    if (p && p.catch) p.catch(function () { slides[atual].classList.add("pausado"); });
+  }
+  function ativa(i) {
+    if (i === atual) return;
+    if (atual > -1) { vids[atual].pause(); tabs[atual].style.setProperty("--pg", "0%"); }
+    atual = i;
+    slides.forEach(function (s, k) { s.classList.toggle("on", k === i); s.classList.remove("pausado"); });
+    tabs.forEach(function (t, k) { t.classList.toggle("on", k === i); t.setAttribute("aria-selected", k === i ? "true" : "false"); });
+    sec.style.setProperty("--a", cores[i]);
+    var tb = tabs[i], bar = tb.parentNode;
+    bar.scrollTo({ left: tb.offsetLeft - (bar.clientWidth - tb.offsetWidth) / 2, behavior: "smooth" });
+    try { vids[i].currentTime = 0; } catch (e) {}
+    tocar();
+  }
+  function vai(i) { i = (i + slides.length) % slides.length; track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: calmo ? "auto" : "smooth" }); ativa(i); }
+  track.addEventListener("scroll", function () {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () { ativa(Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / track.clientWidth)))); });
+  }, { passive: true });
+  tabs.forEach(function (t, k) { t.addEventListener("click", function () { pausaManual = false; vai(k); }); });
+  sec.querySelector("[data-vt-prev]").addEventListener("click", function () { pausaManual = false; vai(atual - 1); });
+  sec.querySelector("[data-vt-next]").addEventListener("click", function () { pausaManual = false; vai(atual + 1); });
+  vids.forEach(function (v, k) {
+    v.addEventListener("timeupdate", function () { if (k === atual && v.duration) tabs[k].style.setProperty("--pg", (v.currentTime / v.duration * 100) + "%"); });
+    v.addEventListener("ended", function () { if (k === atual) { tabs[k].style.setProperty("--pg", "100%"); vai(k + 1); } });
+    v.parentNode.addEventListener("click", function () {
+      if (k !== atual) return vai(k);
+      if (v.paused) { pausaManual = false; calmo = false; tocar(); } else { pausaManual = true; v.pause(); slides[k].classList.add("pausado"); }
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) {
+      visivel = es[0].isIntersecting;
+      if (visivel && atual > -1 && vids[atual + 1]) vids[atual + 1].preload = "auto";
+      tocar();
+    }, { threshold: .35 }).observe(track);
+  } else visivel = true;
+  ativa(0);
 })();
 
 /* bloco 04: pontos do carrossel acompanham o deslize */
