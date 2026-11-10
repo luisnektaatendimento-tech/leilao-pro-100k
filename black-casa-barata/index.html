@@ -725,28 +725,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (min-width:900px){.pro__esp{margin-left:0;max-width:none}.pro__lock{text-align:left}.pro__titulo{align-items:flex-start}.pro__titulo span::before{display:none}.pro__lock::before{left:40%}}
 
 
-/* carrossel de imóveis reais (seção "Ideal para você") */
-.ims{margin:0 -20px 34px}
-.ims__head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 20px;margin-bottom:12px}
-.ims__head span{display:flex;align-items:center;gap:8px;font:800 11px/1 var(--ff);font-variation-settings:"wdth" 110;letter-spacing:.14em;text-transform:uppercase;color:#d8ff7a}
-.ims__head img{width:18px;height:auto}
-.ims__head small{flex:none;font-size:12px;color:var(--ink-3);white-space:nowrap}
-.ims__head span{min-width:0}
-.ims__vp{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 20px),transparent);touch-action:pan-x pan-y}
-.ims__vp::-webkit-scrollbar{display:none}
-.ims__trilho{display:flex;gap:12px;width:max-content;padding:4px 20px 10px}
-.im{flex:none;width:220px;border-radius:16px;overflow:hidden;background:#fff;color:#111318;font-family:var(--f-fexo);box-shadow:0 0 0 1px rgba(191,242,58,.35),0 18px 34px -18px rgba(0,0,0,.9)}
-.im__f{position:relative;aspect-ratio:4/3;background:#ddd}
-.im__f img{width:100%;height:100%;object-fit:cover}
-.im__off{position:absolute;left:8px;top:8px;padding:4px 8px;border-radius:999px;background:#bff23a;color:#111318;font:800 12px/1 var(--f-fexo)}
-.im__ok{position:absolute;left:8px;bottom:8px;padding:4px 8px;border-radius:999px;background:#2563eb;color:#fff;font:700 10.5px/1 var(--f-fexo)}
-.im__b{padding:10px 12px 12px}
-.im__b b{display:block;font:800 18px/1.1 var(--f-fexo);letter-spacing:-.02em}
-.im__b small{display:block;margin-top:3px;font:700 11.5px/1.2 var(--f-fexo);color:#2563eb}
-.im__b p{margin-top:6px;font:700 13px/1.25 var(--f-fexo);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.im__b i{display:block;margin-top:2px;font-style:normal;font-size:11.5px;color:#646977}
-@media (min-width:760px){.ims{margin:0 0 40px}.im{width:240px}}
-
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
 .plano{min-width:0}
@@ -1096,10 +1074,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <span class="eyebrow">Feito para você</span>
       <h2>Ideal para você que...</h2>
       <p class="lead">Se você se vê em pelo menos um destes pontos, a Black é para você.</p>
-    </div>
-    <div class="ims rv" aria-label="Exemplos de imóveis de leilão que aceitam financiamento">
-      <div class="ims__head"><span><img src="assets/fexo-simbolo.webp" width="64" height="68" alt="">Imóveis reais no Fexô</span><small>Deslize para ver →</small></div>
-      <div class="ims__vp" data-ims><ul class="ims__trilho"><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-1.webp" width="360" height="270" alt="Casa de leilão em Demerval Lobão, PI" loading="lazy" decoding="async"><span class="im__off">-48%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.120,68</b><small>ou R$ 590/mês financiado</small><p>Demerval Lobão · PI</p><i>65,67 m² · 2 quartos</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-2.webp" width="360" height="270" alt="Casa de leilão em Nova Iguaçu, RJ" loading="lazy" decoding="async"><span class="im__off">-54%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.280,30</b><small>ou R$ 592/mês financiado</small><p>Nova Iguaçu · RJ</p><i>35,4 m² · 1 quarto</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-3.webp" width="360" height="270" alt="Casa de leilão em Cocalzinho de Goiás, GO" loading="lazy" decoding="async"><span class="im__off">-54%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.744,84</b><small>ou R$ 596/mês financiado</small><p>Cocalzinho de Goiás · GO</p><i>51 m² · 2 quartos</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-4.webp" width="360" height="270" alt="Casa de leilão em Santo Antônio do Descoberto, GO" loading="lazy" decoding="async"><span class="im__off">-59%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.946,50</b><small>ou R$ 598/mês financiado</small><p>Santo Antônio do Descoberto · GO</p><i>63 m² · 2 quartos</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-5.webp" width="360" height="270" alt="Casa de leilão em Nossa Senhora do Socorro, SE" loading="lazy" decoding="async"><span class="im__off">-46%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.017,80</b><small>ou R$ 599/mês financiado</small><p>Nossa Senhora do Socorro · SE</p><i>69,85 m² · 2 quartos</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-6.webp" width="360" height="270" alt="Casa de leilão em Luziânia, GO" loading="lazy" decoding="async"><span class="im__off">-54%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.209,38</b><small>ou R$ 601/mês financiado</small><p>Luziânia · GO</p><i>54,61 m² · 2 quartos</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-7.webp" width="360" height="270" alt="Casa de leilão em Nova Iguaçu, RJ" loading="lazy" decoding="async"><span class="im__off">-51%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.294,67</b><small>ou R$ 602/mês financiado</small><p>Nova Iguaçu · RJ</p><i>40,3 m² · 1 quarto</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-8.webp" width="360" height="270" alt="Casa de leilão em Santo Antônio do Descoberto, GO" loading="lazy" decoding="async"><span class="im__off">-61%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.321,79</b><small>ou R$ 602/mês financiado</small><p>Santo Antônio do Descoberto · GO</p><i>67,2 m²</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-9.webp" width="360" height="270" alt="Casa de leilão em Horizonte, CE" loading="lazy" decoding="async"><span class="im__off">-64%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.930,67</b><small>ou R$ 598/mês financiado</small><p>Horizonte · CE</p><i>66,15 m² · 2 quartos</i></div></li><li class="im"><div class="im__f"><img src="assets/imoveis/imovel-10.webp" width="360" height="270" alt="Casa de leilão em Cocalzinho de Goiás, GO" loading="lazy" decoding="async"><span class="im__off">-51%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.352,65</b><small>ou R$ 603/mês financiado</small><p>Cocalzinho de Goiás · GO</p><i>47,5 m² · 2 quartos</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-1.webp" width="360" height="270" alt="Casa de leilão em Demerval Lobão, PI" loading="lazy" decoding="async"><span class="im__off">-48%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.120,68</b><small>ou R$ 590/mês financiado</small><p>Demerval Lobão · PI</p><i>65,67 m² · 2 quartos</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-2.webp" width="360" height="270" alt="Casa de leilão em Nova Iguaçu, RJ" loading="lazy" decoding="async"><span class="im__off">-54%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.280,30</b><small>ou R$ 592/mês financiado</small><p>Nova Iguaçu · RJ</p><i>35,4 m² · 1 quarto</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-3.webp" width="360" height="270" alt="Casa de leilão em Cocalzinho de Goiás, GO" loading="lazy" decoding="async"><span class="im__off">-54%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.744,84</b><small>ou R$ 596/mês financiado</small><p>Cocalzinho de Goiás · GO</p><i>51 m² · 2 quartos</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-4.webp" width="360" height="270" alt="Casa de leilão em Santo Antônio do Descoberto, GO" loading="lazy" decoding="async"><span class="im__off">-59%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.946,50</b><small>ou R$ 598/mês financiado</small><p>Santo Antônio do Descoberto · GO</p><i>63 m² · 2 quartos</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-5.webp" width="360" height="270" alt="Casa de leilão em Nossa Senhora do Socorro, SE" loading="lazy" decoding="async"><span class="im__off">-46%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.017,80</b><small>ou R$ 599/mês financiado</small><p>Nossa Senhora do Socorro · SE</p><i>69,85 m² · 2 quartos</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-6.webp" width="360" height="270" alt="Casa de leilão em Luziânia, GO" loading="lazy" decoding="async"><span class="im__off">-54%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.209,38</b><small>ou R$ 601/mês financiado</small><p>Luziânia · GO</p><i>54,61 m² · 2 quartos</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-7.webp" width="360" height="270" alt="Casa de leilão em Nova Iguaçu, RJ" loading="lazy" decoding="async"><span class="im__off">-51%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.294,67</b><small>ou R$ 602/mês financiado</small><p>Nova Iguaçu · RJ</p><i>40,3 m² · 1 quarto</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-8.webp" width="360" height="270" alt="Casa de leilão em Santo Antônio do Descoberto, GO" loading="lazy" decoding="async"><span class="im__off">-61%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.321,79</b><small>ou R$ 602/mês financiado</small><p>Santo Antônio do Descoberto · GO</p><i>67,2 m²</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-9.webp" width="360" height="270" alt="Casa de leilão em Horizonte, CE" loading="lazy" decoding="async"><span class="im__off">-64%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 55.930,67</b><small>ou R$ 598/mês financiado</small><p>Horizonte · CE</p><i>66,15 m² · 2 quartos</i></div></li><li class="im" aria-hidden="true"><div class="im__f"><img src="assets/imoveis/imovel-10.webp" width="360" height="270" alt="Casa de leilão em Cocalzinho de Goiás, GO" loading="lazy" decoding="async"><span class="im__off">-51%</span><span class="im__ok">Aceita financiamento</span></div><div class="im__b"><b>R$ 56.352,65</b><small>ou R$ 603/mês financiado</small><p>Cocalzinho de Goiás · GO</p><i>47,5 m² · 2 quartos</i></div></li></ul></div>
     </div>
     <ul class="fit-list rv">
       <li><span class="n" aria-hidden="true">01</span><span class="fit-ic"><svg><use href="#i-chave"/></svg></span><p>Quer arrematar um imóvel de leilão e <b>não tem o valor todo à vista</b></p></li>
@@ -1633,26 +1607,6 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
 })();
 
 
-/* carrossel de imóveis: anda sozinho devagar, para quando a pessoa toca/arrasta e retoma depois */
-(function () {
-  var vp = document.querySelector("[data-ims]"); if (!vp) return;
-  var calmo = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches;
-  var pausa = 0, ativo = false, raf = 0, ult = 0, pos = 0, meio = 0;
-  function medir() { meio = vp.firstElementChild.scrollWidth / 2; }
-  function passo(t) {
-    raf = requestAnimationFrame(passo);
-    var dt = ult ? Math.min(50, t - ult) : 16; ult = t;
-    if (!ativo || calmo || t < pausa) { pos = vp.scrollLeft; return; }
-    pos += dt * 0.035; if (meio && pos >= meio) pos -= meio;
-    vp.scrollLeft = pos;
-  }
-  function segura() { pausa = performance.now() + 3500; }
-  ["pointerdown", "touchstart", "wheel"].forEach(function (ev) { vp.addEventListener(ev, segura, { passive: true }); });
-  vp.addEventListener("scroll", function () { if (meio && vp.scrollLeft >= meio) { vp.scrollLeft -= meio; pos = vp.scrollLeft; } }, { passive: true });
-  medir(); addEventListener("resize", medir);
-  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { ativo = es[0].isIntersecting; if (ativo && !raf) raf = requestAnimationFrame(passo); }, { threshold: .2 }).observe(vp);
-  else { ativo = true; raf = requestAnimationFrame(passo); }
-})();
 
 /* chamadas "Quero…": vão direto ao card da oferta, com tudo já carregado */
 (function () {
