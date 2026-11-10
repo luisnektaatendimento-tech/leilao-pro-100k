@@ -664,6 +664,44 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .bon p{color:var(--ink-2);font-size:15px}
 .bon--solo{max-width:760px;margin:0 auto;border-color:rgba(216,183,106,.45);background:linear-gradient(180deg,rgba(216,183,106,.07),transparent 60%),var(--card)}
 
+
+/* BLOCO 11 — aula bônus Leilão PRO (identidade da Leilão PRO: preto, prata, Montserrat) */
+.pro-sec{background:#050505;overflow:hidden}
+.pro-luz{position:absolute;left:50%;top:-10%;width:min(900px,140vw);height:600px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,255,255,.09),transparent 70%);pointer-events:none}
+.pro-sec>.wrap{position:relative;z-index:1}
+.pro{display:grid;gap:40px;justify-items:center}
+@media (min-width:900px){.pro{grid-template-columns:auto minmax(0,560px);justify-content:center;align-items:center;gap:80px}}
+.pro__poster{perspective:1200px}
+.pro__cartaz{position:relative;width:min(230px,58vw);aspect-ratio:540/1000;border-radius:22px;overflow:hidden;background:#000;transform:rotate(-3deg);animation:boia 6s ease-in-out infinite;
+  box-shadow:0 0 0 1px rgba(255,255,255,.35),0 0 0 6px #0e0e0e,0 0 0 7px rgba(255,255,255,.18),0 50px 90px -30px rgba(0,0,0,.95),0 0 80px -20px rgba(255,255,255,.18)}
+.pro__cartaz video{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.08)}
+.pro__vidro{position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.18),transparent 30%,transparent 70%,rgba(255,255,255,.06))}
+.pro__vidro::after{content:"";position:absolute;top:-20%;bottom:-20%;width:45%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),transparent);transform:skewX(-18deg);animation:vidro 6s ease-in-out infinite}
+.pro__fita{position:absolute;left:-36px;top:20px;width:150px;padding:7px 0;transform:rotate(-45deg);background:var(--pro-metal);color:#111;text-align:center;font:900 10.5px/1 var(--f-pro);letter-spacing:.16em;text-transform:uppercase;box-shadow:0 4px 12px rgba(0,0,0,.6)}
+.pro__selo{position:absolute;right:10px;bottom:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;background:var(--ouro);color:var(--ouro-tinta);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -2px 0 rgba(122,84,22,.4),0 0 0 1px var(--ouro-borda),0 10px 26px rgba(0,0,0,.7);transform:rotate(10deg);animation:treme 3.4s ease-in-out 1s infinite}
+.pro__selo b{font:900 17px/1 var(--f-pro);text-transform:uppercase}
+.pro__selo small{margin-top:3px;font:700 8.5px/1 var(--f-pro);letter-spacing:.06em;text-transform:uppercase}
+.pro__txt{width:100%;max-width:560px}
+.pro__eyebrow{display:inline-block;padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.28);font:700 10.5px/1 var(--f-pro);letter-spacing:.16em;text-transform:uppercase;color:#cfcfcf}
+.pro__titulo{margin-top:18px;display:flex;flex-direction:column;font-family:var(--f-pro);font-variation-settings:normal;letter-spacing:-.02em;line-height:.95;text-transform:uppercase}
+.pro__titulo span{font-weight:700;font-size:clamp(18px,4.6vw,24px);letter-spacing:.3em;color:#9a9a9a}
+.pro__titulo b{position:relative;font-weight:900;font-size:clamp(46px,13vw,84px);padding-top:.08em;background:linear-gradient(180deg,#fff 0%,#e3e3e3 28%,#8a8a8a 52%,#f4f4f4 70%,#a3a3a3 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 rgba(0,0,0,.8)) drop-shadow(0 14px 30px rgba(255,255,255,.12))}
+.pro__sub{margin-top:16px;font-size:16.5px;color:#bdbdbd}
+.pro__lista{display:grid;gap:10px;margin-top:24px}
+.pro__lista li{display:flex;gap:14px;align-items:flex-start;padding:15px 16px;border-radius:16px;background:linear-gradient(180deg,#121212,#0a0a0a);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(255,255,255,.1)}
+.pro__lista li>span{flex:none;font:900 22px/1 var(--f-pro);background:var(--pro-metal);-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:2px}
+.pro__lista b{display:block;font:700 15.5px/1.3 var(--f-pro);color:#fff}
+.pro__lista small{display:block;margin-top:4px;font-size:13.5px;color:#9a9a9a}
+.pro__caso{margin-top:16px;padding:16px;border-radius:16px;background:radial-gradient(120% 120% at 100% 0,rgba(98,211,145,.12),transparent 55%),#0b0b0b;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.pro__caso>small{font:700 10.5px/1.3 var(--f-pro);letter-spacing:.12em;text-transform:uppercase;color:#8a8a8a}
+.pro__caso>div{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.pro__caso p{display:flex;flex-direction:column;gap:5px}
+.pro__caso span{font-size:11.5px;color:#8a8a8a}
+.pro__caso b{font:800 clamp(15px,4vw,19px)/1.1 var(--f-pro);color:#fff;white-space:nowrap}
+.pro__caso .lucro b{color:var(--ok)}
+.pro__nota{margin-top:14px;font-size:13px;color:#8a8a8a}
+@media (prefers-reduced-motion:reduce){.pro__cartaz,.pro__selo,.pro__vidro::after{animation:none}}
+
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;gap:20px;align-items:start;max-width:920px;margin:0 auto}
 @media (min-width:860px){.planos{grid-template-columns:1.25fr 1fr}}
@@ -877,7 +915,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       </div>
     </div>
 
-    <p class="hero__sub">Não é qualquer ferramenta. São 4 plataformas fáceis de baixar e usadas por profissionais do mercado de leilões: o Fexô para buscar imóveis de leilão, a Multy para analisar o seu financiamento, a CANAW com especialistas ao vivo e o Dossiê do Assessor para conduzir a arrematação, mais uma aula bônus da Leilão PRO com o maior especialista de leilões do Nordeste.</p>
+    <p class="hero__sub">Não é qualquer ferramenta. São 4 plataformas fáceis de usar e usadas por profissionais do mercado de leilões: o Fexô para buscar imóveis de leilão, a Multy para analisar o seu financiamento, a CANAW com especialistas ao vivo e o Dossiê do Assessor para conduzir a arrematação, mais uma aula bônus da Leilão PRO com o maior especialista de leilões do Nordeste.</p>
 
     <!-- ============ BLOCO 03 — CTA ============ -->
     <div class="cta-block" data-cta-topo>
@@ -1074,30 +1112,44 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   </div>
 </section>
 
-<!-- ============ BLOCO 10 — TUDO QUE VOCÊ VAI RECEBER ============ -->
-<section class="sec" data-secao="10-tudo-que-voce-vai-receber">
+<!-- ============ BLOCO 11 — AULA BÔNUS LEILÃO PRO ============ -->
+<section class="sec pro-sec" data-secao="11-bonus">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="pro-luz" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="sec-head center rv">
-      <span class="eyebrow">Tudo que você vai receber</span>
-      <h2>4 plataformas, um só caminho até o seu imóvel</h2>
-    </div>
-    <ol class="junto">
-      <li class="t-canaw"><span>01</span><div class="junto__m"><svg><use href="#m-canaw"/></svg><b>CANAW</b></div><h3>Aprenda ao vivo</h3><p>Acompanhe o canal de leilão de imóveis com especialistas de verdade.</p></li>
-      <li class="t-fexo"><span>02</span><div class="junto__m"><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="" loading="lazy"><b>Fexô</b></div><h3>Encontre o imóvel</h3><p>Busque entre + de 15 mil imóveis verificados e filtre os que aceitam financiamento.</p></li>
-      <li class="t-multy"><span>03</span><div class="junto__m"><svg><use href="#m-multy"/></svg><b>Multy</b></div><h3>Analise o financiamento</h3><p>Em 2 minutos, veja como está o seu perfil antes de ir ao banco.</p></li>
-      <li class="t-dossie"><span>04</span><div class="junto__m"><svg style="color:var(--dossie-2)"><use href="#i-doc"/></svg><b>Dossiê do Assessor</b></div><h3>Estude cada etapa</h3><p>Use os materiais práticos de estudo sobre imóveis, do lance até o imóvel 100% legalizado.</p></li>
-    </ol>
-    <div class="center"><span class="mais-bonus rv">+ Aula bônus da Leilão PRO</span></div>
-  </div>
-</section>
+    <div class="pro">
+      <div class="pro__poster rv" data-pro>
+        <div class="pro__cartaz">
+          <video muted playsinline loop preload="none" poster="assets/video/pro.jpg" aria-label="Gravação da apresentação da Leilão PRO"><source src="assets/video/pro.mp4" type="video/mp4"><source src="assets/video/pro.webm" type="video/webm"></video>
+          <i class="pro__vidro" aria-hidden="true"></i>
+          <span class="pro__fita">Aula bônus</span>
+          <span class="pro__selo"><b>Grátis</b><small>só na Black</small></span>
+        </div>
+      </div>
 
-<!-- ============ BLOCO 11 — BÔNUS ============ -->
-<section class="sec alt" data-secao="11-bonus">
-  <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="wrap">
-    <article class="bon bon--solo rv"><div class="bon__ic"><span>Bônus</span><b class="metal">Leilão<br>PRO</b></div>
-      <div><h3>Aula Bônus da Leilão PRO com o maior especialista de leilões do Nordeste</h3><div class="bon__val">na Black <b>GRÁTIS</b></div><p>Uma aula da Leilão PRO, a especialização prática em leilões de imóveis, para você ver como os leilões funcionam na prática.</p></div></article>
+      <div class="pro__txt">
+        <span class="pro__eyebrow rv">Bônus exclusivo do Arsenal Completo</span>
+        <h2 class="pro__titulo rv"><span>Aula</span><b class="metal">Leilão PRO</b></h2>
+        <p class="pro__sub rv">Com o maior especialista de leilões do Nordeste. Uma aula da Leilão PRO, a especialização prática em leilões de imóveis.</p>
+
+        <ol class="pro__lista rv">
+          <li><span>01</span><div><b>Como os leilões funcionam na prática</b><small>Do edital ao lance, sem enrolação.</small></div></li>
+          <li><span>02</span><div><b>Estudo de caso real, do lance ao lucro</b><small>Um imóvel de leilão acompanhado do arremate até a venda.</small></div></li>
+          <li><span>03</span><div><b>O caminho do arremate até a venda</b><small>Documentação, desocupação, obra e venda.</small></div></li>
+        </ol>
+
+        <div class="pro__caso rv">
+          <small>Caso real da Leilão PRO · Apartamento 2 quartos</small>
+          <div>
+            <p><span>Arremate</span><b class="num">R$ 103.704</b></p>
+            <p><span>Venda</span><b class="num">R$ 210.000</b></p>
+            <p class="lucro"><span>Lucro líquido</span><b class="num">R$ 38.338</b></p>
+          </div>
+        </div>
+
+        <p class="pro__nota rv">Incluída grátis no Arsenal Completo enquanto a oferta Black estiver no ar.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1395,6 +1447,13 @@ var CHECKOUT_BASICO = "";
     new IntersectionObserver(function (es) { visivel = es[0].isIntersecting; sec.classList.toggle("na-tela", visivel); tocar(); }, { threshold: .35 }).observe(track);
   } else visivel = true;
   vai(0);
+})();
+
+/* bônus: o vídeo do cartaz da Leilão PRO toca só quando está na tela */
+(function () {
+  var v = document.querySelector("[data-pro] video"); if (!v || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  new IntersectionObserver(function (es) { if (es[0].isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }, { threshold: .3 }).observe(v);
 })();
 
 /* planos: barra de desbloqueio dos 96% — enche com faísca e marcos, o cadeado abre e solta confete */
