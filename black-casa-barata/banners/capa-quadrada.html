@@ -1,0 +1,70 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Archivo";src:url(../assets/fonts/archivo.woff2) format("woff2");font-weight:400 900;font-stretch:100% 125%}
+@font-face{font-family:"DM Sans";src:url(../assets/fonts/dmsans.woff2) format("woff2");font-weight:400 700}
+@font-face{font-family:"Manrope";src:url(../assets/fonts/manrope.woff2) format("woff2");font-weight:600 800}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:360px;height:360px;background:#000;overflow:hidden}
+.b{position:relative;width:360px;height:360px;overflow:hidden;font-family:"DM Sans",sans-serif;color:#fff;
+ background:radial-gradient(120px 120px at 268px 170px,rgba(255,190,0,.5),transparent 70%),radial-gradient(120% 80% at 0% 0%,rgba(255,170,0,.2),transparent 55%),linear-gradient(160deg,#151008 0%,#050505 55%,#000 100%)}
+.raios{position:absolute;left:268px;top:170px;width:700px;height:700px;margin:-350px 0 0 -350px;background:repeating-conic-gradient(from 0deg,rgba(255,210,90,.10) 0 6deg,transparent 6deg 20deg);-webkit-mask:radial-gradient(closest-side,#000 10%,transparent 70%);mask:radial-gradient(closest-side,#000 10%,transparent 70%)}
+.grade{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:24px 24px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 30% 0%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 30% 0%,#000,transparent 75%)}
+.moldura{position:absolute;inset:0;box-shadow:inset 0 0 0 2.5px #e8a400,inset 0 0 0 4px rgba(0,0,0,.6),inset 0 0 30px rgba(255,180,0,.18);pointer-events:none;z-index:9}
+.estrela{position:absolute;width:16px;height:16px;background:radial-gradient(circle,#fff 0 12%,rgba(255,240,170,.9) 20%,transparent 46%),linear-gradient(90deg,transparent 46%,#fff 50%,transparent 54%),linear-gradient(0deg,transparent 46%,#fff 50%,transparent 54%);z-index:8}
+.txt{position:absolute;left:18px;top:18px;width:190px;z-index:5}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:#e11d2a;font:800 9px/1 Archivo;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 2px 10px rgba(225,29,42,.5)}
+.tag i{width:6px;height:6px;border-radius:50%;background:#fff}
+.black{margin-top:12px;font:800 11px/1 Archivo;font-stretch:125%;letter-spacing:.5em;color:#ffd95a}
+.logo{margin-top:6px;font:900 33px/.9 Archivo;font-stretch:125%;letter-spacing:-.035em;text-transform:uppercase;
+ background:linear-gradient(180deg,#fffbe0 0%,#fff1a6 14%,#ffd93b 32%,#ffb800 47%,#c97a00 53%,#ffbf1f 63%,#ffe680 82%,#fff6c4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+ -webkit-text-stroke:.4px #7a3d00;filter:drop-shadow(0 1px 0 #c46d00) drop-shadow(0 2px 0 #8a4200) drop-shadow(0 4px 0 #5a2a00) drop-shadow(0 10px 12px rgba(0,0,0,.8))}
+.logo span{display:block}
+.logo span+span{font-size:.86em}
+.sub{margin-top:12px;font:600 12.5px/1.32 "DM Sans";color:#ececec}
+.sub b{color:#ffd95a;font-weight:700}
+.preco{position:absolute;left:18px;top:236px;z-index:5;display:flex;align-items:flex-end;gap:10px}
+.preco s{font:600 12px/1 "DM Sans";color:#ff8a73;padding-bottom:5px}
+.preco b{white-space:nowrap;font:900 44px/.9 Archivo;font-stretch:112%;letter-spacing:-.04em;background:linear-gradient(180deg,#fffbe0,#ffd93b 40%,#ffb800 62%,#ffe680);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #8a4200) drop-shadow(0 8px 14px rgba(255,170,0,.25))}
+.preco b small{font-size:.42em;vertical-align:1.05em;margin-right:3px}
+.cta{position:absolute;left:18px;right:18px;bottom:18px;z-index:6;display:flex;align-items:center;justify-content:space-between;height:46px;padding:0 5px 0 18px;border-radius:999px;
+ background:linear-gradient(180deg,#fff7c2 0%,#ffe066 18%,#ffc61a 40%,#e89a00 62%,#ffcb2e 84%,#fff0a0 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 0 0 1px #9a5a00,0 8px 22px -4px rgba(255,180,0,.8);color:#2a1600;font:800 12.5px/1 Archivo;letter-spacing:.12em;text-transform:uppercase}
+.cta small{display:block;margin-top:3px;font:700 9px/1 "DM Sans";letter-spacing:.02em;text-transform:none;color:rgba(42,22,0,.75)}
+.cta i{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#140b00;color:#ffd95a;font-style:normal;font-size:16px}
+.fone{position:absolute;left:214px;top:30px;width:122px;height:248px;transform:rotate(8deg);z-index:4;border-radius:22px;padding:5px;background:#050505;
+ box-shadow:0 0 0 1.5px #b9b9be,0 0 0 3px #3a3a3e,0 22px 36px rgba(0,0,0,.85),0 0 50px rgba(255,180,0,.35)}
+.fone .tela{position:relative;width:100%;height:100%;border-radius:17px;overflow:hidden;background:#fff}
+.fone img.app{width:100%;height:auto;display:block;margin-top:11px}
+.fone .ilha{position:absolute;left:50%;top:6px;width:38px;height:9px;margin-left:-19px;border-radius:9px;background:#000;z-index:2}
+.fone .reflexo{position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.35),transparent 30%,transparent 70%,rgba(255,255,255,.08));z-index:2}
+.chip{position:absolute;z-index:7;white-space:nowrap;display:flex;align-items:center;gap:5px;padding:6px 9px;border-radius:10px;font:800 10px/1 Manrope;box-shadow:0 6px 14px rgba(0,0,0,.6)}
+.c-fx{left:196px;top:200px;background:#17181d;box-shadow:inset 0 0 0 1px rgba(191,242,58,.6),0 6px 14px rgba(0,0,0,.6)}
+.c-fx img{height:13px}
+.c-cw{left:236px;top:262px;background:#0b0b0b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3),0 6px 14px rgba(0,0,0,.6);font:600 9px/1 "DM Sans";letter-spacing:.1em;color:#fff}
+.c-cw i{width:6px;height:6px;border-radius:50%;background:#ff453a}
+.c-ds{left:300px;top:226px;background:#0a1730;box-shadow:inset 0 0 0 1px rgba(59,130,246,.6),0 6px 14px rgba(0,0,0,.6);color:#8db8ff}
+.masc{position:absolute;left:300px;top:108px;width:64px;height:64px;z-index:7;filter:drop-shadow(0 6px 12px rgba(124,58,237,.7))}
+.burst{position:absolute;left:282px;top:-8px;width:82px;height:82px;transform:rotate(12deg);z-index:8;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6))}
+.burst::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 38% 30%,#ff7a5c,#f2231b 48%,#a80d0d);clip-path:polygon(50% 0,59% 12%,73% 5%,76% 20%,91% 18%,86% 33%,100% 40%,89% 51%,99% 64%,84% 69%,86% 84%,71% 82%,64% 96%,52% 87%,40% 98%,33% 84%,18% 88%,18% 72%,3% 66%,13% 54%,0 42%,14% 35%,9% 20%,24% 20%,26% 5%,40% 12%)}
+.burst span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-12deg);text-shadow:0 2px 0 rgba(90,0,0,.5)}
+.burst b{font:900 21px/1 Archivo;font-stretch:118%;letter-spacing:-.03em}
+.burst i{font:900 9px/1 Archivo;font-style:normal;letter-spacing:.2em;margin-top:1px}
+</style></head><body>
+<div class="b">
+  <div class="raios"></div><div class="grade"></div>
+  <div class="fone"><div class="tela"><i class="ilha"></i><img class="app" src="../assets/video/fexo.webp" alt=""><i class="reflexo"></i></div></div>
+  <img class="masc" src="../assets/multy.webp" alt="">
+  <span class="chip c-fx"><img src="../assets/fexo-logo.webp" alt="Fexô"></span>
+  <span class="chip c-cw"><i></i>CANAW AO VIVO</span>
+  <div class="burst"><span><b>-96%</b><i>OFF</i></span></div>
+  <i class="estrela" style="left:198px;top:22px"></i><i class="estrela" style="left:338px;top:196px;transform:scale(.7)"></i><i class="estrela" style="left:176px;top:150px;transform:scale(.6)"></i>
+  <div class="txt">
+    <span class="tag"><i></i>Black Friday</span>
+    <p class="black">BLACK</p>
+    <h1 class="logo"><span>Casa Barata</span><span>de Leilão</span></h1>
+    <p class="sub"><b>4 apps</b> para arrematar imóvel de leilão com <b>5% de entrada</b></p>
+  </div>
+  <div class="preco"><s>de R$925</s><b><small>R$</small>37</b></div>
+  <div class="cta"><span>Acessar agora<small>4 apps + aula bônus · no navegador</small></span><i>→</i></div>
+  <div class="moldura"></div>
+</div>
+</body></html>
