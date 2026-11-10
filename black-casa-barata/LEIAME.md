@@ -7,7 +7,7 @@ Tudo fica no fim do `index.html`, no bloco `CONFIGURAÇÃO`:
 
 | Campo | O que é |
 |---|---|
-| `CHECKOUT_COMPLETO` | Link do checkout do Arsenal Completo (todos os botões) |
+| `CHECKOUT_COMPLETO` | Link do checkout (todos os botões): https://pay.cakto.com.br/364q77y_1305972 |
 | `CHECKOUT_ROLETA` | Link do checkout do Combo Black Casa Barata de Leilão por R$19,90 (prêmio da roleta de saída) |
 | (sem campo) | A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela |
 

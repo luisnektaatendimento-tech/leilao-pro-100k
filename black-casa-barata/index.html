@@ -16,6 +16,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://blackcasabaratadeleilao.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23000%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23ffc61a%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://pay.cakto.com.br">
+<link rel="dns-prefetch" href="https://pay.cakto.com.br">
 <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -1309,7 +1311,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 /* ===================== CONFIGURAÇÃO — troque aqui =====================
    CHECKOUT_*: links do checkout. Todos os botões vão para o plano principal (Arsenal de Aplicativos Facilitadores);  Enquanto estiverem vazios, os botões levam até os planos (#planos).
    A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela. */
-var CHECKOUT_COMPLETO = "";
+var CHECKOUT_COMPLETO = "https://pay.cakto.com.br/364q77y_1305972";
 var CHECKOUT_ROLETA = "";
 var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoimento do João (ex.: assets/video/depoimento-joao.mp4). Vazio: mostra a gravação da Leilão PRO */ /* link do checkout do Combo Black Casa Barata de Leilão por R$19,90 (prêmio da roleta de saída) */
 
@@ -1534,7 +1536,9 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
       fx = rl.querySelector(".rl__fx"), tempo = rl.querySelector("[data-rl-tempo]"), aberta = false, girou = false, pronto = false, chave = "rl-vista";
   function jaViu() { try { return sessionStorage.getItem(chave) === "1"; } catch (e) { return aberta; } }
   function marca() { try { sessionStorage.setItem(chave, "1"); } catch (e) {} }
+  var semLink = !(typeof CHECKOUT_ROLETA === "string" && CHECKOUT_ROLETA) && !/[?&]roleta=1/.test(location.search);
   function abre() {
+    if (semLink) return; /* sem link de R$19,90 a roleta não aparece, para não prometer um preço que o checkout não cobra */
     if (aberta || jaViu() || !pronto) return;
     aberta = true; marca(); rl.hidden = false; document.documentElement.style.overflow = "hidden";
     setTimeout(function () { btn.focus({ preventScroll: true }); }, 50);
@@ -1543,7 +1547,7 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
   rl.querySelectorAll("[data-rl-fechar]").forEach(function (b) { b.addEventListener("click", function () { fecha(); }); });
   addEventListener("keydown", function (e) { if (e.key === "Escape" && !rl.hidden) fecha(); });
   rl.querySelector('[data-checkout="roleta"]').addEventListener("click", function (e) {
-    saindo = false; if (this.getAttribute("href") === "#planos") { e.preventDefault(); fecha(); var a = document.querySelector('a[href="#planos"]'); if (a) a.click(); }
+    saindo = false; if (this.getAttribute("href") === "#planos") { e.preventDefault(); fecha(); var pl = document.querySelector(".plano--top") || document.getElementById("planos"); if (window.__ofertaPronta) window.__ofertaPronta(); var bar = document.querySelector(".topbar"); scrollTo({ top: pl.getBoundingClientRect().top + scrollY - (bar ? bar.offsetHeight : 0) - 34, behavior: "smooth" }); }
   });
   function confete() {
     var cores = ["#ffd95a", "#fff3cf", "#ff3b22", "#7ee2a8", "#ffc61a", "#ffffff"];
