@@ -643,6 +643,30 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .pro__fexo figcaption{display:flex;align-items:center;gap:9px;margin-top:10px;font-size:13px;color:#bdbdbd}
 .pro__fexo figcaption img{width:18px;height:auto;flex:none}
 
+
+/* depoimento no cartaz + manchete */
+.pro__lt{position:absolute;left:10px;right:58px;top:14px;z-index:2;padding:9px 11px 10px;border-radius:12px;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.6));border-left:3px solid #e11d2a;text-align:left}
+.pro__lt span{display:flex;align-items:center;gap:6px;font:800 9.5px/1 var(--ff);letter-spacing:.14em;text-transform:uppercase;color:#ff6b6b}
+.pro__lt span i{width:6px;height:6px;border-radius:50%;background:#ff3b2f;animation:pisca 1.2s ease-in-out infinite}
+.pro__lt b{display:block;margin-top:5px;font:700 12.5px/1.2 var(--fb);color:#fff}
+.pro__som{position:absolute;right:10px;top:12px;z-index:3;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+.pro__som svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pro__som .on{display:none}.pro__som.ligado .on{display:inline}.pro__som.ligado .off{display:none}
+.pro__cartaz.depo video{filter:none}
+.pro__cartaz.depo .pro__fita{display:none}
+.pro__cartaz.depo{animation:none;transform:rotate(-2deg)}
+.pro__selo{top:auto;bottom:12px}
+.pro__cartaz.depo{overflow:visible}
+.pro__cartaz.depo video{border-radius:22px}
+.pro__cartaz.depo .pro__vidro{border-radius:22px}
+.pro__cartaz.depo .pro__selo{right:-22px;bottom:-18px;width:70px;height:70px}
+.manchete{margin-top:18px;padding:16px 16px 15px;border-radius:16px;background:linear-gradient(180deg,#121212,#0a0a0a);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(255,255,255,.12);text-align:left}
+.manchete__tag{display:flex;align-items:center;gap:8px;font:800 10.5px/1 var(--ff);letter-spacing:.14em;text-transform:uppercase;color:#bdbdbd}
+.manchete__tag span{padding:4px 7px;border-radius:4px;background:#e11d2a;color:#fff}
+.manchete h3{margin-top:12px;font:800 clamp(20px,5.4vw,26px)/1.18 var(--f-pro);letter-spacing:-.015em;color:#fff;text-transform:none;font-variation-settings:normal}
+.manchete mark{background:linear-gradient(transparent 58%,rgba(126,226,168,.35) 58%);color:#b8f5cf;padding:0 .05em}
+.manchete__by{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:12.5px;color:#9a9a9a}
+
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
 .plano{min-width:0}
@@ -1040,6 +1064,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           <video muted playsinline loop preload="none" data-poster="assets/video/pro.webp" aria-label="Gravação da apresentação da Leilão PRO"><source src="assets/video/pro.mp4" type="video/mp4"><source src="assets/video/pro.webm" type="video/webm"></video>
           <i class="pro__vidro" aria-hidden="true"></i>
           <span class="pro__fita">Aula bônus</span>
+          <div class="pro__lt"><span><i></i>Depoimento real</span><b>João · ex-motoboy, hoje investidor</b></div>
+          <button class="pro__som" type="button" aria-label="Ativar som do depoimento" data-pro-som hidden><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="on" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/><path class="off" d="m16 9 5 6m0-6-5 6"/></svg></button>
           <span class="pro__selo"><b>Bônus</b><small>só na Black</small></span>
         </div>
       </div>
@@ -1047,7 +1073,11 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <div class="pro__txt">
         <span class="pro__eyebrow rv">Bônus exclusivo da Black</span>
         <h2 class="pro__titulo rv"><span>Aula</span><b class="metal">Leilão PRO</b></h2>
-        <p class="pro__sub rv">Com o maior especialista de leilões do Nordeste. Uma aula da Leilão PRO, a especialização prática em leilões de imóveis.</p>
+        <article class="manchete rv">
+          <p class="manchete__tag"><span>Caso real</span>Leilão PRO</p>
+          <h3>O caso do ex-motoboy que virou investidor após fazer mais de <mark>R$ 40 mil de lucro</mark> em apenas uma operação nos leilões de imóveis</h3>
+          <p class="manchete__by">Assista ao depoimento do João · Aula bônus com o maior especialista de leilões do Nordeste</p>
+        </article>
 
         <ol class="pro__lista rv">
           <li><span>01</span><div><b>Como os leilões funcionam na prática</b><small>Do edital ao lance, sem enrolação.</small></div></li>
@@ -1055,10 +1085,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           <li><span>03</span><div><b>O caminho do arremate até a venda</b><small>Documentação, desocupação, obra e venda.</small></div></li>
         </ol>
 
-        <figure class="pro__fexo rv">
-          <div class="pro__fexo-tela"><img src="assets/fexo-imoveis.webp" width="480" height="873" alt="Lista do Fexô com imóveis de leilão que aceitam financiamento, com preço, desconto e parcela" loading="lazy" decoding="async"></div>
-          <figcaption><img src="assets/fexo-simbolo.webp" width="64" height="68" alt="">Imóveis reais no Fexô que aceitam financiamento: preço, desconto e parcela lado a lado.</figcaption>
-        </figure>
 
         <p class="pro__nota rv">Incluída como bônus no Arsenal de Aplicativos Facilitadores enquanto a oferta Black estiver no ar.</p>
       </div>
@@ -1255,7 +1281,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
    A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela. */
 var CHECKOUT_COMPLETO = "";
 var CHECKOUT_BASICO = "";
-var CHECKOUT_ROLETA = ""; /* link do checkout do Combo Black Casa Barata de Leilão por R$19,90 (prêmio da roleta de saída) */
+var CHECKOUT_ROLETA = "";
+var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoimento do João (ex.: assets/video/depoimento-joao.mp4). Vazio: mostra a gravação da Leilão PRO */ /* link do checkout do Combo Black Casa Barata de Leilão por R$19,90 (prêmio da roleta de saída) */
 
 (function () {
   document.querySelectorAll("[data-checkout]").forEach(function (a) {
@@ -1448,8 +1475,15 @@ var CHECKOUT_ROLETA = ""; /* link do checkout do Combo Black Casa Barata de Leil
 /* bônus: o vídeo do cartaz da Leilão PRO toca só quando está na tela */
 (function () {
   var v = document.querySelector("[data-pro] video"); if (!v) return;
-  if (!("IntersectionObserver" in window)) { v.poster = v.dataset.poster; return; }
-  var io1 = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io1.disconnect(); v.poster = v.dataset.poster; } }, { rootMargin: "300px 0px" }); io1.observe(v);
+  if (typeof VIDEO_DEPOIMENTO === "string" && VIDEO_DEPOIMENTO) {
+    v.innerHTML = '<source src="' + VIDEO_DEPOIMENTO + '" type="video/mp4">'; v.dataset.poster = VIDEO_DEPOIMENTO.replace(/\.mp4$/, ".webp"); v.loop = false;
+    v.closest(".pro__cartaz").classList.add("depo"); v.setAttribute("aria-label", "Depoimento do João");
+    var som = document.querySelector("[data-pro-som]"); som.hidden = false;
+    som.addEventListener("click", function () { v.muted = !v.muted; som.classList.toggle("ligado", !v.muted); som.setAttribute("aria-label", v.muted ? "Ativar som do depoimento" : "Desativar som"); if (v.paused) v.play(); });
+    v.addEventListener("ended", function () { v.currentTime = 0; v.play(); });
+  }
+  if (!("IntersectionObserver" in window)) { if (v.dataset.poster) v.poster = v.dataset.poster; return; }
+  var io1 = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io1.disconnect(); if (v.dataset.poster) v.poster = v.dataset.poster; } }, { rootMargin: "300px 0px" }); io1.observe(v);
   if (window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches) return;
   new IntersectionObserver(function (es) { if (es[0].isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }, { threshold: .3 }).observe(v);
 })();
