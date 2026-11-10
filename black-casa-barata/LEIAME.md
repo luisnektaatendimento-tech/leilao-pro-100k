@@ -19,3 +19,14 @@ No HTML, revise também:
 
 ## Como publicar
 Suba a pasta `black-casa-barata/` em qualquer hospedagem de site estático (Vercel, Netlify, GitHub Pages).
+
+## Identidade de cada plataforma
+Cada produto aparece com o design system da própria plataforma, lido dos sites (variáveis no bloco "DESIGN SYSTEM DE CADA PLATAFORMA" do CSS):
+
+| Produto | Cores | Fontes | Arquivos |
+|---|---|---|---|
+| Fexô | lima `#bff23a`, escuro `#17181d`, azul `#2563eb` | Manrope, Space Grotesk | `assets/fexo-logo.webp`, `assets/fexo-simbolo.webp` |
+| Multy | roxo `#7c3aed` → `#c084fc` | Manrope | `assets/multy.webp` (mascote), símbolo em SVG |
+| CANAW | preto, branco `#f5f5f7`, vermelho ao vivo `#ff453a` | Inter | símbolo em SVG |
+| Leilão PRO | `#050505`, prata metálico | Montserrat | — |
+| Dossiê do Assessor | navy e azul (aproximado, o site não pôde ser lido) | Archivo | — |

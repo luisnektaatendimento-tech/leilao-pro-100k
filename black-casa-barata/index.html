@@ -10,7 +10,7 @@
 <meta property="og:description" content="15 modelos de sucesso para arrematar um imóvel de leilão financiado na Black Friday com apenas 5% de entrada e 100% legalizado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:opsz,wght@9..40,400..700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:opsz,wght@9..40,400..700&family=Caveat:wght@500;600&family=Manrope:wght@500..800&family=Space+Grotesk:wght@600;700&family=Montserrat:wght@700;900&family=Inter:wght@500;600&display=swap" rel="stylesheet">
 <script>document.documentElement.className = "js";</script>
 <style>
 /* =====================================================================
@@ -202,9 +202,8 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
   .painel__main{padding:12px}
   .imoveis{grid-template-columns:repeat(2,1fr)}.imoveis .imo:nth-child(3){display:none}
   .stats b{font-size:16px}.stats div{padding:10px}
-  .busca .fx{margin:0 -14px;padding:0 14px;width:calc(100% + 28px);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}
-  .busca .fx::-webkit-scrollbar{display:none}
-  .busca{overflow:hidden}
+  .busca{font-size:13px}
+  .filtros{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
   .imo__l{flex-direction:column;gap:0}
 }
 
@@ -251,6 +250,134 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 @keyframes verde{50%{box-shadow:0 0 4px rgba(98,211,145,.35)}}
 .sema b{display:block;font-size:14px;line-height:1.2}
 .sema small{font-size:12px;color:var(--ink-3)}
+
+
+/* =====================================================================
+   DESIGN SYSTEM DE CADA PLATAFORMA (lido dos próprios sites)
+   Fexô  — lima #bff23a, escuro #17181d, azul do financiamento #2563eb, Manrope + Space Grotesk, pílulas
+   Multy — roxo #7c3aed → #c084fc sobre #08090b, Manrope 800, mascote
+   CANAW — preto, branco #f5f5f7, vermelho do "ao vivo" #ff453a, Inter
+   Leilão PRO — #050505, prata metálico, Montserrat 900
+   Dossiê do Assessor — navy, azul de sinal, Archivo largo
+   ===================================================================== */
+:root{
+  --fexo:#bff23a;--fexo-esc:#17181d;--fexo-azul:#2563eb;
+  --multy:#7c3aed;--multy-2:#c084fc;
+  --canaw:#f5f5f7;--canaw-live:#ff453a;
+  --pro-metal:linear-gradient(180deg,#fff 0%,#d9d9d9 30%,#8a8a8a 52%,#f2f2f2 70%,#9c9c9c 100%);
+  --dossie:#3b82f6;--dossie-2:#8db8ff;--dossie-navy:#081226;
+  --f-fexo:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-num:"Space Grotesk","Manrope",sans-serif;
+  --f-canaw:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-pro:"Montserrat","Segoe UI",Arial,sans-serif;
+}
+.t-fexo{--a:var(--fexo);--a2:var(--fexo)}
+.t-multy{--a:var(--multy);--a2:var(--multy-2)}
+.t-canaw{--a:var(--canaw-live);--a2:var(--canaw)}
+.t-pro{--a:#bdbdbd;--a2:#fff}
+.t-dossie{--a:var(--dossie);--a2:var(--dossie-2)}
+.t-black{--a:var(--gold);--a2:var(--gold-2)}
+
+/* carrossel: cada cartão com a identidade da plataforma */
+.cat[class*="t-"] .cat__art{background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/28px 28px,radial-gradient(100% 100% at 50% 100%,color-mix(in srgb,var(--a) 26%,transparent),transparent 68%)}
+.cat[class*="t-"] .chips span{border-color:color-mix(in srgb,var(--a) 38%,transparent)}
+.cat[class*="t-"] .cat__art>span{color:var(--a2)}
+@media (hover:hover){.cat[class*="t-"]:hover{border-color:color-mix(in srgb,var(--a) 60%,transparent)}}
+.cat.t-fexo .cat__art{background-color:var(--fexo-esc)}
+.cat.t-fexo h3,.cat.t-multy h3{font-family:var(--f-fexo);font-weight:800;font-variation-settings:normal;letter-spacing:-.04em;font-size:24px}
+.cat.t-fexo .cat__art img{width:150px;height:auto}
+.cat.t-fexo .chips span:first-child{background:var(--fexo);border-color:var(--fexo);color:#111318;font-weight:700}
+.cat.t-fexo .chips span:nth-child(2){background:var(--fexo-azul);border-color:var(--fexo-azul);color:#fff;font-weight:600}
+.cat.t-multy .cat__art{background-color:#08090b}
+.cat.t-multy .cat__art img{width:128px;height:128px;margin-top:8px;filter:drop-shadow(0 16px 26px rgba(124,58,237,.55))}
+.cat.t-multy .chips span:first-child{background:var(--fexo);border-color:var(--fexo);color:#0b0c0f;font-weight:700}
+.wm{font-style:normal;position:absolute;top:13px;right:14px;display:inline-flex;align-items:center;gap:6px;font:800 15px/1 var(--f-fexo);letter-spacing:-.04em;color:#fff}
+.wm svg{width:18px;height:18px}
+.cat.t-canaw .cat__art{background-color:#000;flex-direction:column;gap:10px;display:flex;align-items:center;justify-content:center}
+.cat.t-canaw .cat__art svg{width:54px;height:54px}
+.cat.t-canaw .cat__art b{font:500 19px/1 var(--f-canaw);letter-spacing:.34em;margin-right:-.34em;color:var(--canaw)}
+.cat.t-canaw h3{font-family:var(--f-canaw);font-weight:600;font-variation-settings:normal;letter-spacing:.08em}
+.aovivo{font-style:normal;position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:rgba(255,69,58,.14);font:600 10px/1 var(--f-canaw);letter-spacing:.12em;text-transform:uppercase;color:var(--canaw-live)}
+.aovivo::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--canaw-live);animation:pisca 1.6s ease-in-out infinite}
+@keyframes pisca{50%{opacity:.25}}
+.cat.t-pro .cat__art{background-color:#050505}
+.metal{background:var(--pro-metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cat.t-pro .cat__art b{font:900 34px/.92 var(--f-pro);letter-spacing:-.01em;text-align:center;text-transform:uppercase}
+.cat.t-pro h3{font-family:var(--f-pro);font-weight:700;font-variation-settings:normal;letter-spacing:-.01em}
+.cat.t-dossie .cat__art{background-color:var(--dossie-navy)}
+.cat.t-dossie .cat__art b{font:800 25px/1 var(--ff);font-variation-settings:"wdth" 122;letter-spacing:-.02em;text-align:center;text-transform:uppercase;color:#fff}
+.cat.t-dossie .cat__art b em{font-style:normal;color:var(--dossie-2)}
+.cat.t-black .cat__art b{font:900 84px/1 var(--ff);font-variation-settings:"wdth" 125;letter-spacing:-.05em;background:linear-gradient(180deg,#fff,var(--gold-2) 40%,var(--gold) 70%,#6d5622);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* painel do topo: a busca do Fexô */
+.painel{font-family:var(--f-fexo);background:linear-gradient(180deg,#1b1c22,#101116);box-shadow:0 60px 120px -40px rgba(191,242,58,.16),0 0 0 1px rgba(255,255,255,.03) inset}
+.painel__bar{gap:12px;padding:12px 16px}
+.painel__bar img{height:20px;width:auto}
+.painel__bar span{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.06);font:600 12px/1 var(--f-fexo);letter-spacing:0;color:var(--ink-2)}
+.painel__bar span b{font-family:var(--f-num);color:#fff}
+.painel__bar span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--fexo)}
+.painel aside li.on{background:rgba(191,242,58,.12);color:var(--fexo)}
+.painel aside li.on svg{color:var(--fexo)}
+.busca{border-radius:999px;padding:6px 6px 6px 16px;background:rgba(255,255,255,.04);flex-wrap:nowrap;font-weight:600}
+.busca svg{color:var(--ink-3)}
+.busca b{margin-left:auto;padding:9px 18px;border-radius:999px;background:var(--fexo);color:#111318;font:800 13px/1 var(--f-fexo)}
+.filtros{display:flex;gap:6px;margin-top:10px;overflow-x:auto;scrollbar-width:none}
+.filtros::-webkit-scrollbar{display:none}
+.filtros .pill{padding:7px 13px;font:600 12px/1 var(--f-fexo);background:rgba(255,255,255,.05);border-color:transparent;color:var(--ink)}
+.filtros .pill.az{background:var(--fexo-azul);color:#fff}
+.stats div{border-radius:16px;background:rgba(255,255,255,.03)}
+.stats b{font-family:var(--f-num);font-variation-settings:normal;font-weight:700}
+.stats b em{color:var(--fexo)}
+.imo{border-radius:16px;background:#17181d}
+.imo__off{left:8px;top:8px;border-radius:999px;padding:4px 9px;background:var(--fexo);color:#111318;font:800 11px/1.2 var(--f-fexo)}
+.imo__src{border-radius:999px;font-family:var(--f-fexo)}
+.imo__img{background:radial-gradient(120% 90% at 50% 100%,rgba(191,242,58,.12),transparent 60%),#101116}
+.imo__b h4{font-family:var(--f-fexo);font-weight:800;font-variation-settings:normal;letter-spacing:-.02em}
+.imo__l.g b{font-family:var(--f-num);color:#fff;font-size:15px}
+
+/* exemplo de imóvel (bloco 05): Fexô + Multy */
+.ficha{font-family:var(--f-fexo);border-radius:24px;background:linear-gradient(180deg,#1b1c22,#101116);box-shadow:0 50px 100px -40px rgba(191,242,58,.18)}
+.ficha__h small{display:flex;align-items:center;gap:7px;font-family:var(--f-fexo);letter-spacing:.12em}
+.ficha__h small img{width:16px;height:auto}
+.ficha__h b{font-family:var(--f-fexo);font-weight:800;font-variation-settings:normal;letter-spacing:-.03em}
+.ficha__h em{border-radius:999px;background:var(--fexo);color:#111318;font:800 12px/1.2 var(--f-fexo);padding:6px 11px}
+.campos div{border-radius:14px;background:rgba(255,255,255,.03)}
+.campos b{font:700 18px/1.3 var(--f-num);color:#fff}
+.campos .az b{color:#8fb4ff}
+.aten{border-radius:14px}
+.sema{border-radius:14px;border-color:rgba(168,85,247,.45);background:linear-gradient(90deg,rgba(124,58,237,.2),rgba(124,58,237,.04))}
+.sema>svg{width:26px;height:26px;flex:none}
+.sema b{font-family:var(--f-fexo);font-weight:800}
+.sema small{color:#c9b6f5}
+
+/* conteúdo do arsenal, pilha e bônus */
+.kitlist details[class*="t-"] .kit__ic{color:var(--a2);border-color:color-mix(in srgb,var(--a) 45%,transparent);background:color-mix(in srgb,var(--a) 10%,transparent)}
+.kit__ic img{width:26px;height:auto}
+.kit__ic svg.m{width:28px;height:28px}
+.kit__ic b{font:900 11px/1 var(--f-pro)}
+.kitlist details[class*="t-"] ul li::before{background:var(--a)}
+.kitlist details[class*="t-"][open]{border-color:color-mix(in srgb,var(--a) 40%,transparent)}
+.kitlist details.t-fexo summary b,.kitlist details.t-multy summary b{font-family:var(--f-fexo);font-weight:800;font-variation-settings:normal;letter-spacing:-.02em}
+.kitlist details.t-canaw summary b{font-family:var(--f-canaw);font-weight:600;font-variation-settings:normal}
+.kitlist details.t-pro summary b{font-family:var(--f-pro);font-weight:700;font-variation-settings:normal}
+.pilha__c[class*="t-"]{border-left:3px solid var(--a)}
+.pilha__c[class*="t-"] svg{color:var(--a2)}
+.pilha__c img{flex:none;width:24px;height:auto}
+.pilha__c:last-child{border-color:rgba(255,255,255,.3);border-left-color:#d9d9d9;background:linear-gradient(160deg,#1c1c1c,#050505)}
+.bon--solo{border-color:rgba(255,255,255,.28);background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 60%),#050505}
+.bon--solo h3{font-family:var(--f-pro);font-weight:700;font-variation-settings:normal;letter-spacing:-.01em;line-height:1.2}
+.bon--solo .bon__ic{border-color:rgba(255,255,255,.3);background:linear-gradient(160deg,#1c1c1c,#050505);align-items:flex-start}
+.bon--solo .bon__ic{width:92px;aspect-ratio:1}
+.bon--solo .bon__ic b{font:900 15px/.95 var(--f-pro);text-transform:uppercase}
+@media (max-width:520px){.bon--solo .bon__ic{width:78px}.bon--solo .bon__ic b{font-size:12.5px}}
+.bon--solo .bon__ic span{color:#bdbdbd}
+.unico{font-family:var(--f-fexo);border-radius:18px;background:#17181d}
+.unico h4{display:flex;align-items:center;gap:7px;font-family:var(--f-fexo);font-weight:800;font-variation-settings:normal}
+.unico h4 img{width:15px;height:auto}
+.unico li{border-radius:12px}
+.unico li em{border-radius:999px;background:var(--fexo);color:#111318;font:800 11px/1.2 var(--f-fexo)}
+.unico li.my{border-color:rgba(168,85,247,.45)}
+.plano li i.pt{flex:none;width:8px;height:8px;margin:7px 7px 0 7px;border-radius:50%;background:var(--a)}
 
 /* BLOCO 06 — benefícios */
 .blist{display:grid;gap:10px;max-width:720px;margin:0 auto}
@@ -444,6 +571,9 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></g></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M8 13h8M8 17h5"/></g></symbol>
   <symbol id="i-tv" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12.5" rx="2"/><path d="M8 21h8M8.5 2.5 12 6l3.5-3.5"/></g></symbol>
+  <symbol id="m-canaw" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#08090a"/><rect x=".5" y=".5" width="31" height="31" rx="7.5" fill="none" stroke="#34343a"/><path d="M22.4 9.6A9 9 0 1 0 22.4 22.4" fill="none" stroke="#f7f8f8" stroke-width="2.8" stroke-linecap="round"/><path d="M10.4 12.6L13 19.4L15.6 13.6L18.2 19.4L20.8 12.6" fill="none" stroke="#f7f8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.6" cy="16" r="2" fill="#ef4444"/></symbol>
+  <linearGradient id="g-multy" x1="3" y1="27" x2="29" y2="5" gradientUnits="userSpaceOnUse"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#c084fc"/></linearGradient>
+  <symbol id="m-multy" viewBox="0 0 32 32"><path d="M5.5 25.5V12.5a5.25 5.25 0 0 1 10.5 0v13M16 12.5a5.25 5.25 0 0 1 10.5 0V17" fill="none" stroke="url(#g-multy)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26.5" cy="25.3" r="2.6" fill="#c084fc"/></symbol>
   <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2 4.5 13.500H11L10 22l8.5-11.500H12z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -466,37 +596,37 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <div class="hero__art rv">
       <!-- Mockup desenhado em CSS. Para usar uma foto ou print real, troque este bloco por <img src="..."> -->
       <div class="painel" role="img" aria-label="Plataforma de busca de leilões: imóveis verificados com avaliação, lance mínimo e desconto lado a lado">
-        <div class="painel__bar"><i></i><i></i><i></i><span>Fexô · Busca de imóveis de leilão</span></div>
+        <div class="painel__bar"><img src="assets/fexo-logo.webp" width="360" height="127" alt="Fexô"><span><b>15 mil+</b> imóveis</span></div>
         <div class="painel__body">
           <aside>
             <small>Arsenal</small>
             <ul>
               <li class="on"><svg><use href="#i-radar"/></svg>Fexô · Busca</li>
-              <li><svg><use href="#i-calc"/></svg>Multy · Financiamento</li>
+              <li><svg><use href="#m-multy"/></svg>Multy · Financiamento</li>
               <li><svg><use href="#i-doc"/></svg>Dossiê do Assessor</li>
-              <li><svg><use href="#i-tv"/></svg>CANAW · TV ao vivo</li>
+              <li><svg><use href="#m-canaw"/></svg>CANAW · TV ao vivo</li>
               <li><svg><use href="#i-trofeu"/></svg>15 modelos de sucesso</li>
               <li><svg><use href="#i-play"/></svg>Aula Leilão PRO</li>
             </ul>
           </aside>
           <div class="painel__main">
-            <div class="busca"><svg><use href="#i-lupa"/></svg>Casas até R$ 150 mil
-              <span class="fx"><span class="pill">Aceitam financiamento</span><span class="pill">Maior desconto</span><span class="pill">Todo o Brasil</span></span></div>
+            <div class="busca"><svg><use href="#i-lupa"/></svg>Casas até R$ 150 mil<b>Buscar</b></div>
+            <div class="filtros"><span class="pill az">Aceitam financiamento</span><span class="pill">Maior desconto</span><span class="pill">Todo o Brasil</span><span class="pill">Casas</span></div>
             <div class="stats">
               <div><small>Imóveis verificados</small><b class="num"><em>15 mil</em>+</b></div>
               <div><small>Entrada a partir de</small><b class="num">5%</b></div>
               <div><small>Modelos de sucesso</small><b class="num">15</b></div>
             </div>
             <div class="imoveis">
-              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">−52%</span><span class="imo__src">Banco</span></div>
+              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">52% abaixo</span><span class="imo__src">Banco</span></div>
                 <div class="imo__b"><h4>Casa · 2 quartos</h4><p>Bairro residencial</p>
                   <div class="imo__l"><span>Avaliação</span><s class="num">R$ 260.000</s></div>
                   <div class="imo__l g"><span>Lance mínimo</span><b class="num">R$ 124.800</b></div></div></article>
-              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">−45%</span><span class="imo__src">Judicial</span></div>
+              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">45% abaixo</span><span class="imo__src">Judicial</span></div>
                 <div class="imo__b"><h4>Casa · 3 quartos</h4><p>Próxima ao centro</p>
                   <div class="imo__l"><span>Avaliação</span><s class="num">R$ 240.000</s></div>
                   <div class="imo__l g"><span>Lance mínimo</span><b class="num">R$ 132.000</b></div></div></article>
-              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">−58%</span><span class="imo__src">Extrajudicial</span></div>
+              <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">58% abaixo</span><span class="imo__src">Extrajudicial</span></div>
                 <div class="imo__b"><h4>Sobrado · 2 quartos</h4><p>Rua tranquila</p>
                   <div class="imo__l"><span>Avaliação</span><s class="num">R$ 210.000</s></div>
                   <div class="imo__l g"><span>Lance mínimo</span><b class="num">R$ 88.200</b></div></div></article>
@@ -531,22 +661,22 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <p class="lead">Veja o que você recebe</p>
     </div>
     <div class="car" data-car>
-      <article class="cat"><div class="cat__art"><span>01</span><svg><use href="#i-doc"/></svg></div>
+      <article class="cat t-dossie"><div class="cat__art"><span>01</span><b>Dossiê<br><em>do Assessor</em></b></div>
         <div class="cat__b"><h3>Dossiê do Assessor</h3><p>O material de trabalho de quem conduz uma arrematação com método</p>
           <div class="chips"><span>Método</span><span>Passo a passo</span><span>Organização</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>02</span><svg><use href="#i-radar"/></svg></div>
+      <article class="cat t-fexo"><div class="cat__art"><span>02</span><img src="assets/fexo-logo.webp" width="360" height="127" alt="Fexô" loading="lazy"></div>
         <div class="cat__b"><h3>Fexô</h3><p>A plataforma de busca de imóveis de leilão e compra direta, com + de 15 mil imóveis verificados</p>
           <div class="chips"><span>Todo o Brasil</span><span>Aceitam financiamento</span><span>Maior desconto</span><span>Compra direta</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>03</span><svg><use href="#i-calc"/></svg></div>
+      <article class="cat t-multy"><div class="cat__art"><span>03</span><i class="wm"><svg><use href="#m-multy"/></svg>multy</i><img src="assets/multy.webp" width="280" height="280" alt="Mascote da Multy" loading="lazy"></div>
         <div class="cat__b"><h3>Multy</h3><p>A análise de financiamento que olha o seu perfil antes do banco</p>
           <div class="chips"><span>7 perguntas</span><span>2 minutos</span><span>Score Multy</span><span>Suporte no WhatsApp</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>04</span><svg><use href="#i-tv"/></svg></div>
+      <article class="cat t-canaw"><div class="cat__art"><span>04</span><i class="aovivo">Ao vivo</i><svg><use href="#m-canaw"/></svg><b>CANAW</b></div>
         <div class="cat__b"><h3>CANAW</h3><p>A TV de especialistas ao vivo, com o canal de leilão de imóveis</p>
           <div class="chips"><span>Ao vivo</span><span>Leilão de imóveis</span><span>Chat</span><span>Especialistas</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>05</span><svg><use href="#i-trofeu"/></svg></div>
+      <article class="cat t-black"><div class="cat__art"><span>05</span><b>15</b></div>
         <div class="cat__b"><h3>15 Modelos de Sucesso</h3><p>Arrematações financiadas com 5% de entrada e 100% legalizadas</p>
           <div class="chips"><span>Financiado</span><span>5% de entrada</span><span>100% legalizado</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>06</span><svg><use href="#i-play"/></svg></div>
+      <article class="cat t-pro"><div class="cat__art"><span>06</span><b class="metal">Leilão<br>PRO</b></div>
         <div class="cat__b"><h3>Aula Bônus Leilão PRO</h3><p>Com o maior especialista de leilões do Nordeste</p>
           <div class="chips"><span>Leilão PRO</span><span>Na prática</span><span>Bônus</span></div></div></article>
     </div>
@@ -559,17 +689,17 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap duo">
     <div class="ficha rv" role="img" aria-label="Exemplo de imóvel na plataforma: avaliação, lance mínimo, entrada de 5 por cento, valor financiado, ponto de atenção e sinal verde da análise Multy">
-      <div class="ficha__h"><div><small>Imóvel verificado · Fexô</small><b>Casa · 2 quartos</b></div><em class="num">−52%</em></div>
+      <div class="ficha__h"><div><small><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="">Imóvel verificado · Fexô</small><b>Casa · 2 quartos</b></div><em class="num">52% abaixo</em></div>
       <div class="ficha__b">
         <div class="campos">
           <div><small>Avaliação</small><b>R$ 260.000</b></div>
           <div><small>Lance mínimo</small><b>R$ 124.800</b></div>
-          <div><small>Entrada (5%)</small><b>R$ 6.240</b></div>
+          <div class="az"><small>Entrada (5%)</small><b>R$ 6.240</b></div>
           <div><small>Financiado</small><b>R$ 118.560</b></div>
           <div class="l"><small>Documentação</small><b>100% legalizado</b></div>
         </div>
         <div class="aten"><small>Ponto de atenção</small><p>Confira no edital as condições de financiamento e os prazos do banco antes do lance.</p></div>
-        <div class="sema"><span><i class="on"></i><i></i><i></i></span><div><b>Verde</b><small>Perfil analisado na Multy</small></div></div>
+        <div class="sema"><svg><use href="#m-multy"/></svg><div><b>Multy</b><small>Perfil de financiamento analisado</small></div><span style="margin-left:auto"><i class="on"></i></span></div>
       </div>
     </div>
     <div class="rv">
@@ -618,17 +748,17 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <p class="lead">Um conjunto de ferramentas para buscar, analisar o crédito e arrematar financiado, do jeito mais simples de usar.</p>
     </div>
     <div class="kitlist rv">
-      <details open><summary><span class="kit__ic"><svg><use href="#i-doc"/></svg></span><div><b>Dossiê do Assessor</b><span>O material de trabalho de quem conduz uma arrematação com método</span></div><i class="pm"></i></summary>
+      <details open class="t-dossie"><summary><span class="kit__ic"><svg><use href="#i-doc"/></svg></span><div><b>Dossiê do Assessor</b><span>O material de trabalho de quem conduz uma arrematação com método</span></div><i class="pm"></i></summary>
         <ul><li>Como escolher o imóvel certo</li><li>Como analisar edital e matrícula</li><li>Como conduzir a arrematação</li><li>Como cuidar da legalização</li><li>Modelos prontos para usar</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-radar"/></svg></span><div><b>Fexô · Plataforma de busca</b><span>Imóveis de leilão e compra direta em um só lugar</span></div><i class="pm"></i></summary>
+      <details class="t-fexo"><summary><span class="kit__ic"><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="" loading="lazy"></span><div><b>Fexô · Plataforma de busca</b><span>Imóveis de leilão e compra direta em um só lugar</span></div><i class="pm"></i></summary>
         <ul><li>+ de 15 mil imóveis verificados</li><li>Imóveis em todo o Brasil</li><li>Filtro dos que aceitam financiamento</li><li>Busca por lugar, tipo e preço</li><li>Ordenação por maior desconto</li><li>Casas, apartamentos, terrenos e loteamentos</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-calc"/></svg></span><div><b>Multy · Análise de financiamento</b><span>Olha o seu perfil antes do banco</span></div><i class="pm"></i></summary>
+      <details class="t-multy"><summary><span class="kit__ic"><svg class="m"><use href="#m-multy"/></svg></span><div><b>Multy · Análise de financiamento</b><span>Olha o seu perfil antes do banco</span></div><i class="pm"></i></summary>
         <ul><li>Análise em 2 minutos</li><li>7 perguntas sobre o seu perfil</li><li>O que pesa no seu financiamento</li><li>O que fazer para liberar o crédito mais rápido</li><li>Você vê o que foi usado na análise</li><li>Suporte no WhatsApp</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-tv"/></svg></span><div><b>CANAW · TV de especialistas</b><span>Programas ao vivo com especialistas de verdade</span></div><i class="pm"></i></summary>
+      <details class="t-canaw"><summary><span class="kit__ic"><svg class="m"><use href="#m-canaw"/></svg></span><div><b>CANAW · TV de especialistas</b><span>Programas ao vivo com especialistas de verdade</span></div><i class="pm"></i></summary>
         <ul><li>Canal de leilão de imóveis</li><li>Programas ao vivo</li><li>Chat durante as transmissões</li><li>Um canal por especialista</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-trofeu"/></svg></span><div><b>15 Modelos de Sucesso</b><span>Arrematações financiadas com 5% de entrada e 100% legalizadas</span></div><i class="pm"></i></summary>
+      <details class="t-black"><summary><span class="kit__ic"><svg><use href="#i-trofeu"/></svg></span><div><b>15 Modelos de Sucesso</b><span>Arrematações financiadas com 5% de entrada e 100% legalizadas</span></div><i class="pm"></i></summary>
         <ul><li>O imóvel e o valor do lance</li><li>A entrada de 5% na prática</li><li>Como foi o financiamento</li><li>Como foi a legalização</li><li>O que repetir no seu caso</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-play"/></svg></span><div><b>Aula Bônus Leilão PRO</b><span>Com o maior especialista de leilões do Nordeste</span></div><i class="pm"></i></summary>
+      <details class="t-pro"><summary><span class="kit__ic"><b class="metal">PRO</b></span><div><b>Aula Bônus Leilão PRO</b><span>Com o maior especialista de leilões do Nordeste</span></div><i class="pm"></i></summary>
         <ul><li>Uma aula da Leilão PRO, a especialização prática em leilões de imóveis</li><li>Como funcionam os leilões na prática</li><li>Estudo de caso real, do lance ao lucro</li></ul></details>
     </div>
   </div>
@@ -655,12 +785,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         </div>
         <div class="cmp__lado cmp__lado--b">
           <div class="unico">
-            <h4>Imóveis verificados</h4><small>Tudo em um só lugar</small>
+            <h4><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="">Imóveis verificados</h4><small>Tudo em um só lugar</small>
             <ul>
-              <li><span><b>Casa · 2 quartos</b>Lance R$ 124.800</span><em>−52%</em></li>
-              <li><span><b>Casa · 3 quartos</b>Lance R$ 132.000</span><em>−45%</em></li>
-              <li><span><b>Sobrado · 2 quartos</b>Lance R$ 88.200</span><em>−58%</em></li>
-              <li><span><b>Análise Multy</b>Perfil analisado</span><svg width="18" height="18" style="color:var(--ok)"><use href="#ck"/></svg></li>
+              <li><span><b>Casa · 2 quartos</b>Lance R$ 124.800</span><em>52% abaixo</em></li>
+              <li><span><b>Casa · 3 quartos</b>Lance R$ 132.000</span><em>45% abaixo</em></li>
+              <li><span><b>Sobrado · 2 quartos</b>Lance R$ 88.200</span><em>58% abaixo</em></li>
+              <li class="my"><span><b>Análise Multy</b>Perfil analisado</span><svg width="20" height="20"><use href="#m-multy"/></svg></li>
             </ul>
           </div>
           <span class="cmp__tag">Com o arsenal</span>
@@ -713,12 +843,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap duo">
     <div class="pilha rv" role="img" aria-label="As seis partes do arsenal: Dossiê do Assessor, Fexô, Multy, CANAW, 15 Modelos de Sucesso e Aula Bônus da Leilão PRO">
-      <div class="pilha__c" style="--i:0"><span>01</span><svg><use href="#i-doc"/></svg><b>Dossiê</b></div>
-      <div class="pilha__c" style="--i:1"><span>02</span><svg><use href="#i-radar"/></svg><b>Fexô</b></div>
-      <div class="pilha__c" style="--i:2"><span>03</span><svg><use href="#i-calc"/></svg><b>Multy</b></div>
-      <div class="pilha__c" style="--i:3"><span>04</span><svg><use href="#i-tv"/></svg><b>CANAW</b></div>
-      <div class="pilha__c" style="--i:4"><span>05</span><svg><use href="#i-trofeu"/></svg><b>15 Modelos</b></div>
-      <div class="pilha__c" style="--i:5"><span>06</span><svg><use href="#i-play"/></svg><b>Aula Leilão PRO</b></div>
+      <div class="pilha__c t-dossie" style="--i:0"><span>01</span><svg><use href="#i-doc"/></svg><b>Dossiê</b></div>
+      <div class="pilha__c t-fexo" style="--i:1"><span>02</span><img src="assets/fexo-simbolo.webp" width="96" height="102" alt="" loading="lazy"><b>Fexô</b></div>
+      <div class="pilha__c t-multy" style="--i:2"><span>03</span><svg><use href="#m-multy"/></svg><b>Multy</b></div>
+      <div class="pilha__c t-canaw" style="--i:3"><span>04</span><svg><use href="#m-canaw"/></svg><b>CANAW</b></div>
+      <div class="pilha__c t-black" style="--i:4"><span>05</span><svg><use href="#i-trofeu"/></svg><b>15 Modelos</b></div>
+      <div class="pilha__c t-pro" style="--i:5"><span>06</span><svg><use href="#i-play"/></svg><b>Aula Leilão PRO</b></div>
     </div>
     <div class="rv">
       <ul class="elist">
@@ -737,7 +867,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec alt" data-secao="11-bonus">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <article class="bon bon--solo rv"><div class="bon__ic"><span>Bônus</span><svg><use href="#i-play"/></svg></div>
+    <article class="bon bon--solo rv"><div class="bon__ic"><span>Bônus</span><b class="metal">Leilão<br>PRO</b></div>
       <div><h3>Aula Bônus da Leilão PRO com o maior especialista de leilões do Nordeste</h3><div class="bon__val">na Black <b>GRÁTIS</b></div><p>Uma aula da Leilão PRO, a especialização prática em leilões de imóveis, para você ver como os leilões funcionam na prática.</p></div></article>
   </div>
 </section>
