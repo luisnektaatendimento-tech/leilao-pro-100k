@@ -13,8 +13,8 @@ Tudo fica no fim do `index.html`, no bloco `CONFIGURAÇÃO`:
 
 No HTML, revise também:
 - **Preços** (bloco 12, `id="planos"`, e a barra fixa do celular `data-dock`).
-- **Bônus** (bloco 11) e os nomes das ferramentas (blocos 04 e 07).
-- **Casos** (bloco 14): os 3 cartões são modelos. Troque pelos casos reais e apague a etiqueta "Modelo" e a frase de aviso.
+- **Aula bônus** (bloco 11) e a descrição de cada parte do arsenal (blocos 04 e 07).
+- **Modelos de sucesso** (bloco 14): os 3 cartões são exemplos. Troque pelos modelos reais e apague a etiqueta "Exemplo" e a frase de aviso.
 - **Garantia** (bloco 15) e FAQ (bloco 17).
 
 ## Como publicar

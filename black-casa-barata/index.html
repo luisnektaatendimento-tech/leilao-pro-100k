@@ -340,6 +340,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .bon__val{display:flex;align-items:center;gap:8px;margin:10px 0;font-size:14px;color:var(--ink-3)}
 .bon__val b{padding:4px 9px;border-radius:6px;background:var(--gold);color:#0a0700;font:800 11px/1.2 var(--ff);letter-spacing:.1em}
 .bon p{color:var(--ink-2);font-size:15px}
+.bon--solo{max-width:760px;margin:0 auto;border-color:rgba(216,183,106,.45);background:linear-gradient(180deg,rgba(216,183,106,.07),transparent 60%),var(--card)}
 
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;gap:20px;align-items:start;max-width:920px;margin:0 auto}
@@ -363,7 +364,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (max-width:520px){.plano{padding:32px 18px 24px}.cat{flex-basis:78vw}.car{gap:12px}.fit-list li,.how li,.caso,.bon{padding:18px}.bon{gap:14px}.bon__ic{width:68px}}
 .plano .btn-note{display:block;margin-top:12px}
 
-/* BLOCO 14 — casos de venda rápida */
+/* BLOCO 14 — modelos de sucesso */
 .deps{display:grid;gap:12px}
 @media (min-width:860px){.deps{grid-template-columns:repeat(3,1fr)}}
 .caso{padding:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
@@ -435,6 +436,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <symbol id="i-chave" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4.5"/><path d="m11.2 11.8 8.3-8.300M16 7l3 3M13.5 9.500l2 2"/></g></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.500a8.4 8.4 0 0 1-12.3 7.400L3 20.500l1.6-5.400A8.4 8.4 0 1 1 21 11.500z"/><path d="M8.5 10h7M8.5 13.500h4.5"/></g></symbol>
   <symbol id="i-escudo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.500s8-3.5 8-10V5l-8-3-8 3v6.500c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></g></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></g></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M8 13h8M8 17h5"/></g></symbol>
   <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2 4.5 13.500H11L10 22l8.5-11.500H12z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -456,26 +459,26 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
     <div class="hero__art rv">
       <!-- Mockup desenhado em CSS. Para usar uma foto ou print real, troque este bloco por <img src="..."> -->
-      <div class="painel" role="img" aria-label="Painel do arsenal: busca de casas de leilão com avaliação, lance mínimo e desconto de cada imóvel lado a lado">
-        <div class="painel__bar"><i></i><i></i><i></i><span>Black Casa Barata · Radar de leilões</span></div>
+      <div class="painel" role="img" aria-label="Plataforma de busca de leilões: imóveis verificados com avaliação, lance mínimo e desconto lado a lado">
+        <div class="painel__bar"><i></i><i></i><i></i><span>Black Casa Barata · Busca de leilões</span></div>
         <div class="painel__body">
           <aside>
             <small>Arsenal</small>
             <ul>
-              <li class="on"><svg><use href="#i-radar"/></svg>Radar de leilões</li>
-              <li><svg><use href="#i-filtro"/></svg>Filtros de oportunidade</li>
-              <li><svg><use href="#i-calc"/></svg>Calculadora de lance</li>
-              <li><svg><use href="#i-check"/></svg>Checklist de edital</li>
-              <li><svg><use href="#i-trofeu"/></svg>Casos de venda rápida</li>
+              <li class="on"><svg><use href="#i-radar"/></svg>Busca de leilões</li>
+              <li><svg><use href="#i-calc"/></svg>Pré-análise de crédito</li>
+              <li><svg><use href="#i-doc"/></svg>Dossiê do Assessor</li>
+              <li><svg><use href="#i-trofeu"/></svg>15 modelos de sucesso</li>
+              <li><svg><use href="#i-play"/></svg>Aula bônus</li>
             </ul>
           </aside>
           <div class="painel__main">
             <div class="busca"><svg><use href="#i-lupa"/></svg>Casas até R$ 150 mil
-              <span class="fx"><span class="pill">Desconto acima de 40%</span><span class="pill">Desocupado</span><span class="pill">Aceita financiamento</span></span></div>
+              <span class="fx"><span class="pill">Aceita financiamento</span><span class="pill">Desconto acima de 40%</span><span class="pill">Desocupado</span></span></div>
             <div class="stats">
-              <div><small>Onde você procura</small><b><em>1</em> painel</b></div>
-              <div><small>Desconto médio<span class="hs"> da busca</span></small><b class="num">−48%</b></div>
-              <div><small>Casos para estudar</small><b class="num">20+</b></div>
+              <div><small>Imóveis verificados</small><b class="num"><em>15 mil</em>+</b></div>
+              <div><small>Entrada a partir de</small><b class="num">5%</b></div>
+              <div><small>Modelos de sucesso</small><b class="num">15</b></div>
             </div>
             <div class="imoveis">
               <article class="imo"><div class="imo__img"><svg><use href="#i-casa"/></svg><span class="imo__off num">−52%</span><span class="imo__src">Banco</span></div>
@@ -494,14 +497,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           </div>
         </div>
       </div>
-      <p class="hero__cap">Imagem ilustrativa do painel.</p>
+      <p class="hero__cap">Imagem ilustrativa da plataforma de busca.</p>
     </div>
 
-    <p class="hero__sub">Da busca ao lance e do lance à venda: as ferramentas, os filtros e os casos que mostram o caminho, reunidos para você parar de pular de site em site atrás de oportunidade.</p>
+    <p class="hero__sub">Não é qualquer arsenal. É o Dossiê do Assessor, a plataforma de busca de leilões e a plataforma de pré-análise de crédito, mais uma aula bônus com o maior especialista de leilões do Nordeste.</p>
     <ul class="elist">
-      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Tudo em um só lugar, sem dezenas de abas abertas</span></li>
-      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Mais de 20 casos de venda rápida para você estudar e repetir</span></li>
-      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pronto para usar hoje, no celular ou no computador</span></li>
+      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de busca com + de 15 mil imóveis verificados</span></li>
+      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pré-análise de crédito para saber se o financiamento passa antes do lance</span></li>
+      <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 modelos de sucesso de arrematação financiada com 5% de entrada</span></li>
     </ul>
 
     <!-- ============ BLOCO 03 — CTA ============ -->
@@ -517,25 +520,25 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="sec-head center rv">
-      <h2>Uma ferramenta pronta para cada etapa da busca</h2>
-      <p class="lead">Veja o que tem dentro do arsenal</p>
+      <h2>Não é qualquer arsenal</h2>
+      <p class="lead">Veja o que você recebe</p>
     </div>
     <div class="car" data-car>
-      <article class="cat"><div class="cat__art"><span>01</span><svg><use href="#i-radar"/></svg></div>
-        <div class="cat__b"><h3>Radar de Leilões</h3><p>Onde encontrar as casas, sem garimpar site por site</p>
-          <div class="chips"><span>Bancos</span><span>Judiciais</span><span>Extrajudiciais</span><span>Leiloeiros</span><span>Venda direta</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>02</span><svg><use href="#i-filtro"/></svg></div>
-        <div class="cat__b"><h3>Filtros de Oportunidade</h3><p>Separe o que é barato de verdade do que só parece</p>
-          <div class="chips"><span>Desconto</span><span>Ocupação</span><span>Bairro</span><span>Liquidez</span><span>Forma de pagamento</span></div></div></article>
+      <article class="cat"><div class="cat__art"><span>01</span><svg><use href="#i-doc"/></svg></div>
+        <div class="cat__b"><h3>Dossiê do Assessor</h3><p>O material de trabalho de quem conduz uma arrematação com método</p>
+          <div class="chips"><span>Método</span><span>Passo a passo</span><span>Organização</span></div></div></article>
+      <article class="cat"><div class="cat__art"><span>02</span><svg><use href="#i-radar"/></svg></div>
+        <div class="cat__b"><h3>Plataforma de Busca de Leilões</h3><p>+ de 15 mil imóveis verificados em um só lugar</p>
+          <div class="chips"><span>Bancos</span><span>Judiciais</span><span>Extrajudiciais</span><span>Aceita financiamento</span><span>Desconto</span></div></div></article>
       <article class="cat"><div class="cat__art"><span>03</span><svg><use href="#i-calc"/></svg></div>
-        <div class="cat__b"><h3>Calculadoras</h3><p>Saiba até onde vale dar o lance antes de entrar</p>
-          <div class="chips"><span>Lance máximo</span><span>Custos totais</span><span>Margem</span><span>ITBI e cartório</span><span>Reforma</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>04</span><svg><use href="#i-check"/></svg></div>
-        <div class="cat__b"><h3>Checklists de Análise</h3><p>O que conferir antes de dar qualquer lance</p>
-          <div class="chips"><span>Edital</span><span>Matrícula</span><span>Dívidas</span><span>Ocupação</span><span>Visita</span></div></div></article>
-      <article class="cat"><div class="cat__art"><span>05</span><svg><use href="#i-trofeu"/></svg></div>
-        <div class="cat__b"><h3>Casos de Venda Rápida</h3><p>Mais de 20 casos reais, do lance à venda</p>
-          <div class="chips"><span>Quanto pagou</span><span>Quanto gastou</span><span>Por quanto vendeu</span><span>Em quantos dias</span></div></div></article>
+        <div class="cat__b"><h3>Plataforma de Pré-Análise de Crédito</h3><p>Saiba se o financiamento passa antes de dar o lance</p>
+          <div class="chips"><span>Renda</span><span>Entrada</span><span>Parcela</span><span>Aprovação</span></div></div></article>
+      <article class="cat"><div class="cat__art"><span>04</span><svg><use href="#i-trofeu"/></svg></div>
+        <div class="cat__b"><h3>15 Modelos de Sucesso</h3><p>Arrematações financiadas com 5% de entrada e 100% legalizadas</p>
+          <div class="chips"><span>Financiado</span><span>5% de entrada</span><span>100% legalizado</span></div></div></article>
+      <article class="cat"><div class="cat__art"><span>05</span><svg><use href="#i-play"/></svg></div>
+        <div class="cat__b"><h3>Aula Bônus</h3><p>Com o maior especialista de leilões do Nordeste</p>
+          <div class="chips"><span>Bônus</span><span>Especialista</span><span>Nordeste</span></div></div></article>
     </div>
     <div class="car-nav" data-car-nav aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
   </div>
@@ -545,26 +548,26 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec" data-secao="05-o-que-cada-ferramenta-possui">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap duo">
-    <div class="ficha rv" role="img" aria-label="Exemplo de análise de um imóvel: avaliação, lance mínimo, custos, pontos de atenção e o sinal verde para avançar">
-      <div class="ficha__h"><div><small>Análise de oportunidade</small><b>Casa · 2 quartos</b></div><em class="num">−52%</em></div>
+    <div class="ficha rv" role="img" aria-label="Exemplo de imóvel na plataforma: avaliação, lance mínimo, entrada de 5 por cento, valor financiado, ponto de atenção e sinal verde da pré-análise de crédito">
+      <div class="ficha__h"><div><small>Imóvel verificado</small><b>Casa · 2 quartos</b></div><em class="num">−52%</em></div>
       <div class="ficha__b">
         <div class="campos">
           <div><small>Avaliação</small><b>R$ 260.000</b></div>
           <div><small>Lance mínimo</small><b>R$ 124.800</b></div>
-          <div><small>Custos estimados</small><b>R$ 21.500</b></div>
-          <div><small>Ocupação</small><b>Desocupado</b></div>
-          <div class="l"><small>Lance máximo para a sua margem</small><b>até R$ 148.000</b></div>
+          <div><small>Entrada (5%)</small><b>R$ 6.240</b></div>
+          <div><small>Financiado</small><b>R$ 118.560</b></div>
+          <div class="l"><small>Documentação</small><b>100% legalizado</b></div>
         </div>
-        <div class="aten"><small>Pontos de atenção</small><p>Confira débitos de IPTU e condomínio no edital e a matrícula atualizada antes do lance.</p></div>
-        <div class="sema"><span><i class="on"></i><i></i><i></i></span><div><b>Verde</b><small>Vale avançar para o edital</small></div></div>
+        <div class="aten"><small>Ponto de atenção</small><p>Confira no edital as condições de financiamento e os prazos do banco antes do lance.</p></div>
+        <div class="sema"><span><i class="on"></i><i></i><i></i></span><div><b>Verde</b><small>Crédito pré-analisado: pode avançar</small></div></div>
       </div>
     </div>
     <div class="rv">
       <ul class="elist">
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Passo a passo pronto: você só segue e preenche</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pontos de atenção: o que costuma virar prejuízo em leilão</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Imóveis verificados, com as informações que importam lado a lado</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Filtro para encontrar o que aceita financiamento</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pré-análise de crédito antes do lance, sem surpresa depois</span></li>
         <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Linguagem simples, sem “juridiquês” que ninguém entende</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Use quantas vezes quiser, em quantos imóveis quiser</span></li>
       </ul>
       <div class="cta-block">
         <a class="btn" href="#planos" data-checkout="completo">Quero o arsenal agora <svg><use href="#seta"/></svg></a>
@@ -583,10 +586,10 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     </div>
     <ul class="blist rv">
       <li><svg><use href="#i-raio"/></svg><span>Pare de perder horas pulando de site em site atrás de imóvel</span></li>
-      <li><svg><use href="#i-raio"/></svg><span>Enxergue rápido quais casas estão baratas de verdade</span></li>
-      <li><svg><use href="#i-raio"/></svg><span>Saiba o lance máximo antes de entrar na disputa</span></li>
-      <li><svg><use href="#i-raio"/></svg><span>Evite os erros de edital e matrícula que travam a venda</span></li>
-      <li><svg><use href="#i-raio"/></svg><span>Aprenda com quem já arrematou e vendeu rápido</span></li>
+      <li><svg><use href="#i-raio"/></svg><span>Busque entre + de 15 mil imóveis verificados em um só lugar</span></li>
+      <li><svg><use href="#i-raio"/></svg><span>Saiba se o crédito passa antes de dar o lance</span></li>
+      <li><svg><use href="#i-raio"/></svg><span>Arremate financiado, com apenas 5% de entrada</span></li>
+      <li><svg><use href="#i-raio"/></svg><span>Siga 15 modelos que já deram certo, 100% legalizados</span></li>
     </ul>
     <div class="cta-block">
       <a class="btn" href="#planos" data-checkout="completo">Quero o arsenal agora <svg><use href="#seta"/></svg></a>
@@ -601,19 +604,19 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <div class="sec-head center rv">
       <span class="eyebrow">Conteúdo do arsenal</span>
       <h2>Tudo que você vai receber no Black Casa Barata</h2>
-      <p class="lead">Ferramentas organizadas por etapa, da busca até a venda, do jeito mais simples de usar.</p>
+      <p class="lead">Um conjunto de ferramentas para buscar, analisar o crédito e arrematar financiado, do jeito mais simples de usar.</p>
     </div>
     <div class="kitlist rv">
-      <details open><summary><span class="kit__ic"><svg><use href="#i-radar"/></svg></span><div><b>Radar de Leilões</b><span>Onde encontrar as casas, sem garimpar site por site</span></div><i class="pm"></i></summary>
-        <ul><li>Leilões de bancos</li><li>Leilões judiciais</li><li>Leilões extrajudiciais</li><li>Leiloeiros oficiais</li><li>Venda direta e licitação</li><li>Como buscar por cidade e bairro</li><li>Rotina de busca semanal</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-filtro"/></svg></span><div><b>Filtros de Oportunidade</b><span>Separe o que é barato de verdade do que só parece</span></div><i class="pm"></i></summary>
-        <ul><li>Desconto sobre a avaliação</li><li>Ocupado ou desocupado</li><li>Liquidez do bairro</li><li>Padrão do imóvel</li><li>Forma de pagamento</li><li>Primeira ou segunda praça</li><li>Sinais de alerta</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-calc"/></svg></span><div><b>Calculadoras</b><span>Saiba até onde vale dar o lance antes de entrar</span></div><i class="pm"></i></summary>
-        <ul><li>Lance máximo</li><li>Custos totais da arrematação</li><li>Comissão do leiloeiro</li><li>ITBI e cartório</li><li>Reforma e regularização</li><li>Margem e prazo de venda</li><li>Comparativo entre imóveis</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-check"/></svg></span><div><b>Checklists de Análise</b><span>O que conferir antes de dar qualquer lance</span></div><i class="pm"></i></summary>
-        <ul><li>Leitura do edital</li><li>Matrícula do imóvel</li><li>Débitos de IPTU e condomínio</li><li>Situação de ocupação</li><li>Visita ao imóvel</li><li>Processo judicial</li><li>Pós-arrematação</li><li class="mais">E muito mais</li></ul></details>
-      <details><summary><span class="kit__ic"><svg><use href="#i-trofeu"/></svg></span><div><b>Casos de Venda Rápida</b><span>Mais de 20 casos reais, do lance à venda</span></div><i class="pm"></i></summary>
-        <ul><li>Quanto foi pago no lance</li><li>Quanto foi gasto depois</li><li>O que foi feito no imóvel</li><li>Como foi anunciado</li><li>Por quanto foi vendido</li><li>Em quantos dias vendeu</li><li>O que repetir no seu caso</li><li class="mais">E muito mais</li></ul></details>
+      <details open><summary><span class="kit__ic"><svg><use href="#i-doc"/></svg></span><div><b>Dossiê do Assessor</b><span>O material de trabalho de quem conduz uma arrematação com método</span></div><i class="pm"></i></summary>
+        <ul><li>Como escolher o imóvel certo</li><li>Como analisar edital e matrícula</li><li>Como conduzir a arrematação</li><li>Como cuidar da legalização</li><li>Modelos prontos para usar</li><li class="mais">E muito mais</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-radar"/></svg></span><div><b>Plataforma de Busca de Leilões</b><span>+ de 15 mil imóveis verificados em um só lugar</span></div><i class="pm"></i></summary>
+        <ul><li>+ de 15 mil imóveis verificados</li><li>Leilões de bancos</li><li>Leilões judiciais e extrajudiciais</li><li>Busca por cidade e bairro</li><li>Filtro por desconto</li><li>Filtro de imóveis que aceitam financiamento</li><li class="mais">E muito mais</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-calc"/></svg></span><div><b>Plataforma de Pré-Análise de Crédito</b><span>Saiba se o financiamento passa antes de dar o lance</span></div><i class="pm"></i></summary>
+        <ul><li>Perfil de renda</li><li>Entrada disponível</li><li>Capacidade de parcela</li><li>Situação de crédito</li><li>Chance de aprovação antes do lance</li><li class="mais">E muito mais</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-trofeu"/></svg></span><div><b>15 Modelos de Sucesso</b><span>Arrematações financiadas com 5% de entrada e 100% legalizadas</span></div><i class="pm"></i></summary>
+        <ul><li>O imóvel e o valor do lance</li><li>A entrada de 5% na prática</li><li>Como foi o financiamento</li><li>Como foi a legalização</li><li>O que repetir no seu caso</li><li class="mais">E muito mais</li></ul></details>
+      <details><summary><span class="kit__ic"><svg><use href="#i-play"/></svg></span><div><b>Aula Bônus</b><span>Com o maior especialista de leilões do Nordeste</span></div><i class="pm"></i></summary>
+        <ul><li>Como escolher o imóvel</li><li>Financiamento em leilão na prática</li><li>Erros que custam caro</li><li class="mais">E muito mais</li></ul></details>
     </div>
   </div>
 </section>
@@ -624,7 +627,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="wrap">
     <div class="sec-head center rv">
       <h2>Arraste e compare</h2>
-      <p class="lead">À esquerda, a busca do jeito antigo: dezenas de abas, planilha e anotação solta. À direita, o arsenal com tudo em um só lugar.</p>
+      <p class="lead">À esquerda, a busca do jeito antigo: dezenas de abas, planilha e anotação solta. À direita, a plataforma com + de 15 mil imóveis verificados em um só lugar.</p>
     </div>
     <div class="cmp rv" data-cmp>
       <div class="cmp__in" aria-hidden="true">
@@ -639,12 +642,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         </div>
         <div class="cmp__lado cmp__lado--b">
           <div class="unico">
-            <h4>Suas oportunidades</h4><small>Tudo em um só lugar</small>
+            <h4>Imóveis verificados</h4><small>Tudo em um só lugar</small>
             <ul>
               <li><span><b>Casa · 2 quartos</b>Lance R$ 124.800</span><em>−52%</em></li>
               <li><span><b>Casa · 3 quartos</b>Lance R$ 132.000</span><em>−45%</em></li>
               <li><span><b>Sobrado · 2 quartos</b>Lance R$ 88.200</span><em>−58%</em></li>
-              <li><span><b>Próximo passo</b>Conferir edital e matrícula</span><svg width="18" height="18" style="color:var(--ok)"><use href="#ck"/></svg></li>
+              <li><span><b>Pré-análise de crédito</b>Aprovada para financiar</span><svg width="18" height="18" style="color:var(--ok)"><use href="#ck"/></svg></li>
             </ul>
           </div>
           <span class="cmp__tag">Com o arsenal</span>
@@ -667,7 +670,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <div><b data-cd-m>00</b><small>min</small></div>
       <div><b data-cd-s>00</b><small>seg</small></div>
     </div>
-    <p class="lead" style="margin-top:0">O preço da Black com os 4 bônus inclusos vale só até <span data-fim>o fim da oferta</span>. Quando o contador zerar, os bônus saem da oferta e o valor volta ao normal.</p>
+    <p class="lead" style="margin-top:0">O preço da Black com a aula bônus inclusa vale só até <span data-fim>o fim da oferta</span>. Quando o contador zerar, a aula bônus sai da oferta e o valor volta ao normal.</p>
     <div class="cta-block">
       <a class="btn" href="#planos" data-checkout="completo">Quero o arsenal agora <svg><use href="#seta"/></svg></a>
     </div>
@@ -683,11 +686,11 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <h2>Ideal para você que...</h2>
     </div>
     <ul class="fit-list rv">
-      <li><span class="n">01</span><span>Quer comprar casa abaixo do preço de mercado e não sabe por onde começar</span></li>
+      <li><span class="n">01</span><span>Quer arrematar um imóvel de leilão e não tem o valor todo à vista</span></li>
       <li><span class="n">02</span><span>Já procura leilão, mas se perde entre dezenas de sites e editais</span></li>
-      <li><span class="n">03</span><span>Quer arrematar para revender rápido e precisa de um método</span></li>
-      <li><span class="n">04</span><span>É corretor ou assessor e quer trazer oportunidades de leilão para os clientes</span></li>
-      <li><span class="n">05</span><span>Tem medo de errar no edital e perder dinheiro no primeiro lance</span></li>
+      <li><span class="n">03</span><span>É assessor ou corretor e quer levar leilão financiado para os clientes</span></li>
+      <li><span class="n">04</span><span>Tem medo de errar na documentação e quer tudo 100% legalizado</span></li>
+      <li><span class="n">05</span><span>Quer seguir um modelo que já deu certo em vez de começar do zero</span></li>
     </ul>
   </div>
 </section>
@@ -696,21 +699,21 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec" data-secao="10-tudo-que-voce-vai-receber">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap duo">
-    <div class="pilha rv" role="img" aria-label="As cinco partes do arsenal: Radar, Filtros, Calculadoras, Checklists e Casos de venda rápida">
-      <div class="pilha__c" style="--i:0"><span>01</span><svg><use href="#i-radar"/></svg><b>Radar de Leilões</b></div>
-      <div class="pilha__c" style="--i:1"><span>02</span><svg><use href="#i-filtro"/></svg><b>Filtros de Oportunidade</b></div>
-      <div class="pilha__c" style="--i:2"><span>03</span><svg><use href="#i-calc"/></svg><b>Calculadoras</b></div>
-      <div class="pilha__c" style="--i:3"><span>04</span><svg><use href="#i-check"/></svg><b>Checklists de Análise</b></div>
-      <div class="pilha__c" style="--i:4"><span>05</span><svg><use href="#i-trofeu"/></svg><b>20+ Casos de Venda Rápida</b></div>
+    <div class="pilha rv" role="img" aria-label="As cinco partes do arsenal: Dossiê do Assessor, Busca de Leilões, Pré-Análise de Crédito, 15 Modelos de Sucesso e Aula Bônus">
+      <div class="pilha__c" style="--i:0"><span>01</span><svg><use href="#i-doc"/></svg><b>Dossiê do Assessor</b></div>
+      <div class="pilha__c" style="--i:1"><span>02</span><svg><use href="#i-radar"/></svg><b>Busca de Leilões</b></div>
+      <div class="pilha__c" style="--i:2"><span>03</span><svg><use href="#i-calc"/></svg><b>Pré-Análise de Crédito</b></div>
+      <div class="pilha__c" style="--i:3"><span>04</span><svg><use href="#i-trofeu"/></svg><b>15 Modelos de Sucesso</b></div>
+      <div class="pilha__c" style="--i:4"><span>05</span><svg><use href="#i-play"/></svg><b>Aula Bônus</b></div>
     </div>
     <div class="rv">
       <ul class="elist">
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Arsenal completo dividido em 5 partes (radar, filtros, calculadoras, checklists e casos)</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Mais de 20 casos de sucesso de venda rápida</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pronto para usar no celular ou no computador</span></li>
-        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Pagamento único, sem mensalidade</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Dossiê do Assessor</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de busca com + de 15 mil imóveis verificados</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de pré-análise de crédito</span></li>
+        <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 modelos de sucesso de arrematação financiada, com 5% de entrada e 100% legalizados</span></li>
       </ul>
-      <span class="mais-bonus">+ 4 bônus exclusivos</span>
+      <span class="mais-bonus">+ Aula bônus exclusiva</span>
     </div>
   </div>
 </section>
@@ -719,16 +722,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec alt" data-secao="11-bonus">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <div class="bonus-grid rv">
-      <article class="bon"><div class="bon__ic"><span>B1</span><svg><use href="#i-calc"/></svg></div>
-        <div><h3>Calculadora de Lance Máximo</h3><div class="bon__val">de <s>R$47</s> por <b>GRÁTIS</b></div><p>Coloque os números do imóvel e veja até quanto vale a pena dar de lance.</p></div></article>
-      <article class="bon"><div class="bon__ic"><span>B2</span><svg><use href="#i-check"/></svg></div>
-        <div><h3>Checklist de Edital e Matrícula</h3><div class="bon__val">de <s>R$37</s> por <b>GRÁTIS</b></div><p>Os pontos que você precisa conferir antes de entrar em qualquer leilão.</p></div></article>
-      <article class="bon"><div class="bon__ic"><span>B3</span><svg><use href="#i-chave"/></svg></div>
-        <div><h3>Roteiro de Desocupação Amigável</h3><div class="bon__val">de <s>R$37</s> por <b>GRÁTIS</b></div><p>Como conduzir a conversa com o ocupante e chegar à entrega das chaves.</p></div></article>
-      <article class="bon"><div class="bon__ic"><span>B4</span><svg><use href="#i-chat"/></svg></div>
-        <div><h3>Anúncios e Mensagens para Vender Rápido</h3><div class="bon__val">de <s>R$27</s> por <b>GRÁTIS</b></div><p>Modelos de anúncio e de WhatsApp para colocar o imóvel à venda sem demora.</p></div></article>
-    </div>
+    <article class="bon bon--solo rv"><div class="bon__ic"><span>Bônus</span><svg><use href="#i-play"/></svg></div>
+      <div><h3>Aula Bônus com o maior especialista de leilões do Nordeste</h3><div class="bon__val">na Black <b>GRÁTIS</b></div><p>Uma aula direto ao ponto com quem vive de leilão todos os dias, para você usar as ferramentas do arsenal do jeito certo.</p></div></article>
   </div>
 </section>
 
@@ -749,18 +744,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <p class="plano__preco"><small>R$</small>37,00</p>
         <p class="plano__cond">à vista · sem mensalidade</p>
         <ul>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Arsenal completo de ferramentas</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Radar de Leilões completo</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Filtros de Oportunidade completo</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Calculadoras completo</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Checklists de Análise completo</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Mais de 20 casos de venda rápida</span></li>
-          <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Calculadora de Lance Máximo · R$47</span></li>
-          <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Checklist de Edital e Matrícula · R$37</span></li>
-          <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Roteiro de Desocupação Amigável · R$37</span></li>
-          <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Anúncios e Mensagens para Vender Rápido · R$27</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Dossiê do Assessor</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Busca de Leilões</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>+ de 15 mil imóveis verificados</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Pré-Análise de Crédito</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 Modelos de Sucesso</span></li>
+          <li class="bonus"><span class="ck"><svg><use href="#ck"/></svg></span><span>Bônus: Aula com o maior especialista de leilões do Nordeste</span></li>
         </ul>
-        <p class="plano__eco">Você economiza R$148 em bônus, grátis</p>
+        <p class="plano__eco">Aula bônus inclusa, grátis na Black</p>
         <a class="btn" href="#planos" data-checkout="completo">Quero o Arsenal Completo <svg><use href="#seta"/></svg></a>
         <span class="btn-note">Acesso imediato por WhatsApp ou e-mail</span>
       </article>
@@ -771,9 +762,11 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <p class="plano__preco"><small>R$</small>19,90</p>
         <p class="plano__cond">à vista · sem mensalidade</p>
         <ul>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Arsenal de ferramentas</span></li>
-          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Mais de 20 casos de venda rápida</span></li>
-          <li class="off"><span class="ck"><svg><use href="#ck"/></svg></span><span>Sem os 4 bônus exclusivos</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Dossiê do Assessor</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Busca de Leilões</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>Plataforma de Pré-Análise de Crédito</span></li>
+          <li><span class="ck"><svg><use href="#ck"/></svg></span><span>15 Modelos de Sucesso</span></li>
+          <li class="off"><span class="ck"><svg><use href="#ck"/></svg></span><span>Sem a aula bônus</span></li>
         </ul>
         <a class="btn btn--ghost" href="#planos" data-checkout="basico">Quero o Arsenal Básico <svg><use href="#seta"/></svg></a>
         <span class="btn-note">Acesso imediato por WhatsApp ou e-mail</span>
@@ -782,25 +775,26 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   </div>
 </section>
 
-<!-- ============ BLOCO 14 — CASOS DE VENDA RÁPIDA (no lugar dos depoimentos) ============
-     ATENÇÃO: os 3 cartões abaixo são MODELOS do formato. Troque pelos dados dos seus casos reais
-     e depois apague a etiqueta "Modelo" e a frase .deps-nota. -->
-<section class="sec alt" data-secao="14-casos">
+<!-- ============ BLOCO 14 — MODELOS DE SUCESSO (no lugar dos depoimentos) ============
+     ATENÇÃO: os 3 cartões abaixo são EXEMPLOS do formato. Troque pelos dados dos seus modelos reais
+     e depois apague a etiqueta "Exemplo" e a frase .deps-nota. -->
+<section class="sec alt" data-secao="14-modelos">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="sec-head center rv">
-      <span class="eyebrow">Casos de sucesso</span>
-      <h2>+ de 20 casos de venda rápida para você estudar</h2>
+      <span class="eyebrow">Modelos de sucesso</span>
+      <h2>15 modelos de sucesso para você seguir</h2>
+      <p class="lead">Imóveis de leilão arrematados com financiamento, 5% de entrada e 100% legalizados.</p>
     </div>
     <div class="deps rv">
-      <article class="caso"><div class="caso__h"><span>Caso 01</span><em>Modelo</em></div><h3>Casa · 2 quartos</h3>
-        <dl><div><dt>Arrematada por</dt><dd>R$ 124.800</dd></div><div><dt>Vendida por</dt><dd class="g">R$ 215.000</dd></div><div><dt>Custos</dt><dd>R$ 21.500</dd></div><div><dt>Vendeu em</dt><dd class="g">38 dias</dd></div></dl></article>
-      <article class="caso"><div class="caso__h"><span>Caso 02</span><em>Modelo</em></div><h3>Casa · 3 quartos</h3>
-        <dl><div><dt>Arrematada por</dt><dd>R$ 132.000</dd></div><div><dt>Vendida por</dt><dd class="g">R$ 219.000</dd></div><div><dt>Custos</dt><dd>R$ 26.000</dd></div><div><dt>Vendeu em</dt><dd class="g">52 dias</dd></div></dl></article>
-      <article class="caso"><div class="caso__h"><span>Caso 03</span><em>Modelo</em></div><h3>Sobrado · 2 quartos</h3>
-        <dl><div><dt>Arrematado por</dt><dd>R$ 88.200</dd></div><div><dt>Vendido por</dt><dd class="g">R$ 165.000</dd></div><div><dt>Custos</dt><dd>R$ 18.300</dd></div><div><dt>Vendeu em</dt><dd class="g">29 dias</dd></div></dl></article>
+      <article class="caso"><div class="caso__h"><span>Modelo 01</span><em>Exemplo</em></div><h3>Casa · 2 quartos</h3>
+        <dl><div><dt>Arrematada por</dt><dd>R$ 124.800</dd></div><div><dt>Entrada (5%)</dt><dd class="g">R$ 6.240</dd></div><div><dt>Financiado</dt><dd>R$ 118.560</dd></div><div><dt>Situação</dt><dd class="g">Legalizado</dd></div></dl></article>
+      <article class="caso"><div class="caso__h"><span>Modelo 02</span><em>Exemplo</em></div><h3>Casa · 3 quartos</h3>
+        <dl><div><dt>Arrematada por</dt><dd>R$ 132.000</dd></div><div><dt>Entrada (5%)</dt><dd class="g">R$ 6.600</dd></div><div><dt>Financiado</dt><dd>R$ 125.400</dd></div><div><dt>Situação</dt><dd class="g">Legalizado</dd></div></dl></article>
+      <article class="caso"><div class="caso__h"><span>Modelo 03</span><em>Exemplo</em></div><h3>Sobrado · 2 quartos</h3>
+        <dl><div><dt>Arrematado por</dt><dd>R$ 88.200</dd></div><div><dt>Entrada (5%)</dt><dd class="g">R$ 4.410</dd></div><div><dt>Financiado</dt><dd>R$ 83.790</dd></div><div><dt>Situação</dt><dd class="g">Legalizado</dd></div></dl></article>
     </div>
-    <p class="deps-nota">Cartões de exemplo do formato dos casos. Resultados passados não garantem resultados futuros.</p>
+    <p class="deps-nota">Cartões de exemplo do formato dos modelos. Resultados passados não garantem resultados futuros.</p>
   </div>
 </section>
 
@@ -823,7 +817,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <ol class="how rv">
       <li><span>01</span><b>Você finaliza a compra em ambiente seguro</b></li>
       <li><span>02</span><b>Recebe o acesso por e-mail e WhatsApp na hora</b></li>
-      <li><span>03</span><b>Abre o arsenal e começa a buscar casas no mesmo dia</b></li>
+      <li><span>03</span><b>Abre a plataforma e começa a buscar imóveis no mesmo dia</b></li>
     </ol>
 
     <!-- ============ BLOCO 17 — FAQ ============ -->
@@ -834,13 +828,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       </div>
       <div class="faq rv">
         <details><summary>Preciso ter experiência com leilão?<i class="pm"></i></summary><p>Não. As ferramentas foram feitas em linguagem simples, para quem está começando do zero.</p></details>
-        <details><summary>O arsenal garante que vou arrematar ou lucrar?<i class="pm"></i></summary><p>Não. Ele organiza a sua busca e a sua análise para você decidir melhor. Todo leilão tem risco, e a decisão de dar o lance é sempre sua.</p></details>
-        <details><summary>Já acompanho alguns sites. Preciso disso?<i class="pm"></i></summary><p>Se você já procura, sabe o tempo que se perde abrindo site por site. O arsenal reúne o caminho em um só lugar e ainda traz filtros, calculadoras e checklists.</p></details>
-        <details><summary>O que são os casos de venda rápida?<i class="pm"></i></summary><p>São mais de 20 casos de imóveis arrematados e vendidos, com os números de cada etapa, para você entender o que funcionou.</p></details>
+        <details><summary>Dá mesmo para arrematar financiado com 5% de entrada?<i class="pm"></i></summary><p>Os 15 modelos mostram arrematações financiadas com 5% de entrada. As condições dependem do imóvel, do edital e da análise de crédito do banco, e é por isso que a pré-análise de crédito vem junto.</p></details>
+        <details><summary>O que é o Dossiê do Assessor?<i class="pm"></i></summary><p>É o material de trabalho para quem assessora ou quer conduzir uma arrematação com método, do imóvel até a legalização.</p></details>
+        <details><summary>A pré-análise de crédito substitui a análise do banco?<i class="pm"></i></summary><p>Não. Ela mostra, antes do lance, se há chance real de o financiamento passar. A aprovação final é sempre do banco.</p></details>
+        <details><summary>O que são os 15 modelos de sucesso?<i class="pm"></i></summary><p>São 15 arrematações de imóveis de leilão feitas com financiamento, 5% de entrada e 100% legalizadas, para você entender o caminho e repetir.</p></details>
+        <details><summary>Quem dá a aula bônus?<i class="pm"></i></summary><p>O maior especialista de leilões do Nordeste. A aula entra como bônus no Arsenal Completo enquanto a oferta Black estiver no ar.</p></details>
+        <details><summary>O arsenal garante que vou arrematar?<i class="pm"></i></summary><p>Não. Ele organiza a sua busca e a sua análise para você decidir melhor. Todo leilão tem risco, e a decisão de dar o lance é sempre sua.</p></details>
         <details><summary>Tem mensalidade?<i class="pm"></i></summary><p>Não. O pagamento é único.</p></details>
-        <details><summary>Funciona no celular?<i class="pm"></i></summary><p>Sim. Você acessa pelo celular ou pelo computador.</p></details>
-        <details><summary>Como eu recebo o material?<i class="pm"></i></summary><p>O acesso é enviado por e-mail e WhatsApp na hora, após a confirmação da compra.</p></details>
-        <details><summary>Os bônus são realmente grátis?<i class="pm"></i></summary><p>Sim. Os 4 bônus estão inclusos no Arsenal Completo sem custo adicional enquanto a oferta Black estiver no ar.</p></details>
+        <details><summary>Como eu recebo o acesso?<i class="pm"></i></summary><p>O acesso é enviado por e-mail e WhatsApp na hora, após a confirmação da compra.</p></details>
         <details><summary>Como funciona a garantia?<i class="pm"></i></summary><p>Você tem 7 dias a partir da compra para pedir o reembolso integral.</p></details>
       </div>
     </div>
@@ -851,7 +846,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <section class="sec spot final center" data-secao="18-cta-final">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap wrap--narrow">
-    <h2 class="rv">Tudo para encontrar casas baratas de leilão, em um só lugar</h2>
+    <h2 class="rv">Tudo para arrematar seu imóvel de leilão financiado, em um só lugar</h2>
     <p class="final__data">Oferta Black válida até <b data-fim>o fim da oferta</b></p>
     <div class="cta-block">
       <a class="btn" href="#planos" data-checkout="completo">Quero meu arsenal agora <svg><use href="#seta"/></svg></a>
@@ -861,7 +856,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
 <!-- ============ BLOCO 19 — RODAPÉ ============ -->
 <footer class="foot" data-secao="19-rodape">
-  <p>© 2026 Black Casa Barata de Leilão — Todos os direitos reservados. Este material é uma ferramenta de apoio à pesquisa e à análise de imóveis de leilão. Não garante arrematação, lucro ou prazo de venda. Leilões envolvem riscos: leia sempre o edital e a matrícula antes de dar um lance.</p>
+  <p>© 2026 Black Casa Barata de Leilão — Todos os direitos reservados. Este material é um conjunto de ferramentas de apoio à pesquisa e à análise de imóveis de leilão. Não garante arrematação, lucro ou aprovação de financiamento, que depende exclusivamente da instituição financeira. Leilões envolvem riscos: leia sempre o edital e a matrícula antes de dar um lance.</p>
 </footer>
 
 <!-- barra de compra fixa (só no celular) -->
