@@ -9,9 +9,14 @@
 <meta property="og:title" content="Black Casa Barata de Leilão">
 <meta property="og:description" content="4 aplicativos para arrematar um imóvel de leilão financiado na Black Friday com apenas 5% de entrada e 100% legalizado.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23000%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23ffc61a%27/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:opsz,wght@9..40,400..700&family=Manrope:wght@600..800&family=Montserrat:wght@700..900&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Archivo";src:url(assets/fonts/archivo.woff2) format("woff2");font-weight:400 900;font-stretch:100% 125%;font-display:swap}
+@font-face{font-family:"DM Sans";src:url(assets/fonts/dmsans.woff2) format("woff2");font-weight:400 700;font-display:swap}
+@font-face{font-family:"Manrope";src:url(assets/fonts/manrope.woff2) format("woff2");font-weight:600 800;font-display:swap}
+@font-face{font-family:"Montserrat";src:url(assets/fonts/montserrat.woff2) format("woff2");font-weight:700 900;font-display:swap}
+</style>
 <script>document.documentElement.className = "js";</script>
 <style>
 /* =====================================================================
@@ -26,7 +31,7 @@
   --card-2:#111;
   --ink:#f5f3ee;
   --ink-2:#b8b5ad;
-  --ink-3:#7c7972;
+  --ink-3:#8f8b83;
   --line:rgba(255,255,255,.08);
   --line-2:rgba(255,255,255,.15);
   --gold:#f5b800;
@@ -645,7 +650,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .pro__lt span{display:flex;align-items:center;gap:6px;font:800 9.5px/1 var(--ff);letter-spacing:.14em;text-transform:uppercase;color:#ff6b6b}
 .pro__lt span i{width:6px;height:6px;border-radius:50%;background:#ff3b2f;animation:pisca 1.2s ease-in-out infinite}
 .pro__lt b{display:block;margin-top:5px;font:700 12.5px/1.2 var(--fb);color:#fff}
-.pro__som{position:absolute;right:10px;top:12px;z-index:3;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+.pro__som{position:absolute;right:8px;top:10px;z-index:3;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
 .pro__som svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .pro__som .on{display:none}.pro__som.ligado .on{display:inline}.pro__som.ligado .off{display:none}
 .pro__cartaz.depo video{filter:none}
