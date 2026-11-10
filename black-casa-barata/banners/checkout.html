@@ -1,0 +1,101 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Archivo";src:url(../assets/fonts/archivo.woff2) format("woff2");font-weight:400 900;font-stretch:100% 125%}
+@font-face{font-family:"DM Sans";src:url(../assets/fonts/dmsans.woff2) format("woff2");font-weight:400 700}
+@font-face{font-family:"Manrope";src:url(../assets/fonts/manrope.woff2) format("woff2");font-weight:600 800}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;overflow:hidden}
+.b{position:relative;overflow:hidden;font-family:"DM Sans",sans-serif;color:#fff;
+ background:radial-gradient(160px 120px at 50% 0%,rgba(255,190,0,.28),transparent 70%),radial-gradient(60% 90% at 0% 100%,rgba(255,170,0,.16),transparent 60%),linear-gradient(160deg,#151008,#050505 55%,#000)}
+.b::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 0%,#000,transparent 75%)}
+.moldura{position:absolute;inset:0;box-shadow:inset 0 0 0 2px #e8a400,inset 0 0 0 3px rgba(0,0,0,.6);pointer-events:none;z-index:9}
+.passo{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;background:rgba(126,226,168,.12);box-shadow:inset 0 0 0 1px rgba(126,226,168,.45);font:800 8px/1 Archivo;letter-spacing:.14em;text-transform:uppercase;color:#9ff0c2}
+.passo i{width:6px;height:6px;border-radius:50%;background:#7ee2a8;box-shadow:0 0 8px #7ee2a8}
+.black{font:800 9px/1 Archivo;font-stretch:125%;letter-spacing:.5em;color:#ffd95a}
+.logo{font:900 22px/1 Archivo;font-stretch:125%;letter-spacing:-.035em;text-transform:uppercase;white-space:nowrap;
+ background:linear-gradient(180deg,#fffbe0 0%,#fff1a6 14%,#ffd93b 32%,#ffb800 47%,#c97a00 53%,#ffbf1f 63%,#ffe680 82%,#fff6c4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+ -webkit-text-stroke:.3px #7a3d00;filter:drop-shadow(0 1px 0 #c46d00) drop-shadow(0 2px 0 #8a4200) drop-shadow(0 3px 0 #5a2a00) drop-shadow(0 8px 10px rgba(0,0,0,.8))}
+.logo span{display:block;padding-top:.12em}.logo span+span{font-size:.86em;margin-top:-.08em}
+.apps{display:flex;flex-wrap:wrap;gap:4px}
+.app{display:flex;align-items:center;gap:4px;height:20px;padding:0 7px;border-radius:7px;font:800 9px/1 Manrope;white-space:nowrap}
+.app img{height:10px}.app svg{width:11px;height:11px}
+.fx{background:#17181d;box-shadow:inset 0 0 0 1px rgba(191,242,58,.55)}
+.my{background:#1a0f33;box-shadow:inset 0 0 0 1px rgba(168,85,247,.55)}
+.cw{background:#0b0b0b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);font:600 8px/1 "DM Sans";letter-spacing:.12em}
+.cw i{width:5px;height:5px;border-radius:50%;background:#ff453a}
+.ds{background:#0a1730;box-shadow:inset 0 0 0 1px rgba(59,130,246,.55);color:#8db8ff}
+.pr{background:linear-gradient(180deg,#1d1d1d,#070707);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);font:800 8.5px/1 Archivo;letter-spacing:.06em}
+.pr b{padding-top:2px;background:linear-gradient(180deg,#fff,#9c9c9c 50%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.preco{display:flex;align-items:flex-end;gap:8px;line-height:1}
+.preco s{font:600 10px/1 "DM Sans";color:#ff8a73;padding-bottom:4px}
+.preco b{white-space:nowrap;font:900 34px/.9 Archivo;font-stretch:112%;letter-spacing:-.04em;background:linear-gradient(180deg,#fffbe0,#ffd93b 40%,#ffb800 62%,#ffe680);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #8a4200)}
+.preco b small{font-size:.42em;vertical-align:1.05em;margin-right:2px}
+.off{display:inline-block;padding:3px 7px;border-radius:6px;background:#e11d2a;font:900 9.5px/1 Archivo;letter-spacing:.04em;box-shadow:0 2px 8px rgba(225,29,42,.5)}
+.eco{font:700 9.5px/1.2 "DM Sans";color:#7ee2a8}
+.seg{display:flex;flex-direction:column;gap:6px}
+.seg li{list-style:none;display:flex;align-items:center;gap:6px;font:600 9.5px/1.15 "DM Sans";color:#e6e6e6;white-space:nowrap}
+.seg svg{width:12px;height:12px;flex:none;fill:none;stroke:#7ee2a8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.selo{position:relative;flex:none;width:74px;height:74px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.7)) drop-shadow(0 0 14px rgba(255,190,0,.3))}
+.selo svg{width:100%;height:100%;overflow:visible}
+.div{width:1px;align-self:stretch;background:linear-gradient(transparent,rgba(255,200,40,.45),transparent)}
+/* desktop 600x200 */
+.d{width:600px;height:200px;display:flex;align-items:center;gap:18px;padding:0 22px}
+.d .c1{flex:none;width:196px;display:flex;flex-direction:column;gap:6px}
+.d .c2{flex:1;display:flex;flex-direction:column;gap:7px;min-width:0}
+.d .c2 .lbl{font:800 8.5px/1 Archivo;letter-spacing:.14em;text-transform:uppercase;color:#bdbdbd}
+.d .c3{flex:none}
+.d .selo{width:96px;height:96px}
+.d .logo{font-size:20.5px}
+.d{gap:16px}
+.seg--row{flex-direction:row!important;gap:10px!important}
+.d .preco b{font-size:30px}
+/* mobile 360x180 */
+.m{width:360px;height:180px;padding:14px 14px 12px}
+.m .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.m .logo{font-size:20px}
+.m .selo{width:62px;height:62px;margin-top:-2px}
+.m .mid{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.m .apps{margin-top:9px}
+.m .seg{flex-direction:row;gap:10px;margin-top:9px}
+.m .seg li{font-size:9px}
+.m .preco b{font-size:28px}
+</style></head><body>
+<!--SELO--><svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="o" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset=".35" stop-color="#ffcf2e"/><stop offset=".55" stop-color="#d98600"/><stop offset=".8" stop-color="#ffc41f"/><stop offset="1" stop-color="#fff0a0"/></linearGradient>
+<radialGradient id="f" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#2c220c"/><stop offset="1" stop-color="#0b0803"/></radialGradient>
+<path id="a1" d="M37 100 a63 63 0 0 1 126 0"/><path id="a2" d="M38 104 a62 62 0 0 0 124 0"/>
+<symbol id="selo" viewBox="0 0 200 200"><polygon points="100.0,2.0 111.7,10.8 125.4,5.3 134.4,16.9 149.0,15.1 154.8,28.6 169.3,30.7 171.4,45.2 184.9,51.0 183.1,65.6 194.7,74.6 189.2,88.3 198.0,100.0 189.2,111.7 194.7,125.4 183.1,134.4 184.9,149.0 171.4,154.8 169.3,169.3 154.8,171.4 149.0,184.9 134.4,183.1 125.4,194.7 111.7,189.2 100.0,198.0 88.3,189.2 74.6,194.7 65.6,183.1 51.0,184.9 45.2,171.4 30.7,169.3 28.6,154.8 15.1,149.0 16.9,134.4 5.3,125.4 10.8,111.7 2.0,100.0 10.8,88.3 5.3,74.6 16.9,65.6 15.1,51.0 28.6,45.2 30.7,30.7 45.2,28.6 51.0,15.1 65.6,16.9 74.6,5.3 88.3,10.8" fill="url(#o)" stroke="#8a4a00" stroke-width="1.5"/><circle cx="100" cy="100" r="80" fill="url(#f)" stroke="#ffd95a" stroke-width="2"/><circle cx="100" cy="100" r="71" fill="none" stroke="#ffd95a" stroke-opacity=".45" stroke-dasharray="2 4"/>
+<text font-family="Archivo" font-weight="800" font-size="13" letter-spacing="4" fill="#ffd95a"><textPath href="#a1" startOffset="50%" text-anchor="middle">GARANTIA DE</textPath></text>
+<text font-family="Archivo" font-weight="800" font-size="10.5" letter-spacing="3" fill="#ffd95a" fill-opacity=".85"><textPath href="#a2" startOffset="50%" text-anchor="middle">★ REEMBOLSO ★</textPath></text>
+<text x="100" y="112" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="48" fill="url(#o)" stroke="#6a3200">7</text>
+<text x="100" y="132" text-anchor="middle" font-family="Archivo" font-weight="900" font-size="15" letter-spacing="4" fill="#fff">DIAS</text></symbol></defs></svg>
+
+<div id="desk" class="b d">
+  <div class="c1">
+    <span class="passo"><i></i>Você está a 1 passo</span>
+    <p class="black">BLACK</p>
+    <h1 class="logo"><span>Casa Barata</span><span>de Leilão</span></h1>
+  </div>
+  <i class="div"></i>
+  <div class="c2">
+    <p class="lbl">Você vai receber hoje</p>
+    <div class="apps"><span class="app fx"><img src="../assets/fexo-logo.webp" alt="Fexô"></span><span class="app my"><svg viewBox="0 0 32 32"><defs><linearGradient id="gm" x1="3" y1="27" x2="29" y2="5" gradientUnits="userSpaceOnUse"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs><path d="M5.5 25.5V12.5a5.25 5.25 0 0 1 10.5 0v13M16 12.5a5.25 5.25 0 0 1 10.5 0V17" fill="none" stroke="url(#gm)" stroke-width="4.4" stroke-linecap="round"/><circle cx="26.5" cy="25.3" r="2.6" fill="#c084fc"/></svg>multy</span><span class="app cw"><i></i>CANAW</span><span class="app ds">Dossiê</span><span class="app pr">+ Aula <b>LEILÃO PRO</b></span></div>
+    <div class="preco"><s>de R$925</s><b><small>R$</small>37</b><span class="off">-96%</span></div>
+    <p class="eco">Você economiza R$888 · pagamento único</p>
+    <ul class="seg seg--row"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Abre no navegador</li></ul>
+  </div>
+  <div class="c3"><div class="selo"><svg><use href="#selo"/></svg></div></div>
+  <div class="moldura"></div>
+</div>
+
+<div id="mob" class="b m">
+  <div class="top">
+    <div><span class="passo"><i></i>Você está a 1 passo</span><h1 class="logo" style="margin-top:8px"><span>Casa Barata</span><span>de Leilão</span></h1></div>
+    <div class="selo"><svg><use href="#selo"/></svg></div>
+  </div>
+  <div class="apps"><span class="app fx"><img src="../assets/fexo-logo.webp" alt="Fexô"></span><span class="app my"><svg viewBox="0 0 32 32"><defs><linearGradient id="gm" x1="3" y1="27" x2="29" y2="5" gradientUnits="userSpaceOnUse"><stop stop-color="#7c3aed"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs><path d="M5.5 25.5V12.5a5.25 5.25 0 0 1 10.5 0v13M16 12.5a5.25 5.25 0 0 1 10.5 0V17" fill="none" stroke="url(#gm)" stroke-width="4.4" stroke-linecap="round"/><circle cx="26.5" cy="25.3" r="2.6" fill="#c084fc"/></svg>multy</span><span class="app cw"><i></i>CANAW</span><span class="app ds">Dossiê</span><span class="app pr">+ Aula <b>LEILÃO PRO</b></span></div>
+  <div class="mid"><div class="preco"><s>de R$925</s><b><small>R$</small>37</b><span class="off">-96%</span></div><p class="eco" style="text-align:right">Economize R$888<br>pagamento único</p></div>
+  <ul class="seg"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Abre no navegador</li></ul>
+  <div class="moldura"></div>
+</div>
+</body></html>
