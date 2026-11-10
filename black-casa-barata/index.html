@@ -1518,6 +1518,7 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
 
 /* roleta de saída: 1x por visita, quando a pessoa tenta sair */
 (function () {
+  var fecha;
   var rl = document.querySelector("[data-rl]"); if (!rl) return;
   var roda = rl.querySelector(".rl__roda"), btn = rl.querySelector("[data-rl-girar]"), p1 = rl.querySelector(".rl__passo1"), p2 = rl.querySelector(".rl__passo2"),
       fx = rl.querySelector(".rl__fx"), tempo = rl.querySelector("[data-rl-tempo]"), aberta = false, girou = false, pronto = false, chave = "rl-vista";
@@ -1528,11 +1529,11 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
     aberta = true; marca(); rl.hidden = false; document.documentElement.style.overflow = "hidden";
     setTimeout(function () { btn.focus({ preventScroll: true }); }, 50);
   }
-  function fecha() { rl.hidden = true; document.documentElement.style.overflow = ""; }
-  rl.querySelectorAll("[data-rl-fechar]").forEach(function (b) { b.addEventListener("click", fecha); });
+  fecha = function () { rl.hidden = true; document.documentElement.style.overflow = ""; };
+  rl.querySelectorAll("[data-rl-fechar]").forEach(function (b) { b.addEventListener("click", function () { fecha(); }); });
   addEventListener("keydown", function (e) { if (e.key === "Escape" && !rl.hidden) fecha(); });
   rl.querySelector('[data-checkout="roleta"]').addEventListener("click", function (e) {
-    if (this.getAttribute("href") === "#planos") { e.preventDefault(); fecha(); var a = document.querySelector('a[href="#planos"]'); if (a) a.click(); }
+    saindo = false; if (this.getAttribute("href") === "#planos") { e.preventDefault(); fecha(); var a = document.querySelector('a[href="#planos"]'); if (a) a.click(); }
   });
   function confete() {
     var cores = ["#ffd95a", "#fff3cf", "#ff3b22", "#7ee2a8", "#ffc61a", "#ffffff"];
@@ -1573,16 +1574,23 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
   if (/[?&]roleta=1/.test(location.search)) { pronto = true; setTimeout(abre, 300); }
   /* computador: mouse saindo pelo topo da janela */
   document.addEventListener("mouseout", function (e) { if (!e.relatedTarget && e.clientY <= 0) abre(); });
-  /* celular: rolagem rápida para cima depois de já ter visto boa parte da página */
-  var ly = scrollY, lt = performance.now(), fundo = 0;
-  addEventListener("scroll", function () {
-    var y = scrollY, t = performance.now(), v = (ly - y) / Math.max(1, t - lt);
-    fundo = Math.max(fundo, y / Math.max(1, document.documentElement.scrollHeight - innerHeight));
-    if (fundo > .35 && v > 2.2 && y > 600) abre();
-    ly = y; lt = t;
-  }, { passive: true });
-  /* voltou para a aba depois de sair */
-  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && fundo > .2) setTimeout(abre, 400); });
+  /* celular: só quando a pessoa realmente tenta sair pelo botão "voltar".
+     Depois do 1º toque na página, guardamos uma etapa no histórico; ao voltar, a roleta aparece
+     no lugar de sair. Se ela fechar a roleta, sai de verdade. */
+  var toque = window.matchMedia && matchMedia("(pointer:coarse)").matches, armado = false, saindo = false;
+  function arma() {
+    if (armado || jaViu()) return; armado = true;
+    try { history.pushState({ rl: 1 }, "", location.href); } catch (e) {}
+  }
+  if (toque) {
+    document.addEventListener("click", arma, true);
+    addEventListener("popstate", function () {
+      if (!armado || aberta || jaViu()) return;
+      saindo = true; pronto = true; abre();
+    });
+  }
+  var fechaOriginal = fecha;
+  fecha = function () { fechaOriginal(); if (saindo) { saindo = false; history.back(); } };
 })();
 
 
