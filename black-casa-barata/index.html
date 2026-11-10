@@ -93,6 +93,11 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .js .sec .sec-head.rv:not(.in) .eyebrow::before,.js .sec .sec-head.rv:not(.in) .eyebrow::after{width:0}
 
 
+.nav-sel{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;border-radius:999px;background:rgba(126,226,168,.08);box-shadow:inset 0 0 0 1px rgba(126,226,168,.32);font:600 12.5px/1.2 var(--fb);color:#bff0d2}
+.nav-sel svg{width:15px;height:15px;flex:none;fill:none;stroke:#7ee2a8;stroke-width:1.8}
+
+@media (max-width:640px){#por-dentro{padding-top:40px}#por-dentro .sec-head{margin-bottom:20px}#por-dentro .vt-tabs{margin-bottom:16px}.hero{padding-bottom:44px}.ponte{margin-top:28px}}
+
 /* estrutura */
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
 .wrap--narrow{max-width:760px}
@@ -358,7 +363,7 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .vt-glow i:nth-child(4){background:radial-gradient(closest-side,rgba(220,220,220,.14),transparent 70%)}
 .vt-glow i.on{opacity:1}
 .vt>.wrap{position:relative;z-index:1}
-.vt-tabs{display:flex;gap:8px;margin:0 -20px 26px;padding:2px 20px;overflow-x:auto;scrollbar-width:none}
+.vt-tabs{display:flex;gap:8px;margin-top:-6px;margin:0 -20px 26px;padding:2px 20px;overflow-x:auto;scrollbar-width:none}
 .vt-tabs::-webkit-scrollbar{display:none}
 .vt-tabs>:first-child{margin-left:auto}.vt-tabs>:last-child{margin-right:auto}
 .vt-tab{position:relative;flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 10px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.03);color:var(--ink-2);font:700 14px/1 var(--f-fexo);cursor:pointer;overflow:hidden;transition:border-color .4s,color .4s,background .4s}
@@ -920,7 +925,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <div class="sec-head center rv">
       <span class="eyebrow">Por dentro</span>
       <h2>Veja os aplicativos funcionando</h2>
-      <p class="nav-sel"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Abrem direto no navegador · não precisa baixar nada</p>
+      <p class="nav-sel"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Abre no navegador · sem baixar nada</p>
     </div>
 
     <div class="vt-tabs" role="tablist" aria-label="Aplicativos">
