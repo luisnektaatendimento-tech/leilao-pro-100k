@@ -134,6 +134,21 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .btn--ghost::before{background:linear-gradient(180deg,rgba(255,255,255,.05),transparent)}
 .btn--ghost svg{background:transparent;color:var(--gold-2);box-shadow:inset 0 0 0 1px rgba(211,182,121,.5)}
 .cta-block{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:36px}
+/* chamada principal: duas linhas, anel pulsando e faixa de segurança */
+.btn__t{display:flex;flex-direction:column;gap:5px;line-height:1.1}
+.btn__t small{font:600 10.5px/1 var(--fb);letter-spacing:.02em;text-transform:none;color:rgba(42,22,0,.72)}
+.btn--cta{min-height:66px}
+.btn--cta::after{animation:brilho 6s var(--ease) 1.5s infinite}
+.cta-block .btn--cta,.plano .btn--cta{animation:chama 2.6s ease-out infinite}
+@keyframes chama{0%{box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(120,90,40,.35),0 0 0 1px #9a5a00,0 0 0 0 rgba(255,200,40,.55),0 18px 44px -16px rgba(255,180,0,.6)}70%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(120,90,40,.35),0 0 0 1px #9a5a00,0 0 0 14px rgba(255,200,40,0),0 18px 44px -16px rgba(255,180,0,.6)}}
+.seguro{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-top:2px}
+.plano .seguro{display:flex;margin:14px 0 0;padding:0;border:0;gap:6px 14px}
+.plano .seguro li{display:inline-flex;color:var(--ink-2)}
+.seguro li{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--fb);color:var(--ink-2);white-space:nowrap}
+.seguro svg{width:14px;height:14px;flex:none;fill:none;stroke:#7ee2a8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:380px){.seguro,.plano .seguro{gap:6px 10px}.seguro li{font-size:11px}.btn__t small{font-size:9.5px}.btn--cta .btn__t{font-size:12px}}
+@media (prefers-reduced-motion:reduce){.btn--cta{animation:none!important}}
+
 .btn-note{font-size:13px;color:var(--ink-3);text-align:center}
 @media (max-width:520px){.cta-block .btn,.plano .btn{width:100%}.btn{justify-content:space-between;text-align:left;min-height:58px;padding:7px 7px 7px 24px;gap:12px;font-size:12.5px;letter-spacing:.1em}.btn svg{width:44px;height:44px;padding:13px}}
 @media (max-width:360px){.btn{font-size:11.5px;letter-spacing:.07em;padding-left:20px}}
@@ -746,13 +761,27 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .eco__c i{font-style:normal;color:var(--ink-3);font-size:13px}
 .eco__c strong{font:900 17px/1 var(--ff);color:var(--gold-2)}
 .meter.ok .eco{background:linear-gradient(180deg,rgba(98,211,145,.16),rgba(98,211,145,.04));box-shadow:inset 0 0 0 1px rgba(98,211,145,.5),0 0 26px -6px rgba(98,211,145,.45)}
-.meter.ok .eco__n{opacity:1}
+.eco__n{opacity:1!important}
 .eco.fim .eco__n{animation:kaching .5s cubic-bezier(.3,1.7,.5,1)}
 @keyframes kaching{40%{transform:scale(1.16);color:#c8ffd9}}
 .eco::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(190,255,215,.18) 50%,transparent 62%) no-repeat;background-size:260% 100%;background-position:170% 0}
 .eco.fim::after{animation:brilho 1.2s ease-out .1s both}
-@media (max-width:360px){.eco{padding:12px}.eco__c strong{font-size:15px}}
+@media (max-width:380px){
+  .plano{padding:30px 14px 22px}
+  .meter{padding:13px 12px 12px}
+  .meter__num{font-size:28px}
+  .meter__lbl em{font-size:10.5px;letter-spacing:.08em}
+  .burst{right:-4px}
+}
 
+/* economia no celular: valor grande numa linha, comparação embaixo */
+@media (max-width:560px){
+  .eco{grid-template-columns:1fr auto;grid-template-areas:"l l" "n n" "c p";row-gap:8px}
+  .eco__n{font-size:clamp(30px,9.6vw,36px)}
+  .eco__c{justify-self:start}
+  .eco__p{align-self:center}
+}
+@media (max-width:380px){.meter .meter__num{font-size:26px}.meter .meter__lbl{gap:8px}.meter .meter__lbl em{font-size:9.5px;letter-spacing:.04em}.meter .meter__top{gap:12px}.cad{width:26px;height:26px}.eco__p{font-size:10px;white-space:nowrap}.eco__c strong{font-size:15px}}
 /* o que o plano desbloqueia: blocos com a marca de cada plataforma, acendem depois da barra */
 .inc{margin:18px 0 20px;text-align:left}
 .inc__t{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
@@ -790,7 +819,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (prefers-reduced-motion:reduce){.inc.on li,.inc.on li::after{animation:none}}
 
 /* BLOCOS 12 e 13 — planos */
-.planos{display:grid;gap:20px;align-items:start;max-width:920px;margin:0 auto}
+.planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
+.plano{min-width:0}
 @media (min-width:860px){.planos{grid-template-columns:1.25fr 1fr}}
 .plano{position:relative;padding:34px 26px 28px;border:1px solid var(--line-2);border-radius:18px;background:var(--card);text-align:center}
 .plano--top{border-color:rgba(216,183,106,.6);background:linear-gradient(180deg,rgba(216,183,106,.09),transparent 40%),var(--card);box-shadow:0 60px 120px -50px rgba(216,183,106,.4)}
@@ -815,7 +845,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(255,80,55,.32),0 18px 40px -22px rgba(255,50,30,.5);transition:box-shadow .6s var(--ease)}
 .meter::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,180,140,.10) 50%,transparent 60%) no-repeat;background-size:260% 100%;background-position:170% 0;animation:brilho 4.5s var(--ease) 2.6s infinite}
 .meter__top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.meter__lbl{display:flex;align-items:center;gap:9px;min-width:0}
+.meter__lbl{display:flex;align-items:center;gap:9px;min-width:0;flex:1}
 .cad{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:rgba(255,80,55,.14);box-shadow:inset 0 0 0 1px rgba(255,90,60,.4);color:#ff8a73;transition:background .5s,color .5s,box-shadow .5s}
 .cad svg{width:17px;height:17px;overflow:visible;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .cad .arco{transform-box:fill-box;transform-origin:100% 100%;transition:transform .55s cubic-bezier(.3,1.6,.5,1)}
@@ -1010,8 +1040,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
     <!-- ============ BLOCO 03 — CTA ============ -->
     <div class="cta-block" data-cta-topo>
-      <a class="btn" href="#planos" data-checkout="completo">Quero meu arsenal agora <svg><use href="#seta"/></svg></a>
-      <span class="btn-note">Acesso imediato por e-mail e WhatsApp após a confirmação da compra</span>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
 </header>
@@ -1025,7 +1055,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <div class="sec-head center rv">
       <span class="eyebrow">Por dentro</span>
       <h2>Veja as plataformas funcionando</h2>
-      <p class="lead">Gravado direto na tela do celular. Deslize para ver cada uma.</p>
     </div>
 
     <div class="vt-tabs" role="tablist" aria-label="Plataformas">
@@ -1157,7 +1186,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <li><svg><use href="#i-raio"/></svg><span>Canal direto com equipes especializadas</span></li>
     </ul>
     <div class="cta-block">
-      <a class="btn" href="#planos" data-checkout="completo">Quero o arsenal agora <svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
 </section>
@@ -1174,7 +1204,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     </div>
     <p class="lead" style="margin-top:0">O preço da Black com a aula bônus inclusa vale só até <span data-fim>o fim da oferta</span>. Quando o contador zerar, a aula bônus sai da oferta e o valor volta ao normal.</p>
     <div class="cta-block">
-      <a class="btn" href="#planos" data-checkout="completo">Quero o arsenal agora <svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
 </section>
@@ -1256,8 +1287,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           </div>
           <div class="meter__fx" aria-hidden="true"></div>
         </div>
-        <a class="btn" href="#planos" data-checkout="completo">Quero o Arsenal agora <svg><use href="#seta"/></svg></a>
-        <span class="btn-note">Acesso imediato por WhatsApp ou e-mail</span>
+        <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu acesso<small>Pague R$37 e economize R$888</small></span><svg><use href="#seta"/></svg></a>
+        <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
       </article>
 
       <article class="plano rv">
@@ -1330,7 +1361,8 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <h2 class="rv">Tudo para arrematar seu imóvel de leilão financiado, em um só lugar</h2>
     <p class="final__data">Oferta Black válida até <b data-fim>o fim da oferta</b></p>
     <div class="cta-block">
-      <a class="btn" href="#planos" data-checkout="completo">Quero meu arsenal agora <svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
 </section>
@@ -1529,13 +1561,30 @@ var CHECKOUT_BASICO = "";
   new IntersectionObserver(function (es) { if (es[0].isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }, { threshold: .3 }).observe(v);
 })();
 
+/* chamadas "Quero…": vão direto ao card da oferta, com tudo já carregado */
+(function () {
+  var planos = document.getElementById("planos"); if (!planos) return;
+  document.querySelectorAll('a[href="#planos"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      if (a.getAttribute("href") !== "#planos") return; /* link de checkout já configurado */
+      e.preventDefault();
+      planos.querySelectorAll(".rv").forEach(function (el) { el.style.transitionDelay = "0s"; el.classList.add("in"); });
+      if (window.__ofertaPronta) window.__ofertaPronta();
+      var alvo = planos.querySelector(".plano--top") || planos, bar = document.querySelector(".topbar");
+      var y = alvo.getBoundingClientRect().top + scrollY - (bar ? bar.offsetHeight : 0) - 34;
+      scrollTo({ top: y, behavior: "smooth" });
+      history.replaceState(null, "", "#planos");
+    });
+  });
+})();
+
 /* planos: barra de desbloqueio dos 96% — enche com faísca e marcos, o cadeado abre e solta confete */
 (function () {
   var m = document.querySelector("[data-meter]"); if (!m) return;
   var n = m.querySelector("[data-count]"), fill = m.querySelector(".meter__fill"), lbl = m.querySelector("[data-lbl]"),
       mks = [].slice.call(m.querySelectorAll(".meter__mk")), fx = m.querySelector(".meter__fx"), num = m.querySelector(".meter__num"), feito = false,
       calmo = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches;
-  function poe(v) { n.textContent = Math.round(v); fill.style.width = v + "%"; mks.forEach(function (k) { k.classList.toggle("on", v >= +k.dataset.v); }); }
+  function poe(v) { n.textContent = Math.round(v); fill.style.width = v + "%"; var ev0 = m.querySelector("[data-eco]"); if (ev0) ev0.textContent = Math.round(888 * v / 96); mks.forEach(function (k) { k.classList.toggle("on", v >= +k.dataset.v); }); }
   function confete() {
     var r = m.getBoundingClientRect(), b = num.getBoundingClientRect(), ox = b.left - r.left + b.width / 2, oy = b.top - r.top + b.height / 2,
         cores = ["#ffd27a", "#fff3cf", "#ff3b22", "#ff7a3d", "#e2b860", "#ffffff"];
@@ -1546,27 +1595,31 @@ var CHECKOUT_BASICO = "";
     }
     setTimeout(function () { fx.innerHTML = ""; }, 1700);
   }
-  function fim() { m.classList.remove("rola"); m.classList.add("ok"); lbl.textContent = "Desconto Black desbloqueado!"; if (!calmo) confete(); var inc = document.querySelector("[data-inc]"); if (inc) setTimeout(function () { inc.classList.add("on"); }, calmo ? 0 : 250);
+  function fim() { m.classList.remove("rola"); m.classList.add("ok"); lbl.textContent = innerWidth <= 380 ? "Desbloqueado!" : "Desconto Black desbloqueado!"; if (!calmo) confete(); var inc = document.querySelector("[data-inc]"); if (inc) setTimeout(function () { inc.classList.add("on"); }, calmo ? 0 : 250);
     var eb = m.querySelector("[data-eco-box]"), ev = m.querySelector("[data-eco]");
-    if (ev) {
-      if (calmo) { ev.textContent = "888"; eb.classList.add("fim"); return; }
-      var t1 = performance.now();
-      (function conta(t) { var k = Math.min(1, (t - t1) / 650), e = 1 - Math.pow(1 - k, 3); ev.textContent = Math.round(888 * e); if (k < 1) requestAnimationFrame(conta); else eb.classList.add("fim"); })(t1);
-    }
+    if (ev) { ev.textContent = "888"; eb.classList.add("fim"); }
   }
   function vai() {
     if (feito) return; feito = true;
     if (calmo) { poe(96); return fim(); }
     m.classList.add("rola");
-    var t0 = performance.now(), dur = 1700;
+    var t0 = performance.now(), dur = 1300;
     (function passo(t) {
       var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
       poe(96 * e);
       if (k < 1) requestAnimationFrame(passo); else fim();
     })(t0);
   }
-  if (!("IntersectionObserver" in window)) return vai();
-  var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); setTimeout(vai, 150); } }, { threshold: .6 });
+  /* já pronto: usado quando a pessoa chega pela chamada "Quero…" */
+  function pronto() {
+    if (feito && m.classList.contains("ok")) return;
+    feito = true; calmo = true; poe(96); fim();
+    var ev = m.querySelector("[data-eco]"); if (ev) ev.textContent = "888";
+  }
+  window.__ofertaPronta = pronto;
+  if (!("IntersectionObserver" in window)) return pronto();
+  /* rolando: começa a encher um pouco antes do card aparecer, para chegar já carregado */
+  var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); vai(); } }, { rootMargin: "0px 0px 200% 0px" });
   io.observe(m);
 })();
 
