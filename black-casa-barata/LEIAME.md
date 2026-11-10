@@ -9,7 +9,7 @@ Tudo fica no fim do `index.html`, no bloco `CONFIGURAÇÃO`:
 |---|---|
 | `CHECKOUT_COMPLETO` | Link do checkout do Arsenal Completo (todos os botões) |
 | `CHECKOUT_BASICO` | Link do checkout do Arsenal Básico |
-| `FIM_DA_OFERTA` | Data e hora reais do fim da oferta (alimenta a barra do topo, o contador e o CTA final) |
+| (sem campo) | A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela |
 
 No HTML, revise também:
 - **Preços** (bloco 12, `id="planos"`, e a barra fixa do celular `data-dock`).
