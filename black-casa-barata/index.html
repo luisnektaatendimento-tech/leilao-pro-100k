@@ -1593,7 +1593,7 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
      no lugar de sair. Se ela fechar a roleta, sai de verdade. */
   var toque = window.matchMedia && matchMedia("(pointer:coarse)").matches, armado = false, saindo = false;
   function arma() {
-    if (armado || jaViu()) return; armado = true;
+    if (semLink || armado || jaViu()) return; armado = true;
     try { history.pushState({ rl: 1 }, "", location.href); } catch (e) {}
   }
   if (toque) {
