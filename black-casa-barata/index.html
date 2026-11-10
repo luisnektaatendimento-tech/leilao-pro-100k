@@ -211,7 +211,7 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .plano .seguro li{display:inline-flex;color:var(--ink-2)}
 .seguro li{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--fb);color:var(--ink-2);white-space:nowrap}
 .seguro svg{width:14px;height:14px;flex:none;fill:none;stroke:#7ee2a8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:380px){.seguro,.plano .seguro{gap:6px 10px}.seguro li{font-size:11px}.btn__t small{font-size:9.5px}.btn--cta .btn__t{font-size:12px}}
+@media (max-width:380px){.btn--cta .btn__t{font-size:11px;letter-spacing:.035em}.btn--cta{padding-left:16px;gap:8px}.btn--cta svg{width:42px;height:42px;padding:12px}.plano .btn--cta{padding-left:14px}.seguro,.plano .seguro{gap:6px 10px}.seguro li{font-size:11px}.btn__t small{font-size:9.5px}.btn--cta .btn__t{font-size:12px}}
 @media (prefers-reduced-motion:reduce){.btn--cta{animation:none!important}}
 
 .btn-note{font-size:13px;color:var(--ink-3);text-align:center}
@@ -702,6 +702,9 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (max-width:380px){.ponte{gap:10px}.ponte__t b{font-size:14px}.ponte__t small{font-size:9.5px;letter-spacing:.1em}.ponte__thumb{width:44px;height:64px}}
 @media (prefers-reduced-motion:reduce){.ponte::after,.ponte__seta{animation:none}}
 
+.manchete--topo{grid-column:1/-1;width:100%;max-width:760px;margin:0 auto;text-align:left}
+.manchete--topo h3{font-size:clamp(22px,6vw,34px)}
+@media (min-width:900px){.manchete--topo{text-align:center}.manchete--topo .manchete__tag{justify-content:center}}
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
 .plano{min-width:0}
@@ -917,7 +920,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 
     <!-- ============ BLOCO 03 — CTA ============ -->
     <div class="cta-block" data-cta-topo>
-      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Quero achar casa barata<small>4 apps + aula bônus · de R$925 por R$37</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
     <a class="ponte rv" href="#por-dentro" data-ponte>
@@ -1045,9 +1048,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
   <div class="pro-luz" aria-hidden="true"></div>
   <div class="wrap">
     <div class="pro">
+        <article class="manchete manchete--topo rv">
+          <p class="manchete__tag"><span>Caso real</span>Leilão PRO</p>
+          <h3>O caso do ex-motoboy que virou investidor após fazer mais de <mark>R$ 40 mil de lucro</mark> em apenas uma operação nos leilões de imóveis</h3>
+          <p class="manchete__by">Assista ao depoimento do João · Aula bônus com o maior especialista de leilões do Nordeste</p>
+        </article>
       <div class="pro__poster rv" data-pro>
         <div class="pro__cartaz">
-          <video muted playsinline loop preload="none" data-poster="assets/video/pro.webp" aria-label="Gravação da apresentação da Leilão PRO"><source src="assets/video/pro.mp4" type="video/mp4"><source src="assets/video/pro.webm" type="video/webm"></video>
+          <video muted playsinline loop preload="none" data-poster="assets/video/depoimento-joao.webp" aria-label="Depoimento do João"><source src="assets/video/depoimento-joao.mp4" type="video/mp4"></video>
           <i class="pro__vidro" aria-hidden="true"></i>
           <span class="pro__fita">Aula bônus</span>
           <div class="pro__lt"><span><i></i>Depoimento real</span><b>João · ex-motoboy, hoje investidor</b></div>
@@ -1059,17 +1067,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <div class="pro__txt">
         <span class="pro__eyebrow rv">Bônus exclusivo da Black</span>
         <h2 class="pro__titulo rv"><span>Aula</span><b class="metal">Leilão PRO</b></h2>
-        <article class="manchete rv">
-          <p class="manchete__tag"><span>Caso real</span>Leilão PRO</p>
-          <h3>O caso do ex-motoboy que virou investidor após fazer mais de <mark>R$ 40 mil de lucro</mark> em apenas uma operação nos leilões de imóveis</h3>
-          <p class="manchete__by">Assista ao depoimento do João · Aula bônus com o maior especialista de leilões do Nordeste</p>
-        </article>
       </div>
     </div>
 
     <div class="cta-block cta-pro rv">
       <p class="cta-pro__k">Leve a aula bônus + os 4 aplicativos hoje</p>
-      <a class="btn btn--cta btn--xl" href="#planos" data-checkout="completo"><span class="btn__t">Quero meu bônus agora<small>Aula + 4 apps · R$37 · 96% OFF</small></span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta btn--xl" href="#planos" data-checkout="completo"><span class="btn__t">Liberar aula bônus<small>Junto com os 4 apps · só R$37 hoje</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
@@ -1112,7 +1115,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <li><svg><use href="#i-raio"/></svg><span>Canal direto com equipes especializadas</span></li>
     </ul>
     <div class="cta-block">
-      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Buscar imóveis hoje<small>Acesso na hora · R$37 · 96% OFF</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
@@ -1130,7 +1133,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     </div>
     <p class="lead" style="margin-top:0">O preço da Black com a aula bônus inclusa vale só até <span data-fim>o fim da oferta</span>. Quando o contador zerar, a aula bônus sai da oferta e o valor volta ao normal.</p>
     <div class="cta-block">
-      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir antes das 23:59<small>Depois o preço volta ao normal</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
@@ -1172,7 +1175,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
           </div>
           <div class="meter__fx" aria-hidden="true"></div>
         </div>
-        <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu acesso<small>Pague R$37 e economize R$888</small></span><svg><use href="#seta"/></svg></a>
+        <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Liberar meu acesso<small>Pague R$37 e economize R$888</small></span><svg><use href="#seta"/></svg></a>
         <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
       </article>
 
@@ -1252,7 +1255,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     <h2 class="rv">Tudo para arrematar seu imóvel de leilão financiado, em um só lugar</h2>
     <p class="final__data">Oferta Black válida até <b data-fim>o fim da oferta</b></p>
     <div class="cta-block">
-      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Garantir meu arsenal<small>96% OFF · pagamento único de R$37</small></span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Quero minha casa barata<small>Última chance · R$37 só hoje</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
@@ -1290,7 +1293,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         <p class="rl__de">de <s>R$925,00</s> · <strong>98% OFF</strong></p>
       </div>
       <div class="rl__tempo"><span class="rl__dot"></span>Seu cupom expira em <b data-rl-tempo>10:00</b></div>
-      <a class="btn btn--cta" href="#planos" data-checkout="roleta"><span class="btn__t">Resgatar meu desconto<small>Pague só R$19,90 hoje</small></span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="roleta"><span class="btn__t">Resgatar meu cupom<small>Combo Black por só R$19,90</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
     <div class="rl__fx" aria-hidden="true"></div>
@@ -1300,7 +1303,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <!-- barra de compra fixa (só no celular) -->
 <div class="dock" data-dock>
   <div><b>R$37,00<em class="dock__off">-96%</em></b><small><s>R$925,00</s>Arsenal Black Casa Barata</small></div>
-  <a class="btn" href="#planos" data-checkout="completo">Quero agora <svg><use href="#seta"/></svg></a>
+  <a class="btn" href="#planos" data-checkout="completo">Liberar acesso <svg><use href="#seta"/></svg></a>
 </div>
 
 <script>
@@ -1425,8 +1428,8 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
     if (e.pointerId !== id) return;
     var mx = e.clientX - x0, my = e.clientY - y0;
     if (!eixo) {
-      if (Math.abs(mx) < 8 && Math.abs(my) < 8) return;
-      eixo = Math.abs(mx) > Math.abs(my) * 1.3 ? "x" : "y";
+      if (Math.abs(mx) < 6 && Math.abs(my) < 6) return;
+      eixo = Math.abs(mx) > Math.abs(my) * 0.9 ? "x" : "y";
       if (eixo === "x") { track.classList.add("arrasta"); try { track.setPointerCapture(id); } catch (er) {} }
     }
     if (eixo !== "x") return;
@@ -1439,14 +1442,22 @@ var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoi
     if (eixo !== "x") return;
     track.classList.remove("arrasta");
     var w = track.clientWidth, vel = Math.abs(dx) / Math.max(1, performance.now() - t0), alvo = atual;
-    if ((dx < -w * .18 || (dx < -30 && vel > .45)) && atual < slides.length - 1) alvo = atual + 1;
-    else if ((dx > w * .18 || (dx > 30 && vel > .45)) && atual > 0) alvo = atual - 1;
+    if ((dx < -w * .1 || (dx < -18 && vel > .25)) && atual < slides.length - 1) alvo = atual + 1;
+    else if ((dx > w * .1 || (dx > 18 && vel > .25)) && atual > 0) alvo = atual - 1;
     pausaManual = false; vai(alvo);
     setTimeout(function () { arrastou = false; }, 50);
   }
   track.addEventListener("pointerup", solta);
   track.addEventListener("pointercancel", function (e) { if (e.pointerId === id) { id = null; track.classList.remove("arrasta"); track.style.setProperty("--dx", "0px"); } });
   track.addEventListener("dragstart", function (e) { e.preventDefault(); });
+  /* touchpad / mouse com rolagem lateral: um gesto para o lado troca de app */
+  var travaRoda = 0;
+  track.addEventListener("wheel", function (e) {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || Math.abs(e.deltaX) < 12) return;
+    e.preventDefault();
+    var t = performance.now(); if (t < travaRoda) return; travaRoda = t + 650;
+    pausaManual = false; vai(atual + (e.deltaX > 0 ? 1 : -1));
+  }, { passive: false });
   tabs.forEach(function (t, k) { t.addEventListener("click", function () { pausaManual = false; vai(k); }); });
   sec.querySelector("[data-vt-prev]").addEventListener("click", function () { pausaManual = false; vai(atual - 1); });
   sec.querySelector("[data-vt-next]").addEventListener("click", function () { pausaManual = false; vai(atual + 1); });
