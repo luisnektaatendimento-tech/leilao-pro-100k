@@ -578,10 +578,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .pro__selo b{font:900 17px/1 var(--f-pro);text-transform:uppercase}
 .pro__selo small{margin-top:3px;font:700 10px/1.05 var(--f-pro);text-align:center;letter-spacing:.06em;text-transform:uppercase}
 .pro__txt{width:100%;max-width:560px}
-.pro__eyebrow{display:inline-block;padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.28);font:700 10.5px/1 var(--f-pro);letter-spacing:.16em;text-transform:uppercase;color:#cfcfcf}
-.pro__titulo{margin-top:18px;display:flex;flex-direction:column;font-family:var(--f-pro);font-variation-settings:normal;letter-spacing:-.02em;line-height:.95;text-transform:uppercase}
-.pro__titulo span{font-weight:700;font-size:clamp(18px,4.6vw,24px);letter-spacing:.3em;color:#9a9a9a}
-.pro__titulo b{position:relative;font-weight:900;font-size:clamp(30px,11.6vw,84px);padding-top:.08em;background:linear-gradient(180deg,#fff 0%,#e3e3e3 28%,#8a8a8a 52%,#f4f4f4 70%,#a3a3a3 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 rgba(0,0,0,.8)) drop-shadow(0 14px 30px rgba(255,255,255,.12))}
 .pro__sub{margin-top:16px;font-size:16.5px;color:#bdbdbd}
 .pro__lista{display:grid;gap:10px;margin-top:24px}
 .pro__lista li{display:flex;gap:14px;align-items:flex-start;padding:15px 16px;border-radius:16px;background:linear-gradient(180deg,#121212,#0a0a0a);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(255,255,255,.1)}
@@ -708,6 +704,26 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (max-width:520px){.btn--cta .btn__t--main{font-size:12px;letter-spacing:.045em}}
 @media (max-width:380px){.btn--cta .btn__t--main{font-size:10.5px;letter-spacing:.02em}.plano .btn--cta{padding:6px 6px 6px 12px;gap:6px}.plano .btn--cta svg{width:38px;height:38px;padding:11px}.plano .btn__t--main{font-size:10px}}
 @media (min-width:381px) and (max-width:420px){.plano .btn__t--main{font-size:11px;letter-spacing:.03em}}
+
+/* lockup "Aula bônus · Leilão PRO" */
+.pro__lock{position:relative;text-align:center}
+.pro__lock::before{content:"";position:absolute;left:50%;top:46%;width:min(420px,90%);height:120px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,255,255,.1),transparent 70%);pointer-events:none;z-index:-1}
+.pro__eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:999px;border:0;background:linear-gradient(180deg,#1d1d1d,#0d0d0d);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 0 0 1px rgba(255,255,255,.22);font:700 10.5px/1 var(--f-pro);letter-spacing:.16em;text-transform:uppercase;color:#e6e6e6}
+.pro__eyebrow i{width:7px;height:7px;border-radius:50%;background:#ffd95a;box-shadow:0 0 10px #ffc61a}
+.pro__titulo{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--f-pro);font-variation-settings:normal;text-transform:uppercase;line-height:1}
+.pro__titulo span{display:flex;align-items:center;gap:12px;font-weight:700;font-size:clamp(12px,3.4vw,15px);letter-spacing:.42em;margin-right:-.42em;color:#a8a8a8}
+.pro__titulo span::before,.pro__titulo span::after{content:"";width:clamp(22px,8vw,48px);height:1px;background:linear-gradient(90deg,transparent,#8a8a8a)}
+.pro__titulo span::after{background:linear-gradient(90deg,#8a8a8a,transparent);margin-right:.42em}
+.pro__titulo b{position:relative;display:block;padding:.16em .04em .04em;font-weight:900;font-size:clamp(40px,12.6vw,78px);line-height:1.02;letter-spacing:-.025em;
+  background:linear-gradient(180deg,#ffffff 0%,#f1f1f1 22%,#9c9c9c 48%,#5e5e5e 52%,#d9d9d9 68%,#ffffff 86%,#bdbdbd 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 1px 0 #fff) drop-shadow(0 2px 0 #6b6b6b) drop-shadow(0 4px 0 #2e2e2e) drop-shadow(0 16px 26px rgba(0,0,0,.85))}
+.pro__titulo b em{font-style:normal;background:var(--ouro-texto);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pro__titulo b::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.75) 50%,transparent 60%) no-repeat;background-size:250% 100%;background-position:160% 0;-webkit-background-clip:text;background-clip:text;color:transparent;pointer-events:none}
+.pro__esp{display:block;max-width:300px;margin:12px auto 0;font-size:14px;line-height:1.45;color:#cfcfcf;text-wrap:balance}
+.pro__esp svg{display:inline-block;width:14px;height:14px;margin:0 6px -2px 0;fill:#ffd95a}
+@media (max-width:330px){.pro__eyebrow{font-size:9px;letter-spacing:.1em}}
+@media (min-width:900px){.pro__esp{margin-left:0;max-width:none}.pro__lock{text-align:left}.pro__titulo{align-items:flex-start}.pro__titulo span::before{display:none}.pro__lock::before{left:40%}}
+
 /* BLOCOS 12 e 13 — planos */
 .planos{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;max-width:920px;margin:0 auto}
 .plano{min-width:0}
@@ -1032,8 +1048,11 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       </div>
 
       <div class="pro__txt">
-        <span class="pro__eyebrow rv">Bônus exclusivo da Black</span>
-        <h2 class="pro__titulo rv"><span>Aula</span><b class="metal">Leilão PRO</b></h2>
+        <div class="pro__lock rv">
+          <span class="pro__eyebrow"><i></i>Bônus exclusivo da Black</span>
+          <h2 class="pro__titulo"><span>Aula bônus</span><b>Leilão <em>PRO</em></b></h2>
+          <p class="pro__esp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 8.8l6.1-.7z"/></svg>Com o maior especialista de leilões do Nordeste</p>
+        </div>
       </div>
     </div>
 
