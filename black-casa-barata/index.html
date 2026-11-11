@@ -237,8 +237,7 @@ p,li{text-wrap:pretty}
 .selos{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:6px;margin:18px auto 0;max-width:100%;animation:sobe .9s var(--ease) .44s both}
 .selos li{display:inline-flex;align-items:center;gap:6px;padding:6px 11px 6px 9px;border-radius:999px;background:rgba(255,200,40,.07);box-shadow:inset 0 0 0 1px rgba(255,200,40,.28);font:700 10.5px/1 var(--ff);font-variation-settings:"wdth" 104;letter-spacing:.08em;text-transform:uppercase;color:#ffd95a;white-space:nowrap}
 .selos svg{width:12px;height:12px;flex:none}
-.hero__art+.selos{margin-top:16px}
-.selos+.cta-block{margin-top:26px}
+.hero__art+.cta-block{margin-top:24px}
 @media (max-width:380px){.selos{gap:5px}.selos li{font-size:9px;padding:5px 8px 5px 7px;letter-spacing:.04em;gap:4px}.selos svg{width:10px;height:10px}}
 .hero__art{margin:clamp(34px,6vw,60px) auto 0;max-width:980px}
 
@@ -448,6 +447,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .tut__t small{display:block;font:800 10.5px/1 var(--ff);font-variation-settings:"wdth" 110;letter-spacing:.16em;text-transform:uppercase;color:#ffd95a}
 .tut__t b{display:block;margin-top:8px;font:700 17px/1.25 var(--ff);font-variation-settings:"wdth" 106;color:#fff}
 .tut__t p{margin-top:5px;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.tut__dest{color:#ffd95a;font-weight:600}
 .tut__img{margin:12px 0 0}
 .tut__img img{display:block;width:100%;max-width:420px;height:auto;border-radius:12px;box-shadow:0 0 0 1px rgba(255,217,90,.2),0 16px 34px -18px #000}
 
@@ -806,11 +806,6 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       </figure>
     </div>
 
-    <ul class="selos" aria-label="Garantias">
-      <li><svg><use href="#i-escudo"/></svg>100% seguro</li>
-      <li><svg><use href="#i-casa"/></svg>15 mil+ imóveis verificados</li>
-    </ul>
-
     <!-- ============ BLOCO 03 — CTA ============ -->
     <div class="cta-block" data-cta-topo>
       <a class="btn btn--cta" href="#planos"><span class="btn__t btn__t--main">Quero acessar o aplicativo<small>Com aula bônus · de R$925 por R$37</small></span><svg><use href="#seta"/></svg></a>
@@ -835,7 +830,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     </div>
     <ol class="tut rv">
       <li><span class="tut__n">1</span><div class="tut__t"><small>Etapa 1</small><b>Abra a plataforma dos imóveis</b><p>Entre pelo celular, direto no navegador. Sem baixar nada.</p><figure class="tut__img"><img src="assets/tutorial/passo-1.webp" width="611" height="727" alt="Painel do aplicativo com as plataformas Fexô, Multy, CANAW, Dossiê, Leilão PRO e Especialista" loading="lazy" decoding="async"></figure></div></li>
-      <li><span class="tut__n">2</span><div class="tut__t"><small>Etapa 2</small><b>Encontre o que você deseja</b><p>Escolha cidade, tipo de imóvel e valor e veja as oportunidades.</p><figure class="tut__img"><img src="assets/tutorial/passo-2.webp" width="760" height="782" alt="Lista de casas de leilão com preço, desconto e selo Aceita financiamento" loading="lazy" decoding="async"></figure></div></li>
+      <li><span class="tut__n">2</span><div class="tut__t"><small>Etapa 2</small><b>Encontre o que você deseja</b><p>Escolha cidade, tipo de imóvel e valor entre <span class="tut__dest">mais de 15 mil imóveis</span> verificados.</p><figure class="tut__img"><img src="assets/tutorial/passo-2.webp" width="760" height="782" alt="Lista de casas de leilão com preço, desconto e selo Aceita financiamento" loading="lazy" decoding="async"></figure></div></li>
       <li><span class="tut__n">3</span><div class="tut__t"><small>Etapa 3</small><b>Veja se dá para financiar</b><p>Confira quais imóveis aceitam financiamento e quanto você precisa de entrada.</p><figure class="tut__img"><img src="assets/tutorial/passo-3.webp" width="532" height="725" alt="Análise de financiamento na Multy com índice, entrada e parcela estimada" loading="lazy" decoding="async"></figure></div></li>
       <li><span class="tut__n">4</span><div class="tut__t"><small>Etapa 4</small><b>Conheça quem já fez dinheiro com leilões</b><p>Veja casos reais de quem já arrematou e lucrou.</p><figure class="tut__img"><img src="assets/tutorial/passo-4.webp" width="760" height="497" alt="Vídeo do Paulinho dos Leilões na CANAW, com botão para falar no WhatsApp" loading="lazy" decoding="async"></figure></div></li>
       <li><span class="tut__n">5</span><div class="tut__t"><small>Etapa 5</small><b>Calcule sua arrematação na prática</b><p>Simule lance, entrada e custos antes de dar o primeiro passo.</p><figure class="tut__img"><img src="assets/tutorial/passo-5.webp" width="760" height="748" alt="Calculadora do Dossiê do Assessor com lance e valor de mercado" loading="lazy" decoding="async"></figure></div></li>
