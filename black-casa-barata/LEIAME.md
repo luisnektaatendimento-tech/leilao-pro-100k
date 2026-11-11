@@ -34,3 +34,13 @@ Cada produto aparece com o design system da própria plataforma, lido dos sites 
 Gravações de tela feitas no celular, em `assets/video/` (`fexo`, `multy`, `canaw`, `pro`), cada uma em `.mp4` (principal), `.webm` (reserva) e `.webp` (capa).
 O vídeo da vez toca sozinho, sem som, só enquanto a seção está na tela, e ao terminar passa para a próxima plataforma. Para trocar um vídeo, substitua os três arquivos de mesmo nome.
 O Dossiê do Assessor ainda não tem vídeo: o site dele não pôde ser aberto para gravar.
+
+## Páginas de afiliado
+
+Cada afiliado usa a mesma página, só com outro link de checkout.
+
+- Atual: `blackcasabaratadeleilao.com/joao` → `https://pay.cakto.com.br/364q77y_1305972?affiliate=Vefhwodg`
+- Para criar outro (ex.: `/maria`):
+  1. Em `index.html`, no bloco `CHECKOUT_AFILIADOS`, acrescente `"/maria": "link-de-checkout-da-maria"`.
+  2. Em `vercel.json`, repita as entradas de `/joao` trocando por `/maria` (rewrite para `/index.html`, redirect de `/maria/` e cabeçalho de cache).
+- As UTMs da URL continuam sendo repassadas ao checkout também nas páginas de afiliado.

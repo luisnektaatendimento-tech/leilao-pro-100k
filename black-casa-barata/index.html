@@ -1075,10 +1075,18 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 var CHECKOUT_COMPLETO = "https://pay.cakto.com.br/364q77y_1305972";
 var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoimento do João (ex.: assets/video/depoimento-joao.mp4). Vazio: mostra a gravação da Leilão PRO */
 
+/* páginas de afiliado: mesma página, só muda o checkout (ex.: blackcasabaratadeleilao.com/joao) */
+var CHECKOUT_AFILIADOS = {
+  "/joao": "https://pay.cakto.com.br/364q77y_1305972?affiliate=Vefhwodg"
+};
+
 (function () {
+  var caminho = location.pathname.replace(/\/+$/, "").toLowerCase();
+  var base = CHECKOUT_AFILIADOS[caminho] || CHECKOUT_COMPLETO;
   document.querySelectorAll("[data-checkout]").forEach(function (a) {
-    var url = CHECKOUT_COMPLETO;
-    if (url) { a.href = url + (location.search && url.indexOf("?") < 0 ? location.search : ""); }
+    var url = base;
+    if (url && location.search) url += (url.indexOf("?") < 0 ? "?" : "&") + location.search.slice(1); /* mantém UTMs */
+    if (url) a.href = url;
   });
 })();
 
