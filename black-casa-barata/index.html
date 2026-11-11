@@ -223,6 +223,9 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .hl{max-width:900px;margin:6px auto 0;font:900 clamp(23px,6.4vw,50px)/1.1 var(--ff);font-variation-settings:"wdth" 112;letter-spacing:-.015em;text-transform:uppercase;color:#fff;text-wrap:balance;animation:desliza .8s var(--ease) both}
 .hl em{font-style:normal;color:var(--gold-2);text-shadow:0 0 22px rgba(255,190,0,.35)}
 .hl .nw{white-space:nowrap}
+.hl--bloco{max-width:780px;text-transform:none;font-size:clamp(23px,6.4vw,44px);line-height:1.22;letter-spacing:-.02em;font-variation-settings:"wdth" 104;text-wrap:balance}
+.hl--bloco em{text-shadow:0 0 22px rgba(255,190,0,.3)}
+@media (max-width:340px){.hl--bloco{font-size:20.5px}}
 .hl--estr{max-width:820px;text-transform:none;letter-spacing:-.02em;font-variation-settings:"wdth" 104}
 .hl__n{display:block;font:900 clamp(30px,8.6vw,60px)/1.05 var(--ff);font-variation-settings:"wdth" 110;letter-spacing:-.025em;color:#fff}
 .hl__n em{display:block;font-size:1.32em;line-height:1;color:var(--gold-2);text-shadow:0 0 26px rgba(255,190,0,.38)}
@@ -815,7 +818,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 <!-- ============ BLOCO 02 — HERO ============ -->
 <header class="hero spot" id="topo" data-secao="02-hero">
   <div class="wrap">
-    <h1 class="hl hl--estr"><span class="hl__n"><em>+ de 15.000</em> imóveis de&nbsp;leilão</span> <span class="hl__p"><span class="hl__c">até <b>50% abaixo</b> do valor de&nbsp;mercado</span> <span class="hl__c">com entrada a partir de&nbsp;<b>5%</b></span></span> <span class="hl__r">reunidos num app só — para você encontrar seu imóvel sem nunca mais perder tempo caçando&nbsp;edital.</span></h1>
+    <h1 class="hl hl--bloco"><em>+ de 15.000 imóveis de&nbsp;leilão</em> até <em class="nw">50% abaixo</em> do valor de&nbsp;mercado, com <em class="nw">entrada a partir de&nbsp;5%</em>, reunidos num app só — para você encontrar seu imóvel sem nunca mais perder tempo caçando&nbsp;edital.</h1>
 
     <div class="hero__art rv">
       <!-- IMAGEM PRINCIPAL DO PRODUTO (assets/produto.webp; no celular, recorte assets/produto-m.webp) -->
