@@ -251,6 +251,13 @@ p,li{text-wrap:pretty}
 .hero__art+.cta-block{margin-top:24px}
 .hero__art+.hl-sub{margin-top:18px}
 .hl-sub+.cta-block{margin-top:22px}
+.hl-bul{display:grid;gap:10px;max-width:560px;margin:20px auto 0;text-align:left}
+.hl-bul li{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:14px;background:linear-gradient(160deg,#14120c,#0a0a09);box-shadow:inset 0 0 0 1px rgba(255,200,40,.18);font-size:clamp(15px,4.1vw,17px);line-height:1.4;color:var(--ink-2)}
+.hl-bul li b{color:#fff;font-weight:700}
+.hl-bul i{flex:none;display:grid;place-items:center;width:24px;height:24px;margin-top:1px;border-radius:8px;background:var(--ouro);box-shadow:0 0 12px -2px rgba(255,190,0,.6)}
+.hl-bul svg{width:15px;height:15px;fill:none;stroke:#1a0d00;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.hl-bul+.cta-block{margin-top:24px}
+
 @media (max-width:380px){.selos{gap:5px}.selos li{font-size:9px;padding:5px 8px 5px 7px;letter-spacing:.04em;gap:4px}.selos svg{width:10px;height:10px}}
 .hero__art{margin:clamp(34px,6vw,60px) auto 0;max-width:980px}
 
@@ -819,7 +826,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
         </picture>
       </figure>
     </div>
-    <p class="hl-sub"><b>Sem baixar nada!</b> Acesse pelo celular, encontre oportunidades de imóveis e descubra como dar o primeiro passo para conquistar imóveis de leilão com segurança e legalidade.</p>
+    <p class="hl-sub"><b>Da busca ao arremate:</b> filtre por cidade, valor e tipo de imóvel, veja o desconto de cada um e saiba quanto precisa de entrada antes de dar o lance — mesmo que você nunca tenha comprado um imóvel em&nbsp;leilão.</p>
+    <ul class="hl-bul">
+      <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>Você filtra, compara e encontra o imóvel certo — <b>sem caçar edital site por&nbsp;site</b></span></li>
+      <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span>Funciona <b>no celular</b>, onde você&nbsp;estiver</span></li>
+      <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span><b>Imóveis novos</b> atualizados no app sempre que entram em&nbsp;leilão</span></li>
+    </ul>
 
     <!-- ============ BLOCO 03 — CTA ============ -->
     <div class="cta-block" data-cta-topo>
