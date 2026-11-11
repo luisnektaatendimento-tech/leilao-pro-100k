@@ -440,6 +440,14 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .fit-ic svg{width:24px;height:24px}
 .fit-list p{position:relative;font-size:16.5px;line-height:1.45;color:var(--ink-2)}
 .fit-list p b{color:#fff;font-weight:600}
+@media (max-width:759px){
+  .fit-list{gap:10px}
+  .fit-list li{flex-direction:row;align-items:center;gap:14px;padding:16px 16px 16px 14px;border-radius:18px}
+  .fit-list .n{display:none}
+  .fit-ic{flex:none;width:44px;height:44px;border-radius:13px}
+  .fit-ic svg{width:22px;height:22px}
+  .fit-list p{font-size:15.5px;line-height:1.4}
+}
 @media (hover:hover){.fit-list li:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(216,183,106,.42),0 30px 60px -28px rgba(216,183,106,.3)}}
 
 /* BLOCO 10 — tudo que você vai receber */
@@ -688,7 +696,7 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 /* como funciona: linha do tempo com ícones em ouro */
 .how{position:relative;display:grid;gap:14px;max-width:980px;margin:0 auto}
 .how::before{content:"";position:absolute;left:31px;top:30px;bottom:30px;width:2px;background:linear-gradient(180deg,rgba(255,200,40,.7),rgba(255,200,40,.1));border-radius:2px}
-.how li{position:relative;display:flex;gap:16px;align-items:flex-start;padding:16px 18px 18px 0}
+.how li{position:relative;display:flex;gap:16px;align-items:flex-start;padding:16px 0 18px}
 .how__ic{position:relative;z-index:1;flex:none;display:grid;place-items:center;width:64px;height:64px;border-radius:20px;background:var(--ouro);color:var(--ouro-tinta);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -2px 0 rgba(122,70,0,.4),0 0 0 1px var(--ouro-borda),0 0 0 6px #070707,0 14px 30px -12px rgba(255,180,0,.55)}
 .how__ic svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .how li>div{flex:1;padding:16px 18px;border-radius:18px;background:linear-gradient(160deg,#15130d,#0b0b0a 60%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 0 0 1px rgba(255,200,40,.16)}
