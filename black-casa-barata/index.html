@@ -135,6 +135,10 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .topbar b{color:var(--gold-2);font-weight:700}
 .prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transform:scaleX(0);transform-origin:0 50%}
 @media (max-width:520px){.hs{display:none}.topbar{font-size:10.5px;letter-spacing:.12em}}
+@media (max-width:400px){.topbar{padding:9px 12px;font-size:10px;letter-spacing:.07em;white-space:nowrap}.topbar .pulse{margin-right:7px}}
+@media (max-width:350px){.topbar{font-size:9px;letter-spacing:.03em}}
+/* topo no celular mais compacto: logo menor, foto sobe */
+
 .topbar .pulse{display:inline-block;width:6px;height:6px;margin-right:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(216,183,106,.6);animation:pulse 2s infinite;vertical-align:middle}
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(216,183,106,0)}100%{box-shadow:0 0 0 0 rgba(216,183,106,0)}}
 
@@ -214,6 +218,7 @@ h3{font-size:clamp(18px,4.2vw,22px);letter-spacing:-.02em;line-height:1.15}
 .marca .resto i+i{font-size:.8em;letter-spacing:.06em;margin-top:.1em}
 .marca .brilhos i{width:16px;height:16px}
 .h1 .resto i+i{font-size:.88em;letter-spacing:.02em;margin-top:.06em}
+@media (max-width:520px){.hero .marca .resto{font-size:clamp(23px,6.3vw,40px);margin-top:4px}.hero .marca .black{font-size:clamp(12px,3.2vw,18px);margin-top:4px}.hero .marca__teto{width:clamp(130px,38vw,220px)}.hero .h1-sub{margin-top:12px}.hero .hero__art{margin-top:18px}}
 h1,h2,h3,summary,.cta-pro__k{text-wrap:balance}
 p,li{text-wrap:pretty}
 .h1-sub{max-width:820px;margin:22px auto 0;font:800 clamp(25px,6.9vw,46px)/1.16 var(--ff);font-variation-settings:"wdth" 104;letter-spacing:-.02em;color:#fff}
