@@ -238,39 +238,10 @@ p,li{text-wrap:pretty}
 
 @media (max-width:520px){.hero{padding-top:34px}.h1{margin-top:20px}.h1-sub{margin-top:20px}.hero__sub{margin-top:28px}}
 
-/* CONQUISTA do topo: a casa arrematada + a conta da entrada */
-.sonho{position:relative;max-width:520px;margin:0 auto;text-align:left}
-.sonho__foto{position:relative;aspect-ratio:400/290;border-radius:24px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,217,90,.22),0 30px 70px -30px rgba(255,150,40,.55)}
-.sonho__foto svg{display:block;width:100%;height:100%}
-.sonho__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));pointer-events:none}
-.sonho__chip{position:absolute;left:12px;top:12px;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:rgba(8,8,10,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);font:700 11px/1 var(--ff);color:#fff}
-.sonho__chip i{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 8px #34d399}
-.sonho__selo{position:absolute;right:10px;top:-18px;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:8px 13px 8px 10px;border-radius:10px;background:var(--ouro);color:#2a1800;font:900 13px/1 var(--ff);font-variation-settings:"wdth" 115;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-6deg);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 10px 24px -8px rgba(255,170,0,.7)}
-.sonho__selo svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
-.sonho__chave{position:absolute;left:12px;bottom:58px;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:7px 12px 7px 9px;border-radius:999px;background:rgba(8,8,10,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,217,90,.4);font:700 12px/1 var(--ff);color:#ffd95a}
-.sonho__chave svg{width:18px;height:18px;fill:none;stroke:#ffd95a;stroke-width:2.2;stroke-linecap:round}
-.sonho__conta{position:relative;z-index:2;margin:-46px 12px 0;padding:18px 16px 14px;border-radius:20px;background:linear-gradient(180deg,rgba(28,24,16,.96),rgba(12,11,9,.97));border:1px solid rgba(255,217,90,.28);box-shadow:0 24px 50px -20px #000,inset 0 1px 0 rgba(255,255,255,.06)}
-.sonho__lin{display:flex;flex-direction:column;gap:6px;font:500 12px/1.3 var(--ff);color:var(--ink-2)}
-.sonho__lin s{color:#ff6b5e;text-decoration-thickness:1.5px}
-.sonho__lin b{color:#fff;font-weight:800}
-.sonho__lin em{font-style:normal;margin-left:4px;padding:2px 6px;border-radius:6px;background:rgba(52,211,153,.15);color:#34d399;font-weight:800}
-.sonho__ent{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
-.sonho__ent small{width:100%;font:700 11px/1 var(--ff);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
-.sonho__ent strong{font:900 clamp(34px,10vw,44px)/1 var(--ff);font-variation-settings:"wdth" 115;letter-spacing:-.03em;background:var(--ouro);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(255,190,0,.35))}
-.sonho__ent span{font:600 13px/1.2 var(--ff);color:var(--ink-2)}
-.sonho__barra{position:relative;height:10px;margin-top:12px;border-radius:999px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.14) 0 6px,rgba(255,255,255,.08) 6px 12px);overflow:hidden}
-.sonho__barra i{position:absolute;left:0;top:0;bottom:0;width:7%;min-width:14px;border-radius:999px;background:var(--ouro);box-shadow:0 0 10px rgba(255,190,0,.8);transform-origin:left;transition:transform 1s var(--ease) .5s}
-.js .rv:not(.in) .sonho__barra i{transform:scaleX(0)}
-.js .rv:not(.in) .sonho__selo{opacity:0;transform:rotate(-6deg) scale(1.6)}
-.sonho__selo{transition:opacity .4s ease .9s,transform .5s cubic-bezier(.3,1.6,.5,1) .9s}
-.sonho__leg{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font:600 11.5px/1.3 var(--ff);color:var(--ink-2)}
-.sonho__leg span{display:inline-flex;align-items:center;gap:6px}
-.sonho__leg span:first-child{white-space:nowrap}
-.sonho__leg span+span{text-align:right}
-.sonho__leg i{flex:none;width:8px;height:8px;border-radius:3px;background:rgba(255,255,255,.3)}
-.sonho__leg i.o{background:#ffc21a}
-.sonho__obs{margin-top:10px;font:500 10.5px/1.35 var(--ff);color:rgba(255,255,255,.42);text-align:center}
-@media (prefers-reduced-motion:reduce){.sonho__barra i,.sonho__selo{transition:none}}
+/* imagem principal do produto */
+.produto{position:relative;max-width:1100px;margin:0 auto}
+.produto img{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 0 0 1px rgba(255,217,90,.22),0 34px 80px -34px rgba(255,160,40,.55)}
+@media (max-width:640px){.produto{margin:0 -6px}.produto img{border-radius:18px}}
 
 /* painel (mockup desenhado em CSS) */
 
@@ -796,59 +767,12 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
     </ul>
 
     <div class="hero__art rv">
-      <!-- CONQUISTA: o que o cliente quer — a casa arrematada, financiada, com entrada pequena -->
-      <figure class="sonho" role="img" aria-label="Exemplo ilustrativo: casa de leilão avaliada em R$ 180.000, arrematada por R$ 94.000, com entrada de R$ 4.700 e o restante financiado pelo banco">
-        <div class="sonho__foto">
-          <svg viewBox="0 0 400 290" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <linearGradient id="sn-ceu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1026"/><stop offset=".55" stop-color="#3a2547"/><stop offset=".85" stop-color="#c8643a"/><stop offset="1" stop-color="#f2a64a"/></linearGradient>
-              <linearGradient id="sn-luz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe7a8"/><stop offset="1" stop-color="#ff9d33"/></linearGradient>
-              <linearGradient id="sn-parede" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9cdb8"/><stop offset="1" stop-color="#a99a83"/></linearGradient>
-              <linearGradient id="sn-chao" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d2b1c"/><stop offset="1" stop-color="#070a07"/></linearGradient>
-              <radialGradient id="sn-brilho" cx=".5" cy="0" r=".6"><stop offset="0" stop-color="#ffb84d" stop-opacity=".55"/><stop offset="1" stop-color="#ffb84d" stop-opacity="0"/></radialGradient>
-              <pattern id="sn-ripa" width="5" height="10" patternUnits="userSpaceOnUse"><rect width="5" height="10" fill="#7a4a26"/><rect width="1.2" height="10" fill="#4a2a12"/></pattern>
-            </defs>
-            <rect width="400" height="290" fill="url(#sn-ceu)"/>
-            <g fill="#fff" opacity=".7"><circle cx="40" cy="30" r="1"/><circle cx="120" cy="18" r=".8"/><circle cx="210" cy="36" r="1"/><circle cx="300" cy="14" r=".7"/><circle cx="360" cy="44" r="1"/><circle cx="80" cy="64" r=".6"/><circle cx="330" cy="80" r=".7"/></g>
-            <circle cx="338" cy="56" r="14" fill="#fff3d6" opacity=".9"/>
-            <path d="M0 212 60 196 130 204 210 190 290 200 400 186V290H0z" fill="#1a1426" opacity=".9"/>
-            <rect y="226" width="400" height="64" fill="url(#sn-chao)"/>
-            <ellipse cx="205" cy="240" rx="170" ry="26" fill="url(#sn-brilho)"/>
-            <!-- casa -->
-            <rect x="268" y="150" width="62" height="84" fill="#9d8f79"/>
-            <rect x="282" y="168" width="34" height="30" rx="1" fill="url(#sn-luz)"/>
-            <rect x="80" y="140" width="196" height="94" fill="url(#sn-parede)"/>
-            <rect x="70" y="128" width="216" height="13" fill="#25201b"/>
-            <rect x="160" y="74" width="160" height="56" fill="url(#sn-parede)"/>
-            <rect x="150" y="63" width="182" height="12" fill="#25201b"/>
-            <rect x="176" y="86" width="126" height="34" fill="url(#sn-luz)"/>
-            <path d="M218 86v34M260 86v34" stroke="#3a2a1a" stroke-width="2"/>
-            <rect x="96" y="156" width="104" height="66" fill="url(#sn-luz)"/>
-            <path d="M130 156v66M166 156v66" stroke="#3a2a1a" stroke-width="2"/>
-            <rect x="96" y="156" width="104" height="66" fill="none" stroke="#25201b" stroke-width="3"/>
-            <rect x="212" y="150" width="52" height="84" fill="url(#sn-ripa)"/>
-            <rect x="226" y="184" width="24" height="50" rx="1" fill="#2b1a0e"/>
-            <circle cx="246" cy="210" r="1.4" fill="#ffd27a"/>
-            <rect x="282" y="198" width="48" height="36" fill="#3a332c"/>
-            <path d="M282 206h48M282 214h48M282 222h48" stroke="#2a241f" stroke-width="1.4"/>
-            <path d="M216 234h40l14 56h-68z" fill="#3b342c"/>
-            <!-- plantas -->
-            <path d="M44 234c0-30 2-58 6-80" stroke="#2c1d10" stroke-width="4" fill="none"/>
-            <g fill="#173320"><path d="M50 156c-14-6-30-2-38 8 12-4 24-3 38-8z"/><path d="M50 156c10-12 28-14 38-8-14 0-26 2-38 8z"/><path d="M50 156c-4-14 2-26 12-32-4 10-6 20-12 32z"/><path d="M50 156c-10-8-14-22-10-32 2 12 6 22 10 32z"/><path d="M50 156c14 0 28 8 32 20-10-8-20-14-32-20z"/></g>
-            <ellipse cx="350" cy="230" rx="34" ry="20" fill="#13281a"/><ellipse cx="88" cy="232" rx="24" ry="12" fill="#13281a"/>
-            <g fill="#ffd27a"><circle cx="200" cy="238" r="2"/><circle cx="272" cy="238" r="2"/><circle cx="120" cy="238" r="2"/></g>
-          </svg>
-          <span class="sonho__chip"><i></i>Imóvel de leilão · aceita financiamento</span>
-          <span class="sonho__chave"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="12" r="4.5"/><path d="M12 12h10M18 12v3.5M21 12v2.5"/></svg>A chave é sua</span>
-        </div>
-        <figcaption class="sonho__conta">
-            <span class="sonho__selo"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Arrematado</span>
-          <div class="sonho__lin"><span>Avaliada em <s>R$&nbsp;180.000</s></span><span>Arrematada por <b>R$&nbsp;94.000</b> <em>-48%</em></span></div>
-          <div class="sonho__ent"><small>Você entra com</small><strong>R$&nbsp;4.700</strong><span>só 5% do lance</span></div>
-          <div class="sonho__barra" aria-hidden="true"><i></i></div>
-          <div class="sonho__leg"><span><i class="o"></i>Sua entrada</span><span><i></i>95% o banco financia · R$&nbsp;89.300</span></div>
-          <p class="sonho__obs">Exemplo ilustrativo. Os valores mudam conforme o imóvel e a aprovação do banco.</p>
-        </figcaption>
+      <!-- IMAGEM PRINCIPAL DO PRODUTO (assets/produto.webp; no celular, recorte assets/produto-m.webp) -->
+      <figure class="produto">
+        <picture>
+          <source media="(max-width:640px)" srcset="assets/produto-m.webp" width="900" height="735">
+          <img src="assets/produto.webp" width="1600" height="893" alt="Black Casa Barata de Leilão: aplicativo no celular com imóveis de leilão a partir de R$ 4.700 de entrada, filtro de oportunidades, imóveis financiados, análise jurídica e suporte" fetchpriority="high" decoding="async">
+        </picture>
       </figure>
     </div>
 
