@@ -439,6 +439,18 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .cd small{display:block;margin-top:8px;font:600 10px/1 var(--ff);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
 @media (max-width:420px){.cd{gap:6px}.cd div{min-width:0;width:72px}}
 
+/* BLOCO 02B — tutorial em 5 passos */
+.tut{position:relative;display:grid;gap:12px;max-width:720px;margin:0 auto;counter-reset:t}
+.tut::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:2px;background:linear-gradient(180deg,rgba(255,200,40,.75),rgba(255,200,40,.08));border-radius:2px}
+.tut li{position:relative;display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.tut__n{position:relative;z-index:1;flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:18px;background:var(--ouro);color:#1a0d00;font:900 24px/1 var(--ff);font-variation-settings:"wdth" 120;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -2px 0 rgba(122,84,22,.4),0 0 0 1px var(--ouro-borda),0 12px 26px -12px rgba(255,180,0,.7)}
+.tut__t{flex:1;min-width:0;padding:14px 16px;border-radius:18px;background:linear-gradient(160deg,#15130d,#0b0b0a 60%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 0 0 1px rgba(255,200,40,.16)}
+.tut__t small{display:block;font:800 10.5px/1 var(--ff);font-variation-settings:"wdth" 110;letter-spacing:.16em;text-transform:uppercase;color:#ffd95a}
+.tut__t b{display:block;margin-top:8px;font:700 17px/1.25 var(--ff);font-variation-settings:"wdth" 106;color:#fff}
+.tut__t p{margin-top:5px;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.tut__img{flex-basis:100%;margin:4px 0 6px 70px}
+.tut__img img{display:block;width:100%;max-width:300px;height:auto;border-radius:18px;box-shadow:0 0 0 1px rgba(255,217,90,.22),0 20px 40px -20px #000}
+
 /* BLOCO 09 — feito para você */
 .fit-list{display:grid;gap:12px}
 @media (min-width:760px){.fit-list{grid-template-columns:repeat(6,1fr)}.fit-list li{grid-column:span 2}.fit-list li:nth-child(n+4){grid-column:span 3}}
@@ -804,13 +816,32 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
       <a class="btn btn--cta" href="#planos"><span class="btn__t btn__t--main">Quero acessar o aplicativo<small>Com aula bônus · de R$925 por R$37</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
-    <a class="ponte rv" href="#bonus" data-ponte>
-      <span class="ponte__thumb" aria-hidden="true"><img src="assets/thumb-joao.webp" alt="" width="120" height="170" loading="lazy" decoding="async"><i class="ponte__play"></i></span>
-      <span class="ponte__t"><small>A seguir · caso real</small><b>Assista ao ex-motoboy que lucrou R$ 40 mil em um leilão</b></span>
+    <a class="ponte rv" href="#tutorial" data-ponte>
+      <span class="ponte__thumb" aria-hidden="true"><img src="assets/thumb-fexo.webp" alt="" width="120" height="170" loading="lazy" decoding="async"></span>
+      <span class="ponte__t"><small>Próximo · 5 passos</small><b>Veja como é simples encontrar e arrematar</b></span>
       <span class="ponte__seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
     </a>
   </div>
 </header>
+
+<!-- ============ BLOCO 02B — TUTORIAL: COMO É SIMPLES (5 passos) ============
+     Para pôr os prints: salve em assets/tutorial/passo-1.webp … passo-5.webp e acrescente <figure class="tut__img"><img …></figure> em cada passo. -->
+<section class="sec tut-sec" id="tutorial" data-secao="03-tutorial">
+  <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Passo a passo</span>
+      <h2>Veja como é simples encontrar e arrematar os imóveis de leilão</h2>
+    </div>
+    <ol class="tut rv">
+      <li><span class="tut__n">1</span><div class="tut__t"><small>Etapa 1</small><b>Abra a plataforma dos imóveis</b><p>Entre pelo celular, direto no navegador. Sem baixar nada.</p></div></li>
+      <li><span class="tut__n">2</span><div class="tut__t"><small>Etapa 2</small><b>Encontre o que você deseja</b><p>Escolha cidade, tipo de imóvel e valor e veja as oportunidades.</p></div></li>
+      <li><span class="tut__n">3</span><div class="tut__t"><small>Etapa 3</small><b>Veja se dá para financiar</b><p>Confira quais imóveis aceitam financiamento e quanto você precisa de entrada.</p></div></li>
+      <li><span class="tut__n">4</span><div class="tut__t"><small>Etapa 4</small><b>Conheça quem já fez dinheiro com leilões</b><p>Veja casos reais de quem já arrematou e lucrou.</p></div></li>
+      <li><span class="tut__n">5</span><div class="tut__t"><small>Etapa 5</small><b>Calcule sua arrematação na prática</b><p>Simule lance, entrada e custos antes de dar o primeiro passo.</p></div></li>
+    </ol>
+  </div>
+</section>
 
 <!-- ============ BLOCO 11 — AULA BÔNUS LEILÃO PRO ============ -->
 <section class="sec pro-sec" id="bonus" data-secao="11-bonus">
