@@ -7,7 +7,7 @@ Tudo fica no fim do `index.html`, no bloco `CONFIGURAÇÃO`:
 
 | Campo | O que é |
 |---|---|
-| `CHECKOUT_COMPLETO` | Link do checkout (todos os botões): https://pay.cakto.com.br/364q77y_1305972 |
+| `CHECKOUT_COMPLETO` | Link do checkout (todos os botões): https://ggcheckout.app/checkout/v2/E5SbQcPcSKb0gnSA9uvvl1 (página principal; a /joao usa o link de afiliado abaixo) |
 | (sem campo) | A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela |
 
 No HTML, revise também:

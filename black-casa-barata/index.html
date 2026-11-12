@@ -661,22 +661,20 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 .hero__art+.cta-foto{margin-top:18px}
 .cta-foto+.hl-sub{margin-top:26px}
 @media (max-width:640px){.hl-mini+.hero__art{margin-top:16px}.hero__art+.cta-foto{margin-top:14px}.cta-foto{gap:8px}.cta-foto+.hl-sub{margin-top:22px}}
-@media (max-width:640px){.produto{text-align:center}.produto img{display:inline-block;width:auto;height:auto;max-width:100%;max-height:max(250px,calc(100vh - 372px));max-height:max(250px,calc(100svh - 372px))}}
 .cta-foto+.hl-bul{margin-top:24px}
 .hero__art+.hl-bul{margin-top:18px}
 .hl-bul+.cta-foto{margin-top:18px}
-@media (max-width:640px){.hero__art+.hl-bul{margin-top:12px;padding:2px 12px}.hl-bul li{padding:7px 0;font-size:14px}.hl-bul+.cta-foto{margin-top:12px}.produto img{max-height:max(185px,calc(100vh - 470px));max-height:max(178px,calc(100svh - 478px))}}
+@media (max-width:640px){.hero__art+.hl-bul{margin-top:12px;padding:2px 12px}.hl-bul li{padding:7px 0;font-size:14px}.hl-bul+.cta-foto{margin-top:12px}}
 /* página travada: sem elementos pulando/tremendo, sem deslize na abertura */
 .cta-pro .btn--xl{animation:chama 1.6s ease-out infinite}
 .pro__selo,.burst,.dock__off{animation:none!important}
 .hl,.hl-sub,.hl-mini,.hero .badge{animation:none!important}
 /* foto do topo com altura estável (não muda quando a barra do navegador some) */
-@media (max-width:640px){.produto img{max-height:max(178px,calc(100svh - 478px))}}
-@supports not (height:1svh){@media (max-width:640px){.produto img{max-height:340px}}}
 /* tipografia Apple */
 .hl--curta{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Roboto,Arial,sans-serif;font-weight:800;font-variation-settings:normal;letter-spacing:-.022em;line-height:1.12}
 @media (max-width:640px){.hl--curta{font-size:min(6vw,27px)}}
 .hl-mini{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Roboto,Arial,sans-serif;letter-spacing:-.005em}
+@media (max-width:640px){.produto{margin:0 -10px}.hl-mini+.hero__art{margin-top:14px}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 <script type="text/javascript">
@@ -994,7 +992,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 /* ===================== CONFIGURAÇÃO — troque aqui =====================
    CHECKOUT_*: links do checkout. Todos os botões vão para o plano principal (Arsenal de Aplicativos Facilitadores);  Enquanto estiverem vazios, os botões levam até os planos (#planos).
    A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela. */
-var CHECKOUT_COMPLETO = "https://pay.cakto.com.br/364q77y_1305972";
+var CHECKOUT_COMPLETO = "https://ggcheckout.app/checkout/v2/E5SbQcPcSKb0gnSA9uvvl1";
 var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoimento do João (ex.: assets/video/depoimento-joao.mp4). Vazio: mostra a gravação da Leilão PRO */
 
 /* páginas de afiliado: mesma página, só muda o checkout (ex.: blackcasabaratadeleilao.com/joao) */
@@ -1181,10 +1179,12 @@ var CHECKOUT_AFILIADOS = {
   function upd() {
     raf = 0;
     var a = topo.getBoundingClientRect(), b = planos.getBoundingClientRect(), h = innerHeight;
-    dock.classList.toggle("on", a.bottom < 0 && !(b.top < h * .85 && b.bottom > h * .15));
+    var foraDaTela = a.bottom < 0 || a.top > h - 8;
+    dock.classList.toggle("on", foraDaTela && !(b.top < h * .85 && b.bottom > h * .15));
   }
   function pede() { if (!raf) raf = requestAnimationFrame(upd); }
   addEventListener("scroll", pede, { passive: true }); addEventListener("resize", pede);
+  addEventListener("load", function () { setTimeout(pede, 300); });
 })();
 </script>
 </body>
