@@ -6,3 +6,4 @@ projeto/test/
 *.wav
 *.log
 package-lock.json
+parts.txt
