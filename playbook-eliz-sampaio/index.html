@@ -43,6 +43,26 @@ button{font:inherit;color:inherit;cursor:pointer}
 .nav a[aria-current="page"] i{color:var(--glow);opacity:1}
 .rail-foot{margin-top:auto;padding:12px 10px;font-size:13px;color:var(--fg-2);border-top:1px solid var(--line)}
 
+/* aula antes do sistema: tela cheia, sem trilho */
+body.gate .shell{grid-template-columns:minmax(0,1fr)}
+body.gate .rail{display:none}
+body.gate .wrap{max-width:1180px}
+.gate-only{display:none}
+body.gate .gate-only{display:flex}
+body.gate .sys-only{display:none}
+.steps{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:14px;color:var(--fg-2)}
+.steps span{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--line)}
+.steps span b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;font-size:12px;background:var(--surface);color:var(--fg-2);font-variant-numeric:tabular-nums}
+.steps span.on{border-color:var(--line-2);color:var(--fg);background:var(--accent-soft)}
+.steps span.on b{background:var(--accent);color:#fff}
+.enter{flex-direction:column;gap:14px;background:linear-gradient(180deg,rgba(33,21,54,.95),rgba(25,15,43,.95));border:1px solid var(--line-2);border-radius:var(--r);padding:20px}
+.enter .bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.enter .bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .3s}
+.enter .row{justify-content:space-between}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:14px 22px;font-family:var(--display);font-weight:700;font-size:17px;text-decoration:none}
+.cta:hover{background:#9068e3}
+.cta.ready{box-shadow:0 0 0 4px var(--accent-soft),0 0 32px rgba(129,85,217,.5)}
+.skip{color:var(--fg-2);font-size:14px}
 .main{min-width:0;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
 .view{display:flex;flex-direction:column;gap:28px}
@@ -185,7 +205,7 @@ tr:last-child td{border-bottom:0}
       <a href="#ascensao"><i>05</i>Ascensão</a>
       <a href="#scripts"><i>06</i>Scripts e objeções</a>
       <a href="#indicadores"><i>07</i>Indicadores</a>
-      <a href="#video"><i>▶</i>Episódio 07 · Vídeo</a>
+      <a href="#video"><i>▶</i>Rever a aula</a>
       <a href="#pendencias"><i>!</i>Pendências</a>
     </nav>
     <div class="rail-foot">Fonte: reunião gravada em 13/11/2026 (quadro da esteira). Versão 1 do playbook.</div>
@@ -385,16 +405,17 @@ tr:last-child td{border-bottom:0}
   <!-- ============ VÍDEO ============ -->
   <section class="view" id="v-video" hidden>
     <div class="head">
-      <span class="eyebrow">Aula da esteira · comece por aqui</span>
+      <div class="steps gate-only"><span class="on"><b>1</b>Assista à aula · 5 min</span><span><b>2</b>Entre na área de controle da ascensão</span></div>
+      <span class="eyebrow sys-only">Aula da esteira · rever</span>
       <h1>Episódio 07 · Esteira de Ascensão</h1>
-      <p>A aula que vem antes deste playbook: a esteira montada passo a passo sobre a voz original da reunião, em 5min25s. A voz não foi regravada nem sintetizada; as legendas já vêm no vídeo.</p>
+      <p>A esteira da Mentoria Investidor Imobiliário montada passo a passo sobre a voz original da reunião, em 5min25s. Assista antes de usar o sistema: cada módulo da área de controle parte do que está aqui.</p>
     </div>
     <div class="videobox">
       <div class="stack">
         <video id="vid" controls preload="metadata" playsinline poster="ep07-capa.jpg">
           <source src="ep07-esteira-de-ascensao.mp4" type="video/mp4">
         </video>
-        <div class="panel">
+        <div class="panel sys-only">
           <h3>Como o vídeo foi feito</h3>
           <ul>
             <li>Voz original da reunião, só com cortes: repetições, frases recomeçadas, falas de edição do quadro e os 4 minutos em que só os outros participantes falavam (sem áudio gravado).</li>
@@ -405,9 +426,17 @@ tr:last-child td{border-bottom:0}
           </ul>
         </div>
       </div>
+      <div class="stack">
+      <div class="enter gate-only" id="enter">
+        <div class="row"><strong style="font-family:var(--display);font-size:17px">Depois da aula</strong><span class="skip" id="watched">0% assistido</span></div>
+        <div class="bar"><i id="wbar"></i></div>
+        <a class="cta" id="cta" href="#visao">Entrar na área de controle da ascensão →</a>
+        <span class="skip">Já assistiu? Pode entrar direto. A aula continua disponível no menu do sistema.</span>
+      </div>
       <div class="panel">
         <h3>Capítulos</h3>
         <div class="chapters" id="chapters"></div>
+      </div>
       </div>
     </div>
     <div class="sec">
@@ -674,7 +703,7 @@ const CUES=[{"s": 3.3, "e": 5.34, "x": "Milton, você fez os produtos,"}, {"s": 
 const vid=$('#vid');
 $('#chapters').innerHTML=CH.map(c=>`<button data-t="${c.t}"><b>${fmt(c.t)}</b><span>${c.n}</span></button>`).join('');
 $('#transcript').innerHTML=CUES.map(c=>`<button data-t="${c.s}"><b>${fmt(c.s)}</b><span>${esc(c.x)}</span></button>`).join('');
-function seek(t){go('video');vid.currentTime=t;vid.play().catch(()=>{});vid.scrollIntoView({block:'nearest'})}
+function seek(t){go(document.body.classList.contains('gate')?'aula':'video');vid.currentTime=t;vid.play().catch(()=>{});vid.scrollIntoView({block:'nearest'})}
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-t]');if(b){seek(+b.dataset.t);return}
  const c=e.target.closest('.copy');if(c){const txt=c.dataset.copy.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
@@ -682,7 +711,9 @@ document.addEventListener('click',e=>{
   const fb=()=>{const q=c.closest('.script').querySelector('blockquote');const r=document.createRange();r.selectNodeContents(q);const s=getSelection();s.removeAllRanges();s.addRange(r);c.textContent='Selecionado';setTimeout(()=>c.textContent='Copiar',1600)};
   try{navigator.clipboard.writeText(txt).then(ok,fb)}catch(_){fb()}}
 });
-vid.addEventListener('timeupdate',()=>{const t=vid.currentTime;
+let maxT=0;vid.addEventListener('ended',()=>{maxT=vid.duration;upd();document.getElementById('cta').scrollIntoView({block:'center',behavior:'smooth'})});
+function upd(){const d=vid.duration||325,p=Math.min(100,Math.round(100*maxT/d));document.getElementById('wbar').style.width=p+'%';document.getElementById('watched').textContent=p>=95?'Aula concluída':p+'% assistido';document.getElementById('cta').classList.toggle('ready',p>=95)}
+vid.addEventListener('timeupdate',()=>{const t=vid.currentTime;if(t>maxT){maxT=t;upd()}
  let ci=-1;CH.forEach((c,i)=>{if(t>=c.t)ci=i});
  document.querySelectorAll('#chapters button').forEach((b,i)=>b.classList.toggle('on',i===ci));
  let on=null;document.querySelectorAll('#transcript button').forEach((b,i)=>{const a=t>=CUES[i].s&&t<CUES[i].e;b.classList.toggle('on',a);if(a)on=b});
@@ -690,12 +721,13 @@ vid.addEventListener('timeupdate',()=>{const t=vid.currentTime;
 });
 
 /* ---------- ROTAS ---------- */
-const VIEWS=['visao','perfis','produtos','processo','ascensao','scripts','indicadores','video','pendencias'];
+const VIEWS=['aula','visao','perfis','produtos','processo','ascensao','scripts','indicadores','video','pendencias'];
 function go(v){if(location.hash!=='#'+v)location.hash=v;else show()}
-function show(){let v=location.hash.slice(1);if(!VIEWS.includes(v))v='visao';
- VIEWS.forEach(k=>{document.getElementById('v-'+k).hidden=k!==v});
+function show(){let v=location.hash.slice(1);if(!VIEWS.includes(v))v='aula';
+ const gate=v==='aula';document.body.classList.toggle('gate',gate);
+ VIEWS.forEach(k=>{if(k==='aula')return;document.getElementById('v-'+k).hidden=!(k===v||(gate&&k==='video'))});
  document.querySelectorAll('#nav a').forEach(a=>{const on=a.getAttribute('href')==='#'+v;if(on){a.setAttribute('aria-current','page');a.scrollIntoView({block:'nearest',inline:'center'})}else a.removeAttribute('aria-current')});
- if(v!=='video'&&!vid.paused)vid.pause();
+ if(v!=='video'&&v!=='aula'&&!vid.paused)vid.pause();
  window.scrollTo(0,0)}
 addEventListener('hashchange',show);show();
 </script>
