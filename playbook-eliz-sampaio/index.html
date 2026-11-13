@@ -63,6 +63,47 @@ body.gate .sys-only{display:none}
 .cta:hover{background:#9068e3}
 .cta.ready{box-shadow:0 0 0 4px var(--accent-soft),0 0 32px rgba(129,85,217,.5)}
 .skip{color:var(--fg-2);font-size:14px}
+.navgrp{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--glow);font-weight:600;padding:14px 10px 6px}
+.filters{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:14px;color:var(--fg-2)}
+.filters select,.filters input[type=search],.formgrid input,.formgrid select,.lossform select,.lossform input{background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;font-size:15px;min-width:0}
+.filters input[type=search]{flex:1;min-width:200px}
+.chk{display:inline-flex;gap:8px;align-items:center;cursor:pointer}
+.chk input{accent-color:var(--accent);width:16px;height:16px}
+.formgrid{display:grid;grid-template-columns:2fr 1.4fr 1.6fr 1fr 1fr;gap:12px}
+.formgrid label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--fg-2);min-width:0}
+.dbnote{border:1px solid rgba(232,180,90,.35);background:var(--warn-soft);border-radius:var(--r);padding:14px 16px;font-size:15px}
+.exbanner{border:1px dashed var(--line-2);border-radius:var(--r);padding:10px 14px;font-size:14px;color:var(--glow)}
+.empty{border:1px dashed var(--line-2);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.empty p{color:var(--fg-2);max-width:60ch}
+.kpi-sub{font-size:13px;color:var(--fg-2)}
+.funnel{display:flex;flex-direction:column;gap:12px}
+.fstep{display:grid;grid-template-columns:110px minmax(0,1fr) 56px;gap:12px;align-items:center;font-size:14px}
+.fstep .lab{color:var(--fg-2)}
+.fbar{height:26px;background:var(--line);border-radius:4px;overflow:hidden}
+.fbar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.fstep b{font-variant-numeric:tabular-nums;text-align:right;font-weight:600}
+.fconv{margin-left:122px;font-size:13px;color:var(--fg-2)}
+.fconv strong{color:var(--fg);font-variant-numeric:tabular-nums}
+.hbars{display:flex;flex-direction:column;gap:10px}
+.hbar{display:grid;grid-template-columns:130px minmax(0,1fr) 40px;gap:12px;align-items:center;font-size:14px;color:var(--fg-2)}
+.hbar b{color:var(--fg);text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.cell-n{font-variant-numeric:tabular-nums;font-weight:600;color:var(--fg)}
+.cell-h{display:inline-block;min-width:44px;padding:3px 10px;border-radius:6px;text-align:center}
+.crow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.crow-top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+.crow-top h4{margin:0;font-family:var(--display);font-size:17px}
+.dots{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--fg-2);flex-wrap:wrap}
+.dots span{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+.dots span.done{border-color:var(--line-2);background:var(--accent-soft);color:var(--fg)}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{background:transparent;border:1px solid var(--line);border-radius:9px;padding:7px 12px;font-size:14px;color:var(--fg)}
+.btn:hover{border-color:var(--line-2)}
+.btn.pri{background:var(--accent);border-color:var(--accent)}
+.btn.warn{color:var(--warn)}
+.lossform{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.st-lost{color:var(--warn);border-color:rgba(232,180,90,.35)!important;background:var(--warn-soft)}
+.who{font-size:13px;color:var(--fg-2)}
+@media (max-width:900px){.navgrp{white-space:nowrap;padding:8px 4px 8px 10px;align-self:center}.formgrid{grid-template-columns:1fr 1fr}.formgrid label:first-child{grid-column:1/-1}.fconv{margin-left:0}.fstep{grid-template-columns:90px minmax(0,1fr) 48px}}
 .main{min-width:0;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
 .view{display:flex;flex-direction:column;gap:28px}
@@ -197,15 +238,19 @@ tr:last-child td{border-bottom:0}
       <strong>Eliz Sampaio</strong>
       <span>Mentoria Investidor Imobiliário · Processo de ascensão</span>
     </div>
-    <nav class="nav" id="nav" aria-label="Módulos">
-      <a href="#visao"><i>01</i>Visão geral</a>
-      <a href="#perfis"><i>02</i>Perfil do cliente</a>
+    <nav class="nav" id="nav" aria-label="Seções">
+      <div class="navgrp">Tutoriais</div>
+      <a href="#video"><i>▶</i>Aula da esteira</a>
+      <a href="#visao"><i>01</i>Visão da esteira</a>
+      <a href="#perfis"><i>02</i>Perfis de cliente</a>
       <a href="#produtos"><i>03</i>Produtos e ofertas</a>
       <a href="#processo"><i>04</i>Processo comercial</a>
-      <a href="#ascensao"><i>05</i>Ascensão</a>
+      <a href="#ascensao"><i>05</i>Como ascender o cliente</a>
       <a href="#scripts"><i>06</i>Scripts e objeções</a>
-      <a href="#indicadores"><i>07</i>Indicadores</a>
-      <a href="#video"><i>▶</i>Rever a aula</a>
+      <div class="navgrp">Performance da ascensão</div>
+      <a href="#painel"><i>◆</i>Painel</a>
+      <a href="#clientes"><i>◆</i>Clientes por etapa</a>
+      <a href="#indicadores"><i>◆</i>Como medir</a>
       <a href="#pendencias"><i>!</i>Pendências</a>
     </nav>
     <div class="rail-foot">Fonte: reunião gravada em 13/11/2026 (quadro da esteira). Versão 1 do playbook.</div>
@@ -216,7 +261,7 @@ tr:last-child td{border-bottom:0}
   <!-- ============ 01 VISÃO ============ -->
   <section class="view" id="v-visao">
     <div class="head">
-      <span class="eyebrow">Módulo 01 · Visão geral da operação</span>
+      <span class="eyebrow">Tutorial 01 · Visão da esteira</span>
       <h1>Low ticket adquire, intensivo aquece, mentoria forma, SCP é o destino.</h1>
       <p>A esteira leva três perfis de cliente, cada um por uma porta de entrada própria, até a Mentoria Investidor Imobiliário ou a formação de Assessor de Investimentos Imobiliários. O objetivo final declarado é a SCP.</p>
     </div>
@@ -277,7 +322,7 @@ tr:last-child td{border-bottom:0}
   <!-- ============ 02 PERFIS ============ -->
   <section class="view" id="v-perfis" hidden>
     <div class="head">
-      <span class="eyebrow">Módulo 02 · Perfil do cliente</span>
+      <span class="eyebrow">Tutorial 02 · Perfis de cliente</span>
       <h1>Quem entra, o que quer e como saber se está pronto.</h1>
       <p>O quadro da reunião chama estes perfis de ICPs. Três têm trilha desenhada; dois foram citados e ficaram para depois.</p>
     </div>
@@ -304,7 +349,7 @@ tr:last-child td{border-bottom:0}
   <!-- ============ 03 PRODUTOS ============ -->
   <section class="view" id="v-produtos" hidden>
     <div class="head">
-      <span class="eyebrow">Módulo 03 · Produtos e ofertas</span>
+      <span class="eyebrow">Tutorial 03 · Produtos e ofertas</span>
       <h1>Nove peças, três níveis de preço e um destino.</h1>
       <p>Cada ficha abre com os onze campos da esteira. As descrições dos low tickets vêm das páginas de venda mostradas na tela durante a reunião.</p>
     </div>
@@ -314,7 +359,7 @@ tr:last-child td{border-bottom:0}
   <!-- ============ 04 PROCESSO ============ -->
   <section class="view" id="v-processo" hidden>
     <div class="head">
-      <span class="eyebrow">Módulo 04 · Processo comercial</span>
+      <span class="eyebrow">Tutorial 04 · Processo comercial</span>
       <h1>Sete etapas, da abordagem ao follow-up.</h1>
       <p>A reunião desenhou a esteira e a lógica de ascensão, não o atendimento passo a passo. Cada etapa mostra primeiro o que o vídeo sustenta e depois uma sugestão de execução para a equipe validar.</p>
     </div>
@@ -324,7 +369,7 @@ tr:last-child td{border-bottom:0}
   <!-- ============ 05 ASCENSÃO ============ -->
   <section class="view" id="v-ascensao" hidden>
     <div class="head">
-      <span class="eyebrow">Módulo 05 · Processo de ascensão</span>
+      <span class="eyebrow">Tutorial 05 · Como ascender o cliente</span>
       <h1>O cliente sobe quando o próximo degrau resolve o que o atual despertou.</h1>
       <p>Escolha a trilha e toque em um degrau para ver perfil, argumento, sinais de prontidão e o próximo passo.</p>
     </div>
@@ -347,7 +392,7 @@ tr:last-child td{border-bottom:0}
   <!-- ============ 06 SCRIPTS ============ -->
   <section class="view" id="v-scripts" hidden>
     <div class="head">
-      <span class="eyebrow">Módulo 06 · Scripts e argumentação</span>
+      <span class="eyebrow">Tutorial 06 · Scripts e objeções</span>
       <h1>O raciocínio original e os scripts para colocar em prática.</h1>
       <p>Primeiro, as falas da reunião que fixam a lógica de cada oferta, com o tempo no vídeo editado. Depois, sugestões de script escritas a partir dessa lógica. Nenhuma fala é atribuída à Eliz.</p>
     </div>
@@ -372,7 +417,7 @@ tr:last-child td{border-bottom:0}
   <!-- ============ 07 INDICADORES ============ -->
   <section class="view" id="v-indicadores" hidden>
     <div class="head">
-      <span class="eyebrow">Módulo 07 · Indicadores e gestão</span>
+      <span class="eyebrow">Performance da ascensão · Como cada número é medido</span>
       <h1>O que medir para saber se a esteira está girando.</h1>
       <p>A reunião não apresentou nenhum indicador, meta ou número de resultado. Todos os indicadores abaixo são sugeridos.</p>
     </div>
@@ -402,13 +447,71 @@ tr:last-child td{border-bottom:0}
     </div>
   </section>
 
+  <!-- ============ PERFORMANCE · PAINEL ============ -->
+  <section class="view" id="v-painel" hidden>
+    <div class="head">
+      <span class="eyebrow">Performance da ascensão · Painel</span>
+      <h1>Como a esteira está girando.</h1>
+      <p>Números calculados a partir dos clientes que a equipe registra em <a href="#clientes">Clientes por etapa</a>. Nada aqui é estimado: cada clique de registro move um número.</p>
+    </div>
+    <div class="dbnote" id="pf-note" hidden></div>
+    <div class="filters">
+      <label for="pf-trilha">Trilha</label>
+      <select id="pf-trilha"><option value="">Todas as trilhas</option><option value="cor">Corretor</option><option value="cre">Pessoa física · crédito</option><option value="inv">Pessoa física · investidor</option></select>
+      <label class="chk"><input type="checkbox" id="pf-meus"> Só meus clientes</label>
+      <label class="chk" id="pf-ex-wrap"><input type="checkbox" id="pf-ex"> Mostrar dados de exemplo</label>
+    </div>
+    <div class="exbanner" id="pf-exb" hidden>Dados de exemplo. Não são clientes reais; servem só para mostrar como o painel lê a esteira.</div>
+    <div id="pf-empty" class="empty" hidden>
+      <h3>Nenhum cliente registrado ainda</h3>
+      <p>O painel começa a contar quando a equipe registra o primeiro cliente: quem comprou, em qual trilha e qual etapa. Leva menos de um minuto.</p>
+      <a class="cta" href="#clientes">Registrar o primeiro cliente</a>
+    </div>
+    <div id="pf-body">
+      <div class="grid g4" id="pf-kpis"></div>
+      <div class="grid g2">
+        <div class="panel"><div class="row" style="justify-content:space-between"><h3>Funil de ascensão</h3><span class="kpi-l">clientes que chegaram à etapa</span></div><div id="pf-funnel" class="funnel"></div></div>
+        <div class="panel"><div class="row" style="justify-content:space-between"><h3>Motivos de perda</h3><span class="kpi-l" id="pf-perdas-n"></span></div><div id="pf-perdas" class="hbars"></div></div>
+      </div>
+      <div class="panel"><div class="row" style="justify-content:space-between"><h3>Clientes ativos por etapa</h3><span class="kpi-l">etapa atual = última compra</span></div><div class="tbl" style="border:0"><table id="pf-matrix"></table></div></div>
+      <div class="panel"><div class="row" style="justify-content:space-between"><h3>Oportunidades paradas</h3><span class="kpi-l">ativos há 30+ dias sem oferta da próxima etapa</span></div><div id="pf-parados" class="stack"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ PERFORMANCE · CLIENTES ============ -->
+  <section class="view" id="v-clientes" hidden>
+    <div class="head">
+      <span class="eyebrow">Performance da ascensão · Clientes por etapa</span>
+      <h1>Registre cada passo do cliente na esteira.</h1>
+      <p>Uma linha por cliente. Registre a compra de entrada, depois cada ascensão, a oferta apresentada ou o motivo de perda. O painel recalcula na hora, para toda a equipe.</p>
+    </div>
+    <div class="dbnote" id="cl-note" hidden></div>
+    <form class="panel" id="cl-form" autocomplete="off">
+      <h3>Novo cliente</h3>
+      <div class="formgrid">
+        <label>Nome do cliente<input id="cl-nome" required maxlength="80" placeholder="Como a equipe identifica o cliente"></label>
+        <label>Trilha<select id="cl-trilha"><option value="cor">Corretor</option><option value="cre">Pessoa física · crédito</option><option value="inv">Pessoa física · investidor</option></select></label>
+        <label>Primeira compra<select id="cl-etapa"></select></label>
+        <label>Data<input type="date" id="cl-data" required></label>
+        <label>Valor (R$)<input type="number" id="cl-valor" min="0" step="0.01" placeholder="pendente"></label>
+      </div>
+      <div class="row" style="justify-content:space-between"><span class="skip" id="cl-msg"></span><button class="cta" type="submit" id="cl-save">Registrar cliente</button></div>
+    </form>
+    <div class="filters">
+      <input id="cl-busca" type="search" placeholder="Buscar por nome" aria-label="Buscar cliente">
+      <select id="cl-ftrilha" aria-label="Filtrar trilha"><option value="">Todas as trilhas</option><option value="cor">Corretor</option><option value="cre">Pessoa física · crédito</option><option value="inv">Pessoa física · investidor</option></select>
+      <select id="cl-fstatus" aria-label="Filtrar situação"><option value="ativo">Ativos</option><option value="perdido">Perdidos</option><option value="">Todos</option></select>
+    </div>
+    <div id="cl-list" class="stack"></div>
+  </section>
+
   <!-- ============ VÍDEO ============ -->
   <section class="view" id="v-video" hidden>
     <div class="head">
       <div class="steps gate-only"><span class="on"><b>1</b>Assista à aula · 5 min</span><span><b>2</b>Entre na área de controle da ascensão</span></div>
-      <span class="eyebrow sys-only">Aula da esteira · rever</span>
+      <span class="eyebrow sys-only">Tutorial · Aula da esteira</span>
       <h1>Episódio 07 · Esteira de Ascensão</h1>
-      <p>A esteira da Mentoria Investidor Imobiliário montada passo a passo sobre a voz original da reunião, em 5min25s. Assista antes de usar o sistema: cada módulo da área de controle parte do que está aqui.</p>
+      <p>A esteira da Mentoria Investidor Imobiliário montada passo a passo sobre a voz original da reunião, em 5min25s. Assista antes de usar o sistema: os tutoriais e o painel de performance partem do que está aqui.</p>
     </div>
     <div class="videobox">
       <div class="stack">
@@ -430,7 +533,7 @@ tr:last-child td{border-bottom:0}
       <div class="enter gate-only" id="enter">
         <div class="row"><strong style="font-family:var(--display);font-size:17px">Depois da aula</strong><span class="skip" id="watched">0% assistido</span></div>
         <div class="bar"><i id="wbar"></i></div>
-        <a class="cta" id="cta" href="#visao">Entrar na área de controle da ascensão →</a>
+        <a class="cta" id="cta" href="#painel">Entrar na área de controle da ascensão →</a>
         <span class="skip">Já assistiu? Pode entrar direto. A aula continua disponível no menu do sistema.</span>
       </div>
       <div class="panel">
@@ -565,9 +668,9 @@ $('#icp-grid').innerHTML=ICP.map(c=>`<div class="card"><span class="eyebrow">${c
 const PROC=[
  ['Abordagem','A aquisição acontece pelos low tickets, “já posicionados de acordo com cada público-alvo”. Quem chega à equipe já é comprador de um deles.','Abrir a conversa pelo produto que a pessoa comprou e pelo uso que fez dele. Canal, prazo e responsável pelo primeiro contato estão pendentes.'],
  ['Qualificação','Três filtros aparecem: a profissão (corretor ou não), já ter perfil ou intenção de investir, e ter algum capital. Nenhum é quantificado.','Registrar em cada contato: trilha, produto de entrada, se usou o material, intenção de investir e disponibilidade de capital, em faixas que a Eliz definir.'],
- ['Diagnóstico','A reunião delega a leitura do caso aos especialistas: “vão conseguir conduzir melhor as dores dele”.','Usar as perguntas de diagnóstico do Módulo 06 para localizar o cliente em um dos degraus antes de falar de oferta.'],
+ ['Diagnóstico','A reunião delega a leitura do caso aos especialistas: “vão conseguir conduzir melhor as dores dele”.','Usar as perguntas de diagnóstico do Tutorial 06 para localizar o cliente em um dos degraus antes de falar de oferta.'],
  ['Apresentação','A oferta seguinte é sempre a do degrau de cima da mesma trilha. Existe a ideia, ainda em avaliação, de um webinário gravado para vender o intensivo de R$ 997.','Apresentar o intensivo como continuação do que o low ticket começou, usando o tema que está no quadro para cada trilha.'],
- ['Tratamento de objeções','Não há objeções nem respostas registradas no vídeo.','Ver a seção de dúvidas e objeções do Módulo 06, toda marcada como sugestão.'],
+ ['Tratamento de objeções','Não há objeções nem respostas registradas no vídeo.','Ver a seção de dúvidas e objeções do Tutorial 06, toda marcada como sugestão.'],
  ['Fechamento','Preços definidos: R$ 997 e R$ 2.997. Condições de pagamento, garantia, bônus e prazo não aparecem.','Não oferecer condição que não tenha sido definida pela Eliz. Registrar o motivo sempre que o cliente não fechar.'],
  ['Follow-up','A lógica de “plantar” durante a entrega é o único acompanhamento descrito.','Definir cadência de contato após a compra de cada degrau e durante o intensivo. Prazos pendentes.']
 ];
@@ -682,7 +785,7 @@ const PEND=[
   'Sinais que indicam que o mentorado está pronto para a SCP.',
   'Condições de fechamento: formas de pagamento, garantia, bônus. Nada disso aparece no vídeo.',
   'Canal, prazo e responsável pelo primeiro contato após a compra do low ticket, e cadência de follow-up.',
-  'Objeções reais ouvidas dos clientes e as respostas da Eliz, para substituir as sugestões do Módulo 06.',
+  'Objeções reais ouvidas dos clientes e as respostas da Eliz, para substituir as sugestões do Tutorial 06.',
   'Decisão sobre o webinário gravado para vender o intensivo, que ficou “a ver se vale a pena”.',
   'Modelo de parceria com os assessores que vão captar pessoas para a SCP.']],
  ['Trilhas que ficaram fora desta versão',[
@@ -720,8 +823,110 @@ vid.addEventListener('timeupdate',()=>{const t=vid.currentTime;if(t>maxT){maxT=t
  if(on&&!vid.paused){const p=on.parentElement;const y=on.offsetTop-p.offsetTop;if(y<p.scrollTop||y>p.scrollTop+p.clientHeight-60)p.scrollTop=y-80}
 });
 
+/* ---------- PERFORMANCE DA ASCENSÃO ---------- */
+const ETAPAS=['low','int','prog','scp'], ETL={low:'Low ticket',int:'Intensivo',prog:'Programa',scp:'SCP'};
+const TRL={cor:'Corretor',cre:'Pessoa física · crédito',inv:'Pessoa física · investidor'}, TRI={cor:0,cre:1,inv:2};
+const PRECO={cor:{low:37,int:997,prog:2997},cre:{int:997,prog:2997},inv:{int:997,prog:2997}};
+const MOTIVOS={preco:'Preço',momento:'Momento',perfil:'Perfil',sem_resposta:'Sem resposta',concorrente:'Outra solução',outro:'Outro'};
+const prodNome=(tr,et)=>PROD[TRK[TRI[tr]].steps[ETAPAS.indexOf(et)]].nome;
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const hoje=()=>new Date().toISOString().slice(0,10);
+const dias=(a,b)=>Math.round((new Date(b)-new Date(a))/864e5);
+const etapaAtual=c=>{let i=-1;(c.compras||[]).forEach(p=>{i=Math.max(i,ETAPAS.indexOf(p.etapa))});return i};
+const ultimaData=c=>(c.compras||[]).map(p=>p.data).sort().pop()||c.criado?.slice(0,10)||hoje();
+const PF={db:null,user:null,me:null,canWrite:null,real:[],loaded:false,err:null};
+
+function exemplo(){const R=(()=>{let s=7;return()=>(s=s*16807%2147483647)/2147483647})(),out=[],nomes=['Ana','Bruno','Carla','Diego','Elisa','Fábio','Gabi','Heitor','Íris','João','Kátia','Leo','Marta','Nina','Otto','Paula','Quim','Rita','Saulo','Tina','Ugo','Vera','Wagner','Yara'];
+ nomes.forEach((n,k)=>{const tr=['cor','cre','inv'][k%3],base=new Date(2026,7,1+Math.floor(R()*60)),cp=[];let d=new Date(base),st='ativo',perda=null;
+  for(let i=0;i<4;i++){const et=ETAPAS[i];cp.push({etapa:et,data:d.toISOString().slice(0,10),valor:PRECO[tr][et]??(et==='low'?47:null)});const r=R();if(r<(i===0?.45:i===1?.5:.6)){if(R()<.5){st='perdido';perda={motivo:Object.keys(MOTIVOS)[Math.floor(R()*5)],etapa:ETAPAS[i+1]||'scp',data:d.toISOString().slice(0,10)}}break}d=new Date(+d+(10+R()*35)*864e5)}
+  out.push({id:'ex'+k,nome:n+' (exemplo)',trilha:tr,compras:cp,status:st,perda,oferta:R()<.4?{etapa:ETAPAS[cp.length]||'scp',data:cp[cp.length-1].data}:null,criado:cp[0].data})});return out}
+const EX=exemplo();
+
+function dados(){const ex=$('#pf-ex').checked;let L=ex?EX:PF.real;const tr=$('#pf-trilha').value;if(tr)L=L.filter(c=>c.trilha===tr);
+ if($('#pf-meus').checked&&!ex&&PF.me)L=L.filter(c=>c.vendedor===PF.me);return L}
+
+function renderPainel(){
+ const ex=$('#pf-ex').checked,L=dados();$('#pf-exb').hidden=!ex;
+ const vazio=!ex&&PF.real.length===0;$('#pf-empty').hidden=!vazio;$('#pf-body').hidden=vazio;if(vazio)return;
+ const ativos=L.filter(c=>c.status!=='perdido'),perdidos=L.filter(c=>c.status==='perdido');
+ let rec=0,semValor=0,gaps=[];L.forEach(c=>{const cp=[...(c.compras||[])].sort((a,b)=>a.data<b.data?-1:1);cp.forEach((p,i)=>{if(p.valor==null)semValor++;else rec+=+p.valor;if(i)gaps.push(dias(cp[i-1].data,p.data))})});
+ const asc=L.filter(c=>etapaAtual(c)>=1).length, abertos=ativos.filter(c=>etapaAtual(c)<3), ofert=abertos.filter(c=>c.oferta&&ETAPAS.indexOf(c.oferta.etapa)>etapaAtual(c)).length;
+ const pct=(a,b)=>b?Math.round(100*a/b)+'%':'—';
+ const K=[['Clientes ativos',ativos.length,`${perdidos.length} perdidos · ${L.length} no total`],
+  ['Taxa de ascensão',pct(asc,L.length),`${asc} de ${L.length} passaram do low ticket`],
+  ['Receita por cliente',L.length?brl(rec/L.length):'—',`${brl(rec)} registrados`+(semValor?` · ${semValor} compras sem valor`:'')],
+  ['Tempo entre compras',gaps.length?Math.round(gaps.reduce((a,b)=>a+b,0)/gaps.length)+' dias':'—',gaps.length?`média de ${gaps.length} ascensões`:'sem ascensões ainda'],
+ ];
+ $('#pf-kpis').innerHTML=K.map(([l,v,s])=>`<div class="panel"><span class="kpi-l">${l}</span><span class="kpi">${v}</span><span class="kpi-sub">${s}</span></div>`).join('')+
+  `<div class="panel" style="grid-column:1/-1"><div class="row" style="justify-content:space-between"><span class="kpi-l">Aproveitamento das oportunidades</span><span class="kpi-sub">${ofert} de ${abertos.length} ativos já receberam a oferta da próxima etapa</span></div><div class="bar" style="height:10px" title="${pct(ofert,abertos.length)}"><i style="width:${abertos.length?100*ofert/abertos.length:0}%"></i></div></div>`;
+ const reach=ETAPAS.map((e,i)=>L.filter(c=>etapaAtual(c)>=i).length),mx=Math.max(1,reach[0]);
+ $('#pf-funnel').innerHTML=ETAPAS.map((e,i)=>`<div class="fstep" title="${ETL[e]}: ${reach[i]} clientes"><span class="lab">${ETL[e]}</span><div class="fbar"><i style="width:${100*reach[i]/mx}%"></i></div><b>${reach[i]}</b></div>`+(i<3?`<div class="fconv">↓ conversão <strong>${pct(reach[i+1],reach[i])}</strong></div>`:'')).join('');
+ const mc={};perdidos.forEach(c=>{const m=c.perda?.motivo||'outro';mc[m]=(mc[m]||0)+1});const mm=Math.max(1,...Object.values(mc));
+ $('#pf-perdas-n').textContent=perdidos.length?perdidos.length+' perdidos':'';
+ $('#pf-perdas').innerHTML=perdidos.length?Object.entries(mc).sort((a,b)=>b[1]-a[1]).map(([m,n])=>`<div class="hbar" title="${MOTIVOS[m]}: ${n}"><span>${MOTIVOS[m]||m}</span><div class="fbar" style="height:18px"><i style="width:${100*n/mm}%"></i></div><b>${n}</b></div>`).join(''):'<p class="kpi-sub">Nenhuma perda registrada.</p>';
+ const trs=$('#pf-trilha').value?[$('#pf-trilha').value]:['cor','cre','inv'];let mxc=1;const M=trs.map(tr=>ETAPAS.map((e,i)=>{const n=ativos.filter(c=>c.trilha===tr&&etapaAtual(c)===i).length;mxc=Math.max(mxc,n);return n}));
+ $('#pf-matrix').innerHTML=`<thead><tr><th>Trilha</th>${ETAPAS.map(e=>`<th>${ETL[e]}</th>`).join('')}<th>Perdidos</th></tr></thead><tbody>`+trs.map((tr,r)=>`<tr><td><strong>${TRL[tr]}</strong></td>${M[r].map((n,i)=>`<td title="${prodNome(tr,ETAPAS[i])}"><span class="cell-h cell-n" style="background:rgba(129,85,217,${n?0.12+0.5*n/mxc:0})">${n}</span></td>`).join('')}<td class="num">${perdidos.filter(c=>c.trilha===tr).length}</td></tr>`).join('')+'</tbody>';
+ const par=ativos.filter(c=>etapaAtual(c)<3&&!(c.oferta&&ETAPAS.indexOf(c.oferta.etapa)>etapaAtual(c))&&dias(ultimaData(c),hoje())>=30).sort((a,b)=>ultimaData(a)<ultimaData(b)?-1:1).slice(0,8);
+ $('#pf-parados').innerHTML=par.length?par.map(c=>{const i=etapaAtual(c);return `<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px"><span><strong>${esc(c.nome)}</strong> <span class="kpi-sub">· ${TRL[c.trilha]} · ${dias(ultimaData(c),hoje())} dias em ${ETL[ETAPAS[i]]}</span></span><span class="kpi-sub">próxima oferta: ${prodNome(c.trilha,ETAPAS[i+1])}</span></div>`}).join(''):'<p class="kpi-sub">Nenhuma oportunidade parada. Todos os ativos estão recentes ou já receberam a próxima oferta.</p>';
+}
+
+/* --- clientes --- */
+let clOpen=null,clLoss=null,clDel=null;
+function fillEtapas(){const tr=$('#cl-trilha').value;$('#cl-etapa').innerHTML=['low','int','prog'].map(e=>`<option value="${e}">${ETL[e]} · ${prodNome(tr,e)}</option>`).join('');setValor()}
+function setValor(){const v=PRECO[$('#cl-trilha').value][$('#cl-etapa').value];$('#cl-valor').value=v??''}
+$('#cl-trilha').addEventListener('change',fillEtapas);$('#cl-etapa').addEventListener('change',setValor);
+$('#cl-data').value=hoje();fillEtapas();
+async function salvar(id,doc){try{await PF.db.collection('clientes').doc(id).set(doc);return true}catch(e){$('#cl-msg').textContent=e.code==='quota_exceeded'?'O banco de dados está cheio. Remova clientes antigos para continuar.':'Não foi possível salvar agora. Confira sua conexão e tente de novo.';if(e.code==='invalid_argument'){PF.canWrite=false;renderClientes()}return false}}
+$('#cl-form').addEventListener('submit',async e=>{e.preventDefault();if(!PF.db||PF.canWrite===false)return;const nome=$('#cl-nome').value.trim();if(!nome)return;
+ const v=$('#cl-valor').value,now=new Date().toISOString(),doc={nome,trilha:$('#cl-trilha').value,vendedor:PF.me,compras:[{etapa:$('#cl-etapa').value,data:$('#cl-data').value||hoje(),valor:v===''?null:+v}],status:'ativo',perda:null,oferta:null,criado:now,atualizado:now};
+ $('#cl-save').disabled=true;const ok=await salvar(PF.db.collection('clientes').doc().id,doc);$('#cl-save').disabled=false;if(ok){$('#cl-nome').value='';$('#cl-msg').textContent='Cliente registrado.'}});
+function clDoc(c){const{id,...d}=c;return JSON.parse(JSON.stringify(d))}
+async function acao(id,tipo,extra){const c=PF.real.find(x=>x.id===id);if(!c)return;const d=clDoc(c),i=etapaAtual(c),now=new Date().toISOString();d.atualizado=now;
+ if(tipo==='compra'){const et=ETAPAS[i+1];d.compras.push({etapa:et,data:hoje(),valor:PRECO[c.trilha][et]??null});d.oferta=null}
+ if(tipo==='oferta')d.oferta={etapa:ETAPAS[i+1],data:hoje()};
+ if(tipo==='perda'){d.status='perdido';d.perda={motivo:extra.motivo,nota:extra.nota||'',etapa:ETAPAS[i+1]||'scp',data:hoje()}}
+ if(tipo==='reativar'){d.status='ativo';d.perda=null}
+ if(tipo==='excluir'){try{await PF.db.collection('clientes').doc(id).delete()}catch(e){$('#cl-msg').textContent='Não foi possível excluir agora.'}return}
+ await salvar(id,d)}
+let profs={};
+async function renderClientes(){
+ const can=!!PF.db&&PF.canWrite!==false;$('#cl-form').querySelectorAll('input,select,button').forEach(x=>x.disabled=!can);
+ const q=$('#cl-busca').value.trim().toLowerCase(),ft=$('#cl-ftrilha').value,fs=$('#cl-fstatus').value;
+ let L=PF.real.filter(c=>(!q||c.nome.toLowerCase().includes(q))&&(!ft||c.trilha===ft)&&(!fs||c.status===fs)).sort((a,b)=>(b.atualizado||'')<(a.atualizado||'')?-1:1);
+ if(PF.user){const ids=[...new Set(L.map(c=>c.vendedor).filter(Boolean))];if(ids.length)profs=await PF.user.profiles(ids)}
+ if(!PF.db){$('#cl-list').innerHTML='';return}
+ if(!PF.loaded){$('#cl-list').innerHTML=`<p class="kpi-sub">${PF.err||'Carregando clientes da equipe…'}</p>`;return}
+ if(!L.length){$('#cl-list').innerHTML=`<div class="empty"><h3>${PF.real.length?'Nenhum cliente neste filtro':'Nenhum cliente registrado'}</h3><p>${PF.real.length?'Ajuste a busca ou os filtros acima.':'Use o formulário acima para registrar o primeiro. A partir dele o painel começa a contar.'}</p></div>`;return}
+ $('#cl-list').innerHTML=L.map(c=>{const i=etapaAtual(c),lost=c.status==='perdido',nx=ETAPAS[i+1],cp=c.compras||[];
+  const vend=c.vendedor?(profs[c.vendedor]?.name||'Alguém da equipe'):'—';
+  const of=c.oferta&&ETAPAS.indexOf(c.oferta.etapa)>i;
+  let acts='';if(can){if(lost)acts=`<button class="btn" data-a="reativar" data-id="${c.id}">Reativar</button>`;
+   else{if(nx)acts+=`<button class="btn pri" data-a="compra" data-id="${c.id}">Comprou: ${esc(prodNome(c.trilha,nx))}</button>`+(of?'':`<button class="btn" data-a="oferta" data-id="${c.id}">Oferta apresentada</button>`)+`<button class="btn warn" data-a="perdaopen" data-id="${c.id}">Registrar perda</button>`}
+   acts+=clDel===c.id?`<span class="kpi-sub">Excluir de vez?</span><button class="btn warn" data-a="excluir" data-id="${c.id}">Sim, excluir</button><button class="btn" data-a="cancel" data-id="${c.id}">Cancelar</button>`:`<button class="btn" data-a="delopen" data-id="${c.id}" aria-label="Excluir cliente">Excluir</button>`}
+  const loss=clLoss===c.id?`<div class="lossform"><select id="lm-${c.id}" aria-label="Motivo da perda">${Object.entries(MOTIVOS).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select><input id="ln-${c.id}" placeholder="Observação (opcional)" maxlength="140"><button class="btn warn" data-a="perda" data-id="${c.id}">Confirmar perda</button><button class="btn" data-a="cancel" data-id="${c.id}">Cancelar</button></div>`:'';
+  return `<div class="crow"><div class="crow-top"><div><h4>${esc(c.nome)}</h4><span class="who">${TRL[c.trilha]} · registrado por <span class="vend"></span></span></div>${lost?`<span class="tag st-lost">Perdido · ${MOTIVOS[c.perda?.motivo]||'—'}</span>`:of?`<span class="tag t-vid">Oferta de ${ETL[c.oferta.etapa]} apresentada</span>`:''}</div>
+   <div class="dots">${ETAPAS.map((e,k)=>{const p=cp.find(x=>x.etapa===e);return `<span class="${p?'done':''}" title="${esc(prodNome(c.trilha,e))}">${ETL[e]}${p?` · ${p.data.split('-').reverse().slice(0,2).join('/')}${p.valor!=null?' · '+brl(+p.valor):''}`:''}</span>`}).join('')}</div>
+   ${acts?`<div class="actions">${acts}</div>`:''}${loss}</div>`}).join('');
+ [...$('#cl-list').querySelectorAll('.crow')].forEach((el,k)=>{const c=L[k];el.querySelector('.vend').textContent=c.vendedor?(profs[c.vendedor]?.name||'alguém da equipe'):'—'});
+}
+$('#cl-list').addEventListener('click',async e=>{const b=e.target.closest('[data-a]');if(!b)return;const id=b.dataset.id,a=b.dataset.a;
+ if(a==='perdaopen'){clLoss=id;clDel=null;return renderClientes()}if(a==='delopen'){clDel=id;clLoss=null;return renderClientes()}if(a==='cancel'){clLoss=clDel=null;return renderClientes()}
+ b.disabled=true;if(a==='perda'){await acao(id,'perda',{motivo:$('#lm-'+id).value,nota:$('#ln-'+id).value});clLoss=null}else await acao(id,a);if(a==='excluir')clDel=null});
+['cl-busca','cl-ftrilha','cl-fstatus'].forEach(i=>$('#'+i).addEventListener('input',renderClientes));
+['pf-trilha','pf-meus','pf-ex'].forEach(i=>$('#'+i).addEventListener('change',renderPainel));
+function notas(){const msg=!PF.db?'O registro da equipe funciona na versão do sistema no claude.ai, onde os dados ficam guardados e compartilhados. Nesta cópia você vê os tutoriais e o painel com dados de exemplo.':PF.canWrite===false?'Seu acesso é só de leitura. Para registrar clientes, peça acesso de colaborador a quem compartilhou o sistema.':'';
+ ['#pf-note','#cl-note'].forEach(s=>{$(s).hidden=!msg;$(s).textContent=msg});if(!PF.db){$('#pf-ex').checked=true;$('#pf-ex').disabled=true}}
+notas();renderPainel();renderClientes();
+(async()=>{if(!window.claude?.use)return;const [db,user]=await Promise.all([claude.use('db'),claude.use('user')]);PF.db=db;PF.user=user;
+ if(user){PF.me=await user.id();PF.canWrite=await user.can('data.write')}
+ notas();if(!db){renderPainel();renderClientes();return}$('#pf-ex').checked=false;
+ const t=setTimeout(()=>{if(!PF.loaded){PF.err='Os dados da equipe ainda não responderam. Confira a conexão; a página continua tentando.';renderClientes()}},10000);
+ db.collection('clientes').onSnapshot(s=>{PF.real=s.docs.map(d=>({id:d.id,...d.data()}));if(!s.metadata.fromCache){PF.loaded=true;clearTimeout(t)}else PF.loaded=PF.loaded||s.size>0;renderPainel();renderClientes()},
+  err=>{clearTimeout(t);PF.loaded=true;PF.err=null;$('#cl-msg').textContent='A conexão com os dados da equipe caiu. Recarregue a página para tentar de novo.';renderClientes()});
+ renderPainel();renderClientes()})();
+
 /* ---------- ROTAS ---------- */
-const VIEWS=['aula','visao','perfis','produtos','processo','ascensao','scripts','indicadores','video','pendencias'];
+const VIEWS=['aula','painel','clientes','visao','perfis','produtos','processo','ascensao','scripts','indicadores','video','pendencias'];
 function go(v){if(location.hash!=='#'+v)location.hash=v;else show()}
 function show(){let v=location.hash.slice(1);if(!VIEWS.includes(v))v='aula';
  const gate=v==='aula';document.body.classList.toggle('gate',gate);
