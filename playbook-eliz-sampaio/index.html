@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0;height:100%}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Playbook Comercial Eliz Sampaio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Layout: console de operação. Trilho lateral fixo com os módulos, área de trabalho à direita; no celular o trilho vira uma faixa rolável no topo. */
+:root{
+  color-scheme:dark;
+  --bg:#08080B; --surface:#111116; --card:#211536; --card-2:#190f2b;
+  --accent:#8155D9; --accent-soft:rgba(129,85,217,.16); --glow:#a98bf0;
+  --fg:#FFFFFF; --fg-2:#B9B6C3; --line:rgba(185,182,195,.14); --line-2:rgba(129,85,217,.38);
+  --warn:#E8B45A; --warn-soft:rgba(232,180,90,.13);
+  --sug:#6FC7C0; --sug-soft:rgba(111,199,192,.12);
+  --display:"Manrope","Inter",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--glow)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--glow);outline-offset:2px;border-radius:6px}
+
+.shell{display:grid;grid-template-columns:272px minmax(0,1fr);min-height:100%}
+.rail{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;height:100dvh;overflow:auto;background:var(--surface);border-right:1px solid var(--line);padding:24px 14px;display:flex;flex-direction:column;gap:22px}
+.brand{padding:0 10px;display:flex;flex-direction:column;gap:4px}
+.brand small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--glow);font-weight:600}
+.brand strong{font-family:var(--display);font-size:19px;font-weight:800}
+.brand span{font-size:13px;color:var(--fg-2)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;color:var(--fg-2);text-decoration:none;font-size:15px;font-weight:500;border:1px solid transparent}
+.nav a i{font-style:normal;font-size:12px;font-variant-numeric:tabular-nums;color:var(--fg-2);opacity:.7;width:22px;font-weight:600}
+.nav a:hover{color:var(--fg);background:rgba(255,255,255,.03)}
+.nav a[aria-current="page"]{color:var(--fg);background:var(--accent-soft);border-color:var(--line-2)}
+.nav a[aria-current="page"] i{color:var(--glow);opacity:1}
+.rail-foot{margin-top:auto;padding:12px 10px;font-size:13px;color:var(--fg-2);border-top:1px solid var(--line)}
+
+.main{min-width:0;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.view{display:flex;flex-direction:column;gap:28px}
+.head{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--glow);font-weight:600}
+.head h1{font-size:clamp(28px,4vw,40px);font-weight:800}
+.head p{color:var(--fg-2);max-width:68ch;font-size:17px}
+h2{font-size:22px;font-weight:700}
+h3{font-size:17px;font-weight:700}
+.sec{display:flex;flex-direction:column;gap:14px}
+.lead{color:var(--fg-2);max-width:70ch}
+
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;border:1px solid}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.t-vid{color:var(--glow);border-color:var(--line-2);background:var(--accent-soft)}
+.t-pen{color:var(--warn);border-color:rgba(232,180,90,.35);background:var(--warn-soft)}
+.t-sug{color:var(--sug);border-color:rgba(111,199,192,.35);background:var(--sug-soft)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;color:var(--fg-2);align-items:center}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+
+.notice{border:1px solid rgba(232,180,90,.35);background:var(--warn-soft);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.notice strong{color:var(--warn);font-family:var(--display)}
+.notice p{color:var(--fg);font-size:15px}
+
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:linear-gradient(180deg,rgba(33,21,54,.92),rgba(25,15,43,.92));border:1px solid var(--line-2);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card p,.panel p{color:var(--fg-2);font-size:15px}
+.card ul,.panel ul{margin:0;padding-left:18px;color:var(--fg-2);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.kpi{font-family:var(--display);font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.kpi-l{font-size:13px;color:var(--fg-2);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.price{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums;font-size:18px}
+
+/* esteira */
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:15px;font-weight:500;color:var(--fg-2)}
+.tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.ladder{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.step{position:relative;padding:0 8px;display:flex;flex-direction:column}
+.step::before{content:"";position:absolute;top:17px;left:0;right:0;height:2px;background:var(--line-2)}
+.step:first-child::before{left:50%}.step:last-child::before{right:50%}
+.dot{position:relative;z-index:1;width:36px;height:36px;border-radius:50%;margin:0 auto 12px;background:var(--bg);border:2px solid var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:14px;color:var(--glow)}
+.step button{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0}
+.step button:hover{border-color:var(--line-2)}
+.step button[aria-pressed="true"]{background:linear-gradient(180deg,rgba(33,21,54,.95),rgba(25,15,43,.95));border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.step .lvl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);font-weight:600}
+.step .nm{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.25}
+.detail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.detail>div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:5px;min-width:0}
+.detail dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.detail dd{margin:0;font-size:15px}
+.detail .full{grid-column:1/-1;background:var(--card-2)}
+dl{margin:0}
+
+.flow{display:flex;flex-direction:column;gap:0;counter-reset:f}
+.flow li{list-style:none;position:relative;padding:0 0 18px 52px;counter-increment:f}
+.flow{padding:0;margin:0}
+.flow li::before{content:counter(f,decimal-leading-zero);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:13px;color:var(--glow);background:var(--bg)}
+.flow li::after{content:"";position:absolute;left:17px;top:38px;bottom:0;width:2px;background:var(--line-2)}
+.flow li:last-child::after{display:none}
+.flow h3{padding-top:6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow p{color:var(--fg-2);font-size:15px;max-width:70ch;margin-top:4px}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+details[open]{border-color:var(--line-2)}
+summary{cursor:pointer;padding:14px 16px;font-weight:600;display:flex;gap:10px;align-items:center;justify-content:space-between;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--glow);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+.dbody{padding:0 16px 16px;color:var(--fg-2);font-size:15px;display:flex;flex-direction:column;gap:10px}
+.stack{display:flex;flex-direction:column;gap:10px}
+
+.script{background:var(--card-2);border:1px solid var(--line-2);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.script.sug{background:var(--surface);border-color:rgba(111,199,192,.3)}
+.script blockquote{margin:0;font-size:16px;color:var(--fg);border-left:2px solid var(--accent);padding-left:14px}
+.script.sug blockquote{border-color:var(--sug)}
+.script .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;font-size:13px;color:var(--fg-2)}
+.copy{background:transparent;border:1px solid var(--line);border-radius:8px;padding:5px 12px;font-size:13px;font-weight:600;color:var(--fg-2)}
+.copy:hover{color:var(--fg);border-color:var(--line-2)}
+.ts{background:transparent;border:0;padding:0;color:var(--glow);font-variant-numeric:tabular-nums;font-weight:600;font-size:13px}
+
+.videobox{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px;align-items:start}
+video{width:100%;max-width:100%;aspect-ratio:16/9;background:#000;border-radius:var(--r);border:1px solid var(--line-2);display:block}
+.chapters{display:flex;flex-direction:column;gap:4px}
+.chapters button{display:flex;gap:12px;align-items:baseline;text-align:left;background:transparent;border:1px solid transparent;border-radius:10px;padding:9px 10px;font-size:15px;color:var(--fg-2)}
+.chapters button:hover{background:rgba(255,255,255,.03);color:var(--fg)}
+.chapters button.on{background:var(--accent-soft);border-color:var(--line-2);color:var(--fg)}
+.chapters b{font-variant-numeric:tabular-nums;color:var(--glow);font-weight:600;font-size:13px;min-width:38px}
+.transcript{max-height:420px;overflow:auto;display:flex;flex-direction:column;gap:2px;padding-right:6px}
+.transcript button{display:flex;gap:12px;text-align:left;background:transparent;border:0;border-radius:8px;padding:6px 8px;color:var(--fg-2);font-size:15px;line-height:1.5}
+.transcript button b{font-variant-numeric:tabular-nums;color:var(--fg-2);opacity:.7;font-weight:500;font-size:13px;min-width:38px;padding-top:2px}
+.transcript button.on{background:var(--accent-soft);color:var(--fg)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);font-weight:600;background:var(--surface)}
+td{color:var(--fg-2)} td strong{color:var(--fg);font-weight:600}
+tr:last-child td{border-bottom:0}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{position:sticky;height:auto;flex-direction:column;gap:10px;padding:12px 0 10px;border-right:0;border-bottom:1px solid var(--line);z-index:5}
+  .brand{padding:0 16px}.brand span,.rail-foot{display:none}
+  .nav{flex-direction:row;overflow-x:auto;padding:0 12px;gap:6px;scrollbar-width:none}
+  .nav a{white-space:nowrap;padding:8px 12px;font-size:14px}
+  .nav a i{width:auto}
+  .main{padding-block:24px 60px}
+  .g2,.g3,.g4,.videobox,.detail{grid-template-columns:minmax(0,1fr)}
+  .ladder{grid-template-columns:minmax(0,1fr);gap:10px}
+  .step{padding:0 0 0 48px}
+  .step::before{top:0;bottom:-10px;left:17px;right:auto;width:2px;height:auto}
+  .step:first-child::before{left:17px;top:18px}.step:last-child::before{right:auto;bottom:50%}
+  .dot{position:absolute;left:0;top:10px;margin:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand">
+      <small>Sistema operacional comercial</small>
+      <strong>Eliz Sampaio</strong>
+      <span>Mentoria Investidor Imobiliário · Processo de ascensão</span>
+    </div>
+    <nav class="nav" id="nav" aria-label="Módulos">
+      <a href="#visao"><i>01</i>Visão geral</a>
+      <a href="#perfis"><i>02</i>Perfil do cliente</a>
+      <a href="#produtos"><i>03</i>Produtos e ofertas</a>
+      <a href="#processo"><i>04</i>Processo comercial</a>
+      <a href="#ascensao"><i>05</i>Ascensão</a>
+      <a href="#scripts"><i>06</i>Scripts e objeções</a>
+      <a href="#indicadores"><i>07</i>Indicadores</a>
+      <a href="#video"><i>▶</i>Vídeo e transcrição</a>
+      <a href="#pendencias"><i>!</i>Pendências</a>
+    </nav>
+    <div class="rail-foot">Fonte: reunião gravada em 13/11/2026 (quadro da esteira). Versão 1 do playbook.</div>
+  </aside>
+
+  <main class="main"><div class="wrap">
+
+  <!-- ============ 01 VISÃO ============ -->
+  <section class="view" id="v-visao">
+    <div class="head">
+      <span class="eyebrow">Módulo 01 · Visão geral da operação</span>
+      <h1>Low ticket adquire, intensivo aquece, mentoria forma, SCP é o destino.</h1>
+      <p>A esteira leva três perfis de cliente, cada um por uma porta de entrada própria, até a Mentoria Investidor Imobiliário ou a formação de Assessor de Investimentos Imobiliários. O objetivo final declarado é a SCP.</p>
+    </div>
+
+    <div class="notice">
+      <strong>Como ler este playbook</strong>
+      <p>O vídeo-fonte é uma reunião de desenho da esteira: quem fala é o estrategista que conduz a reunião, dirigindo-se ao Milton e à Eliz. Não há falas da Eliz no áudio. Tudo o que vem do vídeo está marcado; o que o vídeo não cobre está como pendente; o que foi proposto por fora está como sugestão.</p>
+      <div class="legend">
+        <span><span class="tag t-vid">No vídeo</span> dito ou mostrado na gravação</span>
+        <span><span class="tag t-pen">Pendente</span> precisa de definição da Eliz</span>
+        <span><span class="tag t-sug">Sugestão</span> proposta complementar, não é do vídeo</span>
+      </div>
+    </div>
+
+    <div class="grid g4">
+      <div class="panel"><span class="kpi-l">Perfis tratados</span><span class="kpi">3</span><p>Corretor, pessoa física que busca crédito, pessoa física investidora.</p></div>
+      <div class="panel"><span class="kpi-l">Degraus por trilha</span><span class="kpi">4</span><p>Low ticket, intensivo, programa principal, SCP.</p></div>
+      <div class="panel"><span class="kpi-l">Intensivo</span><span class="kpi">R$ 997</span><p>Consultoria, intensivo ou evento. Formato a definir.</p></div>
+      <div class="panel"><span class="kpi-l">Programa principal</span><span class="kpi">R$ 2.997</span><p>Mentoria Investidor Imobiliário ou Assessor de Investimentos.</p></div>
+    </div>
+
+    <div class="sec">
+      <h2>O que é a Mentoria Investidor Imobiliário</h2>
+      <div class="grid g2">
+        <div class="card">
+          <div class="row"><h3>Proposta de valor</h3><span class="tag t-vid">No vídeo</span></div>
+          <p>Levar a pessoa do conceito do mercado imobiliário, entendendo o que é cada etapa, até conseguir fazer o cálculo de investimento e retorno e avaliar a viabilidade da própria operação.</p>
+        </div>
+        <div class="card">
+          <div class="row"><h3>Posicionamento na esteira</h3><span class="tag t-vid">No vídeo</span></div>
+          <p>É o último produto antes da SCP. No fechamento da reunião é chamada de “mentoria/comunidade Investidor Imobiliário” e descrita como a etapa que prepara o cliente para entrar na SCP.</p>
+        </div>
+        <div class="card">
+          <div class="row"><h3>Público-alvo</h3><span class="tag t-vid">No vídeo</span></div>
+          <p>Pessoa física que quer se tornar investidora imobiliária: quem está organizando as finanças para financiar um imóvel e quem já investe em outros mercados ou já tem capital.</p>
+        </div>
+        <div class="card">
+          <div class="row"><h3>Objetivo comercial</h3><span class="tag t-vid">No vídeo</span></div>
+          <p>Adquirir clientes pelos low tickets, já posicionados por público, fazê-los passar por um intensivo e convertê-los na mentoria. Em paralelo, formar assessores que, no futuro, captem pessoas para a SCP.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Estrutura da esteira</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Trilha</th><th>Entrada (low ticket)</th><th>Intensivo · R$ 997</th><th>Programa · R$ 2.997</th><th>Destino</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Corretor</strong></td><td>50 Fichas de Pré-Análise <span class="num">(R$ 37)</span></td><td>Geração de demanda: narrativa que converte mais leads em vendas de imóveis</td><td>Assessor de Investimentos Imobiliários</td><td>Captar pessoas para a SCP</td></tr>
+          <tr><td><strong>Pessoa física · crédito</strong></td><td>O Planner do Autônomo</td><td>Alinhar as finanças para conseguir comprar um imóvel financiado</td><td>Mentoria Investidor Imobiliário</td><td>Entrar na SCP</td></tr>
+          <tr><td><strong>Pessoa física · investidor</strong></td><td>Biblioteca Investidor Imobiliário</td><td>Operações Imobiliárias</td><td>Mentoria Investidor Imobiliário</td><td>Entrar na SCP</td></tr>
+        </tbody>
+      </table></div>
+      <p class="lead">Fora desta primeira versão: o produto “50 Projetos de Casas Populares” (citado como “o do Stefano”) e o perfil Assessor de Investimentos, que ainda não tem low ticket. Detalhes em <a href="#pendencias">Pendências</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 PERFIS ============ -->
+  <section class="view" id="v-perfis" hidden>
+    <div class="head">
+      <span class="eyebrow">Módulo 02 · Perfil do cliente</span>
+      <h1>Quem entra, o que quer e como saber se está pronto.</h1>
+      <p>O quadro da reunião chama estes perfis de ICPs. Três têm trilha desenhada; dois foram citados e ficaram para depois.</p>
+    </div>
+    <div class="grid g3" id="icp-grid"></div>
+    <div class="sec">
+      <h2>Perfis citados, ainda sem trilha</h2>
+      <div class="grid g2">
+        <div class="panel">
+          <div class="row"><h3>Assessor de Investimentos</h3><span class="tag t-pen">Pendente</span></div>
+          <p>No quadro: “para trazer o cliente dele que já investe em outros mercados para o imobiliário (ampliar)”. Na fala: “vale a pena pensar já no low ticket para isso”. Não existe produto de entrada definido.</p>
+        </div>
+        <div class="panel">
+          <div class="row"><h3>Pessoa física final · “o do Stefano”</h3><span class="tag t-pen">Pendente</span></div>
+          <p>Ligado ao produto “50 Projetos de Casas Populares”, que aparece no quadro com a mesma descrição de público dos investidores. A reunião decidiu tratar só dos outros três.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Capacidade de investimento</h2>
+      <div class="panel"><div class="row"><span class="tag t-pen">Pendente</span></div><p>O vídeo não traz faixas de renda, capital ou score. A única pista é qualitativa: o comprador da Biblioteca é “um pouco mais qualificado”, “talvez já está com uma graninha”. Faixas objetivas precisam ser definidas pela Eliz.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 03 PRODUTOS ============ -->
+  <section class="view" id="v-produtos" hidden>
+    <div class="head">
+      <span class="eyebrow">Módulo 03 · Produtos e ofertas</span>
+      <h1>Nove peças, três níveis de preço e um destino.</h1>
+      <p>Cada ficha abre com os onze campos da esteira. As descrições dos low tickets vêm das páginas de venda mostradas na tela durante a reunião.</p>
+    </div>
+    <div class="stack" id="prod-list"></div>
+  </section>
+
+  <!-- ============ 04 PROCESSO ============ -->
+  <section class="view" id="v-processo" hidden>
+    <div class="head">
+      <span class="eyebrow">Módulo 04 · Processo comercial</span>
+      <h1>Sete etapas, da abordagem ao follow-up.</h1>
+      <p>A reunião desenhou a esteira e a lógica de ascensão, não o atendimento passo a passo. Cada etapa mostra primeiro o que o vídeo sustenta e depois uma sugestão de execução para a equipe validar.</p>
+    </div>
+    <div class="stack" id="proc-list"></div>
+  </section>
+
+  <!-- ============ 05 ASCENSÃO ============ -->
+  <section class="view" id="v-ascensao" hidden>
+    <div class="head">
+      <span class="eyebrow">Módulo 05 · Processo de ascensão</span>
+      <h1>O cliente sobe quando o próximo degrau resolve o que o atual despertou.</h1>
+      <p>Escolha a trilha e toque em um degrau para ver perfil, argumento, sinais de prontidão e o próximo passo.</p>
+    </div>
+    <div class="sec">
+      <div class="tabs" role="tablist" id="trk-tabs"></div>
+      <div class="ladder" id="ladder"></div>
+      <dl class="detail" id="detail"></dl>
+    </div>
+    <div class="sec">
+      <h2>Fluxo de ascensão</h2>
+      <p class="lead">O fluxo de dez passos do briefing, adaptado ao que a reunião definiu. A regra de fundo é “plantar”: a ideia do próximo nível é semeada durante a entrega, não empurrada no fim.</p>
+      <ol class="flow" id="flow"></ol>
+    </div>
+    <div class="sec">
+      <h2>Gatilhos e sinais por trilha</h2>
+      <div class="grid g3" id="trig"></div>
+    </div>
+  </section>
+
+  <!-- ============ 06 SCRIPTS ============ -->
+  <section class="view" id="v-scripts" hidden>
+    <div class="head">
+      <span class="eyebrow">Módulo 06 · Scripts e argumentação</span>
+      <h1>O raciocínio original e os scripts para colocar em prática.</h1>
+      <p>Primeiro, as falas da reunião que fixam a lógica de cada oferta, com o tempo no vídeo editado. Depois, sugestões de script escritas a partir dessa lógica. Nenhuma fala é atribuída à Eliz.</p>
+    </div>
+    <div class="sec">
+      <div class="row"><h2>Falas originais do vídeo</h2><span class="tag t-vid">No vídeo</span></div>
+      <p class="lead">Ditas pelo estrategista que conduz a reunião. Toque no tempo para ouvir no vídeo.</p>
+      <div class="grid g2" id="quotes"></div>
+    </div>
+    <div class="sec">
+      <div class="row"><h2>Sugestões de script</h2><span class="tag t-sug">Sugestão</span></div>
+      <p class="lead">Não constam no vídeo. Use como ponto de partida e ajuste com a Eliz antes de padronizar.</p>
+      <div class="tabs" id="sug-tabs"></div>
+      <div class="grid g2" id="sug"></div>
+    </div>
+    <div class="sec">
+      <div class="row"><h2>Dúvidas e objeções</h2><span class="tag t-sug">Sugestão</span></div>
+      <p class="lead">O vídeo não registra objeções de clientes nem respostas. As objeções abaixo são as prováveis para cada degrau; as respostas se apoiam apenas na lógica da esteira.</p>
+      <div class="stack" id="obj"></div>
+    </div>
+  </section>
+
+  <!-- ============ 07 INDICADORES ============ -->
+  <section class="view" id="v-indicadores" hidden>
+    <div class="head">
+      <span class="eyebrow">Módulo 07 · Indicadores e gestão</span>
+      <h1>O que medir para saber se a esteira está girando.</h1>
+      <p>A reunião não apresentou nenhum indicador, meta ou número de resultado. Todos os indicadores abaixo são sugeridos.</p>
+    </div>
+    <div class="grid g2">
+      <div class="panel"><div class="row"><h3>Apresentados no vídeo</h3><span class="tag t-vid">No vídeo</span></div><p>Nenhum. Os únicos números ditos ou mostrados são preços (R$ 37, R$ 997, R$ 2.997) e quantidades de conteúdo dos produtos (50 fichas, 12 modelos, 20 operações, 50 projetos).</p></div>
+      <div class="panel"><div class="row"><h3>Metas</h3><span class="tag t-pen">Pendente</span></div><p>Sem histórico de vendas no material, não há base para fixar metas. Rode o primeiro ciclo medindo e defina as metas com a Eliz a partir dos números reais.</p></div>
+    </div>
+    <div class="sec">
+      <div class="row"><h2>Indicadores sugeridos</h2><span class="tag t-sug">Sugestão</span></div>
+      <div class="tbl"><table>
+        <thead><tr><th>Indicador</th><th>Como calcular</th><th>O que revela</th><th>Ritmo</th></tr></thead>
+        <tbody id="kpis"></tbody>
+      </table></div>
+    </div>
+    <div class="sec">
+      <div class="row"><h2>Painel de etapas</h2><span class="tag t-sug">Sugestão</span></div>
+      <p class="lead">Modelo de leitura semanal por trilha. Os campos ficam vazios até existir dado real.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Etapa</th><th>Corretor</th><th>PF · crédito</th><th>PF · investidor</th><th>Conversão para a etapa seguinte</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Low ticket</strong></td><td>—</td><td>—</td><td>—</td><td>— %</td></tr>
+          <tr><td><strong>Intensivo (R$ 997)</strong></td><td>—</td><td>—</td><td>—</td><td>— %</td></tr>
+          <tr><td><strong>Programa (R$ 2.997)</strong></td><td>—</td><td>—</td><td>—</td><td>— %</td></tr>
+          <tr><td><strong>SCP</strong></td><td>—</td><td>—</td><td>—</td><td></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ============ VÍDEO ============ -->
+  <section class="view" id="v-video" hidden>
+    <div class="head">
+      <span class="eyebrow">Vídeo-fonte editado</span>
+      <h1>A esteira explicada no quadro, em 5 minutos.</h1>
+      <p>Gravação original de 10min18s reduzida a 5min11s com cortes tradicionais. A voz é a original, sem regravação nem voz sintética. Legendas disponíveis no player.</p>
+    </div>
+    <div class="videobox">
+      <div class="stack">
+        <video id="vid" controls preload="metadata" playsinline>
+          <source src="esteira-ascensao-editado.mp4" type="video/mp4">
+        </video>
+        <div class="panel">
+          <h3>O que foi cortado</h3>
+          <ul>
+            <li>Abertura com a janela do gravador e frase de preparação (6s).</li>
+            <li>“Pegou, Milton?” repetido enquanto aguardava resposta (11s).</li>
+            <li>Frase recomeçada e duas falas de edição do quadro (15s).</li>
+            <li>3min38s em que os outros participantes falam e o áudio deles não foi gravado.</li>
+            <li>Final com conversa privada de rede social na tela (20s).</li>
+            <li>Pausas acima de 0,9s reduzidas para 0,5s.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Capítulos</h3>
+        <div class="chapters" id="chapters"></div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Transcrição sincronizada</h2>
+      <p class="lead">Toque em uma linha para ir ao trecho. Duas expressões foram corrigidas pelo contexto e precisam de conferência de ouvido; estão listadas em Pendências.</p>
+      <div class="panel"><div class="transcript" id="transcript"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ PENDÊNCIAS ============ -->
+  <section class="view" id="v-pendencias" hidden>
+    <div class="head">
+      <span class="eyebrow">Relatório de pendências</span>
+      <h1>O que a Eliz precisa validar ou definir.</h1>
+      <p>Tudo o que o playbook marca como pendente, reunido por prioridade. Enquanto estes itens estiverem abertos, a equipe consegue entender a esteira, mas não executá-la por inteiro.</p>
+    </div>
+    <div class="stack" id="pend"></div>
+  </section>
+
+  </div></main>
+</div>
+
+<script>
+const P='<span class="tag t-pen">Pendente</span>';
+const V='<span class="tag t-vid">No vídeo</span>';
+const S='<span class="tag t-sug">Sugestão</span>';
+const pen=t=>`${P} ${t||'Não definido no vídeo.'}`;
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const $=s=>document.querySelector(s);
+
+/* ---------- PRODUTOS ---------- */
+const FIELDS=[['perfil','Perfil do cliente'],['momento','Momento da jornada'],['problema','Principal problema que resolve'],['transf','Transformação esperada'],['entrega','Entregáveis'],['arg','Argumento comercial'],['qual','Critérios de qualificação'],['obj','Objeções prováveis'],['pronto','Indicadores de prontidão para avançar'],['prox','Próxima oportunidade de ascensão']];
+const PROD={
+ fichas:{nome:'50 Fichas de Pré-Análise',nivel:'Low ticket',preco:'R$ 37',
+  perfil:V+' Corretor de imóveis.',momento:V+' Entrada da trilha do corretor. Ele vende imóvel financiado e perde negócio na aprovação de crédito.',
+  problema:V+' A “trava na hora de vender”: negociação que cai no fim porque o cliente não aprova no financiamento.',
+  transf:V+' Saber, no primeiro atendimento, se o cliente aprova no financiamento antes de mostrar qualquer imóvel.',
+  entrega:V+' 50 fichas prontas para preencher com o cliente (texto da página de venda exibida na tela).',
+  arg:V+' “Sem nunca mais perder comissão no fim da negociação” (página de venda). Na fala: é para o corretor “não ter trava na hora de vender”.',
+  qual:pen('Além de ser corretor, o vídeo não define critério.'),obj:pen(),
+  pronto:S+' Usou as fichas em atendimentos reais e quer gerar mais demanda, não só filtrar a que já tem.',
+  prox:V+' Intensivo de geração de demanda (R$ 997).'},
+ planner:{nome:'O Planner do Autônomo',nivel:'Low ticket',preco:'Preço pendente',
+  perfil:V+' Pessoa física: autônomos, MEIs e quem vive de renda variável.',momento:V+' Entrada. Quer acessar crédito ou financiamento e ainda precisa organizar as finanças.',
+  problema:V+' Finanças desalinhadas que impedem o acesso a crédito e ao financiamento de um imóvel.',
+  transf:V+' Finanças em ordem e acesso a crédito para investir na empresa ou a financiamento para comprar imóveis.',
+  entrega:V+' 12 modelos (texto da página de venda exibida na tela).',
+  arg:V+' Conseguir financiamento “sem precisar pagar 100% das dívidas” (página de venda).',
+  qual:pen(),obj:pen(),
+  pronto:V+' Já demonstra perfil ou já pensa em investir em imóveis: “aquele cara que já pensa nisso”.',
+  prox:V+' Intensivo “Alinhar as finanças para conseguir comprar um imóvel financiado” (R$ 997).'},
+ biblioteca:{nome:'Biblioteca Investidor Imobiliário',nivel:'Low ticket',preco:'Preço pendente',
+  perfil:V+' Pessoa física: investidores em outros mercados ou quem quer se tornar investidor. Descrito como “um pouco mais qualificado”.',
+  momento:V+' Entrada. “Talvez já está com uma graninha” e quer entender as operações antes de investir.',
+  problema:V+' Não saber quais operações imobiliárias existem nem qual cabe no seu capital.',
+  transf:V+' Encontrar a operação que cabe no capital e saber se ela dá lucro antes de investir.',
+  entrega:V+' 20 operações imobiliárias com a conta aberta: revenda, aluguel e imóvel na planta (página de venda exibida na tela).',
+  arg:V+' “Saber se ela dá lucro antes de investir um real” (página de venda).',
+  qual:pen('Faixa de capital não definida.'),obj:pen(),
+  pronto:S+' Escolheu uma ou duas operações de interesse e pede ajuda para aplicar ao próprio caso.',
+  prox:V+' Intensivo “Operações Imobiliárias” (R$ 997). O condutor chama de “produto do meio”.'},
+ projetos:{nome:'50 Projetos de Casas Populares',nivel:'Low ticket',preco:'Preço pendente',
+  perfil:V+' “Pessoa física final”. No quadro, a descrição repete a dos investidores.',momento:pen('Citado como “o do Stefano”; a reunião não tratou deste produto.'),
+  problema:pen(),transf:pen(),entrega:pen('O nome indica 50 projetos; conteúdo não descrito.'),arg:pen(),qual:pen(),obj:pen(),pronto:pen(),prox:pen('Trilha de ascensão não desenhada.')},
+ intDemanda:{nome:'Intensivo · Geração de demanda',nivel:'Consultoria / intensivo / evento',preco:'R$ 997',
+  perfil:V+' Corretor que já comprou as fichas e quer vender melhor.',momento:V+' Meio da trilha. Etapa obrigatória antes da formação de assessor.',
+  problema:V+' Converter poucos leads em vendas de imóveis.',
+  transf:V+' Dominar a “narrativa que converte” com ângulo de crédito, para vender melhor o imóvel financiado.',
+  entrega:pen('O quadro registra “consultoria/intensivo/evento”; formato, duração e conteúdo serão desenhados. No vídeo, a Eliz entra com a narrativa e o ângulo de crédito.'),
+  arg:V+' Tema do quadro: “narrativa que converte mais leads em vendas de imóveis”.',
+  qual:pen(),obj:pen(),
+  pronto:V+' Entendeu que, dominando mais produtos imobiliários, pode “abraçar mais clientes”.',
+  prox:V+' Assessor de Investimentos Imobiliários (R$ 2.997).'},
+ intFin:{nome:'Intensivo · Finanças para o financiamento',nivel:'Consultoria / intensivo / evento',preco:'R$ 997',
+  perfil:V+' Pessoa física que comprou o Planner do Autônomo.',momento:V+' Meio da trilha. “Tempo de tela” específico com a equipe.',
+  problema:V+' Como alinhar as finanças para conseguir um imóvel financiado.',
+  transf:V+' Sair alinhado para comprar um imóvel financiado e com a ideia de se tornar investidor plantada.',
+  entrega:pen('Formato, duração e conteúdo a desenhar.'),
+  arg:V+' Tema do quadro: “alinhar as finanças para conseguir comprar um imóvel financiado”.',
+  qual:V+' Prioridade para “aqueles que já têm um perfil” de investidor. Critérios objetivos pendentes.',obj:pen(),
+  pronto:V+' Já pensa em investir; aceita começar devagar, por exemplo pelo leilão.',
+  prox:V+' Mentoria Investidor Imobiliário (R$ 2.997).'},
+ intOp:{nome:'Intensivo · Operações Imobiliárias',nivel:'Consultoria / intensivo / evento',preco:'R$ 997',
+  perfil:V+' Pessoa física mais qualificada, vinda da Biblioteca.',momento:V+' Meio da trilha.',
+  problema:V+' Entender quais são as operações imobiliárias antes de alocar capital.',
+  transf:V+' Clareza sobre as operações possíveis e sobre o próximo passo como investidor.',
+  entrega:pen('Formato, duração e conteúdo a desenhar.'),
+  arg:V+' “Entender quais são essas operações imobiliárias.”',
+  qual:V+' Tem algum capital disponível (dito de forma qualitativa). Faixa pendente.',obj:pen(),
+  pronto:S+' Quer calcular a viabilidade de uma operação real, o que é exatamente a entrega final da mentoria.',
+  prox:V+' Mentoria Investidor Imobiliário (R$ 2.997), vendida “da mesma forma”.'},
+ assessor:{nome:'Assessor de Investimentos Imobiliários',nivel:'Programa principal',preco:'R$ 2.997',
+  perfil:V+' Corretor que passou pelo intensivo.',momento:V+' Topo da trilha do corretor.',
+  problema:V+' Ser “apenas um corretor de imóveis”, limitado a um tipo de produto e de cliente.',
+  transf:V+' Tornar-se assessor de investimentos imobiliários, dominando mais produtos e atendendo mais clientes.',
+  entrega:pen('Grade, formato e duração não descritos.'),
+  arg:V+' “Se ele dominar mais produtos imobiliários, ele pode abraçar mais clientes e se tornar um assessor de investimentos imobiliários, e não apenas um corretor de imóveis.”',
+  qual:V+' Ter passado por uma consultoria, intensivo ou treinamento antes de entrar.',obj:pen(),pronto:pen(),
+  prox:V+' Em um futuro próximo, captar pessoas para a SCP. Modelo de parceria pendente.'},
+ mentoria:{nome:'Mentoria Investidor Imobiliário',nivel:'Programa principal',preco:'R$ 2.997',
+  perfil:V+' Pessoa física que quer se tornar investidora, vinda do Planner ou da Biblioteca.',momento:V+' Último produto antes da SCP.',
+  problema:V+' Não conhecer o mercado nem saber calcular se uma operação é viável.',
+  transf:V+' Do conceito do mercado imobiliário até o cálculo de investimento e retorno da própria operação.',
+  entrega:V+' Dois marcos definidos: (1) o que é o mercado imobiliário e cada etapa; (2) cálculo de investimento e retorno. '+P+' A grade entre os dois é tarefa da Eliz. Também chamada de “mentoria/comunidade”.',
+  arg:V+' Ajuda a pessoa a “fazer um cálculo de investimento e retorno, de viabilidade da operação dele”.',
+  qual:V+' Vem dos dois low tickets de pessoa física. Critérios objetivos pendentes.',obj:pen(),
+  pronto:pen('O vídeo não define quando o mentorado está pronto para a SCP.'),
+  prox:V+' SCP, o objetivo final.'},
+ scp:{nome:'SCP',nivel:'Objetivo final',preco:'Não informado',
+  perfil:V+' Mentorados preparados pela mentoria e pessoas captadas pelos assessores.',momento:V+' Topo da esteira: “o objetivo final”.',
+  problema:pen(),transf:pen(),entrega:pen('A sigla não é explicada no vídeo. Estrutura, valores e regras não aparecem.'),arg:pen(),qual:pen(),obj:pen(),pronto:pen(),prox:'Fim da esteira documentada.'}
+};
+const ORDER=['fichas','planner','biblioteca','projetos','intDemanda','intFin','intOp','assessor','mentoria','scp'];
+function fieldsHTML(p){return FIELDS.map(([k,l])=>`<div${k==='prox'?' class="full"':''}><dt>${l}</dt><dd>${p[k]}</dd></div>`).join('')}
+$('#prod-list').innerHTML=ORDER.map((k,i)=>{const p=PROD[k];return `<details${i===0?' open':''}><summary><span class="row"><strong>${p.nome}</strong><span class="tag ${/pendente|informado/i.test(p.preco)?'t-pen':'t-vid'}">${p.preco}</span></span><span style="color:var(--fg-2);font-size:13px;font-weight:500;margin-left:auto">${p.nivel}</span></summary><div class="dbody"><dl class="detail">${fieldsHTML(p)}</dl></div></details>`}).join('');
+
+/* ---------- PERFIS ---------- */
+const ICP=[
+ {n:'Corretor',tag:'Trilha do assessor',exp:V+' Profissional do mercado; vende imóvel financiado.',obj:V+' Vender melhor e sem trava.',dor:V+' Negócio que trava na hora de vender; leads que não viram venda.',des:V+' Atender mais clientes, dominando mais produtos imobiliários.',pronto:V+' Passa a se ver como assessor, e não apenas corretor.'},
+ {n:'Pessoa física · crédito',tag:'Trilha da mentoria',exp:V+' Iniciante. Autônomo, MEI ou renda variável.',obj:V+' Conseguir um imóvel financiado.',dor:V+' Finanças desalinhadas, dificuldade de acessar crédito.',des:V+' Em parte deles, tornar-se investidor imobiliário.',pronto:V+' Já tem perfil ou “já pensa nisso”; topa começar devagar, até pelo leilão.'},
+ {n:'Pessoa física · investidor',tag:'Trilha da mentoria',exp:V+' Mais qualificado. Investe em outros mercados ou quer começar.',obj:V+' Entender as operações imobiliárias.',dor:V+' Não sabe qual operação cabe no seu capital nem se dá lucro.',des:V+' Investir com a conta feita antes.',pronto:V+' Já tem algum capital disponível.'}
+];
+$('#icp-grid').innerHTML=ICP.map(c=>`<div class="card"><span class="eyebrow">${c.tag}</span><h3 style="font-size:20px">${c.n}</h3><dl class="stack" style="gap:10px">${[['Nível de experiência',c.exp],['Objetivo',c.obj],['Dores',c.dor],['Desejos',c.des],['Sinais de prontidão',c.pronto]].map(([a,b])=>`<div><dt class="kpi-l" style="font-size:12px">${a}</dt><dd style="margin:2px 0 0;font-size:15px;color:var(--fg-2)">${b}</dd></div>`).join('')}</dl></div>`).join('');
+
+/* ---------- PROCESSO ---------- */
+const PROC=[
+ ['Abordagem','A aquisição acontece pelos low tickets, “já posicionados de acordo com cada público-alvo”. Quem chega à equipe já é comprador de um deles.','Abrir a conversa pelo produto que a pessoa comprou e pelo uso que fez dele. Canal, prazo e responsável pelo primeiro contato estão pendentes.'],
+ ['Qualificação','Três filtros aparecem: a profissão (corretor ou não), já ter perfil ou intenção de investir, e ter algum capital. Nenhum é quantificado.','Registrar em cada contato: trilha, produto de entrada, se usou o material, intenção de investir e disponibilidade de capital, em faixas que a Eliz definir.'],
+ ['Diagnóstico','A reunião delega a leitura do caso aos especialistas: “vão conseguir conduzir melhor as dores dele”.','Usar as perguntas de diagnóstico do Módulo 06 para localizar o cliente em um dos degraus antes de falar de oferta.'],
+ ['Apresentação','A oferta seguinte é sempre a do degrau de cima da mesma trilha. Existe a ideia, ainda em avaliação, de um webinário gravado para vender o intensivo de R$ 997.','Apresentar o intensivo como continuação do que o low ticket começou, usando o tema que está no quadro para cada trilha.'],
+ ['Tratamento de objeções','Não há objeções nem respostas registradas no vídeo.','Ver a seção de dúvidas e objeções do Módulo 06, toda marcada como sugestão.'],
+ ['Fechamento','Preços definidos: R$ 997 e R$ 2.997. Condições de pagamento, garantia, bônus e prazo não aparecem.','Não oferecer condição que não tenha sido definida pela Eliz. Registrar o motivo sempre que o cliente não fechar.'],
+ ['Follow-up','A lógica de “plantar” durante a entrega é o único acompanhamento descrito.','Definir cadência de contato após a compra de cada degrau e durante o intensivo. Prazos pendentes.']
+];
+$('#proc-list').innerHTML=PROC.map(([t,v,s],i)=>`<details${i===0?' open':''}><summary><span><span style="color:var(--glow);font-variant-numeric:tabular-nums;margin-right:10px">${String(i+1).padStart(2,'0')}</span>${t}</span></summary><div class="dbody"><div class="row" style="align-items:flex-start;flex-wrap:nowrap;gap:12px">${V}<p>${v}</p></div><div class="row" style="align-items:flex-start;flex-wrap:nowrap;gap:12px">${S}<p>${s}</p></div></div></details>`).join('');
+
+/* ---------- ASCENSÃO ---------- */
+const TRK=[
+ {n:'Corretor',steps:['fichas','intDemanda','assessor','scp']},
+ {n:'Pessoa física · crédito',steps:['planner','intFin','mentoria','scp']},
+ {n:'Pessoa física · investidor',steps:['biblioteca','intOp','mentoria','scp']}
+];
+let trk=0,stp=0;
+function drawTrk(){
+ $('#trk-tabs').innerHTML=TRK.map((t,i)=>`<button role="tab" aria-selected="${i===trk}" data-i="${i}">${t.n}</button>`).join('');
+ $('#ladder').innerHTML=TRK[trk].steps.map((k,i)=>{const p=PROD[k];return `<div class="step"><span class="dot">${i+1}</span><button aria-pressed="${i===stp}" data-s="${i}"><span class="lvl">${p.nivel}</span><span class="nm">${p.nome}</span><span class="price">${p.preco}</span></button></div>`}).join('');
+ const p=PROD[TRK[trk].steps[stp]];
+ $('#detail').innerHTML=`<div class="full"><dt>Degrau ${stp+1} de 4 · ${p.nivel}</dt><dd><strong style="font-family:var(--display);font-size:19px">${p.nome}</strong> · ${p.preco}</dd></div>`+fieldsHTML(p);
+}
+$('#trk-tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b){trk=+b.dataset.i;stp=0;drawTrk()}});
+$('#ladder').addEventListener('click',e=>{const b=e.target.closest('button');if(b){stp=+b.dataset.s;drawTrk()}});
+drawTrk();
+
+const FLOW=[
+ ['Entrada do cliente',V,'Compra de um low ticket. Cada produto de entrada já define a trilha: Fichas, Planner ou Biblioteca.'],
+ ['Identificação do perfil',V,'Corretor, pessoa física que busca crédito ou pessoa física investidora. O produto comprado é o primeiro indicador.'],
+ ['Diagnóstico',S,'Confirmar o momento do cliente: usou o material? Qual é a dor de agora? Já pensa em investir? O vídeo deixa essa leitura com os especialistas.'],
+ ['Etapa atual',V,'O cliente consome o low ticket e é convidado ao intensivo de R$ 997 da sua trilha. Um webinário gravado para essa venda está em avaliação.'],
+ ['Acompanhamento e entrega de valor',V,'No intensivo, o cliente tem “tempo de tela” específico com a equipe para resolver o problema imediato da trilha.'],
+ ['Identificação de nova necessidade',V,'Durante a entrega, a equipe “planta” a ideia do próximo nível: virar assessor, no caso do corretor, ou virar investidor, no caso da pessoa física.'],
+ ['Qualificação para a ascensão',V,'Avança quem já tem perfil, já pensa em investir ou já tem capital. Para o assessor, ter passado pelo intensivo é pré-requisito.'],
+ ['Apresentação da próxima oferta',V,'Mentoria Investidor Imobiliário ou Assessor de Investimentos Imobiliários, ambos a R$ 2.997.'],
+ ['Conversão',P,'Condições de fechamento, garantia e formas de pagamento não foram definidas no vídeo.'],
+ ['Nova etapa da jornada',V,'A mentoria prepara para entrar na SCP. Os assessores, no futuro, passam a captar pessoas para a SCP.']
+];
+$('#flow').innerHTML=FLOW.map(([t,g,d])=>`<li><h3>${t} ${g}</h3><p>${d}</p></li>`).join('');
+
+const TRIG=[
+ ['Corretor','De quem quer vender melhor para quem se tornou assessor.',['Gatilho: percebe que dominar mais produtos permite atender mais clientes.','Sinal: pergunta sobre outros tipos de operação além do financiado.','Critério: concluiu o intensivo.']],
+ ['Pessoa física · crédito','De quem quer financiar um imóvel para quem quer investir.',['Gatilho: finanças alinhadas e a ideia de investir já plantada.','Sinal: “já pensa nisso”; aceita começar devagar, como no leilão.','Critério: ter perfil de investidor. Definição objetiva pendente.']],
+ ['Pessoa física · investidor','De quem quer entender as operações para quem quer calcular a sua.',['Gatilho: entendeu as operações e quer saber a viabilidade de uma.','Sinal: tem capital parado ou investido em outros mercados.','Critério: faixa de capital pendente.']]
+];
+$('#trig').innerHTML=TRIG.map(([t,s,l])=>`<div class="card"><h3>${t}</h3><p style="color:var(--fg)">${s}</p><ul>${l.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+
+/* ---------- SCRIPTS ---------- */
+const QUOTES=[{"c": "Corretor · a dor", "t": 36.6, "q": "Ele quer o quê? Ele não quer ter trava na hora de vender."}, {"c": "Corretor · argumento de ascensão", "t": 52.8, "q": "Se ele dominar mais produtos imobiliários, ele pode abraçar mais clientes e se tornar um assessor de investimento imobiliário, e não apenas um corretor de imóveis."}, {"c": "Corretor · a ascensão", "t": 68.9, "q": "É assim que eu vou ascender um cara que quer vender melhor para um cara que se tornou um assessor de investimento imobiliário."}, {"c": "Pessoa física · pergunta central", "t": 81.7, "q": "Como que ele vai alinhar as finanças para conseguir um imóvel financiado."}, {"c": "Pessoa física · plantar", "t": 104.2, "q": "Eu estou plantando, eu estou alinhando aquele cara que já pensa nisso [...] e preparando ele para se tornar um investidor imobiliário, às vezes começando devagar, indo para o leilão."}, {"c": "Investidor · qualificação", "t": 122.3, "q": "Esse cara aqui, eu acho que ele já é um pouco mais qualificado [...]. Ele já é o cara que talvez já está com uma graninha ali e ele quer entender [...] 20 operações imobiliárias."}, {"c": "Mentoria · o que entrega", "t": 179.0, "q": "Primeiramente, eu vou explicar para ele o conceito do mercado imobiliário, o que é cada etapa. E, no final das contas, eu estou ajudando ele a conseguir fazer um cálculo de investimento e retorno, de viabilidade da operação dele.", "n": "Relato do condutor sobre o que a Eliz disse a ele."}, {"c": "SCP · via da mentoria", "t": 226.4, "q": "O último produto antes do SCP é a mentoria/comunidade Investidor Imobiliário, que prepara o cara para entrar no SCP."}, {"c": "SCP · via dos assessores", "t": 239.2, "q": "A outra via que a gente tem [...] é a criação dos assessores de investimento, que, num futuro próximo, trabalhando dentro da nossa ótica, a ideia é que eles captem pessoas para SCP."}, {"c": "Resumo da esteira", "t": 283.9, "q": "Eu tenho o SCP como objetivo final, eu tenho os investidores aqui e eu tenho os assessores aqui. [...] E eles são adquiridos pelos low tickets, que já estão posicionados de acordo com cada público-alvo."}];
+function fmt(t){t=Math.max(0,Math.floor(t));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')}
+$('#quotes').innerHTML=QUOTES.map(q=>`<div class="script"><div class="meta"><span class="eyebrow">${q.c}</span><button class="ts" data-t="${q.t}">▶ ${fmt(q.t)}</button></div><blockquote>${esc(q.q)}</blockquote><div class="meta"><span>${q.n||''}</span><button class="copy" data-copy="${esc(q.q).replace(/"/g,'&quot;')}">Copiar</button></div></div>`).join('');
+
+const SUG={
+ 'Aberturas':[
+  ['Corretor · comprou as Fichas','Oi, [nome]. Vi que você pegou as 50 Fichas de Pré-Análise. Já conseguiu usar com algum cliente? Queria entender como está a aprovação de crédito nos seus atendimentos hoje.'],
+  ['PF · comprou o Planner','Oi, [nome]. Você garantiu o Planner do Autônomo. Me conta: o seu objetivo agora é organizar as finanças para a empresa ou para financiar um imóvel?'],
+  ['PF · comprou a Biblioteca','Oi, [nome]. Você está com a Biblioteca Investidor Imobiliário. Das 20 operações, alguma já chamou a sua atenção para o seu momento?']],
+ 'Diagnóstico':[
+  ['Corretor','De cada dez atendimentos, em quantos a venda trava na hora do financiamento? E o que você faz hoje para gerar novos leads?'],
+  ['Corretor · visão de futuro','Hoje você trabalha só com imóvel financiado ou já atende cliente que quer investir?'],
+  ['PF · crédito','O que hoje impede você de aprovar um financiamento: renda, dívidas, documentação ou não saber por onde começar?'],
+  ['PF · crédito · perfil','Depois do primeiro imóvel, você se vê investindo em imóveis ou a ideia é só a casa própria?'],
+  ['PF · investidor','Você já investe em outros mercados? O que está buscando no imobiliário que não encontra neles?'],
+  ['PF · investidor · capital','Você já tem um valor separado para a primeira operação ou ainda está na fase de entender as possibilidades?']],
+ 'Ofertas':[
+  ['Corretor → intensivo','As fichas filtram quem aprova. O próximo passo é trazer mais gente para o seu atendimento. No intensivo de geração de demanda a gente trabalha a narrativa que converte mais leads em vendas de imóveis, com o ângulo de crédito.'],
+  ['PF crédito → intensivo','O Planner organiza. No intensivo a gente senta com você para alinhar as finanças com um objetivo só: conseguir comprar um imóvel financiado.'],
+  ['PF investidor → intensivo','A Biblioteca mostra as 20 operações. No intensivo de Operações Imobiliárias você entende cada uma a fundo para escolher por onde começar.'],
+  ['Intensivo → Mentoria','Na mentoria você vai do conceito do mercado imobiliário, entendendo cada etapa, até conseguir fazer sozinho o cálculo de investimento e retorno da sua operação.'],
+  ['Intensivo → Assessor','Você já vende melhor. Dominando mais produtos imobiliários, você atende mais clientes e deixa de ser apenas corretor para atuar como assessor de investimentos imobiliários.']],
+ 'Chamadas para ação':[
+  ['Convite ao intensivo','Faz sentido para você dar esse próximo passo agora? Se fizer, eu te passo os detalhes da próxima turma.'],
+  ['Convite ao programa','Pelo que você me contou, você já está no ponto de entrar. Posso te explicar como funciona a entrada?']]
+};
+let sgi=0;const SK=Object.keys(SUG);
+function drawSug(){
+ $('#sug-tabs').innerHTML=SK.map((k,i)=>`<button aria-selected="${i===sgi}" data-i="${i}">${k}</button>`).join('');
+ $('#sug').innerHTML=SUG[SK[sgi]].map(([c,q])=>`<div class="script sug"><div class="meta"><span class="eyebrow" style="color:var(--sug)">${c}</span><span class="tag t-sug">Sugestão de script</span></div><blockquote>${esc(q)}</blockquote><div class="meta"><span></span><button class="copy" data-copy="${esc(q).replace(/"/g,'&quot;')}">Copiar</button></div></div>`).join('');
+}
+$('#sug-tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b){sgi=+b.dataset.i;drawSug()}});
+drawSug();
+
+const OBJ=[
+ ['“Já comprei o material, não preciso de mais nada.”','O material entrega a ferramenta. O intensivo é o tempo com a equipe para aplicar ao seu caso. Pergunte o que a pessoa já conseguiu fazer sozinha e mostre o que falta para chegar ao objetivo que ela declarou.'],
+ ['“R$ 997 está caro para mim agora.”','Não force. Volte ao diagnóstico: qual é o custo de continuar como está (venda que trava, crédito negado, capital parado)? Condições de pagamento estão pendentes de definição; não prometa nenhuma.'],
+ ['“Não tenho dinheiro para investir em imóveis.”','A própria esteira prevê começar devagar, e o vídeo cita o leilão como exemplo de porta de entrada. Se a pessoa ainda está organizando as finanças, o degrau certo é o intensivo de finanças, não a mentoria.'],
+ ['“Sou corretor, não quero virar assessor.”','A ascensão não é troca de profissão. O argumento do vídeo é ampliar: dominando mais produtos, ele atende mais clientes. Se hoje o objetivo dele é só vender melhor, o intensivo já resolve e a conversa sobre assessoria fica para depois.'],
+ ['“O que é a SCP? Como eu entro?”','Não responda de improviso. A sigla e as regras não estão documentadas no material. Diga que é a etapa seguinte à mentoria e encaminhe para a Eliz até existir uma explicação oficial.'],
+ ['“Qual é o retorno garantido?”','Não existe promessa de retorno no material. A mentoria ensina a calcular investimento, retorno e viabilidade de cada operação; o resultado depende da operação escolhida.']
+];
+$('#obj').innerHTML=OBJ.map(([q,a])=>`<details><summary>${q}</summary><div class="dbody"><p>${a}</p></div></details>`).join('');
+
+/* ---------- KPIs ---------- */
+const KPI=[
+ ['Clientes por etapa','Contagem de clientes ativos em cada degrau, por trilha','Onde a esteira está cheia e onde está vazia','Semanal'],
+ ['Taxa de conversão do low ticket','Compradores do intensivo ÷ compradores do low ticket','Se a porta de entrada atrai o público certo','Semanal'],
+ ['Taxa de ascensão','Compradores do programa de R$ 2.997 ÷ participantes do intensivo','Se a ideia do próximo nível está sendo bem plantada','Por turma'],
+ ['Receita por cliente','Receita total ÷ clientes únicos, por trilha','Qual trilha vale mais','Mensal'],
+ ['Tempo entre compras','Dias entre a compra de um degrau e a do seguinte','O ritmo natural de maturação de cada perfil','Mensal'],
+ ['Motivos de perda','Classificação de cada “não”: preço, momento, perfil, sem resposta','O que ajustar em oferta, script ou qualificação','Semanal'],
+ ['Aproveitamento das oportunidades','Clientes qualificados que receberam a oferta ÷ clientes qualificados','Se a equipe está de fato oferecendo o próximo degrau','Semanal'],
+ ['Encaminhamentos para a SCP','Mentorados que entram na SCP e pessoas trazidas por assessores','Se o objetivo final está sendo alimentado','Mensal']
+];
+$('#kpis').innerHTML=KPI.map(r=>`<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+
+/* ---------- PENDÊNCIAS ---------- */
+const PEND=[
+ ['Validar com a Eliz antes de usar com cliente',[
+  'Grade da Mentoria Investidor Imobiliário, do conceito do mercado até o cálculo de investimento e retorno. É a tarefa que a reunião deixou para a Eliz.',
+  'O que é a SCP, como funciona, quem pode entrar e o que a equipe pode dizer sobre ela.',
+  'Formato de cada degrau de R$ 997: consultoria, intensivo ou evento; duração; ao vivo ou gravado; individual ou em grupo.',
+  'Preços do Planner do Autônomo, da Biblioteca Investidor Imobiliário e dos 50 Projetos de Casas Populares. Só o das Fichas (R$ 37) aparece.',
+  'Formato, entregáveis e duração da formação de Assessor de Investimentos Imobiliários.']],
+ ['Definir para a equipe conseguir executar',[
+  'Critérios objetivos de qualificação: faixa de renda, capital disponível, situação de crédito.',
+  'Sinais que indicam que o mentorado está pronto para a SCP.',
+  'Condições de fechamento: formas de pagamento, garantia, bônus. Nada disso aparece no vídeo.',
+  'Canal, prazo e responsável pelo primeiro contato após a compra do low ticket, e cadência de follow-up.',
+  'Objeções reais ouvidas dos clientes e as respostas da Eliz, para substituir as sugestões do Módulo 06.',
+  'Decisão sobre o webinário gravado para vender o intensivo, que ficou “a ver se vale a pena”.',
+  'Modelo de parceria com os assessores que vão captar pessoas para a SCP.']],
+ ['Trilhas que ficaram fora desta versão',[
+  'Perfil Assessor de Investimentos: falta criar o low ticket de entrada.',
+  '50 Projetos de Casas Populares (“o do Stefano”): público, entrega e ascensão não foram tratados.',
+  'No quadro, a descrição de público sob o Planner do Autônomo repete a da Biblioteca (“investidores em outros mercados…”). Conferir se é intencional.']],
+ ['Conferir no vídeo',[
+  'Não há fala da Eliz na gravação. Se a intenção é ter um vídeo de treinamento com ela, é preciso gravar a explicação com a voz dela.',
+  'O áudio dos outros participantes não foi gravado, então as respostas do Milton e da Eliz não estão documentadas.',
+  'Duas expressões corrigidas pelo contexto na legenda, a confirmar de ouvido: em 1:30, “a gente planta a ideia dele” (o transcritor automático ouviu “cropa”); em 2:15, “produto do meio” (ouviu “produto de e-mail”).',
+  'Como o vídeo é uma gravação de tela, os cortes aparecem como saltos no quadro. Os cortes de áudio têm transição suave.',
+  'O arquivo original termina com uma conversa privada de rede social na tela. Esse trecho foi removido; evite compartilhar o original.']]
+];
+$('#pend').innerHTML=PEND.map(([t,l],i)=>`<div class="panel"><div class="row" style="justify-content:space-between"><h3>${t}</h3><span class="tag t-pen">${l.length} itens</span></div><ul>${l.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+
+/* ---------- VÍDEO ---------- */
+const CH=[{"t": 0, "n": "Os produtos de entrada e os perfis"}, {"t": 34.4, "n": "Trilha do corretor"}, {"t": 77.4, "n": "Trilha da pessoa física: Planner"}, {"t": 121.5, "n": "Trilha do investidor: Biblioteca"}, {"t": 146, "n": "Dois low tickets levam à mentoria"}, {"t": 162.6, "n": "O perfil que falta: assessor de investimentos"}, {"t": 174.3, "n": "A mentoria: do conceito ao cálculo"}, {"t": 224.5, "n": "SCP, o destino da esteira"}, {"t": 260.8, "n": "Webinário para vender o intensivo"}, {"t": 283.9, "n": "Resumo final"}];
+const CUES=[{"s": 0.0, "e": 2.7, "x": "Milton, você fez os produtos, correto?"}, {"s": 2.7, "e": 9.68, "x": "Você fez dois que atingem... esse aqui atinge a pessoa física."}, {"s": 9.8, "e": 12.08, "x": "No final das contas, aqui eu estou pegando a pessoa física."}, {"s": 12.14, "e": 16.28, "x": "Aqui eu estou pegando a pessoa física também, investidor, né?"}, {"s": 16.48, "e": 21.26, "x": "Aqui eu estou pegando o corretor, como profissão dele,"}, {"s": 21.38, "e": 25.96, "x": "Para ele não ter trava na hora de vender. E aqui, no do Stefano, a gente"}, {"s": 25.96, "e": 27.7, "x": "Vai pegar também a pessoa física final."}, {"s": 27.78, "e": 29.62, "x": "Vamos tratar sobre esses três aqui."}, {"s": 29.8, "e": 30.52, "x": "Então, o que eu fiz?"}, {"s": 30.62, "e": 33.68, "x": "Eu criei a ascensão desses três, entendeu, Milton?"}, {"s": 34.42, "e": 36.26, "x": "Qual que é a ascensão do corretor?"}, {"s": 36.64, "e": 40.08, "x": "Ele quer o quê? Ele não quer ter trava na hora de vender."}, {"s": 40.3, "e": 45.32, "x": "Então, a Eliz vai colocar um pouco da narrativa que converte, em ângulo"}, {"s": 45.32, "e": 48.94, "x": "De crédito, trazendo essa linha, porque vai vender o imóvel financiado."}, {"s": 49.04, "e": 52.04, "x": "Então ele precisa dominar esses contextos para ele vender melhor."}, {"s": 52.75, "e": 56.89, "x": "Então ele vai para esse evento e depois a gente planta na ideia dele que,"}, {"s": 56.89, "e": 61.37, "x": "Se ele dominar mais produtos imobiliários, ele pode"}, {"s": 62.35, "e": 66.23, "x": "Abraçar mais clientes e se tornar um assessor de investimento imobiliário,"}, {"s": 66.23, "e": 67.99, "x": "E não apenas um corretor de imóveis."}, {"s": 68.87, "e": 73.51, "x": "Sacou? Então é assim que eu vou ascender um cara que quer vender melhor"}, {"s": 73.51, "e": 77.11, "x": "Para um cara que se tornou um assessor de investimento imobiliário. Pegou, Milton?"}, {"s": 77.39, "e": 81.37, "x": "Aí, no pessoa física aqui, que é o Planner do Autônomo, é o quê?"}, {"s": 81.65, "e": 85.53, "x": "Como que ele vai alinhar as finanças para conseguir um imóvel financiado."}, {"s": 85.63, "e": 89.91, "x": "Então ele tem ali esse tempo de tela conosco,"}, {"s": 89.91, "e": 94.57, "x": "Específico para isso. E aí a gente planta a ideia dele que ele pode se tornar"}, {"s": 94.57, "e": 98.55, "x": "Um investidor imobiliário, principalmente aqueles que já têm um perfil, né?"}, {"s": 98.55, "e": 104.25, "x": "Então a narrativa aqui é a mesma, só que eu acho que aqui é um pouco de"}, {"s": 104.25, "e": 109.09, "x": "Plantar. Eu estou plantando, eu estou alinhando aquele cara que já pensa nisso,"}, {"s": 109.83, "e": 113.99, "x": "Correto? E preparando ele para se tornar um investidor imobiliário,"}, {"s": 114.11, "e": 118.85, "x": "Às vezes começando devagar, indo para o leilão, enfim. Os especialistas vão"}, {"s": 118.85, "e": 122.13, "x": "Conseguir conduzir melhor as dores dele. Aí, o seguinte:"}, {"s": 122.33, "e": 126.71, "x": "Esse cara aqui, eu acho que ele já é um pouco mais qualificado, entendeu?"}, {"s": 126.91, "e": 130.45, "x": "Ele já é o cara que talvez já está com uma graninha ali e ele quer entender"}, {"s": 130.45, "e": 135.73, "x": "20 modelos... 20 operações imobiliárias. Então eu já vou colocar ele aqui no"}, {"s": 135.73, "e": 141.33, "x": "Produto do meio, para entender quais são essas operações imobiliárias."}, {"s": 141.33, "e": 145.77, "x": "Aí eu vendo para ele o Investidor Imobiliário da mesma forma."}, {"s": 146.03, "e": 150.92, "x": "Então, em dois produtos aqui que a gente tem no low ticket,"}, {"s": 151.12, "e": 153.74, "x": "Já dá para trabalhar o Investidor Imobiliário com a mentoria."}, {"s": 154.4, "e": 158.6, "x": "E aqui é outro produto, que é voltado para os corretores,"}, {"s": 158.68, "e": 161.9, "x": "Que é para ele se tornar um assessor de investimentos imobiliários."}, {"s": 162.56, "e": 165.92, "x": "Aí, o que vai faltar nesse primeiro momento?"}, {"s": 166.16, "e": 168.5, "x": "Tem um outro perfil de cliente, que a Eliz falou,"}, {"s": 168.7, "e": 170.12, "x": "Que é o assessor de investimentos."}, {"s": 170.22, "e": 174.26, "x": "Então vale a pena pensar já no low ticket para isso."}, {"s": 174.26, "e": 178.58, "x": "Só que, dentro da mentoria aqui do Investidor Imobiliário,"}, {"s": 178.98, "e": 181.82, "x": "A Eliz começou a dizer para mim: primeiramente, eu vou explicar para ele"}, {"s": 181.82, "e": 185.56, "x": "O conceito do mercado imobiliário, o que é cada etapa."}, {"s": 185.58, "e": 190.28, "x": "E, no final das contas, eu estou ajudando ele a conseguir fazer um cálculo"}, {"s": 190.28, "e": 195.38, "x": "De investimento e retorno, de viabilidade da operação dele."}, {"s": 195.8, "e": 201.0, "x": "Aí, Eliz, fica uma tarefa, porque daqui eu já vou conseguir desenhar esses"}, {"s": 201.0, "e": 204.52, "x": "Meios que vão levar o cara para a mentoria."}, {"s": 205.38, "e": 211.21, "x": "Aqui é interessante entender o que você quer trabalhar na grade, desde o"}, {"s": 211.21, "e": 217.51, "x": "Que é até o cálculo, entendeu? Você traz para a gente, porque aí a gente vai"}, {"s": 217.51, "e": 222.23, "x": "Tentar traçar uma maneira escalável de fazer isso, para você não ficar agarrada"}, {"s": 222.23, "e": 226.43, "x": "Com cada um deles ali, entendeu? E aí é um ponto interessante, que é o quê?"}, {"s": 226.43, "e": 231.69, "x": "Eu gostei do ponto que a gente chegou, que o último produto antes"}, {"s": 231.69, "e": 239.17, "x": "Do SCP é a mentoria/comunidade Investidor Imobiliário, que prepara"}, {"s": 239.17, "e": 244.19, "x": "O cara para entrar no SCP. E a outra via que a gente tem, que eu gostei muito,"}, {"s": 244.19, "e": 249.83, "x": "É a criação dos assessores de investimento, que, num futuro próximo,"}, {"s": 249.83, "e": 253.91, "x": "Trabalhando dentro da nossa ótica, a ideia é que eles captem pessoas para"}, {"s": 253.91, "e": 260.75, "x": "SCP. Foi isso que eu entendi? É, eu acho que esse desenho bateu bem, entendeu?"}, {"s": 260.75, "e": 265.57, "x": "Só um contexto que talvez eu possa tentar fazer aqui, de adendo,"}, {"s": 265.65, "e": 268.31, "x": "É o quê? Colocar"}, {"s": 270.18, "e": 272.38, "x": "Um webinário gravado aqui,"}, {"s": 273.1, "e": 278.12, "x": "Só para tentar vender esse intensivão, essa consultoria aqui,"}, {"s": 278.26, "e": 281.42, "x": "Entendeu? Aí é um detalhe que eu vou ver se vale ou não a pena fazer,"}, {"s": 281.56, "e": 283.24, "x": "Mas eu acredito que vale, tá?"}, {"s": 283.9, "e": 288.42, "x": "Então, por mim ficou claro: eu tenho o SCP como objetivo final,"}, {"s": 288.64, "e": 294.12, "x": "Eu tenho os investidores aqui e eu tenho os assessores aqui. Os assessores,"}, {"s": 294.12, "e": 298.42, "x": "Antes de entrar na mentoria, eles passam por uma consultoria,"}, {"s": 298.44, "e": 301.5, "x": "Um intensivo, um treinamento, algo que a gente vai desenhar."}, {"s": 301.58, "e": 306.62, "x": "E eles são adquiridos pelos low tickets, que já estão posicionados"}, {"s": 306.62, "e": 309.5, "x": "De acordo com cada público-alvo. Top?"}];
+const vid=$('#vid');
+try{const tt=vid.addTextTrack('subtitles','Português','pt-BR');CUES.forEach(c=>tt.addCue(new VTTCue(c.s,c.e,c.x)));tt.mode='showing'}catch(_){}
+$('#chapters').innerHTML=CH.map(c=>`<button data-t="${c.t}"><b>${fmt(c.t)}</b><span>${c.n}</span></button>`).join('');
+$('#transcript').innerHTML=CUES.map(c=>`<button data-t="${c.s}"><b>${fmt(c.s)}</b><span>${esc(c.x)}</span></button>`).join('');
+function seek(t){go('video');vid.currentTime=t;vid.play().catch(()=>{});vid.scrollIntoView({block:'nearest'})}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-t]');if(b){seek(+b.dataset.t);return}
+ const c=e.target.closest('.copy');if(c){const txt=c.dataset.copy.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+  const ok=()=>{c.textContent='Copiado';setTimeout(()=>c.textContent='Copiar',1600)};
+  const fb=()=>{const q=c.closest('.script').querySelector('blockquote');const r=document.createRange();r.selectNodeContents(q);const s=getSelection();s.removeAllRanges();s.addRange(r);c.textContent='Selecionado';setTimeout(()=>c.textContent='Copiar',1600)};
+  try{navigator.clipboard.writeText(txt).then(ok,fb)}catch(_){fb()}}
+});
+vid.addEventListener('timeupdate',()=>{const t=vid.currentTime;
+ let ci=-1;CH.forEach((c,i)=>{if(t>=c.t)ci=i});
+ document.querySelectorAll('#chapters button').forEach((b,i)=>b.classList.toggle('on',i===ci));
+ let on=null;document.querySelectorAll('#transcript button').forEach((b,i)=>{const a=t>=CUES[i].s&&t<CUES[i].e;b.classList.toggle('on',a);if(a)on=b});
+ if(on&&!vid.paused){const p=on.parentElement;const y=on.offsetTop-p.offsetTop;if(y<p.scrollTop||y>p.scrollTop+p.clientHeight-60)p.scrollTop=y-80}
+});
+
+/* ---------- ROTAS ---------- */
+const VIEWS=['visao','perfis','produtos','processo','ascensao','scripts','indicadores','video','pendencias'];
+function go(v){if(location.hash!=='#'+v)location.hash=v;else show()}
+function show(){let v=location.hash.slice(1);if(!VIEWS.includes(v))v='visao';
+ VIEWS.forEach(k=>{document.getElementById('v-'+k).hidden=k!==v});
+ document.querySelectorAll('#nav a').forEach(a=>{const on=a.getAttribute('href')==='#'+v;if(on){a.setAttribute('aria-current','page');a.scrollIntoView({block:'nearest',inline:'center'})}else a.removeAttribute('aria-current')});
+ if(v!=='video'&&!vid.paused)vid.pause();
+ window.scrollTo(0,0)}
+addEventListener('hashchange',show);show();
+</script>
+
+</body>
+</html>

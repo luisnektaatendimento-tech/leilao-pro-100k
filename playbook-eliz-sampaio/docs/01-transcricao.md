@@ -1,0 +1,222 @@
+# Transcrição
+
+Fonte: gravação de tela de reunião (13/11/2026), 10min18s. Só o microfone de quem conduz a reunião foi gravado; as falas do Milton, da Eliz e de outros participantes não estão no áudio. Quem fala não é a Eliz: ela é citada em terceira pessoa e chamada pelo nome.
+
+## 1. Transcrição bruta do original (tempos do arquivo original)
+
+Texto como saiu do transcritor automático, sem correção. Trechos marcados com ✂ foram removidos na edição.
+
+- `00:01.2` ✂ Só para a gente tangibilizar tudo aqui e depois eu mandar lá no Cloudão.
+- `00:04.9` ✂ O que acontece?
+- `00:06.4` Milton, você fez os produtos, correto?
+- `00:09.0` Você fez dois que atingem a pessoa física.
+- `00:16.1` No final das contas aqui, eu estou pegando a pessoa física.
+- `00:18.8` Aqui eu estou pegando a pessoa física também, o investidor.
+- `00:24.1` Aqui eu estou pegando o corretor como profissão dele,
+- `00:27.8` para ele não ter trava na hora de vender.
+- `00:30.7` E aqui no do Stefano, a gente vai pegar também a pessoa física final.
+- `00:34.6` Vamos tratar sobre esses três aqui.
+- `00:36.6` Então, o que eu fiz?
+- `00:37.4` Eu criei a ascensão desses três, entendeu, Milton?
+- `00:42.0` Qual que é a ascensão do corretor?
+- `00:44.9` Ele quer o quê?
+- `00:45.9` Ele não quer ter trava na hora de vender.
+- `00:48.5` Então, a Elis vai colocar um pouco da narrativa que converte
+- `00:53.7` em ângulo de crédito, trazendo essa linha,
+- `00:56.4` porque vai vender o imóvel financeiro.
+- `00:57.8` Então, ele precisa dominar esses contextos para ele vender melhor.
+- `01:02.0` Então, ele vai para esse evento e depois a gente planta na ideia dele
+- `01:06.0` que se ele dominar mais produtos imobiliários,
+- `01:10.3` ele pode abraçar mais clientes e se tornar um assessor de investimentos imobiliários
+- `01:15.6` e não apenas um corretor de imóveis.
+- `01:18.2` Sacou?
+- `01:19.1` Então, assim que eu vou acender um cara que quer vender melhor
+- `01:22.8` para um cara que se tornou um assessor de investimento imobiliário.
+- `01:26.2` Pegou, Milton?
+- `01:31.0` ✂ Pegou, Milton?
+- `01:33.7` ✂ Pegou, Milton?
+- `01:36.9` ✂ Tá.
+- `01:38.7` Aí, no pessoa física aqui, que é o plano do autônomo, é o quê?
+- `01:44.6` ✂ Como que ele vai alinhar as finanças?
+- `01:46.9` ✂ Tirar esse negócio aqui.
+- `01:48.3` Como que ele vai alinhar as finanças para conseguir um imóvel financiado?
+- `01:52.1` Então, ele tem ali esse tempo de tela conosco específico
+- `01:57.3` para isso.
+- `01:57.8` E aí, a gente cropa a ideia dele que ele pode se tornar um investidor imobiliário,
+- `02:02.3` principalmente aqueles que já têm um perfil.
+- `02:05.5` Então, a narrativa aqui é a mesma.
+- `02:08.4` Só que eu acho que aqui é um pouco de plantar.
+- `02:11.7` Eu estou plantando, eu estou alinhando aquele cara que já pensa nisso,
+- `02:16.6` correto?
+- `02:17.5` E preparando ele para se tornar um investidor imobiliário,
+- `02:20.7` às vezes começando devagar, indo para o leilão, enfim.
+- `02:24.2` Os especialistas aí vão conseguir conduzir melhor as dores dele.
+- `02:28.3` ✂ Aqui, eu acredito que a gente já pega um cara que ele...
+- `02:31.9` ✂ Senta esse aqui, gente.
+- `02:33.4` ✂ É isso mesmo?
+- `02:37.2` ✂ Aí, o seguinte.
+- `02:38.9` Esse cara aqui, eu acho que ele já é um pouco mais qualificado.
+- `02:42.6` Entendeu?
+- `02:43.1` Ele já é o cara que talvez já está com uma graninha ali
+- `02:45.7` e ele quer entender 20 modelos.
+- `02:47.5` Como é que é aqui?
+- `02:48.1` 20 operações imobiliárias.
+- `02:50.2` Então, eu já vou colocar ele aqui no produto de e-mail
+- `02:53.7` para entender quais são essas operações imobiliárias.
+- `02:57.8` Aí, eu vendo para ele um investidor imobiliário da mesma forma.
+- `03:01.7` Então, em dois produtos aqui que a gente tem no Low Ticket,
+- `03:07.3` já dá para trabalhar o investidor imobiliário com a mentoria.
+- `03:10.6` E aqui é outro produto que é voltado para os corretores
+- `03:14.8` que é para ele se tornar um assessor de investimentos imobiliários.
+- `03:19.0` ✂ Aí, o que vai faltar nesse primeiro momento?
+- `03:23.4` Tem um outro perfil de cliente que a Elis falou,
+- `03:25.9` que é o assessor de investimentos.
+- `03:27.3` Então, vale a pena pensar já no Low Ticket para isso.
+- `03:31.7` Só que, dentro da mentoria aqui do investidor imobiliário,
+- `03:37.0` a Elis começou a dizer para mim,
+- `03:38.7` primeiramente, eu vou explicar para ele o conceito do mercado imobiliário,
+- `03:42.7` o que é cada etapa.
+- `03:43.9` E, no final das contas, eu estou ajudando ele
+- `03:46.5` a conseguir fazer um cálculo de investimento e retorno,
+- `03:52.1` de viabilidade da operação dele.
+- `03:55.4` Aí, Elis, fica uma...
+- `03:57.3` Uma tarefa, porque daqui eu já vou conseguir desenhar esses meios
+- `04:02.0` que vão levar o cara para a mentoria.
+- `04:05.0` Aqui é interessante entender
+- `04:06.6` o que você quer trabalhar na grade,
+- `04:10.0` desde o que é até o cálculo, entendeu?
+- `04:14.0` Você traz para a gente,
+- `04:16.1` porque aí a gente vai tentar traçar uma maneira escalável
+- `04:19.1` de fazer isso, para você não ficar agarrado com cada um deles ali, entendeu?
+- `04:22.0` com cada um deles ali, entendeu?
+- `08:02.4` E aí é um ponto interessante
+- `08:04.0` que é o quê? Eu gostei do ponto
+- `08:05.7` que a gente chegou, que
+- `08:08.0` o último produto antes
+- `08:10.7` do SCP
+- `08:11.6` é a mentoria
+- `08:13.8` barra comunidade
+- `08:15.3` investidor imobiliário
+- `08:16.9` que prepara o cara pra entrar no SCP
+- `08:19.9` e a outra via
+- `08:21.5` que a gente tem, que eu gostei muito
+- `08:22.9` é a criação dos assessores
+- `08:25.5` de investimento
+- `08:26.3` que num futuro próximo
+- `08:28.6` trabalhando dentro da nossa ótica
+- `08:30.7` a ideia é que eles captem pessoas pra SCP
+- `08:32.9` foi isso que eu entendi?
+- `08:58.4` É, eu acho que esse desenho bateu bem
+- `09:01.7` Entendeu?
+- `09:03.3` Só um contexto que talvez eu possa
+- `09:05.6` Tentar fazer aqui
+- `09:07.1` De adendo
+- `09:08.6` É o que? Colocar uma
+- `09:13.3` Um webinário
+- `09:14.4` Gravado aqui
+- `09:16.2` Só pra tentar vender
+- `09:17.8` Esse intensivão
+- `09:20.2` Essa consultoria aqui, entendeu?
+- `09:21.8` Aí é um detalhe que eu vou ver se vale ou não
+- `09:23.9` A pena fazer, mas eu acredito que vale
+- `09:25.6` então, por mim ficou claro
+- `09:28.9` eu tenho o SCP
+- `09:30.8` que é o objetivo final, eu tenho os investidores
+- `09:33.3` aqui, e eu tenho os assessores
+- `09:35.5` aqui, os assessores
+- `09:37.5` antes de entrar na mentoria
+- `09:40.3` eles passam
+- `09:41.4` por uma consultoria, um intensivo
+- `09:43.2` um treinamento, algo que a gente vai desenhar
+- `09:45.5` e eles são adquiridos
+- `09:47.5` pelos low tickets aí
+- `09:49.1` que já estão posicionados aí de acordo
+- `09:51.2` com cada público-alvo
+- `09:56.8` top?
+- `09:57.4` bora
+
+Entre 04:24 e 08:02 e entre 08:34 e 08:58 o condutor apenas ouve os outros participantes (há só “uhum” e “isso”). Esses trechos foram removidos.
+
+## 2. Transcrição revisada do vídeo editado (tempos do vídeo editado)
+
+Português revisado, mesma ordem e mesmo sentido do áudio. É o texto das legendas (`legendas.vtt`).
+
+- `00:00.0` Milton, você fez os produtos, correto?
+- `00:02.7` Você fez dois que atingem... esse aqui atinge a pessoa física.
+- `00:09.8` No final das contas, aqui eu estou pegando a pessoa física.
+- `00:12.1` Aqui eu estou pegando a pessoa física também, investidor, né?
+- `00:16.5` Aqui eu estou pegando o corretor, como profissão dele,
+- `00:21.4` Para ele não ter trava na hora de vender. E aqui, no do Stefano, a gente
+- `00:26.0` Vai pegar também a pessoa física final.
+- `00:27.8` Vamos tratar sobre esses três aqui.
+- `00:29.8` Então, o que eu fiz?
+- `00:30.6` Eu criei a ascensão desses três, entendeu, Milton?
+- `00:34.4` Qual que é a ascensão do corretor?
+- `00:36.6` Ele quer o quê? Ele não quer ter trava na hora de vender.
+- `00:40.3` Então, a Eliz vai colocar um pouco da narrativa que converte, em ângulo
+- `00:45.3` De crédito, trazendo essa linha, porque vai vender o imóvel financiado.
+- `00:49.0` Então ele precisa dominar esses contextos para ele vender melhor.
+- `00:52.8` Então ele vai para esse evento e depois a gente planta na ideia dele que,
+- `00:56.9` Se ele dominar mais produtos imobiliários, ele pode
+- `01:02.4` Abraçar mais clientes e se tornar um assessor de investimento imobiliário,
+- `01:06.2` E não apenas um corretor de imóveis.
+- `01:08.9` Sacou? Então é assim que eu vou ascender um cara que quer vender melhor
+- `01:13.5` Para um cara que se tornou um assessor de investimento imobiliário. Pegou, Milton?
+- `01:17.4` Aí, no pessoa física aqui, que é o Planner do Autônomo, é o quê?
+- `01:21.7` Como que ele vai alinhar as finanças para conseguir um imóvel financiado.
+- `01:25.6` Então ele tem ali esse tempo de tela conosco,
+- `01:29.9` Específico para isso. E aí a gente planta a ideia dele que ele pode se tornar
+- `01:34.6` Um investidor imobiliário, principalmente aqueles que já têm um perfil, né?
+- `01:38.5` Então a narrativa aqui é a mesma, só que eu acho que aqui é um pouco de
+- `01:44.2` Plantar. Eu estou plantando, eu estou alinhando aquele cara que já pensa nisso,
+- `01:49.8` Correto? E preparando ele para se tornar um investidor imobiliário,
+- `01:54.1` Às vezes começando devagar, indo para o leilão, enfim. Os especialistas vão
+- `01:58.8` Conseguir conduzir melhor as dores dele. Aí, o seguinte:
+- `02:02.3` Esse cara aqui, eu acho que ele já é um pouco mais qualificado, entendeu?
+- `02:06.9` Ele já é o cara que talvez já está com uma graninha ali e ele quer entender
+- `02:10.4` 20 modelos... 20 operações imobiliárias. Então eu já vou colocar ele aqui no
+- `02:15.7` Produto do meio, para entender quais são essas operações imobiliárias.
+- `02:21.3` Aí eu vendo para ele o Investidor Imobiliário da mesma forma.
+- `02:26.0` Então, em dois produtos aqui que a gente tem no low ticket,
+- `02:31.1` Já dá para trabalhar o Investidor Imobiliário com a mentoria.
+- `02:34.4` E aqui é outro produto, que é voltado para os corretores,
+- `02:38.7` Que é para ele se tornar um assessor de investimentos imobiliários.
+- `02:42.6` Aí, o que vai faltar nesse primeiro momento?
+- `02:46.2` Tem um outro perfil de cliente, que a Eliz falou,
+- `02:48.7` Que é o assessor de investimentos.
+- `02:50.2` Então vale a pena pensar já no low ticket para isso.
+- `02:54.3` Só que, dentro da mentoria aqui do Investidor Imobiliário,
+- `02:59.0` A Eliz começou a dizer para mim: primeiramente, eu vou explicar para ele
+- `03:01.8` O conceito do mercado imobiliário, o que é cada etapa.
+- `03:05.6` E, no final das contas, eu estou ajudando ele a conseguir fazer um cálculo
+- `03:10.3` De investimento e retorno, de viabilidade da operação dele.
+- `03:15.8` Aí, Eliz, fica uma tarefa, porque daqui eu já vou conseguir desenhar esses
+- `03:21.0` Meios que vão levar o cara para a mentoria.
+- `03:25.4` Aqui é interessante entender o que você quer trabalhar na grade, desde o
+- `03:31.2` Que é até o cálculo, entendeu? Você traz para a gente, porque aí a gente vai
+- `03:37.5` Tentar traçar uma maneira escalável de fazer isso, para você não ficar agarrada
+- `03:42.2` Com cada um deles ali, entendeu? E aí é um ponto interessante, que é o quê?
+- `03:46.4` Eu gostei do ponto que a gente chegou, que o último produto antes
+- `03:51.7` Do SCP é a mentoria/comunidade Investidor Imobiliário, que prepara
+- `03:59.2` O cara para entrar no SCP. E a outra via que a gente tem, que eu gostei muito,
+- `04:04.2` É a criação dos assessores de investimento, que, num futuro próximo,
+- `04:09.8` Trabalhando dentro da nossa ótica, a ideia é que eles captem pessoas para
+- `04:13.9` SCP. Foi isso que eu entendi? É, eu acho que esse desenho bateu bem, entendeu?
+- `04:20.8` Só um contexto que talvez eu possa tentar fazer aqui, de adendo,
+- `04:25.6` É o quê? Colocar
+- `04:30.2` Um webinário gravado aqui,
+- `04:33.1` Só para tentar vender esse intensivão, essa consultoria aqui,
+- `04:38.3` Entendeu? Aí é um detalhe que eu vou ver se vale ou não a pena fazer,
+- `04:41.6` Mas eu acredito que vale, tá?
+- `04:43.9` Então, por mim ficou claro: eu tenho o SCP como objetivo final,
+- `04:48.6` Eu tenho os investidores aqui e eu tenho os assessores aqui. Os assessores,
+- `04:54.1` Antes de entrar na mentoria, eles passam por uma consultoria,
+- `04:58.4` Um intensivo, um treinamento, algo que a gente vai desenhar.
+- `05:01.6` E eles são adquiridos pelos low tickets, que já estão posicionados
+- `05:06.6` De acordo com cada público-alvo. Top?
+
+## 3. Pontos a conferir de ouvido
+
+- 01:30 do editado: legenda traz “a gente planta a ideia dele”; o transcritor ouviu “cropa a ideia dele”.
+- 02:15 do editado: legenda traz “produto do meio”; o transcritor ouviu “produto de e-mail”.
+- “SCP” é dito cinco vezes e nunca explicado.
