@@ -1,0 +1,8 @@
+node_modules/
+*.mp4
+*.wav
+src/
+projeto/test/
+*.wav
+*.log
+package-lock.json

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>EP07 Esteira de Ascensão · motor</title>
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:500;src:url(../node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:600;src:url(../node_modules/@fontsource/manrope/files/manrope-latin-600-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:700;src:url(../node_modules/@fontsource/manrope/files/manrope-latin-700-normal.woff2)}
+@font-face{font-family:Manrope;font-weight:800;src:url(../node_modules/@fontsource/manrope/files/manrope-latin-800-normal.woff2)}
+@font-face{font-family:Mono;font-weight:500;src:url(../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2)}
+:root{--bg:#08080B;--surf:#111116;--card:#211536;--acc:#8155D9;--glow:#A98BF0;--ink:#FFFFFF;--mute:#B9B6C3;--amber:#E8B45A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--bg)}
+body{font-family:Inter,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--bg)}
+#bg{position:absolute;inset:-200px;background-image:radial-gradient(rgba(169,139,240,.16) 1.2px,transparent 1.4px);background-size:44px 44px}
+#glow1,#glow2{position:absolute;width:1500px;height:1500px;border-radius:50%;filter:blur(30px)}
+#glow1{background:radial-gradient(circle,rgba(129,85,217,.20),transparent 62%)}
+#glow2{background:radial-gradient(circle,rgba(110,60,200,.12),transparent 60%)}
+#vign{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 42%,rgba(0,0,0,.78) 100%)}
+#world{position:absolute;left:0;top:0;width:3000px;height:1900px;transform-origin:0 0}
+#edges{position:absolute;left:0;top:0;overflow:visible}
+.node{position:absolute;height:118px;border-radius:18px;padding:15px 20px 0;background:linear-gradient(180deg,rgba(23,18,34,.94),rgba(14,13,19,.94));border:1.5px solid #2a2436;box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.node .tag{font:500 13px Mono,monospace;letter-spacing:.16em;color:var(--mute);display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.node .tag i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.node .tt{font:700 25px Manrope;letter-spacing:-.01em;white-space:nowrap}
+.node .sb{font:400 16px Inter;color:var(--mute);margin-top:5px;white-space:nowrap}
+.node .pr{position:absolute;right:16px;top:12px;font:600 15px Inter;font-variant-numeric:tabular-nums;color:#fff;padding:4px 11px;border-radius:999px;background:rgba(129,85,217,.22);border:1px solid rgba(169,139,240,.45)}
+.node.icp{height:108px}
+.node.prog{height:130px;padding-top:18px}
+.node.prog .tt{font-size:27px}
+.node.pend{border-style:dashed;background:rgba(14,13,19,.75)}
+.node.scp{height:190px;border-radius:30px;text-align:center;padding-top:22px}
+.node.scp .tt{font:800 72px Manrope;letter-spacing:.08em;margin-top:2px}
+.node.scp .tag{justify-content:center}
+.hdr{position:absolute;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.hdr b{display:block;font:500 15px Mono;letter-spacing:.24em;color:var(--glow)}
+.hdr span{display:block;font:700 34px Manrope;letter-spacing:-.01em;margin-top:8px}
+.colband{position:absolute;top:150px;height:1300px;border-radius:28px;background:linear-gradient(180deg,rgba(129,85,217,.13),rgba(129,85,217,.03));border:1px solid rgba(169,139,240,.28)}
+.elab{font:500 15px Mono;letter-spacing:.06em;fill:#8f8a9c}
+.wtag{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font:500 15px Mono;letter-spacing:.08em;padding:9px 16px;border-radius:999px;border:1px solid #3a3150;background:rgba(10,9,14,.94);color:var(--ink);text-transform:uppercase}
+.wchip{position:absolute;white-space:nowrap;font:600 19px Inter;padding:9px 17px;border-radius:999px;border:1px solid rgba(169,139,240,.45);background:rgba(33,21,54,.92);color:#fff}
+.frame{position:absolute;border-radius:16px;overflow:hidden;background:#0d0c11;border:1px solid #2d2640;box-shadow:0 40px 120px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.03)}
+.frame .bar{height:42px;display:flex;align-items:center;gap:8px;padding:0 16px;background:#141219;border-bottom:1px solid #231f2c}
+.frame .bar i{width:11px;height:11px;border-radius:50%;background:#2f2a3a}
+.frame .url{margin-left:16px;font:500 14px Mono;color:#b4aec2;background:#0c0b10;border:1px solid #29243a;border-radius:8px;padding:5px 14px;min-width:300px}
+.frame .vp{position:relative;overflow:hidden}
+.frame .vp img{position:absolute;left:0;top:0;transform-origin:0 0}
+.hl{position:absolute;border-radius:12px;border:2.5px solid var(--glow);box-shadow:0 0 28px rgba(169,139,240,.6)}
+.hlab{position:absolute;font:600 16px Inter;color:#fff;background:var(--acc);padding:7px 13px;border-radius:9px;white-space:nowrap}
+#dim{position:absolute;inset:0;background:#060509}
+.ov{position:absolute}
+#subs{position:absolute;left:0;right:0;bottom:40px;text-align:center;font:600 38px Inter;letter-spacing:-.005em;line-height:1.25;text-shadow:0 2px 14px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.9)}
+#subgrad{position:absolute;left:0;right:0;bottom:0;height:210px;background:linear-gradient(0deg,rgba(0,0,0,.74),transparent)}
+#chlab{position:absolute;left:56px;top:44px;font:500 15px Mono;letter-spacing:.16em;color:#d3cfdc;display:flex;align-items:center;gap:14px}
+#chlab b{color:var(--glow);font-weight:500}
+#chbar{position:absolute;left:56px;top:76px;display:flex;gap:6px}
+#chbar i{display:block;width:34px;height:3px;border-radius:2px;background:#2b2636;overflow:hidden;position:relative}
+#chbar i u{position:absolute;left:0;top:0;bottom:0;background:var(--glow)}
+#brand{position:absolute;right:56px;top:42px;font:500 14px Mono;letter-spacing:.2em;color:#7d778a}
+.mono{font:500 16px Mono;letter-spacing:.22em;color:var(--glow);text-transform:uppercase}
+.big{font:800 118px Manrope;letter-spacing:-.03em;line-height:1}
+.pcard{position:absolute;width:400px;border-radius:18px;background:linear-gradient(180deg,rgba(33,21,54,.88),rgba(17,17,22,.95));border:1px solid rgba(169,139,240,.35);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.pcard .shot{height:226px;overflow:hidden;position:relative;border-bottom:1px solid rgba(169,139,240,.25);background:#0c0b10}
+.pcard .shot img{width:100%;display:block}
+.pcard .u{position:absolute;left:10px;top:10px;font:500 11px Mono;color:#cfc9da;background:rgba(8,8,11,.8);padding:4px 8px;border-radius:6px}
+.pcard .meta{padding:18px 20px 20px}
+.pcard .meta b{display:block;font:700 23px Manrope;line-height:1.2}
+.pcard .meta span{display:inline-block;margin-top:12px;font:500 13px Mono;letter-spacing:.12em;color:var(--glow);text-transform:uppercase}
+.pcard.ghost{border-style:dashed;border-color:#3b3450;background:rgba(17,17,22,.8)}
+.gnode{position:absolute;width:520px;border-radius:22px;padding:30px 32px;background:linear-gradient(180deg,rgba(33,21,54,.92),rgba(17,17,22,.95));border:1.5px solid rgba(169,139,240,.5);box-shadow:0 0 50px rgba(129,85,217,.25)}
+.gnode small{font:500 14px Mono;letter-spacing:.2em;color:var(--glow)}
+.gnode b{display:block;font:800 40px Manrope;line-height:1.12;margin-top:12px;letter-spacing:-.01em}
+.gchip{display:inline-block;margin-top:18px;font:600 19px Inter;padding:9px 16px;border-radius:999px;border:1px solid rgba(169,139,240,.45);background:rgba(129,85,217,.18)}
+</style></head>
+<body><div id="stage">
+ <div id="bg"></div><div id="glow1"></div><div id="glow2"></div>
+ <div id="world"><svg id="edges" width="3000" height="1900"></svg></div>
+ <div id="vign"></div>
+ <div id="dim"></div>
+ <div id="demo"></div>
+ <div id="ovl"></div>
+ <div id="chlab"></div><div id="chbar"></div><div id="brand">ELIZ SAMPAIO · ESTEIRA DE ASCENSÃO</div>
+ <div id="subgrad"></div><div id="subs"></div>
+</div>
+<script src="data.js"></script>
+<script>
+const D=window.DATA, A='../assets/';
+const COL={icp:'#B9B6C3',low:'#A98BF0',int:'#8155D9',prog:'#C9B2FF',scp:'#FFFFFF',pend:'#E8B45A'};
+const NAMED={violet:'#A98BF0',white:'#FFFFFF',amber:'#E8B45A'};
+const $=s=>document.querySelector(s), world=$('#world'), svg=$('#edges');
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, eo=x=>1-Math.pow(1-x,3), lerp=(a,b,p)=>a+(b-a)*p;
+function win(t,t0,t1,i=.35,o=.45){return Math.min(ease(cl((t-t0)/i)),ease(cl((t1-t)/o)))}
+function hexA(h,a){const n=parseInt(h.slice(1),16);return `rgba(${n>>16},${n>>8&255},${n&255},${a})`}
+function mk(html,cls='ov',parent){const d=document.createElement('div');d.className=cls;d.innerHTML=html;(parent||$('#ovl')).appendChild(d);return d}
+
+// ---------- colunas
+const C=D.cols, COLS=[[C.XI,'PERFIL','Quem entra',['icp']],[C.XL,'ENTRADA','Low ticket',['low']],[C.XN,'INTENSIVO','R$ 997',['int']],[C.XP,'PROGRAMA','R$ 2.997',['prog']],[C.XS,'DESTINO','Objetivo final',['scp']]];
+const HDR=COLS.map(([x,a,b,k])=>{const el=mk(`<b>${a}</b><span>${b}</span>`,'hdr',world);el.style.left=x+'px';el.style.top='180px';
+  const r=Math.min(...D.nodes.filter(n=>n.x===x&&k.includes(n.kind)).map(n=>n.reveal));return {el,r}});
+// ---------- nós
+const NM={};
+for(const n of D.nodes){
+  const h={icp:108,prog:130,scp:190}[n.kind]||118; n.h=h;
+  const el=mk((n.tag?`<div class="tag"><i style="background:${COL[n.kind]}"></i>${n.tag}</div>`:'')+`<div class="tt">${n.title}</div>`+(n.sub?`<div class="sb">${n.sub}</div>`:'')+(n.price?`<div class="pr">${n.price}</div>`:''),'node '+n.kind,world);
+  el.style.width=n.w+'px'; el.style.left=(n.x-n.w/2)+'px'; el.style.top=(n.y-h/2)+'px';
+  if(n.kind==='pend') el.style.borderColor='rgba(232,180,90,.45)';
+  n.el=el; NM[n.id]=n;
+}
+const scpRing=mk('','',world); Object.assign(scpRing.style,{position:'absolute',width:'420px',height:'420px',borderRadius:'50%',left:(NM.scp.x-210)+'px',top:(NM.scp.y-210)+'px',border:'1px solid rgba(169,139,240,.35)',background:'radial-gradient(circle,rgba(129,85,217,.20),transparent 65%)'});
+world.insertBefore(scpRing,world.firstChild.nextSibling);
+// ---------- arestas
+function anchor(n,s){const hw=n.w/2,hh=n.h/2;return s==='b'?[n.x,n.y+hh]:s==='t'?[n.x,n.y-hh]:s==='l'?[n.x-hw,n.y]:[n.x+hw,n.y]}
+const NS='http://www.w3.org/2000/svg', EM={};
+for(const e of D.edges){
+  const a=NM[e.a],b=NM[e.b],dx=b.x-a.x,dy=b.y-a.y; let p0,p1,c0,c1;
+  if(Math.abs(dy)>Math.abs(dx)*0.7){const dn=dy>0;p0=anchor(a,dn?'b':'t');p1=anchor(b,dn?'t':'b');const m=(p1[1]-p0[1])*.5;c0=[p0[0],p0[1]+m];c1=[p1[0],p1[1]-m]}
+  else{const r=dx>0;p0=anchor(a,r?'r':'l');p1=anchor(b,r?'l':'r');const m=(p1[0]-p0[0])*.5;c0=[p0[0]+m,p0[1]+e.bend];c1=[p1[0]-m,p1[1]+e.bend]}
+  const d=`M${p0} C${c0} ${c1} ${p1}`, g=document.createElementNS(NS,'g');
+  const mkp=(w)=>{const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('fill','none');p.setAttribute('stroke-width',w);p.setAttribute('stroke-linecap','round');return p};
+  const base=mkp('2.2'),glow=mkp('3.2'),arr=document.createElementNS(NS,'path');
+  arr.setAttribute('d','M-11,-6 L0,0 L-11,6');arr.setAttribute('fill','none');arr.setAttribute('stroke-width','2.4');arr.setAttribute('stroke-linecap','round');arr.setAttribute('stroke-linejoin','round');
+  g.append(base,glow,arr); const dots=[];for(let k=0;k<3;k++){const c=document.createElementNS(NS,'circle');c.setAttribute('r','4.5');g.appendChild(c);dots.push(c)}
+  let lab=null;if(e.label){lab=document.createElementNS(NS,'text');lab.setAttribute('class','elab');lab.setAttribute('text-anchor','middle');lab.textContent=e.label.toUpperCase();g.appendChild(lab)}
+  svg.appendChild(g); const L=base.getTotalLength(), end=base.getPointAtLength(L), pre=base.getPointAtLength(L-6);
+  arr.setAttribute('transform',`translate(${end.x},${end.y}) rotate(${Math.atan2(end.y-pre.y,end.x-pre.x)*180/Math.PI})`);
+  if(lab){const m=base.getPointAtLength(L/2);lab.setAttribute('x',m.x);lab.setAttribute('y',m.y-14)}
+  if(e.style==='dash')base.setAttribute('stroke-dasharray','9 9');
+  Object.assign(e,{base,glow,arr,dots,lab,L}); EM[e.id]=e;
+}
+// ---------- câmera
+const CM=D.cam, from=[];
+function camEval(i,t){const k=CM[i],f=from[i],p=ease(cl((t-k.t)/k.d));return {x:lerp(f.x,k.x,p),y:lerp(f.y,k.y,p),z:Math.exp(lerp(Math.log(f.z),Math.log(k.z),p))}}
+for(let i=0;i<CM.length;i++)from.push(i===0?{x:CM[0].x,y:CM[0].y,z:CM[0].z}:camEval(i-1,CM[i].t));
+function camAt(t){let i=0;for(let j=0;j<CM.length;j++)if(CM[j].t<=t)i=j;return camEval(i,t)}
+function actOf(id,t){let best=0,col=null;for(const w of D.active){if(t<w.t0-0.4||t>w.t1+0.6||!w.ids.includes(id))continue;const v=win(t,w.t0,w.t1,.4,.6);if(v>best){best=v;col=w.color}}return [best,col]}
+
+// ---------- overlays
+for(const o of D.ovl){
+  if(o.kind==='title'){o.el=mk(`<div style="position:absolute;left:0;right:0;top:330px;text-align:center"><div class="mono">● Processo de ascensão comercial</div><div class="big" style="margin-top:30px">Esteira de Ascensão</div><div style="font:400 30px Inter;color:#B9B6C3;margin-top:32px">Mentoria Investidor Imobiliário · Eliz Sampaio</div></div>`);o.el.style.inset='0';o.el.style.background='#08080B'}
+  if(o.kind==='cards'){o.el=mk(`<div class="mono" style="position:absolute;left:0;right:0;top:220px;text-align:center">Os produtos de entrada</div>`+o.c.map((c,i)=>`<div class="pcard${c[0]?'':' ghost'}" style="left:${120+i*430}px;top:300px">${c[0]?`<div class="shot"><img src="${A}${c[0]}.png"><span class="u">${c[1]}</span></div>`:`<div class="shot" style="display:grid;place-items:center;background:transparent"><span style="font:500 14px Mono;letter-spacing:.16em;color:#8f8a9c">SEM TELA NA GRAVAÇÃO</span></div>`}<div class="meta"><b>${c[2]}</b><span>${c[3]}</span></div></div>`).join('')+`<div class="out" style="position:absolute;left:${120+3*430}px;top:300px;width:400px;height:390px;border-radius:18px;display:grid;place-items:center;background:rgba(8,8,11,.6)"><span style="font:500 15px Mono;letter-spacing:.18em;color:#E8B45A;border:1px solid rgba(232,180,90,.5);padding:9px 16px;border-radius:999px">FORA DESTA ETAPA</span></div>`);o.el.style.inset='0'}
+  if(o.kind==='badge'){const n=NM[o.at];o.el=mk('◉ '+o.text,'wtag',world);o.el.style.left=n.x+'px';o.el.style.top=(n.y-n.h/2-34)+'px';o.el.style.borderColor='#A98BF0';o.el.style.color='#D9CCFF'}
+  if(o.kind==='tag'){const n=NM[o.at];o.el=mk(o.text,'wtag',world);o.el.style.left=n.x+'px';o.el.style.top=(n.y+(o.dy||-110))+'px';if(n.kind==='pend'){o.el.style.borderColor='rgba(232,180,90,.6)';o.el.style.color='#F0C77A'}}
+  if(o.kind==='chips'){const n=NM[o.anchor];const ay=n.y+(o.dy!=null?o.dy:n.h/2+42);o.els=o.items.map(it=>mk(it[0],'wchip',world));
+    const ws=o.els.map(e=>e.getBoundingClientRect().width/1),tot=ws.reduce((a,b)=>a+b,0)+(ws.length-1)*12;let x=n.x-tot/2;o.els.forEach((e,i)=>{e.style.left=x+'px';e.style.top=(ay-22)+'px';x+=ws[i]+12})}
+  if(o.kind==='vs'){const n=NM[o.at];o.el=mk(`<div style="display:flex;align-items:center;gap:18px;white-space:nowrap"><span class="va" style="font:600 22px Inter;color:#8f8a9c;position:relative">${o.a}<i style="position:absolute;left:-4px;right:-4px;top:52%;height:2px;background:#E8B45A;transform-origin:0 50%"></i></span><span style="font:400 26px Inter;color:#A98BF0">→</span><span class="vb" style="font:700 24px Manrope;color:#fff">${o.b}</span></div>`,'ov',world);o.el.style.left=(n.x-n.w/2)+'px';o.el.style.top=(n.y-n.h/2-80)+'px'}
+  if(o.kind==='colhl'){o.el=mk('','colband',world);o.el.style.left=(o.col-250)+'px';o.el.style.width='500px';world.insertBefore(o.el,svg)}
+  if(o.kind==='grade'){o.el=mk(`
+    <div style="position:absolute;left:0;right:0;top:120px;text-align:center"><div class="mono">Mentoria Investidor Imobiliário</div><div style="font:800 64px Manrope;letter-spacing:-.02em;margin-top:18px">Do conceito ao cálculo</div></div>
+    <svg style="position:absolute;left:0;top:0" width="1920" height="1080"><line x1="700" y1="520" x2="1220" y2="520" stroke="#3a3150" stroke-width="2.5" stroke-dasharray="10 10"/><line class="gl" x1="700" y1="520" x2="1220" y2="520" stroke="#A98BF0" stroke-width="3"/>
+      <circle class="s0" cx="830" cy="520" r="9" fill="#08080B" stroke="#E8B45A" stroke-width="2.5"/><circle class="s1" cx="960" cy="520" r="9" fill="#08080B" stroke="#E8B45A" stroke-width="2.5"/><circle class="s2" cx="1090" cy="520" r="9" fill="#08080B" stroke="#E8B45A" stroke-width="2.5"/></svg>
+    <div class="gnode ga" style="left:170px;top:400px"><small>PONTO DE PARTIDA</small><b>O que é: conceito do mercado imobiliário</b><span class="gchip ge">o que é cada etapa</span></div>
+    <div class="gnode gb" style="left:1230px;top:400px"><small>PONTO DE CHEGADA</small><b>Cálculo de investimento e retorno</b><span class="gchip gv">viabilidade da operação</span></div>
+    <div class="gt" style="position:absolute;left:0;right:0;top:560px;text-align:center"><span style="font:500 15px Mono;letter-spacing:.18em;color:#E8B45A;border:1px solid rgba(232,180,90,.55);background:rgba(20,15,6,.8);padding:10px 18px;border-radius:999px">A GRADE ENTRE OS DOIS · TAREFA DA ELIZ</span></div>
+    <div class="gs" style="position:absolute;left:0;right:0;top:760px;text-align:center;font:600 28px Inter;color:#fff">Objetivo: <span style="color:#C9B2FF">uma entrega escalável</span>, sem a Eliz presa a cada cliente</div>`);o.el.style.inset='0'}
+  if(o.kind==='end'){o.el=mk(`<div style="position:absolute;left:0;right:0;top:250px;text-align:center"><div class="mono">Mentoria Investidor Imobiliário</div>
+    <div style="font:800 76px Manrope;letter-spacing:-.02em;margin-top:28px;line-height:1.1">Uma esteira. Três trilhas.<br>Um destino.</div>
+    <div style="display:flex;justify-content:center;gap:16px;margin-top:54px;font:600 24px Inter">${['Entrada','Intensivo','Programa','SCP'].map((s,i)=>`<span class="st" style="padding:12px 26px;border-radius:999px;border:1px solid rgba(169,139,240,.5);background:rgba(33,21,54,.85)">${s}</span>${i<3?'<span class="sa" style="color:#A98BF0;align-self:center">→</span>':''}`).join('')}</div>
+    <div class="nx" style="margin-top:70px;font:500 16px Mono;letter-spacing:.22em;color:#B9B6C3">A SEGUIR · O SISTEMA OPERACIONAL COMERCIAL DA ELIZ</div></div>`);o.el.style.inset='0';o.el.style.background='rgba(8,8,11,.92)'}
+}
+// ---------- capítulos
+const chlab=$('#chlab'),chbar=$('#chbar');D.chapters.slice(1).forEach(()=>{const i=document.createElement('i');i.innerHTML='<u></u>';chbar.appendChild(i)});
+const gapCards=D.gaps.map(g=>{const c=D.chapters.find(c=>c.n===g.chapter);const el=mk(`<div style="position:absolute;left:0;right:0;top:390px;text-align:center"><div class="mono">Capítulo 0${c.n}</div><div style="width:60px;height:2px;background:#8155D9;margin:26px auto"></div><div class="ct" style="font:800 74px Manrope;letter-spacing:-.02em">${c.title}</div></div>`);el.style.inset='0';return {g,el}});
+// ---------- demonstrações
+const demoRoot=$('#demo');
+for(const d of D.demo){
+  d.root=mk('','',demoRoot);d.root.style.inset='0';
+  const Wd=1500,Hd=800;d.W=Wd;d.H=Hd;
+  const f=mk(`<div class="bar"><i></i><i></i><i></i><span class="url">🔒 ${d.url}</span></div><div class="vp" style="width:${Wd}px;height:${Hd}px"></div>`,'frame',d.root);
+  f.style.width=Wd+'px';f.style.height=(Hd+42)+'px';f.style.left='210px';f.style.top='40px';d.f=f;
+  const vp=f.querySelector('.vp'),im=new Image();im.src=A+d.src+'.png';vp.appendChild(im);d.im=im;
+  d.hls=d.hl.map(h=>{const b=mk('','hl',vp);let l=null;if(h.label)l=mk(h.label,'hlab',vp);return {h,b,l}});
+}
+function demoView(d,tt){const k=d.kf;if(tt<=k[0].t)return k[0];for(let i=0;i<k.length-1;i++)if(tt<k[i+1].t){const p=ease((tt-k[i].t)/(k[i+1].t-k[i].t));return {cx:lerp(k[i].cx,k[i+1].cx,p),cy:lerp(k[i].cy,k[i+1].cy,p),z:lerp(k[i].z,k[i+1].z,p)}}return k[k.length-1]}
+// ---------- legendas
+const subs=$('#subs');const KEY=/^(mentoria|assessor|assessores|intensivo|intensivão|consultoria|low|ticket|scp|corretor|corretores|investidor|investidores|plantar|plantando|planta|narrativa|crédito|financiado|operações|grade|cálculo|webinário|evento)$/i;
+function subHTML(s,t){return s.words.map(([w,ws])=>{const on=ws<=t+0.05,bare=w.replace(/[^\wà-úÀ-Ú]/g,'');let st=`color:${on?'#fff':'rgba(255,255,255,.58)'}`;
+  if(KEY.test(bare))st=`color:${on?'#C9B2FF':'rgba(201,178,255,.6)'};font-weight:700`;if(/^Eliz$/.test(bare))st+=';font-weight:700';return `<span style="${st}">${w}</span>`}).join(' ')}
+// ---------- render
+window.render=function(t){
+  const cam=camAt(t),dz=cam.z*(1+0.006*Math.sin(t*0.21)),dx=Math.sin(t*0.13)*5,dy=Math.cos(t*0.11)*4;
+  const tx=960-(cam.x+dx)*dz,ty=500-(cam.y+dy)*dz;
+  world.style.transform=`translate(${tx}px,${ty}px) scale(${dz})`;
+  $('#bg').style.transform=`translate(${(tx*0.25)%44}px,${(ty*0.25)%44}px)`;
+  $('#glow1').style.transform=`translate(${900+Math.sin(t*.05)*300}px,${-350+Math.cos(t*.04)*200}px)`;
+  $('#glow2').style.transform=`translate(${-500+Math.cos(t*.045)*260}px,${150+Math.sin(t*.05)*200}px)`;
+  for(const h of HDR){const p=cl((t-h.r+0.2)/0.8);h.el.style.display=p>0?'block':'none';h.el.style.opacity=0.9*eo(p)}
+  for(const n of D.nodes){const p=cl((t-n.reveal)/0.55),el=n.el;if(p<=0){el.style.display='none';continue}el.style.display='block';
+    const [a,cn]=actOf(n.id,t),col=cn&&cn!=='all'?NAMED[cn]:COL[n.kind];
+    el.style.opacity=eo(p)*(n.kind==='pend'?0.92:1);el.style.transform=`translateY(${(1-eo(p))*18}px) scale(${0.96+0.04*eo(p)+0.035*a})`;
+    el.style.borderColor=a>0.01?hexA(col,0.35+0.65*a):(n.kind==='pend'?'rgba(232,180,90,.45)':'#2a2436');
+    el.style.boxShadow=`0 14px 34px rgba(0,0,0,.5), 0 0 ${42*a}px ${hexA(col,0.4*a)}`;
+    el.style.background=a>0.01?`linear-gradient(180deg,${hexA(col==='#FFFFFF'?'#8155D9':col,0.22*a)},rgba(14,13,19,.95))`:'';
+    if(n.id==='scp'){scpRing.style.opacity=eo(p)*(0.5+0.5*a);scpRing.style.transform=`scale(${1+0.03*Math.sin(t*1.4)})`}}
+  if(cl((t-NM.scp.reveal)/0.55)<=0)scpRing.style.opacity=0;
+  for(const e of D.edges){const p=cl((t-e.reveal)/0.85);e.base.parentNode.style.display=p>0?'':'none';if(p<=0)continue;
+    const [a,cn]=actOf(e.id,t),[aa]=actOf(e.a,t),[ab]=actOf(e.b,t),act=Math.max(a,Math.min(aa,ab));
+    const col=cn&&cn!=='all'?NAMED[cn]:COL[NM[e.b].kind==='pend'||NM[e.a].kind==='pend'?'pend':NM[e.b].kind],ep=eo(p);
+    if(e.style==='dash')e.base.style.opacity=ep;else{e.base.setAttribute('stroke-dasharray',e.L);e.base.setAttribute('stroke-dashoffset',e.L*(1-ep))}
+    e.base.setAttribute('stroke','#3a3348');
+    e.glow.setAttribute('stroke',col);e.glow.style.opacity=act*0.95;e.glow.setAttribute('stroke-dasharray',e.style==='dash'?'9 9':e.L);e.glow.setAttribute('stroke-dashoffset',e.style==='dash'?0:e.L*(1-ep));
+    e.arr.setAttribute('stroke',act>0.05?col:'#5d5670');e.arr.style.opacity=cl((p-0.85)/0.15);
+    e.dots.forEach((c,k)=>{if(act<0.05||p<1){c.style.display='none';return}c.style.display='';const q=(t*0.42+k/3)%1,pt=e.base.getPointAtLength(q*e.L);c.setAttribute('cx',pt.x);c.setAttribute('cy',pt.y);c.setAttribute('fill',col);c.style.opacity=act*Math.sin(q*Math.PI)});
+    if(e.lab){e.lab.style.opacity=ep*(0.55+0.45*act);e.lab.style.fill=act>0.1?col:'#8f8a9c'}}
+  for(const o of D.ovl){const v=win(t,o.t0,o.t1,.5,.5);if(o.el){o.el.style.display=v>0.001?'block':'none';if(v<=0.001)continue}
+    if(o.kind==='title'){o.el.style.opacity=t<o.t1-0.6?1:v;const b=o.el.querySelector('.big');b.style.opacity=eo(cl((t-.2)/1));b.style.transform=`translateY(${(1-eo(cl(t/1.2)))*22}px)`}
+    else if(o.kind==='cards'){o.el.style.opacity=v;o.el.querySelectorAll('.pcard').forEach((c,i)=>{const q=eo(cl((t-o.c[i][4])/.6));c.style.opacity=q*(i===3&&t>o.three?0.55:1);c.style.transform=`translateY(${(1-q)*30}px) scale(${0.97+0.03*q})`});
+      const g=o.el.querySelector('.out');const q=eo(cl((t-o.three)/.5));g.style.opacity=q;o.el.querySelector('.mono').style.opacity=eo(cl((t-o.head)/.5))}
+    else if(o.kind==='chips'){o.els.forEach((e,i)=>{const q=Math.min(eo(cl((t-o.items[i][1])/.45)),v);e.style.display=q>0?'block':'none';e.style.opacity=q;e.style.transform=`translateY(${(1-q)*10}px)`})}
+    else if(o.kind==='vs'){o.el.style.opacity=v;o.el.querySelector('i').style.transform=`scaleX(${eo(cl((t-o.t0-0.3)/.5))})`;const q=eo(cl((t-o.t0-0.6)/.5));o.el.querySelector('.vb').style.opacity=q}
+    else if(o.kind==='colhl'){o.el.style.opacity=v}
+    else if(o.kind==='grade'){o.el.style.opacity=v;const tt=x=>eo(cl((t-x)/.6));
+      [['.ga',o.a],['.gb',o.b]].forEach(([s,x])=>{const e=o.el.querySelector(s),q=tt(x);e.style.opacity=q;e.style.transform=`translateY(${(1-q)*24}px)`});
+      [['.ge',o.etapa],['.gv',o.v],['.gt',o.task],['.gs',o.esc]].forEach(([s,x])=>{const e=o.el.querySelector(s),q=tt(x);e.style.opacity=q;e.style.transform=`translateY(${(1-q)*12}px)`});
+      const gl=o.el.querySelector('.gl'),q=tt(o.b);gl.setAttribute('x2',700+520*q*0);gl.style.opacity=0;
+      ['.s0','.s1','.s2'].forEach((s,i)=>{const e=o.el.querySelector(s),q=tt(o.task+i*0.2);e.style.opacity=q})}
+    else if(o.kind==='end'){o.el.style.opacity=v;o.el.querySelectorAll('.st').forEach((e,i)=>{const q=eo(cl((t-o.t0-0.6-i*0.25)/.5));e.style.opacity=q;e.style.transform=`translateY(${(1-q)*12}px)`});o.el.querySelector('.nx').style.opacity=eo(cl((t-o.t0-2)/.8))}
+    else o.el.style.opacity=v}
+  let ci=0;for(const c of D.chapters)if(t>=c.t)ci=c.n;const ch=D.chapters.find(c=>c.n===ci);
+  const endOv=D.ovl.find(o=>o.kind==='end'),showLab=t>3.6&&t<endOv.t0;
+  chlab.innerHTML=ci>0?`<b>0${ci}</b> ${ch.title.toUpperCase()}`:`<b>00</b> OS PRODUTOS E OS PERFIS`;
+  [...chbar.children].forEach((el,i)=>{const c=D.chapters[i+1],nx=D.chapters[i+2]?D.chapters[i+2].t:D.total;el.firstChild.style.width=(100*cl((t-c.t)/(nx-c.t)))+'%'});
+  let gv=0;for(const g of gapCards){const v=win(t,g.g.t0-0.25,g.g.t1+0.35,.45,.5);g.el.style.display=v>0?'block':'none';g.el.style.opacity=v;gv=Math.max(gv,v);if(v>0)g.el.querySelector('.ct').style.transform=`translateY(${(1-eo(cl((t-g.g.t0+0.25)/.7)))*18}px)`}
+  let dimv=gv*0.85;
+  const cards=D.ovl.find(o=>o.kind==='cards'),grade=D.ovl.find(o=>o.kind==='grade');
+  dimv=Math.max(dimv,0.8*win(t,cards.t0,cards.t1,.5,.5),0.96*win(t,grade.t0,grade.t1,.5,.5));
+  for(const d of D.demo){const v=win(t,d.t0,d.t1,.45,.45);d.root.style.display=v>0.001?'block':'none';if(v<=0.001)continue;const tt=t-d.t0;
+    dimv=Math.max(dimv,0.88*v);d.root.style.opacity=v;d.f.style.transform=`scale(${0.955+0.045*v})`;
+    const vw=demoView(d,tt),s=d.W/1900*vw.z,ih=908,hw=d.W/(2*s),hh=d.H/(2*s),cx=cl(vw.cx,hw,1900-hw),cy=cl(vw.cy,hh,Math.max(hh,ih-hh));
+    const L=d.W/2-cx*s,T=d.H/2-cy*s;d.im.style.width=(1900*s)+'px';d.im.style.transform=`translate(${L}px,${T}px)`;
+    for(const {h,b,l} of d.hls){const q=win(tt,h.t0,h.t1,.35,.35);b.style.display=q>0?'block':'none';if(l)l.style.display=q>0?'block':'none';if(q<=0)continue;const pad=8;
+      const bx=L+h.x*s-pad,by=T+h.y*s-pad;Object.assign(b.style,{left:bx+'px',top:by+'px',width:(h.w*s+2*pad)+'px',height:(h.h*s+2*pad)+'px',opacity:q,transform:`scale(${1.04-0.04*eo(q)})`});
+      if(l){l.style.opacity=q;l.style.left=bx+'px';const below=by<60;l.style.top=(below?by+h.h*s+2*pad+10:by-10)+'px';l.style.transform=below?'none':'translateY(-100%)'}}}
+  $('#dim').style.opacity=dimv;
+  const hid=1-Math.min(1,dimv*1.2);chlab.style.opacity=showLab?Math.max(hid,gv>0?0:hid):0;chbar.style.opacity=showLab&&ci>0?hid:0;$('#brand').style.opacity=(t>3.6&&t<endOv.t0)?Math.max(0.35,hid):0;
+  let st=null;for(const s of D.subs)if(t>=s.t0-0.05&&t<=s.t1){st=s;break}
+  subs.innerHTML=st?subHTML(st,t):'';$('#subgrad').style.opacity=st?1:0.4;
+};
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r}))]);
+</script></body></html>
