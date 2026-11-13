@@ -7,7 +7,8 @@ Abra `index.html` no navegador.
 | Arquivo | Conteúdo |
 |---|---|
 | `index.html` | Interface navegável: 7 módulos, vídeo com capítulos e transcrição sincronizada, pendências |
-| `esteira-ascensao-editado.mp4` | Vídeo editado (5min11s) |
+| `ep07-esteira-de-ascensao.mp4` | Episódio 07 · Esteira de Ascensão (5:25, versão web 720p). O original em 1080p e o projeto ficam em `../video-ep07-eliz-esteira/` |
+| `esteira-ascensao-editado.mp4` | Primeira versão: só os cortes da gravação de tela (5min11s) |
 | `legendas.vtt` | Legendas em português |
 | `docs/01-transcricao.md` | Transcrição bruta do original e revisada do editado |
 | `docs/02-mapa-de-conhecimento.md` | Mapa de conhecimento extraído do vídeo |
