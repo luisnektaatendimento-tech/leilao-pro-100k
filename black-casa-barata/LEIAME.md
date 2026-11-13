@@ -7,7 +7,8 @@ Tudo fica no fim do `index.html`, no bloco `CONFIGURAÇÃO`:
 
 | Campo | O que é |
 |---|---|
-| `CHECKOUT_COMPLETO` | Link do checkout (todos os botões): https://ggcheckout.app/checkout/v2/E5SbQcPcSKb0gnSA9uvvl1 (página principal; a /joao usa o link de afiliado abaixo) |
+| `CHECKOUT_COMPLETO` | Link do checkout (todos os botões): https://ggcheckout.app/checkout/v3/E5SbQcPcSKb0gnSA9uvvl1 (ggCheckout, Mercado Pago; desde 13/11 substitui a Cakto também na /joao) |
+| `IC_NA_PAGINA` | `true`: a página manda o InitiateCheckout no clique. Trocar para `false` se o GG passar a mandar o IC dele |
 | (sem campo) | A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela |
 
 No HTML, revise também:
@@ -39,8 +40,17 @@ O Dossiê do Assessor ainda não tem vídeo: o site dele não pôde ser aberto p
 
 Cada afiliado usa a mesma página, só com outro link de checkout.
 
-- Atual: `blackcasabaratadeleilao.com/joao` → `https://pay.cakto.com.br/364q77y_1305972?affiliate=Vefhwodg`
+- Atual (13/11): `blackcasabaratadeleilao.com/joao` → `https://ggcheckout.app/checkout/v3/E5SbQcPcSKb0gnSA9uvvl1?src=joao` (o `src=joao` marca a venda do perfil do João). O link antigo da Cakto (`364q77y_1305972?affiliate=Vefhwodg`) saiu de uso.
 - Para criar outro (ex.: `/maria`):
   1. Em `index.html`, no bloco `CHECKOUT_AFILIADOS`, acrescente `"/maria": "link-de-checkout-da-maria"`.
   2. Em `vercel.json`, repita as entradas de `/joao` trocando por `/maria` (rewrite para `/index.html`, redirect de `/maria/` e cabeçalho de cache).
 - As UTMs da URL continuam sendo repassadas ao checkout também nas páginas de afiliado.
+
+## Rastreamento (13/11/2026)
+
+- **Pixel / dataset:** "Black Casa Barata de Leilões" `1886866205827899`, conta CA02 - Paulinho dos Leilões (act 1438294331143484). O pixel antigo `1633178111557271` ("Eventos para Homens - Paulinho") fica só no histórico.
+- **Na página** (head do `index.html`): PageView e ViewContent (R$ 37) ao abrir; InitiateCheckout no clique de cada botão com `data-checkout`. `external_id` = código do visitante (`pd_visitante`). Vale para `/` e `/joao` (mesmo arquivo).
+- **API de Conversões:** `api/capi.js` recebe o mesmo evento com o mesmo `event_id`. Precisa de `META_CAPI_TOKEN` (Production) no projeto Vercel `black-casa-barata`; sem ele a rota responde 503 e só o pixel conta. O token nunca vai para arquivo. Teste: abra a página com `?test_event_code=TEST…`.
+- **Checkout:** os botões levam ao GG repassando todos os parâmetros da URL (UTMs, fbclid). Conferido em 13/11: o GG não carregava nenhum pixel ao abrir.
+- **Purchase:** sai do pixel configurado no produto do GG (Pixels & Rastreio, com o token da API de Conversões), valor 37,00 BRL.
+- **UTMs dos anúncios:** `utm_source=meta&utm_medium=paid&utm_campaign={{campaign.name}}&utm_content={{ad.name}}&utm_term={{adset.name}}`

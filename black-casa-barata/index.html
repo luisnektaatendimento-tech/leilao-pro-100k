@@ -16,10 +16,52 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://blackcasabaratadeleilao.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23000%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23ffc61a%27/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://pay.cakto.com.br">
-<link rel="dns-prefetch" href="https://pay.cakto.com.br">
+<link rel="preconnect" href="https://ggcheckout.app">
+<link rel="dns-prefetch" href="https://ggcheckout.app">
 <link rel="preload" as="image" href="assets/produto4-900.webp" imagesrcset="assets/produto4-600.webp 600w, assets/produto4-900.webp 900w, assets/produto4-1200.webp 1200w" imagesizes="(max-width:640px) calc(100vw - 28px), 560px" fetchpriority="high">
 <script>document.documentElement.className = "js";</script>
+<!-- Meta Pixel · dataset "Black Casa Barata de Leilões" (1886866205827899), conta CA02 - Paulinho dos Leilões.
+     PageView + ViewContent ao abrir; InitiateCheckout no clique do botão de compra (fim da página).
+     Cada evento sai no pixel e no servidor (/api/capi) com o mesmo event_id: a Meta conta uma vez.
+     external_id = código do visitante (pd_visitante). Pixel antigo 1633178111557271 fica só no histórico. -->
+<script>
+  var PIXEL_ID = "1886866205827899";
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  var VISITANTE = (function () {
+    try {
+      var v = localStorage.getItem("pd_visitante");
+      if (!v || !/^[a-z0-9-]{8,64}$/i.test(v)) {
+        v = window.crypto && crypto.randomUUID ? crypto.randomUUID() : "v-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+        localStorage.setItem("pd_visitante", v);
+      }
+      return v.toLowerCase();
+    } catch (e) { return null; }
+  })();
+  fbq("init", PIXEL_ID, VISITANTE ? { external_id: VISITANTE } : {});
+  /* evento no pixel + o mesmo evento (mesmo event_id) no servidor.
+     Teste no Gerenciador de Eventos: abra a página com ?test_event_code=TEST... */
+  function rastrear(nome, dados) {
+    var id = nome + "." + Date.now().toString(36) + "." + Math.random().toString(36).slice(2, 10);
+    fbq("track", nome, dados || {}, { eventID: id });
+    try {
+      var q = new URLSearchParams(location.search);
+      var ck = function (k) { var m = document.cookie.match("(?:^|; )" + k + "=([^;]*)"); return m ? decodeURIComponent(m[1]) : null; };
+      var fbclid = q.get("fbclid");
+      var corpo = JSON.stringify({ event_name: nome, event_id: id, event_source_url: location.href, custom_data: dados || {},
+        fbp: ck("_fbp"), fbc: ck("_fbc") || (fbclid ? "fb.1." + Date.now() + "." + fbclid : null), visitante: VISITANTE, test_event_code: q.get("test_event_code") || undefined });
+      fetch("/api/capi", { method: "POST", headers: { "content-type": "application/json" }, body: corpo, keepalive: true }).catch(function () {});
+    } catch (e) {}
+    return id;
+  }
+  var PRODUTO = { value: 37, currency: "BRL", content_name: "Black Casa Barata de Leilão — App + Arsenal Completo (96% OFF)", content_type: "product", content_ids: ["black-casa-barata"] };
+  rastrear("PageView");
+  rastrear("ViewContent", PRODUTO);
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1886866205827899&ev=PageView&noscript=1"></noscript>
 <style>
 /* =====================================================================
    BLACK CASA BARATA DE LEILÃO — página de vendas
@@ -976,21 +1018,37 @@ addEventListener("load",function(){setTimeout(vai,3500)});})();
 /* ===================== CONFIGURAÇÃO — troque aqui =====================
    CHECKOUT_*: links do checkout. Todos os botões vão para o plano principal (Arsenal de Aplicativos Facilitadores);  Enquanto estiverem vazios, os botões levam até os planos (#planos).
    A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela. */
-var CHECKOUT_COMPLETO = "https://ggcheckout.app/checkout/v2/E5SbQcPcSKb0gnSA9uvvl1";
+var CHECKOUT_COMPLETO = "https://ggcheckout.app/checkout/v3/E5SbQcPcSKb0gnSA9uvvl1"; /* ggCheckout, Mercado Pago (13/11: substitui a Cakto) */
 var VIDEO_DEPOIMENTO = "assets/video/depoimento-joao.mp4"; /* link .mp4 do depoimento do João (ex.: assets/video/depoimento-joao.mp4). Vazio: mostra a gravação da Leilão PRO */
+/* InitiateCheckout sai da página no clique. Conferido em 13/11: o checkout do GG não manda nenhum evento do pixel ao abrir.
+   Se, depois de ligar o pixel no GG, ele passar a mandar o InitiateCheckout dele, trocar para false (senão conta em dobro). */
+var IC_NA_PAGINA = true;
 
-/* páginas de afiliado: mesma página, só muda o checkout (ex.: blackcasabaratadeleilao.com/joao) */
+/* páginas de afiliado: mesma página, só muda o checkout ou acrescenta parâmetros (ex.: blackcasabaratadeleilao.com/joao).
+   13/11: a /joao também vai para o GG; src=joao marca a venda que veio do perfil do João.
+   (Link antigo da Cakto, fora de uso: https://pay.cakto.com.br/364q77y_1305972?affiliate=Vefhwodg) */
 var CHECKOUT_AFILIADOS = {
-  "/joao": "https://pay.cakto.com.br/364q77y_1305972?affiliate=Vefhwodg"
+  "/joao": "https://ggcheckout.app/checkout/v3/E5SbQcPcSKb0gnSA9uvvl1?src=joao"
 };
 
 (function () {
   var caminho = location.pathname.replace(/\/+$/, "").toLowerCase();
   var base = CHECKOUT_AFILIADOS[caminho] || CHECKOUT_COMPLETO;
+  function montarLink(b) { /* repassa todos os parâmetros da URL (utm_*, fbclid...) sem repetir os que o link já tem */
+    if (!b) return "";
+    try {
+      var u = new URL(b, location.href);
+      new URLSearchParams(location.search).forEach(function (v, k) { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+      return u.toString();
+    } catch (e) { return b; }
+  }
+  var link = montarLink(base);
   document.querySelectorAll("[data-checkout]").forEach(function (a) {
-    var url = base;
-    if (url && location.search) url += (url.indexOf("?") < 0 ? "?" : "&") + location.search.slice(1); /* mantém UTMs */
-    if (url) a.href = url;
+    if (!link) return;
+    a.href = link;
+    a.addEventListener("click", function () {
+      if (IC_NA_PAGINA && typeof rastrear === "function") rastrear("InitiateCheckout", PRODUTO);
+    });
   });
 })();
 
