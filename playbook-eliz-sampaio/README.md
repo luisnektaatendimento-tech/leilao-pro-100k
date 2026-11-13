@@ -18,3 +18,18 @@ Abra `index.html` no navegador.
 O relatório de pendências para a Eliz está na interface, na seção “Pendências”.
 
 O vídeo-fonte é uma reunião de desenho da esteira. Quem fala é o condutor da reunião; não há falas da Eliz no áudio. O playbook separa o que está no vídeo, o que está pendente e o que é sugestão.
+
+## Área de controle (Multiply)
+
+A seção **Performance da ascensão → Área de controle** é o lugar do Multiply. Enquanto o endereço não é configurado, a tela mostra "Em integração".
+
+Para ligar o Multiply, edite `index.html` e preencha a constante (procure por `MULTIPLY_URL`):
+
+```js
+const MULTIPLY_URL='https://endereco-do-multiply';
+```
+
+- O endereço precisa começar com `https://`.
+- A área abre o Multiply dentro da tela, com um botão "Abrir em nova aba" ao lado.
+- Para abrir embutido, o Multiply precisa permitir ser exibido em outro site (cabeçalhos `X-Frame-Options` e `Content-Security-Policy: frame-ancestors`). Se ele bloquear, o botão "Abrir em nova aba" continua funcionando.
+- Fluxo do sistema: quem abre o link assiste primeiro à aula; o botão "Entrar na área de controle da ascensão" leva direto para esta tela.
