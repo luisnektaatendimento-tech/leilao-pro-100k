@@ -57,3 +57,10 @@ Cada afiliado usa a mesma página, só com outro link de checkout.
 - **UTMs dos anúncios** (campo "Parâmetros de URL"), padrão da Multifly e do NEKTA, com nome **e id** para a venda chegar até o anúncio:
   `utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}`
   O padrão antigo (`utm_source=meta&utm_medium=paid&…&utm_term={{adset.name}}`) não serve: a Multifly lê o conjunto no `utm_medium` e, sem id, casa só pelo nome (anúncios com o mesmo nome em conjuntos diferentes se misturam).
+
+## Área de membros em /areademembros (14/11/2026)
+
+- `blackcasabaratadeleilao.com/areademembros` mostra a área de membros do Arsenal Black. A área continua no projeto Vercel `arsenal-black-area` (conta zafideploy, `arsenalblack.vercel.app`); o `vercel.json` daqui só **repassa** esse caminho para lá (rewrite externo). Nada da área mora neste repositório.
+- Não criar arquivo nem pasta `areademembros/` aqui: o repasse deixaria de valer.
+- As chamadas de API da área (`/api/conselho`, `/api/consultoria`) saem do navegador direto para `arsenalblack.vercel.app` (CORS liberado para este domínio), para o limite por pessoa do servidor continuar funcionando.
+- Link de acesso que vai na página de obrigado e na entrega da GG: `https://blackcasabaratadeleilao.com/areademembros/` (com a barra no fim). O endereço antigo `arsenalblack.vercel.app` leva para o novo sozinho, carregando o que a pessoa já tinha feito na área.

@@ -39,6 +39,14 @@
     {
       "source": "/joao",
       "destination": "/index.html"
+    },
+    {
+      "source": "/areademembros",
+      "destination": "https://arsenalblack.vercel.app/"
+    },
+    {
+      "source": "/areademembros/:path*",
+      "destination": "https://arsenalblack.vercel.app/:path*"
     }
   ]
 }
