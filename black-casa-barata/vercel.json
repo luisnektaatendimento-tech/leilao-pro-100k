@@ -42,11 +42,15 @@
     },
     {
       "source": "/areademembros",
-      "destination": "https://arsenalblack.vercel.app/"
+      "destination": "https://arsenalblack.vercel.app/index.html"
     },
     {
-      "source": "/areademembros/:path*",
-      "destination": "https://arsenalblack.vercel.app/:path*"
+      "source": "/areademembros/",
+      "destination": "https://arsenalblack.vercel.app/index.html"
+    },
+    {
+      "source": "/areademembros/:caminho(.+)",
+      "destination": "https://arsenalblack.vercel.app/:caminho"
     }
   ]
 }
