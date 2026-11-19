@@ -581,6 +581,70 @@ details[open]:not(.fech) .pm::after{transform:rotate(0)}
 @media (max-width:640px){.dock__nome{display:none}.dock .btn{flex:1;white-space:nowrap}}
 @media (max-width:340px){.dock .btn{font-size:9.6px;letter-spacing:.02em;padding-left:11px}.dock div b{font-size:16px}}
 .produto picture,.tut__img picture{display:block}
+/* ===== BLOCO 02 — COMO VOCÊ ENCONTRA SUA CASA (jornada de lado) ===== */
+.jn-sub{margin-top:12px;font-size:clamp(15px,4vw,17px);line-height:1.5;color:var(--ink-2)}
+.jn{position:relative;max-width:var(--maxw);margin:0 auto}
+.jn__trilho{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:4px 16px 8px;scroll-padding:0 16px}
+.jn__trilho::-webkit-scrollbar{display:none}
+.jn__tela{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);align-items:stretch;gap:0}
+.jn__tela+.jn__seta--meio,.jn__seta--meio{display:none}
+.jn__tela+.jn__seta--meio+.jn__tela{margin-left:16px}
+.jn__p{position:relative;display:flex;flex-direction:column;min-width:0;padding:12px 11px 11px;border-radius:18px;background:linear-gradient(165deg,#17140c,#0b0b0a 62%);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(255,217,90,.16)}
+.jn__cab{display:flex;align-items:center;gap:8px}
+.jn__n{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:var(--ouro);color:#1a0d00;font:800 15px/1 var(--ff);box-shadow:0 0 0 1px var(--ouro-borda),0 6px 16px -6px rgba(255,190,20,.55)}
+.jn__n--ok{background:#25d366;box-shadow:0 0 0 1px #128c4a,0 6px 16px -6px rgba(37,211,102,.55)}
+.jn__n--ok svg{width:16px;height:16px;fill:none;stroke:#05290f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.jn__cab small{font:800 9.5px/1.1 var(--ff);font-variation-settings:"wdth" 110;letter-spacing:.14em;text-transform:uppercase;color:#ffd95a}
+.jn__p b{display:block;margin-top:10px;font:700 14.5px/1.22 var(--ff);font-variation-settings:"wdth" 104;color:#fff}
+.jn__p p{margin-top:5px;font-size:12.5px;line-height:1.4;color:var(--ink-2)}
+.jn__dest{color:#ffd95a;font-weight:700}
+.jn__img{position:relative;margin:auto 0 0;padding-top:10px}
+.jn__img img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:12px;background:#000}
+
+.jn__zap{position:absolute;left:6px;right:6px;bottom:6px;display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:12px;background:rgba(10,10,10,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 0 1px rgba(37,211,102,.45)}
+.jn__zap svg{flex:none;width:22px;height:22px;padding:4px;border-radius:50%;background:#25d366;fill:#fff;stroke:#25d366;stroke-width:.6}
+.jn__zap svg path:first-child{fill:#25d366;stroke:#fff;stroke-width:1.6}
+.jn__zap span{display:block;font:700 11px/1.15 var(--ff);color:#fff}
+.jn__zap small{display:block;font-weight:500;font-size:10px;color:#9be7b8}
+.jn__seta{align-self:center;display:grid;place-items:center;height:22px;margin-top:-30px;color:var(--gold-2)}
+.jn__seta svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;animation:jnSeta 1.6s var(--ease) infinite}
+@keyframes jnSeta{0%,100%{transform:translateX(-2px);opacity:.55}50%{transform:translateX(3px);opacity:1}}
+.jn__nav{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}
+.jn__ponto{width:30px;height:6px;padding:0;border:0;border-radius:6px;background:rgba(255,255,255,.18);cursor:pointer;transition:background .3s,width .3s}
+.jn__ponto span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.jn__ponto.on{width:44px;background:var(--gold)}
+.jn__prox{display:inline-flex;align-items:center;gap:6px;margin-left:10px;padding:8px 13px;border:1px solid rgba(255,217,90,.35);border-radius:999px;background:rgba(255,217,90,.07);color:#ffd95a;font:700 12px/1 var(--ff);letter-spacing:.02em;cursor:pointer}
+.jn__prox svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.jn.no-fim .jn__prox{opacity:.0;pointer-events:none}
+@media (min-width:900px){
+  .jn__trilho{display:grid;grid-template-columns:minmax(0,2fr) 34px minmax(0,2fr);overflow:visible;margin:0;padding:0}
+  .jn__tela{grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr)}
+  .jn__tela+.jn__seta--meio{display:grid}
+  .jn__tela+.jn__seta--meio+.jn__tela{margin-left:0}
+  .jn__seta{height:34px}
+  .jn__seta svg{width:24px;height:24px}
+  .jn__p{padding:16px 16px 16px;border-radius:20px}
+  .jn__n{width:36px;height:36px;font-size:17px}
+  .jn__cab small{font-size:10.5px}
+  .jn__p b{font-size:17px}
+  .jn__p p{font-size:14px}
+  .jn__nav{display:none}
+}
+@media (max-width:360px){.jn__p{padding:10px 9px 9px}.jn__p b{font-size:13.5px}.jn__p p{font-size:12px}}
+@media (prefers-reduced-motion:reduce){.jn__seta svg{animation:none}}
+
+/* ===== BLOCO 03 — AS OUTRAS DUAS FUNCIONALIDADES ===== */
+.fn{display:grid;gap:14px;max-width:980px;margin:0 auto}
+@media (min-width:760px){.fn{grid-template-columns:1fr 1fr;gap:18px}}
+.fn__c{display:flex;flex-direction:column;gap:16px;padding:20px 18px 18px;border-radius:20px;background:linear-gradient(165deg,#15130d,#0a0a09 60%);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(255,217,90,.14)}
+.fn__tag{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--gold-dim);color:#ffd95a;font:800 10px/1 var(--ff);letter-spacing:.14em;text-transform:uppercase}
+.fn__c h3{margin-top:12px;font:800 clamp(21px,5.6vw,26px)/1.15 var(--ff);font-variation-settings:"wdth" 104;color:#fff}
+.fn__num{margin-top:8px;font:700 16px/1.2 var(--ff);color:#ffd95a}
+.fn__num b{font-size:34px;line-height:1;margin-right:4px;background:var(--ouro-texto);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fn__quem{margin-top:8px;font:700 16px/1.3 var(--ff);color:#ffd95a}
+.fn__txt>p:last-child{margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.fn__img{margin:auto 0 0}
+.fn__img img{display:block;width:100%;height:auto;border-radius:14px;background:#000}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
@@ -636,7 +700,7 @@ addEventListener("load",function(){setTimeout(vai,3500)});})();
       <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i><span><b>Imóveis de leilão</b> atualizados</span></li>
     </ul>
     <div class="cta-block cta-foto" data-cta-topo>
-      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t btn__t--main">Quero acessar o aplicativo</span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo" data-cta-preco><span class="btn__t btn__t--main">Quero acessar o aplicativo</span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
 
@@ -644,8 +708,100 @@ addEventListener("load",function(){setTimeout(vai,3500)});})();
   </div>
 </header>
 
-<!-- ============ BLOCO 09 — FEITO PARA VOCÊ ============ -->
-<section class="sec alt" data-secao="02-feito-para-voce">
+<!-- ============ BLOCO 02 — COMO VOCÊ ENCONTRA SUA CASA (jornada em 3 etapas, de lado) ============
+     Computador: as 3 etapas numa linha, com seta entre elas.
+     Celular: duas telas para deslizar (etapas 1 → 2, depois a 3: crédito → assessoria).
+     Imagens em assets/jornada: prints reais (área de membros, Fexô, Multy, Dossiê, CANAW) e foto do Paulinho encaixados em celular/notebook gerados (19/11). -->
+<section class="sec jn-sec" id="como-encontra" data-secao="02-como-encontra">
+  <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Passo a passo</span>
+      <h2>Como você encontra sua casa</h2>
+      <p class="jn-sub">Do primeiro acesso até a conversa com a assessoria, em 3&nbsp;etapas.</p>
+    </div>
+
+    <div class="jn rv" data-jn>
+      <div class="jn__trilho" data-jn-trilho>
+
+        <div class="jn__tela" aria-label="Etapas 1 e 2">
+          <article class="jn__p">
+            <div class="jn__cab"><span class="jn__n">1</span><small>Etapa 1</small></div>
+            <b>Entre na área de membros</b>
+            <p>Sua central abre na hora, com tudo liberado.</p>
+            <figure class="jn__img"><img src="assets/jornada/etapa-1.webp" width="640" height="800" alt="Celular com a área de membros aberta: Fexô, Multy, CANAW, Dossiê, Leilão PRO e Especialista" loading="lazy" decoding="async"></figure>
+          </article>
+          <span class="jn__seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          <article class="jn__p">
+            <div class="jn__cab"><span class="jn__n">2</span><small>Etapa 2</small></div>
+            <b>Abra a plataforma das casas</b>
+            <p><span class="jn__dest">+15 mil imóveis</span> por cidade, tipo e valor.</p>
+            <figure class="jn__img"><img src="assets/jornada/etapa-2.webp" width="640" height="800" alt="Celular com a lista de casas de leilão, preço, desconto e selo Aceita financiamento" loading="lazy" decoding="async"></figure>
+          </article>
+        </div>
+
+        <span class="jn__seta jn__seta--meio" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+
+        <div class="jn__tela" aria-label="Etapa 3">
+          <article class="jn__p">
+            <div class="jn__cab"><span class="jn__n">3</span><small>Etapa 3</small></div>
+            <b>Analise o crédito com o imóvel</b>
+            <p>Entrada e parcela antes do lance.</p>
+            <figure class="jn__img"><img src="assets/jornada/etapa-3.webp" width="640" height="800" alt="Celular com a análise de financiamento da Multy: índice, entrada e parcela" loading="lazy" decoding="async"></figure>
+          </article>
+          <span class="jn__seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          <article class="jn__p jn__p--fim">
+            <div class="jn__cab"><span class="jn__n jn__n--ok"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><small>E fecha com</small></div>
+            <b>Fale com a assessoria</b>
+            <p>Atendimento no WhatsApp para arrematar com segurança.</p>
+            <figure class="jn__img jn__img--foto"><img src="assets/jornada/assessoria.webp" width="640" height="800" alt="Celular com o Paulinho dos Leilões na tela" loading="lazy" decoding="async"><figcaption class="jn__zap"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.8 8.6c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.1.1-.2.3 0 .5.5.8 1.1 1.4 1.9 1.9.2.1.4.1.5 0l.6-.7c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4 0 .4-.1 1-.6 1.4-.5.4-1.2.5-1.9.3-1.2-.4-2.3-1.1-3.2-2-.9-.9-1.6-2-2-3.1-.2-.7-.1-1.4.2-1.8z"/></svg><span>Assessoria do Paulinho<small>no WhatsApp</small></span></figcaption></figure>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="jn__nav" aria-hidden="true">
+        <button type="button" class="jn__ponto on" data-jn-ir="0" tabindex="-1"><span>Etapas 1 e 2</span></button>
+        <button type="button" class="jn__ponto" data-jn-ir="1" tabindex="-1"><span>Etapa 3</span></button>
+        <button type="button" class="jn__prox" data-jn-prox tabindex="-1">Próxima etapa <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 03 — AS OUTRAS DUAS FUNCIONALIDADES ============ -->
+<section class="sec alt" data-secao="03-funcionalidades">
+  <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Além da busca</span>
+      <h2>Mais dois caminhos dentro do&nbsp;app</h2>
+    </div>
+    <div class="fn rv">
+      <article class="fn__c">
+        <div class="fn__txt">
+          <small class="fn__tag">Arrematar sozinho</small>
+          <h3>Como arrematar sozinho</h3>
+          <p class="fn__num"><b>10</b> ferramentas</p>
+          <p>Para fazer cada etapa por conta própria, da conta do lance até a chave na&nbsp;mão.</p>
+        </div>
+        <figure class="fn__img"><img src="assets/jornada/sozinho.webp" width="960" height="645" alt="Notebook com o Dossiê do Assessor aberto na calculadora de lance e valor de mercado" loading="lazy" decoding="async"></figure>
+      </article>
+      <article class="fn__c">
+        <div class="fn__txt">
+          <small class="fn__tag">Aprender</small>
+          <h3>Aprender com quem conhece</h3>
+          <p class="fn__quem">Paulinho e especialistas do mercado&nbsp;imobiliário</p>
+          <p>Aulas e transmissões ao vivo com quem arremata de&nbsp;verdade.</p>
+        </div>
+        <figure class="fn__img"><img src="assets/jornada/aprender.webp" width="960" height="645" alt="Notebook com o Paulinho dos Leilões ao vivo na CANAW e o botão Falar com Paulinho" loading="lazy" decoding="async"></figure>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 04 — FEITO PARA VOCÊ ============ -->
+<section class="sec" data-secao="04-feito-para-voce">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="sec-head center rv">
@@ -660,28 +816,9 @@ addEventListener("load",function(){setTimeout(vai,3500)});})();
   </div>
 </section>
 
-<!-- BLOCO 05 — VITRINE "Veja o aplicativo funcionando": removida por enquanto (está no histórico do git, commit 3dc70a6) -->
+<!-- Tutorial antigo de 5 etapas (04-tutorial) saiu em 19/11: virou o bloco 02 de lado; está no histórico do git. -->
 
-<!-- ============ BLOCO 02B — TUTORIAL: COMO É SIMPLES (5 passos) ============
-     Para pôr os prints: salve em assets/tutorial/passo-1.webp … passo-5.webp e acrescente <figure class="tut__img"><img …></figure> em cada passo. -->
-<section class="sec tut-sec" id="tutorial" data-secao="04-tutorial">
-  <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="wrap">
-    <div class="sec-head center rv">
-      <span class="eyebrow">Passo a passo</span>
-      <h2>Como você encontra sua casa</h2>
-    </div>
-    <ol class="tut rv">
-      <li><span class="tut__n">1</span><div class="tut__t"><small>Etapa 1</small><b>Abra a plataforma dos imóveis</b><p>Pelo celular, sem baixar nada.</p><figure class="tut__img"><picture><source type="image/avif" srcset="assets/tutorial/passo-1-400.avif 400w, assets/tutorial/passo-1-600.avif 600w, assets/tutorial/passo-1.avif 611w" sizes="(max-width:640px) calc(100vw - 110px), 420px"><img src="assets/tutorial/passo-1.webp" srcset="assets/tutorial/passo-1-400.webp 400w, assets/tutorial/passo-1-600.webp 600w, assets/tutorial/passo-1.webp 611w" sizes="(max-width:640px) calc(100vw - 110px), 420px" width="611" height="727" alt="Painel do aplicativo com as plataformas Fexô, Multy, CANAW, Dossiê, Leilão PRO e Especialista" loading="lazy" decoding="async"></picture></figure></div></li>
-      <li><span class="tut__n">2</span><div class="tut__t"><small>Etapa 2</small><b>Encontre o que você deseja</b><p>Cidade, tipo e valor, entre <span class="tut__dest">mais de 15 mil imóveis</span>.</p><figure class="tut__img"><picture><source type="image/avif" srcset="assets/tutorial/passo-2-400.avif 400w, assets/tutorial/passo-2-600.avif 600w, assets/tutorial/passo-2.avif 760w" sizes="(max-width:640px) calc(100vw - 110px), 420px"><img src="assets/tutorial/passo-2.webp" srcset="assets/tutorial/passo-2-400.webp 400w, assets/tutorial/passo-2-600.webp 600w, assets/tutorial/passo-2.webp 760w" sizes="(max-width:640px) calc(100vw - 110px), 420px" width="760" height="782" alt="Lista de casas de leilão com preço, desconto e selo Aceita financiamento" loading="lazy" decoding="async"></picture></figure></div></li>
-      <li><span class="tut__n">3</span><div class="tut__t"><small>Etapa 3</small><b>Veja se dá para financiar</b><p>Veja quais aceitam financiamento e a entrada.</p><figure class="tut__img"><picture><source type="image/avif" srcset="assets/tutorial/passo-3-v2-400.avif 400w, assets/tutorial/passo-3-v2.avif 532w" sizes="(max-width:640px) calc(100vw - 110px), 420px"><img src="assets/tutorial/passo-3-v2.webp" srcset="assets/tutorial/passo-3-v2-400.webp 400w, assets/tutorial/passo-3-v2.webp 532w" sizes="(max-width:640px) calc(100vw - 110px), 420px" width="532" height="725" alt="Análise de financiamento na Multy com índice, entrada e parcela estimada" loading="lazy" decoding="async"></picture></figure></div></li>
-      <li><span class="tut__n">4</span><div class="tut__t"><small>Etapa 4</small><b>Conheça quem já fez dinheiro com leilões</b><p>Casos reais de quem já arrematou.</p><figure class="tut__img"><picture><source type="image/avif" srcset="assets/tutorial/passo-4-400.avif 400w, assets/tutorial/passo-4-600.avif 600w, assets/tutorial/passo-4.avif 760w" sizes="(max-width:640px) calc(100vw - 110px), 420px"><img src="assets/tutorial/passo-4.webp" srcset="assets/tutorial/passo-4-400.webp 400w, assets/tutorial/passo-4-600.webp 600w, assets/tutorial/passo-4.webp 760w" sizes="(max-width:640px) calc(100vw - 110px), 420px" width="760" height="497" alt="Vídeo do Paulinho dos Leilões na CANAW, com botão para falar no WhatsApp" loading="lazy" decoding="async"></picture></figure></div></li>
-      <li><span class="tut__n">5</span><div class="tut__t"><small>Etapa 5</small><b>Calcule sua arrematação na prática</b><p>Simule lance, entrada e custos.</p><figure class="tut__img"><picture><source type="image/avif" srcset="assets/tutorial/passo-5-400.avif 400w, assets/tutorial/passo-5-600.avif 600w, assets/tutorial/passo-5.avif 760w" sizes="(max-width:640px) calc(100vw - 110px), 420px"><img src="assets/tutorial/passo-5.webp" srcset="assets/tutorial/passo-5-400.webp 400w, assets/tutorial/passo-5-600.webp 600w, assets/tutorial/passo-5.webp 760w" sizes="(max-width:640px) calc(100vw - 110px), 420px" width="760" height="748" alt="Calculadora do Dossiê do Assessor com lance e valor de mercado" loading="lazy" decoding="async"></picture></figure></div></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============ BLOCO 06 — BENEFÍCIOS ============ -->
+<!-- ============ BLOCO 05 — O QUE VOCÊ TEM EM MÃOS ============ -->
 <section class="sec alt spot" data-secao="05-beneficios">
   <div class="xdiv" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
@@ -819,7 +956,7 @@ addEventListener("load",function(){setTimeout(vai,3500)});})();
     <h2 class="rv">Tudo para arrematar seu imóvel de leilão financiado, em um só lugar</h2>
     <p class="final__data">Oferta Black válida até <b data-fim>o fim da oferta</b></p>
     <div class="cta-block">
-      <a class="btn btn--cta" href="#planos" data-checkout="completo"><span class="btn__t">Quero minha casa barata<small>Última chance · R$37 só hoje</small></span><svg><use href="#seta"/></svg></a>
+      <a class="btn btn--cta" href="#planos" data-checkout="completo" data-cta-preco><span class="btn__t">Quero minha casa barata<small>Última chance · R$37 só hoje</small></span><svg><use href="#seta"/></svg></a>
       <ul class="seguro" aria-label="Compra segura"><li><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li><li><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>Acesso imediato</li><li><svg viewBox="0 0 24 24"><path d="M12 21.5s8-3.5 8-10V5l-8-3-8 3v6.5c0 6.5 8 10 8 10z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg>Garantia de 7 dias</li></ul>
     </div>
   </div>
@@ -840,7 +977,7 @@ addEventListener("load",function(){setTimeout(vai,3500)});})();
 /* ===================== CONFIGURAÇÃO — troque aqui =====================
    CHECKOUT_*: links do checkout. Todos os botões vão para o plano principal (Arsenal de Aplicativos Facilitadores);  Enquanto estiverem vazios, os botões levam até os planos (#planos).
    A oferta termina sempre às 23:59 do dia em que a pessoa abre a página, no relógio dela. */
-var CHECKOUT_COMPLETO = "https://ggcheckout.app/checkout/v3/E5SbQcPcSKb0gnSA9uvvl1"; /* ggCheckout, Mercado Pago (13/11: substitui a Cakto) */
+var CHECKOUT_COMPLETO = "https://ggcheckout.app/checkout/v5/E5SbQcPcSKb0gnSA9uvvl1"; /* ggCheckout (19/11: v5 direto, sem o redirecionamento da v3), Mercado Pago (13/11: substitui a Cakto) */
 /* InitiateCheckout sai da página no clique. Conferido em 13/11: o checkout do GG não manda nenhum evento do pixel ao abrir.
    Se, depois de ligar o pixel no GG, ele passar a mandar o InitiateCheckout dele, trocar para false (senão conta em dobro). */
 var IC_NA_PAGINA = true;
@@ -849,7 +986,7 @@ var IC_NA_PAGINA = true;
    13/11: a /joao também vai para o GG; src=joao marca a venda que veio do perfil do João.
    (Link antigo da Cakto, fora de uso: https://pay.cakto.com.br/364q77y_1305972?affiliate=Vefhwodg) */
 var CHECKOUT_AFILIADOS = {
-  "/joao": "https://ggcheckout.app/checkout/v3/E5SbQcPcSKb0gnSA9uvvl1?src=joao"
+  "/joao": "https://ggcheckout.app/checkout/v5/E5SbQcPcSKb0gnSA9uvvl1?src=joao"
 };
 
 (function () {
@@ -864,8 +1001,16 @@ var CHECKOUT_AFILIADOS = {
     } catch (e) { return b; }
   }
   var link = montarLink(base);
+  /* 19/11 (decisão do Milton): anúncio (Direct Response) → botões do topo e do final rolam até o preço;
+     automação do Instagram, bio e links sem UTM → o botão do topo vai direto ao checkout do GG.
+     Anúncio = utm_medium=paid, utm_medium "nome|id" ou utm_source meta/fb/facebook. Para testar: ?cta=preco ou ?cta=checkout. */
+  var q = new URLSearchParams(location.search);
+  var src = (q.get("utm_source") || "").toLowerCase(), med = (q.get("utm_medium") || "").toLowerCase(), forca = (q.get("cta") || "").toLowerCase();
+  var ANUNCIO = forca === "preco" || (forca !== "checkout" && (med === "paid" || med.indexOf("|") >= 0 || /^(meta|fb|facebook)$/.test(src)));
+  document.documentElement.setAttribute("data-trafego", ANUNCIO ? "anuncio" : "organico");
   document.querySelectorAll("[data-checkout]").forEach(function (a) {
     if (!link) return;
+    if (ANUNCIO && a.hasAttribute("data-cta-preco")) { a.href = "#planos"; return; }
     a.href = link;
     a.addEventListener("click", function () {
       if (IC_NA_PAGINA && typeof rastrear === "function") rastrear("InitiateCheckout", PRODUTO);
@@ -1039,5 +1184,18 @@ var CHECKOUT_AFILIADOS = {
      leva tudo nos links do GG com utm_term=<termo>|mfv:<visitante> e mede visita, blocos (data-secao 01–12),
      rolagem, tempo e clique para o checkout. Não dispara evento do pixel. -->
 <script src="https://multifly-tracking.vercel.app/rastreio.js" data-cliente="paulinho-dos-leiloes" defer></script>
+<script>
+/* bloco 02: jornada de lado — pontos e "Próxima etapa" no celular */
+(function () {
+  var jn = document.querySelector("[data-jn]"); if (!jn) return;
+  var tr = jn.querySelector("[data-jn-trilho]"), telas = tr.querySelectorAll(".jn__tela"), pts = jn.querySelectorAll("[data-jn-ir]"), prox = jn.querySelector("[data-jn-prox]");
+  function atual() { return Math.round(tr.scrollLeft / Math.max(1, tr.clientWidth)); }
+  function ir(i) { var t = telas[i]; if (t) tr.scrollTo({ left: t.offsetLeft - tr.offsetLeft - 16, behavior: "smooth" }); }
+  function marca() { var i = atual(); pts.forEach(function (p, k) { p.classList.toggle("on", k === i); }); jn.classList.toggle("no-fim", i >= telas.length - 1); }
+  pts.forEach(function (p) { p.addEventListener("click", function () { ir(+p.getAttribute("data-jn-ir")); }); });
+  if (prox) prox.addEventListener("click", function () { ir(Math.min(atual() + 1, telas.length - 1)); });
+  var t0; tr.addEventListener("scroll", function () { clearTimeout(t0); t0 = setTimeout(marca, 60); }, { passive: true });
+})();
+</script>
 </body>
 </html>
